@@ -1,0 +1,28 @@
+{
+  "name": "pcn-appeal.redux",
+  "version": "0.0.1",
+  "description": "React + Redux for PCN Appeal",
+  "main": "components.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/modernpoacher/PCNAppeal.Redux.git"
+  },
+  "scripts": {
+    "eslint": "eslint ."
+  },
+  "author": "Jonathan Perry for Modern Poacher",
+  "devDependencies": {
+    "babel-eslint": "^6.1.0",
+    "eslint": "^3.6.1",
+    "eslint-config-standard": "^6.0.0",
+    "eslint-plugin-promise": "^3.3.0",
+    "eslint-plugin-react": "^6.3.0",
+    "eslint-plugin-standard": "^2.0.0"
+  },
+  "dependencies": {
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-router": "^4.0.0-alpha.5"
+  },
+  "private": true
+}
