@@ -8,7 +8,7 @@
     "url": "git://github.com/modernpoacher/PCNAppeal.Redux.git"
   },
   "scripts": {
-    "eslint": "eslint ./lib"
+    "eslint": "eslint lib"
   },
   "author": "Jonathan Perry for Modern Poacher",
   "engines": {
