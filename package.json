@@ -1,6 +1,6 @@
 {
   "name": "zashiki.react-redux",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "React + Redux for Zashiki",
   "main": "./index.js",
   "repository": {
