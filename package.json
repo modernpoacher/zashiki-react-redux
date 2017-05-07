@@ -5,7 +5,7 @@
   "main": "./index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/modernpoacher/PCNAppeal.Redux.git"
+    "url": "git://github.com/modernpoacher/Zashiki.ReactRedux.git"
   },
   "scripts": {
     "eslint": "eslint lib"
