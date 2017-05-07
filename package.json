@@ -1,7 +1,7 @@
 {
-  "name": "pcn-appeal.redux",
+  "name": "zashiki.react-redux",
   "version": "0.0.1",
-  "description": "React + Redux for PCN Appeal",
+  "description": "React + Redux for Zashiki",
   "main": "./index.js",
   "repository": {
     "type": "git",

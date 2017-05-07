@@ -1,3 +1,3 @@
-require('babel-register') // ({ ignore: /!(pcn-appeal.redux\/lib)/ })
+require('babel-register')
 
 module.exports = require('./lib')
