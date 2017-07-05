@@ -7,23 +7,19 @@ const {
   }
 } = require('mock-browser')
 
-module.exports = function () {
-  if (!global.document || !global.window) {
-    global.document = global.document || MockBrowser.createDocument()
-    global.window = global.window || MockBrowser.createWindow()
-  }
+module.exports = () => {
+  global.window = ('window' in global) ? window : MockBrowser.createWindow()
+  global.document = ('document' in global) ? document : MockBrowser.createDocument()
 
-  if (!global.navigator) {
-    const {
-      navigator
-    } = window
+  const {
+    navigator
+  } = window
 
-    if (navigator) {
-      global.navigator = navigator
-    } else {
-      const browser = new AbstractBrowser(global)
+  if (navigator) {
+    global.navigator = navigator
+  } else {
+    const browser = new AbstractBrowser(global)
 
-      global.navigator = browser.getNavigator()
-    }
+    global.navigator = browser.getNavigator()
   }
 }
