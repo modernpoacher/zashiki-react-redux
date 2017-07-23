@@ -10,6 +10,7 @@
     "transform-class-properties",
     "transform-object-rest-spread",
     "transform-runtime",
-    "transform-react-jsx"
+    "transform-react-jsx",
+    "root-import"
   ]
 }
