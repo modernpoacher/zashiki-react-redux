@@ -8,7 +8,9 @@
     "url": "git://github.com/modernpoacher/Zashiki.ReactRedux.git"
   },
   "scripts": {
-    "lint": "eslint lib"
+    "build": "babel src -d lib",
+    "build:watch": "babel src -d lib -w",
+    "lint": "eslint src"
   },
   "author": "Jonathan Perry for Modern Poacher",
   "engines": {
@@ -16,6 +18,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.1",
@@ -43,7 +46,9 @@
     "shinkansen-motor": "0.0.5",
     "shinkansen-pantograph": "0.0.5",
     "shinkansen-rails": "0.0.5",
-    "shinkansen-signals": "0.0.5"
+    "shinkansen-signals": "0.0.5",
+    "zashiki-promise-middleware": "^1.0.1",
+    "zashiki-routing-middleware": "^1.0.1"
   },
   "devDependencies": {
     "eslint": "^4.1.1",
