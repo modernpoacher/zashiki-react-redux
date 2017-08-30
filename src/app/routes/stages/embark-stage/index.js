@@ -7,15 +7,15 @@ import {
   Signals
 } from 'shinkansen-signals'
 
-import * as EmbarkStageActions from '../../../actions/stages/embark-stage'
+import * as EmbarkStageActions from 'zashiki-react-redux/app/actions/stages/embark-stage'
 
 import {
   Navigation
-} from '../../../components'
+} from 'zashiki-react-redux/app/components'
 
 import {
   EmbarkStage
-} from '../../../components/stages'
+} from 'zashiki-react-redux/app/components/stages'
 
 const {
   EMBARK

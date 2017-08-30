@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Immutable from 'immutable'
 
-import * as ZashikiActions from '../../actions/zashiki'
+import * as ZashikiActions from 'zashiki-react-redux/app/actions/zashiki'
 
 const resource = (alpha, omega) => ({
   ...(alpha ? { alpha, ...(omega ? { omega } : {}) } : {})

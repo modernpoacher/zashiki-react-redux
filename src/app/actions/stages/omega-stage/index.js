@@ -2,12 +2,12 @@
  * Zashiki/Omega Actions
  */
 import {
-  request
-} from '../../../actions'
-
-import {
   Pantograph
 } from 'shinkansen-pantograph'
+
+import {
+  request
+} from 'zashiki-react-redux/app/actions'
 
 const {
   CHANGE: ZASHIKI_OMEGA_CHANGE,

@@ -8,7 +8,7 @@ import {
 } from 'shinkansen-motor'
 import {
   transform
-} from '../../../transformers/stages/embark-stage'
+} from 'zashiki-react-redux/app/transformers/stages/embark-stage'
 
 export default class EmbarkStage extends React.Component {
   createComplete () { // console.log('createComplete()')

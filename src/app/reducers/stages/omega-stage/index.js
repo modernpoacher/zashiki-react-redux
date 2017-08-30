@@ -7,7 +7,7 @@ import {
   ZASHIKI_OMEGA_FETCH,
   ZASHIKI_OMEGA_STORE,
   ZASHIKI_OMEGA_QUERY
-} from '../../../actions/stages/omega-stage'
+} from 'zashiki-react-redux/app/actions/stages/omega-stage'
 
 const {
   PENDING

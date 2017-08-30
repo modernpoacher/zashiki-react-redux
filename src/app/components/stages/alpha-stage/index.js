@@ -11,7 +11,7 @@ import {
 } from 'shinkansen-gears'
 import {
   transform
-} from '../../../transformers/stages/alpha-stage'
+} from 'zashiki-react-redux/app/transformers/stages/alpha-stage'
 
 export default class AlphaStage extends React.Component {
   createCount (index, count) {

@@ -6,7 +6,7 @@ import {
 import {
   Zashiki,
   Navigation
-} from '../../components'
+} from 'zashiki-react-redux/app/components'
 
 class IndexPage extends Zashiki {
   render () { // console.log('(IndexPage)render()') // eslint-disable-line

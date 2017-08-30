@@ -11,15 +11,11 @@ import {
 } from 'shinkansen-gears'
 import {
   transform
-} from '../../../transformers/stages/omega-stage'
+} from 'zashiki-react-redux/app/transformers/stages/omega-stage'
+
+import Count from './count'
 
 export default class OmegaStage extends React.Component {
-  createCount (index, count) {
-    return (
-      <h2>{index + 1} of {count}</h2>
-    )
-  }
-
   render () { // console.log('(OmegaStage)render()') // eslint-disable-line
     const {
       omega
@@ -49,7 +45,9 @@ export default class OmegaStage extends React.Component {
 
       return (
         <div className='omega-stage'>
-          {this.createCount(index, count)}
+          <Count
+            index={index}
+            count={count} />
           <Motor
             onSubmit={onSubmit}
             definition={definition} />

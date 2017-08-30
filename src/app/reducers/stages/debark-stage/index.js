@@ -6,7 +6,7 @@ import {
   ZASHIKI_DEBARK_FETCH,
   ZASHIKI_DEBARK_STORE,
   ZASHIKI_DEBARK
-} from '../../../actions/stages/debark-stage'
+} from 'zashiki-react-redux/app/actions/stages/debark-stage'
 
 const {
   PENDING,

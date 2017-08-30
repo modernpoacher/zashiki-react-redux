@@ -3,7 +3,7 @@
  */
 import {
   request
-} from '../../../actions'
+} from 'zashiki-react-redux/app/actions'
 
 import {
   Pantograph

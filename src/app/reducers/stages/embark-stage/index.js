@@ -6,7 +6,7 @@ import {
   ZASHIKI_EMBARK_FETCH,
   ZASHIKI_EMBARK_STORE,
   ZASHIKI_EMBARK
-} from '../../../actions/stages/embark-stage'
+} from 'zashiki-react-redux/app/actions/stages/embark-stage'
 
 const {
   PENDING,

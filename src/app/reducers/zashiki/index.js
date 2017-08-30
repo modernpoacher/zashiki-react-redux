@@ -7,7 +7,7 @@ import {
   ZASHIKI_FETCH,
   ZASHIKI_STORE,
   ZASHIKI_QUERY
-} from '../../actions/zashiki'
+} from 'zashiki-react-redux/app/actions/zashiki'
 
 const {
   PENDING

@@ -6,13 +6,13 @@ import {
 import {
   Zashiki,
   Navigation
-} from '../../../components'
+} from 'zashiki-react-redux/app/components'
 
 import {
   AlphaStage
-} from '../../../components/stages'
+} from 'zashiki-react-redux/app/components/stages'
 
-import * as AlphaStageActions from '../../../actions/stages/alpha-stage'
+import * as AlphaStageActions from 'zashiki-react-redux/app/actions/stages/alpha-stage'
 
 class AlphaStagePage extends Zashiki {
   onSubmit = (resource, response) => {

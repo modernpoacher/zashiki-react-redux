@@ -6,27 +6,29 @@ import {
 
 import {
   configureStore
-} from './app/store'
+} from 'zashiki-react-redux/app/store'
 
-import Router from './app/router'
+import Router from 'zashiki-react-redux/app/router'
 
-const app = document.getElementById('app')
-if (app) {
-  const state = JSON.parse(
-    app.getAttribute('data-state') || '{}'
-  )
-  const store = configureStore(state)
+{
+  const app = document.getElementById('app')
+  if (app) {
+    const state = JSON.parse(
+      app.getAttribute('data-state') || '{}'
+    )
+    const store = configureStore(state)
 
-  const App = (
-    <Provider store={store}>
-      {Router}
-    </Provider>
-  )
+    const App = (
+      <Provider store={store}>
+        {Router}
+      </Provider>
+    )
 
-  ReactDOM.render(
-    App,
-    app
-  )
+    ReactDOM.render(
+      App,
+      app
+    )
 
-  app.removeAttribute('data-state')
+    app.removeAttribute('data-state')
+  }
 }

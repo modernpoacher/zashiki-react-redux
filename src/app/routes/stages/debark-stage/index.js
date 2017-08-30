@@ -7,15 +7,15 @@ import {
   Signals
 } from 'shinkansen-signals'
 
-import * as DebarkStageActions from '../../../actions/stages/debark-stage'
+import * as DebarkStageActions from 'zashiki-react-redux/app/actions/stages/debark-stage'
 
 import {
   Navigation
-} from '../../../components'
+} from 'zashiki-react-redux/app/components'
 
 import {
   DebarkStage
-} from '../../../components/stages'
+} from 'zashiki-react-redux/app/components/stages'
 
 const {
   DEBARK

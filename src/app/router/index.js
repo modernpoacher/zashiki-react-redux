@@ -4,7 +4,7 @@ import {
   browserHistory
 } from 'react-router'
 
-import Routes from '../routes'
+import Routes from 'zashiki-react-redux/app/routes'
 
 export default (
   <Router history={browserHistory}>

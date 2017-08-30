@@ -7,7 +7,7 @@ import {
   ZASHIKI_ALPHA_FETCH,
   ZASHIKI_ALPHA_STORE,
   ZASHIKI_ALPHA_QUERY
-} from '../../../actions/stages/alpha-stage'
+} from 'zashiki-react-redux/app/actions/stages/alpha-stage'
 
 const {
   PENDING
