@@ -12,20 +12,22 @@ export default class Zashiki extends React.Component {
   /**
    *  Create initial 'state' from initial 'props'
    */
-  state = (() => {
+  constructor (props) {
+    super(props)
+
     const {
       params: {
         alpha,
         omega
       }
-    } = this.props
+    } = props
 
-    return {
+    this.state = {
       now: Immutable.Map(
         resource(alpha, omega)
       )
     }
-  })()
+  }
 
   /**
    *  Interrogate initial props for current Route 'params' (if the component has mounted, the route has changed)
@@ -43,7 +45,6 @@ export default class Zashiki extends React.Component {
      *  Dispatch and notify the Node App via Axios
      */
     dispatch(ZashikiActions.changeRoute({ resource: resource(alpha, omega) }))
-      .catch((e) => console.log('componentDidMount', e))
   }
 
   /**
@@ -84,7 +85,6 @@ export default class Zashiki extends React.Component {
        *  Dispatch and notify the Node App via Axios
        */
       dispatch(ZashikiActions.changeRoute({ resource: resource(alpha, omega) }))
-        .catch((e) => console.log('componentWillReceiveProps', e))
     }
   }
 }
