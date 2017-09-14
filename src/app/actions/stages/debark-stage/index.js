@@ -61,4 +61,4 @@ function storeRoute (route) {
 export const fetch = () => (dispatch) => dispatch(fetchRoute())
 
 export const store = ({ statement }) => (dispatch) => dispatch(storeRoute({ response: { statement } }))
-  .then(() => dispatch(debarkRoute({ response: { debark: Rails.part(statement) } })))
+  .then(() => dispatch(debarkRoute({ response: { debark: Rails.rail(statement) } })))

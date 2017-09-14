@@ -9,13 +9,15 @@
   },
   "scripts": {
     "build": "babel src -d lib",
-    "build:watch": "babel src -d lib -w",
-    "lint": "eslint src"
+    "build:watch": "npm run build -- -w",
+    "lint": "eslint src",
+    "lint:fix": "npm run lint -- --fix"
   },
-  "author": "Jonathan Perry for Modern Poacher",
+  "author": "Jonathan Perry for Modern Poacher Limited",
   "engines": {
     "node": ">=7.0.0"
   },
+  "license": "UNLICENSED",
   "dependencies": {
     "axios": "^0.16.2",
     "immutable": "^3.8.1",

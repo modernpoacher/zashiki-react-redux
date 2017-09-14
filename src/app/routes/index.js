@@ -31,8 +31,8 @@ const {
   DEBARK_PATTERN
 } = Signals
 
-const EMBARK_ROUTE = Rails.path({ [EMBARK]: EMBARK_STAGE }, EMBARK_PATTERN)
-const DEBARK_ROUTE = Rails.path({ [DEBARK]: DEBARK_STAGE }, DEBARK_PATTERN)
+const EMBARK_ROUTE = Rails.to({ [EMBARK]: EMBARK_STAGE }, EMBARK_PATTERN)
+const DEBARK_ROUTE = Rails.to({ [DEBARK]: DEBARK_STAGE }, DEBARK_PATTERN)
 
 export default (
   <Route path='/'>
