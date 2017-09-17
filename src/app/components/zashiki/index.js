@@ -32,7 +32,7 @@ export default class Zashiki extends React.Component {
   /**
    *  Interrogate initial props for current Route 'params' (if the component has mounted, the route has changed)
    */
-  componentDidMount () { // console.log('(Zashiki)componentDidMount()') // eslint-disable-line
+  componentWillMount () { // console.log('(Zashiki)componentWillMount()') // eslint-disable-line
     const {
       dispatch,
       params: {
