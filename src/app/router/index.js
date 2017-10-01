@@ -1,13 +1,16 @@
 import React from 'react' // eslint-disable-line no-unused-vars
 import {
-  Router,
-  browserHistory
+  Router
 } from 'react-router'
+
+import {
+  history
+} from 'zashiki-routing-middleware'
 
 import Routes from 'zashiki-react-redux/app/routes'
 
 export default (
-  <Router history={browserHistory}>
+  <Router history={history}>
     {Routes}
   </Router>
 )

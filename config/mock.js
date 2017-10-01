@@ -7,7 +7,7 @@ const {
   }
 } = require('mock-browser')
 
-module.exports = () => {
+module.exports = function () {
   global.window = ('window' in global) ? window : MockBrowser.createWindow()
   global.document = ('document' in global) ? document : MockBrowser.createDocument()
 
