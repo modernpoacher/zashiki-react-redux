@@ -21,5 +21,10 @@ export const transform = ({
       gears,
       state
     })
-    : ({ alpha, definition: {}, gears, state })
+    : ({
+      alpha,
+      definition: {},
+      gears,
+      state
+    })
 )

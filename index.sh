@@ -78,7 +78,7 @@ if [[ $? -eq 0 ]]; then
 
   # NO CR
   echo -e $PASS $MODULE
-  # echo -e "\x15" #EXIT CR
+  echo -e "\x15" #EXIT CR
 
 fi
 

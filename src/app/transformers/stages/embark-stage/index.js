@@ -9,5 +9,7 @@ export const transform = ({
         formData
       }
     })
-    : ({ definition: {} })
+    : ({
+      definition: {}
+    })
 )
