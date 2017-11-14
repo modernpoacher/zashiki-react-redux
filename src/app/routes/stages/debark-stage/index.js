@@ -14,6 +14,10 @@ import {
 } from 'zashiki-react-redux/app/components'
 
 import {
+  transform
+} from 'zashiki-react-redux/app/transformers/stages/debark-stage'
+
+import {
   DebarkStage
 } from 'zashiki-react-redux/app/components/stages'
 
@@ -76,5 +80,5 @@ DebarkStagePage.propTypes = {
 }
 
 export default connect(
-  ({ [DEBARK]: debark }) => ({ debark })
+  ({ [DEBARK]: debark = {} }) => ({ debark: transform(debark) })
 )(DebarkStagePage)

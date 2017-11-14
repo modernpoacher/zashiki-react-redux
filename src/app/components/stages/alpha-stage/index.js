@@ -9,47 +9,37 @@ import {
 import {
   Gears
 } from 'shinkansen-gears'
-import {
-  transform
-} from 'zashiki-react-redux/app/transformers/stages/alpha-stage'
+
+import Count from './count'
 
 export default class AlphaStage extends React.Component {
-  createCount (index, count) {
-    return (
-      <h2>{index + 1} of {count}</h2>
-    )
-  }
-
   render () { // console.log('(AlphaStage)render()') // eslint-disable-line
     const {
-      alpha
-    } = this.props
-
-    const ALPHA = transform(alpha)
-
-    const {
-      state: {
-        index,
-        count
+      alpha: {
+        state: {
+          index,
+          count
+        }
       }
-    } = ALPHA
+    } = this.props
 
     if (count || index) {
       const {
-        onSubmit
-      } = this.props
-
-      const {
-        omega,
-        gears: {
-          reverse,
-          forward
+        onSubmit,
+        alpha: {
+          omega,
+          gears: {
+            reverse,
+            forward
+          }
         }
-      } = ALPHA
+      } = this.props
 
       return (
         <div className='alpha-stage'>
-          {this.createCount(index, count)}
+          <Count
+            index={index}
+            count={count} />
           <ol>
             {omega
               .map(({ resource, definition: schema, response: formData = {} }, key) => (

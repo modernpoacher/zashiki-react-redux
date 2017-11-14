@@ -9,39 +9,31 @@ import {
 import {
   Gears
 } from 'shinkansen-gears'
-import {
-  transform
-} from 'zashiki-react-redux/app/transformers/stages/omega-stage'
 
 import Count from './count'
 
 export default class OmegaStage extends React.Component {
   render () { // console.log('(OmegaStage)render()') // eslint-disable-line
     const {
-      omega
-    } = this.props
-
-    const OMEGA = transform(omega)
-
-    const {
-      state: {
-        index,
-        count
+      omega: {
+        state: {
+          index,
+          count
+        }
       }
-    } = OMEGA
+    } = this.props
 
     if (index || count) {
       const {
-        onSubmit
-      } = this.props
-
-      const {
-        definition,
-        gears: {
-          reverse,
-          forward
+        onSubmit,
+        omega: {
+          definition,
+          gears: {
+            reverse,
+            forward
+          }
         }
-      } = OMEGA
+      } = this.props
 
       return (
         <div className='omega-stage'>

@@ -9,6 +9,10 @@ import {
 } from 'zashiki-react-redux/app/components'
 
 import {
+  transform
+} from 'zashiki-react-redux/app/transformers/stages/omega-stage'
+
+import {
   OmegaStage
 } from 'zashiki-react-redux/app/components/stages'
 
@@ -50,5 +54,5 @@ OmegaStagePage.propTypes = {
 }
 
 export default connect(
-  ({ zashiki: omega = {} }) => ({ omega })
+  ({ zashiki = {} }) => ({ omega: transform(zashiki) })
 )(OmegaStagePage)

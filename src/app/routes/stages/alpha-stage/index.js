@@ -9,6 +9,10 @@ import {
 } from 'zashiki-react-redux/app/components'
 
 import {
+  transform
+} from 'zashiki-react-redux/app/transformers/stages/alpha-stage'
+
+import {
   AlphaStage
 } from 'zashiki-react-redux/app/components/stages'
 
@@ -47,5 +51,5 @@ AlphaStagePage.propTypes = {
 }
 
 export default connect(
-  ({ zashiki: alpha = {} }) => ({ alpha })
+  ({ zashiki = {} }) => ({ alpha: transform(zashiki) })
 )(AlphaStagePage)

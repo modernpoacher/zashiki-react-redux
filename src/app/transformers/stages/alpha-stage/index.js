@@ -9,22 +9,14 @@ export const transform = ({
   state = {
     index: 0,
     count: 0
-  }
-}) => (
-  (schema)
-    ? ({
-      omega,
-      definition: {
-        schema,
-        formData
-      },
-      gears,
-      state
-    })
-    : ({
-      omega,
-      definition: {},
-      gears,
-      state
-    })
-)
+  },
+  status
+}) => ({
+  omega,
+  definition: {
+    ...(schema ? { schema, ...(formData ? { formData } : {}) } : {})
+  },
+  gears,
+  state,
+  status
+})

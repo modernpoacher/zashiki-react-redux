@@ -14,6 +14,10 @@ import {
 } from 'zashiki-react-redux/app/components'
 
 import {
+  transform
+} from 'zashiki-react-redux/app/transformers/stages/embark-stage'
+
+import {
   EmbarkStage
 } from 'zashiki-react-redux/app/components/stages'
 
@@ -76,5 +80,5 @@ EmbarkStagePage.propTypes = {
 }
 
 export default connect(
-  ({ [EMBARK]: embark }) => ({ embark })
+  ({ [EMBARK]: embark = {} }) => ({ embark: transform(embark) })
 )(EmbarkStagePage)
