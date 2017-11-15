@@ -1,7 +1,7 @@
-import EmbarkStage from './embark-stage'
-import AlphaStage from './alpha-stage'
-import OmegaStage from './omega-stage'
-import DebarkStage from './debark-stage'
+import EmbarkStage from './embark'
+import AlphaStage from './alpha'
+import OmegaStage from './omega'
+import DebarkStage from './debark'
 
 export {
   EmbarkStage,

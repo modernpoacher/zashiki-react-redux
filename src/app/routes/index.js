@@ -14,11 +14,11 @@ import {
 
 import IndexPage from './index-page'
 
-import EmbarkStagePage from './stages/embark-stage'
-import DebarkStagePage from './stages/debark-stage'
+import EmbarkStagePage from './stages/embark'
+import DebarkStagePage from './stages/debark'
 
-import AlphaStagePage from './stages/alpha-stage'
-import OmegaStagePage from './stages/omega-stage'
+import AlphaStagePage from './stages/alpha'
+import OmegaStagePage from './stages/omega'
 
 const {
   EMBARK,

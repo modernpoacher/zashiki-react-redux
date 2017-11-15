@@ -3,6 +3,26 @@ import {
   Link
 } from 'react-router'
 
+import {
+  Rails
+} from 'shinkansen-rails'
+
+import {
+  Signals
+} from 'shinkansen-signals'
+
+const {
+  EMBARK,
+  DEBARK,
+  EMBARK_STAGE,
+  DEBARK_STAGE,
+  EMBARK_PATTERN,
+  DEBARK_PATTERN
+} = Signals
+
+const EMBARK_ROUTE = Rails.to({ [EMBARK]: EMBARK_STAGE }, EMBARK_PATTERN)
+const DEBARK_ROUTE = Rails.to({ [DEBARK]: DEBARK_STAGE }, DEBARK_PATTERN)
+
 export default () => (
   <nav>
     <ul>
@@ -10,10 +30,14 @@ export default () => (
         <Link to='/'>Index Page</Link>
       </li>
       <li>
-        <Link to='/embark-stage'>Embark Route</Link>
+        <Link to={EMBARK_ROUTE}>
+          Embark Route
+        </Link>
       </li>
       <li>
-        <Link to='/debark-stage'>Debark Route</Link>
+        <Link to={DEBARK_ROUTE}>
+          Debark Route
+        </Link>
       </li>
       <li>
         <ul>
