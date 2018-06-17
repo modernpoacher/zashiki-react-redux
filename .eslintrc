@@ -1,4 +1,8 @@
 {
+  "env": {
+    "es6": true,
+    "node": true
+  },
   "extends": [
     "standard",
     "plugin:react/recommended"
@@ -17,6 +21,9 @@
     "react/display-name": 0
   },
   "settings": {
+    "react": {
+      "version": "16.2.0"
+    },
     "import/resolver": {
       "babel-module": {}
     }
