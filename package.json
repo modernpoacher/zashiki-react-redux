@@ -11,7 +11,7 @@
     "prebuild": "bash index.sh",
     "build": "babel src -d lib",
     "build:clean": "npm run clean; npm run build",
-    "clean": "rm -rf lib node_modules",
+    "clean": "bash clean.sh",
     "babel": "babel src -d lib",
     "babel:watch": "npm run babel -- -w",
     "lint": "eslint src",
