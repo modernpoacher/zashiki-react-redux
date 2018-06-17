@@ -6,10 +6,10 @@ import {
   Signals
 } from 'shinkansen-signals'
 
-import debark from './stages/debark-stage'
-import embark from './stages/embark-stage'
-import alpha from './stages/alpha-stage'
-import omega from './stages/omega-stage'
+import debark from './stages/debark'
+import embark from './stages/embark'
+import alpha from './stages/alpha'
+import omega from './stages/omega'
 import zashiki from './zashiki'
 
 const {

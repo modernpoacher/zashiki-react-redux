@@ -11,7 +11,11 @@ export const transform = ({
   },
   status
 }) => ({
-  definitions: omega.map(({ resource, definition: schema, response: formData = {} }) => ({
+  definitions: omega.map(({
+    resource,
+    definition: schema,
+    response: formData = {}
+  }) => ({
     resource,
     definition: {
       ...(schema ? { schema, formData } : {})

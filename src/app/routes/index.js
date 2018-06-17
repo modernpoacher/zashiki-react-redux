@@ -8,6 +8,7 @@ import {
 import {
   Signals
 } from 'shinkansen-signals'
+
 import {
   Rails
 } from 'shinkansen-rails'
