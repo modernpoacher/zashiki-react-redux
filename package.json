@@ -10,7 +10,8 @@
   "scripts": {
     "prebuild": "bash index.sh",
     "build": "babel src -d lib",
-    "build:clean": "rm -rf lib node_modules; npm run build",
+    "build:clean": "npm run clean; npm run build",
+    "clean": "rm -rf lib node_modules",
     "babel": "babel src -d lib",
     "babel:watch": "npm run babel -- -w",
     "lint": "eslint src",
