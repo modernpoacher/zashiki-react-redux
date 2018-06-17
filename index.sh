@@ -59,12 +59,6 @@ if [[ $? -eq 0 ]]; then
   echo -e "\x15" # CR
   echo -e $PASS $MODULE
 
-  cd ../../Sequence\ Media/Redux.Storage.Middleware
-  npm run build
-
-  echo -e "\x15" # CR
-  echo -e $PASS $MODULE
-
   cd ../../Modern\ Poacher/zashiki-react-redux
 
   echo -e "\x15" # CR

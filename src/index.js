@@ -4,8 +4,6 @@ import {
   Provider
 } from 'react-redux'
 
-import initialState from 'redux-storage-middleware/lib/reducer/initial-state'
-
 import {
   configureStore
 } from 'zashiki-react-redux/app/store'
@@ -19,8 +17,7 @@ import Router from 'zashiki-react-redux/app/router'
       app.getAttribute('data-state') || '{}'
     )
 
-    const reduxStorage = initialState()
-    const store = configureStore({ ...state, reduxStorage })
+    const store = configureStore(state)
 
     const App = (
       <Provider store={store}>
