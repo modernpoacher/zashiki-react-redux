@@ -23,9 +23,6 @@
   "settings": {
     "react": {
       "version": "16.2.0"
-    },
-    "import/resolver": {
-      "babel-module": {}
     }
   }
 }

@@ -5,22 +5,23 @@
   "main": "./index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/modernpoacher/Zashiki.ReactRedux.git"
+    "url": "git://github.com/modernpoacher/zashiki-react-redux.git"
   },
   "scripts": {
     "prebuild": "bash index.sh",
     "build": "babel src -d lib",
-    "build:clean": "npm run clean; npm run build",
+    "build:clean": "npm run clean && npm run build",
     "clean": "bash clean.sh",
     "babel": "babel src -d lib",
     "babel:watch": "npm run babel -- -w",
-    "lint": "eslint src",
-    "lint:fix": "npm run lint -- --fix"
+    "lint": "eslint *.js src",
+    "lint:fix": "npm run lint -- --fix",
+    "pre-commit": "npm run lint && npm run babel && git add lib",
+    "deps": "deps",
+    "deps:prod": "deps --save-prod",
+    "deps:dev": "deps --save-dev"
   },
   "author": "Jonathan Perry for Modern Poacher Limited",
-  "engines": {
-    "node": ">=7.0.0"
-  },
   "license": "UNLICENSED",
   "dependencies": {
     "axios": "^0.17.1",
@@ -33,34 +34,39 @@
     "react-router": "3.0.5",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "shinkansen-gears": "0.0.11",
-    "shinkansen-motor": "0.0.11",
-    "shinkansen-pantograph": "0.0.11",
-    "shinkansen-rails": "0.0.11",
-    "shinkansen-signals": "0.0.11",
+    "shinkansen-gears": "0.0.15",
+    "shinkansen-motor": "0.0.15",
+    "shinkansen-pantograph": "0.0.15",
+    "shinkansen-rails": "0.0.15",
+    "shinkansen-signals": "0.0.15",
     "zashiki-promise-middleware": "1.0.5",
     "zashiki-routing-middleware": "1.0.5"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.3",
-    "babel-loader": "^7.1.4",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.4.4",
+    "@modernpoacher/deps": "0.0.4",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.6",
     "babel-plugin-module-resolver": "^3.1.1",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "eslint": "^4.19.1",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-import-resolver-babel-module": "^4.0.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-react": "^7.9.1",
-    "eslint-plugin-standard": "^3.1.0"
+    "core-js": "^3.1.2",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-standard": "^4.0.0",
+    "husky": "^2.3.0"
   },
-  "publishConfig": {
-    "registry": "http://npm.modernpoacher.com:5002"
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pre-commit"
+    }
   }
 }
