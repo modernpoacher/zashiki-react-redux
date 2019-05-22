@@ -1,5 +1,5 @@
 {
-  "name": "zashiki-react-redux",
+  "name": "@modernpoacher/zashiki-react-redux",
   "version": "1.0.7",
   "description": "React + Redux for Zashiki",
   "main": "./index.js",
@@ -21,7 +21,6 @@
     "deps:prod": "deps --save-prod",
     "deps:dev": "deps --save-dev"
   },
-  "private": true,
   "author": "Jonathan Perry for Modern Poacher Limited",
   "license": "UNLICENSED",
   "dependencies": {
