@@ -21,6 +21,7 @@
     "deps:prod": "deps --save-prod",
     "deps:dev": "deps --save-dev"
   },
+  "private": true,
   "author": "Jonathan Perry for Modern Poacher Limited",
   "license": "UNLICENSED",
   "dependencies": {
