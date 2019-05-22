@@ -1,6 +1,6 @@
 {
   "name": "zashiki-react-redux",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "React + Redux for Zashiki",
   "main": "./index.js",
   "repository": {
@@ -39,8 +39,8 @@
     "shinkansen-pantograph": "0.0.15",
     "shinkansen-rails": "0.0.15",
     "shinkansen-signals": "0.0.15",
-    "zashiki-promise-middleware": "1.0.5",
-    "zashiki-routing-middleware": "1.0.5"
+    "zashiki-promise-middleware": "1.0.7",
+    "zashiki-routing-middleware": "1.0.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
