@@ -7,7 +7,7 @@ import {
   history
 } from 'zashiki-routing-middleware'
 
-import Routes from 'zashiki-react-redux/app/routes'
+import Routes from '@modernpoacher/zashiki-react-redux/app/routes'
 
 export default (
   <Router history={history}>

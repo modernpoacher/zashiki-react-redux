@@ -3,7 +3,7 @@
  */
 import {
   request
-} from 'zashiki-react-redux/app/actions'
+} from '@modernpoacher/zashiki-react-redux/app/actions'
 
 import {
   Pantograph
@@ -14,6 +14,7 @@ import {
 } from 'shinkansen-rails'
 
 const {
+  ERROR: ZASHIKI_EMBARK_ERROR,
   ROUTE: ZASHIKI_EMBARK,
   FETCH: ZASHIKI_EMBARK_FETCH,
   STORE: ZASHIKI_EMBARK_STORE
@@ -23,6 +24,7 @@ const {
  * Action Types
  */
 export {
+  ZASHIKI_EMBARK_ERROR,
   ZASHIKI_EMBARK,
   ZASHIKI_EMBARK_FETCH,
   ZASHIKI_EMBARK_STORE
@@ -31,7 +33,14 @@ export {
 /**
  * Action Creators
  */
-export function embarkRoute (route) {
+function routeError (error) {
+  return {
+    type: ZASHIKI_EMBARK_ERROR,
+    error
+  }
+}
+
+function embarkRoute (route) {
   return {
     type: ZASHIKI_EMBARK,
     payload: {
@@ -58,7 +67,27 @@ function storeRoute (route) {
   }
 }
 
-export const fetch = () => (dispatch) => dispatch(fetchRoute())
+export const fetch = () => async (dispatch) => {
+  try {
+    await dispatch(fetchRoute())
+  } catch (e) {
+    await dispatch(routeError(e))
+  }
+}
 
-export const store = ({ statement }) => (dispatch) => dispatch(storeRoute({ response: { statement } }))
-  .then(() => dispatch(embarkRoute({ response: { embark: Rails.rail(statement) } })))
+export const store = ({ statement }) => async (dispatch) => {
+  try {
+    await dispatch(storeRoute({ response: { statement } }))
+  } catch (e) {
+    await dispatch(routeError(e))
+  }
+}
+
+export const submit = ({ statement }) => async (dispatch) => {
+  try {
+    await dispatch(storeRoute({ response: { statement } }))
+    await dispatch(embarkRoute({ response: { embark: Rails.rail(statement) } }))
+  } catch (e) {
+    await dispatch(routeError(e))
+  }
+}

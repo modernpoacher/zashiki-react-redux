@@ -51,11 +51,13 @@ const configure = (request) => {
     } = axios
 
     common.Accept = 'application/json; charset=utf-8'
+
     if (bearerToken) {
       common.Authorization = `Bearer ${bearerToken}`
     } else {
       delete common.Authorization
     }
+
     if (utils.isStandardBrowserEnv()) {
       delete defaults.headers.Cookie
     } else {

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Immutable from 'immutable'
 
-import * as ZashikiActions from 'zashiki-react-redux/app/actions/zashiki'
+import { change } from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
 
 const resource = (alpha, omega) => ({
   ...(alpha ? { alpha, ...(omega ? { omega } : {}) } : {})
@@ -44,7 +44,7 @@ export default class Zashiki extends React.Component {
     /**
      *  Dispatch and notify the Node App via Axios
      */
-    dispatch(ZashikiActions.changeRoute({ resource: resource(alpha, omega) }))
+    dispatch(change(resource(alpha, omega)))
   }
 
   /**
@@ -84,7 +84,7 @@ export default class Zashiki extends React.Component {
       /**
        *  Dispatch and notify the Node App via Axios
        */
-      dispatch(ZashikiActions.changeRoute({ resource: resource(alpha, omega) }))
+      dispatch(change(resource(alpha, omega)))
     }
   }
 }

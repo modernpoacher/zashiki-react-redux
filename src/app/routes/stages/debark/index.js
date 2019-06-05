@@ -7,19 +7,22 @@ import {
   Signals
 } from 'shinkansen-signals'
 
-import * as DebarkStageActions from 'zashiki-react-redux/app/actions/stages/debark'
+import {
+  fetch,
+  submit
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
 
 import {
   Navigation
-} from 'zashiki-react-redux/app/components'
+} from '@modernpoacher/zashiki-react-redux/app/components'
 
 import {
   transform
-} from 'zashiki-react-redux/app/transformers/stages/debark'
+} from '@modernpoacher/zashiki-react-redux/app/transformers/stages/debark'
 
 import {
   DebarkStage
-} from 'zashiki-react-redux/app/components/stages'
+} from '@modernpoacher/zashiki-react-redux/app/components/stages'
 
 const {
   DEBARK
@@ -37,7 +40,7 @@ class DebarkStagePage extends React.Component {
     /**
      *  Dispatch and notify the Node App via Axios
      */
-    dispatch(DebarkStageActions.fetch())
+    dispatch(fetch())
   }
 
   onSubmit = (response) => {
@@ -48,7 +51,7 @@ class DebarkStagePage extends React.Component {
     /**
      *  Dispatch and notify the Node App via Axios
      */
-    dispatch(DebarkStageActions.store(response))
+    dispatch(submit(response))
   }
 
   render () { // console.log('(DebarkStagePage)render()') // eslint-disable-line

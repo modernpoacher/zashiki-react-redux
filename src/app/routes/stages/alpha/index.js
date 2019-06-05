@@ -3,20 +3,20 @@ import {
   connect
 } from 'react-redux'
 
+import { submit } from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
+
 import {
   Zashiki,
   Navigation
-} from 'zashiki-react-redux/app/components'
+} from '@modernpoacher/zashiki-react-redux/app/components'
 
 import {
   transform
-} from 'zashiki-react-redux/app/transformers/stages/alpha'
+} from '@modernpoacher/zashiki-react-redux/app/transformers/stages/alpha'
 
 import {
   AlphaStage
-} from 'zashiki-react-redux/app/components/stages'
-
-import * as AlphaStageActions from 'zashiki-react-redux/app/actions/stages/alpha'
+} from '@modernpoacher/zashiki-react-redux/app/components/stages'
 
 class AlphaStagePage extends Zashiki {
   onSubmit = (resource, response) => {
@@ -24,7 +24,7 @@ class AlphaStagePage extends Zashiki {
       dispatch
     } = this.props
 
-    dispatch(AlphaStageActions.store(resource, response))
+    dispatch(submit(resource, response))
   }
 
   render () { // console.log('(AlphaStagePage)render()') // eslint-disable-line

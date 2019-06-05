@@ -4,19 +4,21 @@ import {
 } from 'react-redux'
 
 import {
+  submit
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
+
+import {
   Zashiki,
   Navigation
-} from 'zashiki-react-redux/app/components'
+} from '@modernpoacher/zashiki-react-redux/app/components'
 
 import {
   transform
-} from 'zashiki-react-redux/app/transformers/stages/omega'
+} from '@modernpoacher/zashiki-react-redux/app/transformers/stages/omega'
 
 import {
   OmegaStage
-} from 'zashiki-react-redux/app/components/stages'
-
-import * as OmegaStageActions from 'zashiki-react-redux/app/actions/stages/omega'
+} from '@modernpoacher/zashiki-react-redux/app/components/stages'
 
 class OmegaStagePage extends Zashiki {
   onSubmit = (response) => {
@@ -27,7 +29,7 @@ class OmegaStagePage extends Zashiki {
       }
     } = this.props
 
-    dispatch(OmegaStageActions.store(resource, response))
+    dispatch(submit(resource, response))
   }
 
   render () { // console.log('(OmegaStagePage)render()') // eslint-disable-line

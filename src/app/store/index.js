@@ -8,8 +8,8 @@ import thunk from 'redux-thunk'
 import promiseMiddleware from 'zashiki-promise-middleware'
 import routingMiddleware from 'zashiki-routing-middleware'
 
-import reducers from 'zashiki-react-redux/app/reducers'
-import axios from 'zashiki-react-redux/app/actions'
+import reducers from '@modernpoacher/zashiki-react-redux/app/reducers'
+import axios from '@modernpoacher/zashiki-react-redux/app/actions'
 
 export const configureStore = (state) => (
   createStore(

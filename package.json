@@ -8,8 +8,9 @@
     "url": "git://github.com/modernpoacher/zashiki-react-redux.git"
   },
   "scripts": {
-    "prebuild": "bash index.sh",
-    "build": "babel src -d lib",
+    "prepublishOnly": "npm run build",
+    "prebuild": "npm run clean",
+    "build": "npm run babel",
     "build:clean": "npm run clean && npm run build",
     "clean": "bash clean.sh",
     "babel": "babel src -d lib",
@@ -47,6 +48,7 @@
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.4.4",

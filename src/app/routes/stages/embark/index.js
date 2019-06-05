@@ -7,19 +7,22 @@ import {
   Signals
 } from 'shinkansen-signals'
 
-import * as EmbarkStageActions from 'zashiki-react-redux/app/actions/stages/embark'
+import {
+  fetch,
+  submit
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/embark'
 
 import {
   Navigation
-} from 'zashiki-react-redux/app/components'
+} from '@modernpoacher/zashiki-react-redux/app/components'
 
 import {
   transform
-} from 'zashiki-react-redux/app/transformers/stages/embark'
+} from '@modernpoacher/zashiki-react-redux/app/transformers/stages/embark'
 
 import {
   EmbarkStage
-} from 'zashiki-react-redux/app/components/stages'
+} from '@modernpoacher/zashiki-react-redux/app/components/stages'
 
 const {
   EMBARK
@@ -37,7 +40,7 @@ class EmbarkStagePage extends React.Component {
     /**
      *  Dispatch and notify the Node App via Axios
      */
-    dispatch(EmbarkStageActions.fetch())
+    dispatch(fetch())
   }
 
   onSubmit = (response) => {
@@ -48,7 +51,7 @@ class EmbarkStagePage extends React.Component {
     /**
      *  Dispatch and notify the Node App via Axios
      */
-    dispatch(EmbarkStageActions.store(response))
+    dispatch(submit(response))
   }
 
   render () { // console.log('(EmbarkStagePage)render()') // eslint-disable-line

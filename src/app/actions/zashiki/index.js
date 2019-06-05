@@ -3,11 +3,12 @@
  */
 import {
   request
-} from 'zashiki-react-redux/app/actions'
+} from '@modernpoacher/zashiki-react-redux/app/actions'
 
 /**
  * Action Types
  */
+export const ZASHIKI_ERROR = 'ZASHIKI_ERROR'
 export const ZASHIKI_CHANGE = 'ZASHIKI_CHANGE'
 export const ZASHIKI_FETCH = 'ZASHIKI_FETCH'
 export const ZASHIKI_STORE = 'ZASHIKI_STORE'
@@ -16,7 +17,14 @@ export const ZASHIKI_QUERY = 'ZASHIKI_QUERY'
 /**
  * Action Creators
  */
-export function changeRoute (route) {
+function routeError (error) {
+  return {
+    type: ZASHIKI_ERROR,
+    error
+  }
+}
+
+function changeRoute (route) {
   return {
     type: ZASHIKI_CHANGE,
     payload: {
@@ -52,7 +60,35 @@ function queryRoute () {
   }
 }
 
-export const fetch = (resource) => (dispatch) => dispatch(fetchRoute({ resource }))
+export const change = (resource) => async (dispatch) => {
+  try {
+    await dispatch(changeRoute({ resource }))
+  } catch (e) {
+    await dispatch(routeError(e))
+  }
+}
 
-export const store = (resource, response) => (dispatch) => dispatch(storeRoute({ resource, response }))
-  .then(() => dispatch(queryRoute()))
+export const fetch = (resource) => async (dispatch) => {
+  try {
+    await dispatch(fetchRoute({ resource }))
+  } catch (e) {
+    await dispatch(routeError(e))
+  }
+}
+
+export const store = (resource, response) => async (dispatch) => {
+  try {
+    await dispatch(storeRoute({ resource, response }))
+  } catch (e) {
+    await dispatch(routeError(e))
+  }
+}
+
+export const submit = (resource, response) => async (dispatch) => {
+  try {
+    await dispatch(storeRoute({ resource, response }))
+    await dispatch(queryRoute())
+  } catch (e) {
+    await dispatch(routeError(e))
+  }
+}
