@@ -25,7 +25,7 @@
   "author": "Jonathan Perry for Modern Poacher Limited",
   "license": "UNLICENSED",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "0.18.0",
     "immutable": "3.8.2",
     "mock-browser": "^0.92.14",
     "prop-types": "^15.7.2",
