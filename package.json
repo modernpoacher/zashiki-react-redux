@@ -1,6 +1,6 @@
 {
   "name": "@modernpoacher/zashiki-react-redux",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "React + Redux for Zashiki",
   "main": "./index.js",
   "repository": {
