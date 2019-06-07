@@ -3,7 +3,9 @@ import {
   connect
 } from 'react-redux'
 
-import { submit } from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
+import {
+  Signals
+} from 'shinkansen-signals'
 
 import {
   Zashiki,
@@ -14,22 +16,21 @@ import {
   transform
 } from '@modernpoacher/zashiki-react-redux/app/transformers/stages/alpha'
 
+import { submit, change } from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
+
 import {
   AlphaStage
 } from '@modernpoacher/zashiki-react-redux/app/components/stages'
 
+const {
+  ALPHA
+} = Signals
+
 class AlphaStagePage extends Zashiki {
-  onSubmit = (resource, response) => {
-    const {
-      dispatch
-    } = this.props
-
-    dispatch(submit(resource, response))
-  }
-
   render () { // console.log('(AlphaStagePage)render()') // eslint-disable-line
     const {
-      alpha
+      onSubmit,
+      ...props
     } = this.props
 
     return (
@@ -38,8 +39,8 @@ class AlphaStagePage extends Zashiki {
           <h1>Alpha Stage</h1>
         </header>
         <AlphaStage
-          onSubmit={this.onSubmit}
-          alpha={alpha} />
+          {...props}
+          onSubmit={onSubmit} />
         <Navigation />
       </section>
     )
@@ -50,6 +51,22 @@ AlphaStagePage.propTypes = {
   ...Zashiki.propTypes
 }
 
-export default connect(
-  ({ zashiki = {} }) => ({ alpha: transform(zashiki) })
-)(AlphaStagePage)
+const mapStateToProps = ({ [ALPHA]: alpha = {} }) => ({ ...transform(alpha) })
+
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit: (resource, response) => {
+    dispatch(submit(resource, response))
+  },
+  onChange: (resource) => {
+    dispatch(change(resource))
+  }
+})
+
+const mergeProps = (stateProps, { onSubmit, onChange }, ownProps) => ({
+  ...stateProps,
+  onSubmit,
+  onChange,
+  ...ownProps
+})
+
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(AlphaStagePage)

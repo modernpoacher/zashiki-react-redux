@@ -1,4 +1,10 @@
-export const transform = ({
+import {
+  Signals
+} from 'shinkansen-signals'
+
+import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'
+
+const transformAlpha = (status, {
   omega = [],
   resource,
   gears = {
@@ -8,21 +14,22 @@ export const transform = ({
   state = {
     index: 0,
     count: 0
-  },
-  status
+  }
 }) => ({
   definitions: omega.map(({
     resource,
     definition: schema,
     response: formData = {}
   }) => ({
-    resource,
+    ...(resource ? { resource } : {}),
     definition: {
       ...(schema ? { schema, formData } : {})
     }
   })),
-  resource,
+  ...(resource ? { resource } : {}),
   gears,
   state,
   status
 })
+
+export const transform = ({ status, ...alpha }) => (status === Signals.FAILURE) ? transformFailure(status, alpha) : transformAlpha(status, alpha)

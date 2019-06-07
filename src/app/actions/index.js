@@ -83,7 +83,7 @@ export default (store) => {
   const {
     zashiki: {
       request
-    }
+    } = {}
   } = store.getState()
 
   if (request) configure(request)
@@ -95,7 +95,7 @@ export default (store) => {
     const {
       zashiki: {
         request
-      }
+      } = {}
     } = store.getState()
 
     if (request) configure(request)

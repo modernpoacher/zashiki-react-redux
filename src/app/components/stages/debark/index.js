@@ -14,19 +14,25 @@ const DebarkStage = ({ debark, onSubmit }) => (
 )
 
 DebarkStage.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  debark: PropTypes.shape({
-    status: PropTypes.number.isRequired,
-    definition: PropTypes.object.isRequired
-  }).isRequired
+  debark: PropTypes.oneOfType([
+    PropTypes.shape({
+      status: PropTypes.number.isRequired,
+      exception: PropTypes.object.isRequired
+    }),
+    PropTypes.shape({
+      status: PropTypes.number.isRequired,
+      definition: PropTypes.object.isRequired
+    })
+  ]).isRequired,
+  onSubmit: PropTypes.func.isRequired
 }
 
 DebarkStage.defaultProps = {
-  onSubmit: () => {},
   debark: {
     status: Signals.PENDING,
     definition: {}
-  }
+  },
+  onSubmit: () => {}
 }
 
 export default DebarkStage

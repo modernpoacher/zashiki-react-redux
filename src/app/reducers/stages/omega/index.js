@@ -109,7 +109,6 @@ const queryRejected = (state, {
 export default function omegaReducer (state = STATE, { type, ...action } = ACTION) {
   switch (type) {
     case ERROR:
-      console.log(ERROR, state)
 
       return { ...state }
     case CHANGE:
@@ -124,7 +123,6 @@ export default function omegaReducer (state = STATE, { type, ...action } = ACTIO
     case QUERY:
 
       return query(state, action)
-
     case CHANGE_FULFILLED:
 
       return changeFulfilled(state, action)

@@ -8,6 +8,8 @@ import {
   Navigation
 } from '@modernpoacher/zashiki-react-redux/app/components'
 
+import { submit, change } from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
+
 class IndexPage extends Zashiki {
   render () { // console.log('(IndexPage)render()') // eslint-disable-line
     return (
@@ -21,6 +23,22 @@ class IndexPage extends Zashiki {
   }
 }
 
-export default connect(
-  ({ zashiki }) => ({ zashiki })
-)(IndexPage)
+const mapStateToProps = ({ zashiki = {} } = {}) => ({ zashiki })
+
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit: (resource, response) => {
+    dispatch(submit(resource, response))
+  },
+  onChange: (resource) => {
+    dispatch(change(resource))
+  }
+})
+
+const mergeProps = (stateProps, { onSubmit, onChange }, ownProps) => ({
+  ...stateProps,
+  onSubmit,
+  onChange,
+  ...ownProps
+})
+
+export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(IndexPage)

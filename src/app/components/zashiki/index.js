@@ -2,9 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Immutable from 'immutable'
 
-import { change } from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
-
-const resource = (alpha, omega) => ({
+export const resource = (alpha, omega) => ({
   ...(alpha ? { alpha, ...(omega ? { omega } : {}) } : {})
 })
 
@@ -34,7 +32,7 @@ export default class Zashiki extends React.Component {
    */
   componentWillMount () { // console.log('(Zashiki)componentWillMount()') // eslint-disable-line
     const {
-      dispatch,
+      onChange,
       params: {
         alpha,
         omega
@@ -44,7 +42,7 @@ export default class Zashiki extends React.Component {
     /**
      *  Dispatch and notify the Node App via Axios
      */
-    dispatch(change(resource(alpha, omega)))
+    onChange(resource(alpha, omega))
   }
 
   /**
@@ -54,7 +52,6 @@ export default class Zashiki extends React.Component {
    */
   componentWillReceiveProps (props) { // console.log('(Zashiki)componentWillReceiveProps()', props) // eslint-disable-line
     const {
-      dispatch,
       params: {
         alpha,
         omega
@@ -81,34 +78,19 @@ export default class Zashiki extends React.Component {
        */
       this.setState({ was, now })
 
+      const {
+        onChange
+      } = props
+
       /**
        *  Dispatch and notify the Node App via Axios
        */
-      dispatch(change(resource(alpha, omega)))
+      onChange(resource(alpha, omega))
     }
   }
 }
 
 Zashiki.propTypes = {
-  params: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired,
-  zashiki: PropTypes.oneOfType([
-    PropTypes.shape({
-      exception: PropTypes.object
-    }),
-    PropTypes.shape({
-      response: PropTypes.object,
-      resource: PropTypes.object,
-      status: PropTypes.number,
-      state: PropTypes.shape({
-        count: PropTypes.number.isRequired,
-        index: PropTypes.number.isRequired
-      }),
-      gears: PropTypes.shape({
-        reverse: PropTypes.object,
-        forward: PropTypes.object
-      }),
-      definition: PropTypes.object
-    })
-  ])
+  onChange: PropTypes.func.isRequired,
+  params: PropTypes.object.isRequired
 }

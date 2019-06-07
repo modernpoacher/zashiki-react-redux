@@ -14,10 +14,16 @@ const EmbarkStage = ({ embark, onSubmit }) => (
 )
 
 EmbarkStage.propTypes = {
-  embark: PropTypes.shape({
-    status: PropTypes.number.isRequired,
-    definition: PropTypes.object.isRequired
-  }).isRequired,
+  embark: PropTypes.oneOfType([
+    PropTypes.shape({
+      status: PropTypes.number.isRequired,
+      definition: PropTypes.object.isRequired
+    }),
+    PropTypes.shape({
+      status: PropTypes.number.isRequired,
+      exception: PropTypes.object.isRequired
+    })
+  ]).isRequired,
   onSubmit: PropTypes.func.isRequired
 }
 

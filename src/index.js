@@ -21,7 +21,7 @@ const App = (
 
 const app = document.getElementById('app')
 
-ReactDOM.render(
+ReactDOM.hydrate(
   App,
   app
 )

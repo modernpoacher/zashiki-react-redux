@@ -1,63 +1,66 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import {
   Signals
 } from 'shinkansen-signals'
-import {
-  Gears
-} from 'shinkansen-gears'
 
-import Count from './count'
-import Stage from './stage'
+import Complete from './status/complete'
+import Failure from './status/failure'
+import Success from './status/success'
+import InProgress from './status/in-progress'
+import NoDecision from './status/no-decision'
+import Pending from './status/pending'
 
-export default class OmegaStage extends React.Component {
-  render () { // console.log('(OmegaStage)render()') // eslint-disable-line
-    const {
-      omega: {
-        state: {
-          index,
-          count
-        }
-      }
-    } = this.props
+const getErrorProps = ({ exception }) => ({ exception })
+const getStageProps = ({ state, definition, gears, onSubmit }) => ({ state, definition, gears, onSubmit })
 
-    if (index || count) {
-      const {
-        onSubmit,
-        omega: {
-          definition,
-          gears: {
-            reverse,
-            forward
-          }
-        }
-      } = this.props
-
-      return (
-        <div className='omega'>
-          <Count
-            index={index}
-            count={count} />
-          <Stage
-            onSubmit={onSubmit}
-            definition={definition} />
-          <Gears
-            reverse={reverse}
-            forward={forward}
-            pattern={Signals.OMEGA_PATTERN} />
-        </div>
-      )
-    }
-    return false
+const OmegaStage = ({ status, ...omega }) => {
+  switch (status) {
+    case Signals.FAILURE: return (
+      <Failure
+        {...getErrorProps(omega)} />
+    )
+    case Signals.SUCCESS: return (
+      <Success
+        {...getStageProps(omega)} />
+    )
+    case Signals.IN_PROGRESS: return (
+      <InProgress
+        {...getStageProps(omega)} />
+    )
+    case Signals.NO_DECISION: return (
+      <NoDecision
+        {...getStageProps(omega)} />
+    )
+    case Signals.COMPLETE: return (
+      <Complete
+        {...getStageProps(omega)} />
+    )
+    default: return (
+      <Pending
+        {...getStageProps(omega)} />
+    )
   }
 }
 
-OmegaStage.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  omega: PropTypes.object.isRequired
-}
+OmegaStage.propTypes = PropTypes.oneOfType([
+  PropTypes.shape({
+    status: PropTypes.number.isRequired,
+    definition: PropTypes.object.isRequired,
+    onSubmit: PropTypes.func.isRequired
+  }),
+  PropTypes.shape({
+    status: PropTypes.number.isRequired,
+    exception: PropTypes.object.isRequired,
+    onSubmit: PropTypes.func.isRequired
+  })
+]).isRequired
 
 OmegaStage.defaultProps = {
-  onSubmit: () => {},
-  omega: {}
+  status: Signals.PENDING,
+  definition: {},
+  onSubmit: () => {}
 }
+
+export default OmegaStage

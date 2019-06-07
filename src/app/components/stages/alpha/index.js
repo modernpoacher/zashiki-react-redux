@@ -5,67 +5,62 @@ import {
   Signals
 } from 'shinkansen-signals'
 
-import {
-  Gears
-} from 'shinkansen-gears'
+import Complete from './status/complete'
+import Failure from './status/failure'
+import Success from './status/success'
+import InProgress from './status/in-progress'
+import NoDecision from './status/no-decision'
+import Pending from './status/pending'
 
-import Count from './count'
-import Alpha from './stage'
+const getErrorProps = ({ exception }) => ({ exception })
+const getStageProps = ({ state, definitions, gears, onSubmit }) => ({ state, definitions, gears, onSubmit })
 
-export default class AlphaStage extends React.Component {
-  render () { // console.log('(AlphaStage)render()') // eslint-disable-line
-    const {
-      alpha: {
-        state: {
-          index,
-          count
-        }
-      }
-    } = this.props
-
-    if (count || index) {
-      const {
-        onSubmit,
-        alpha: {
-          definitions,
-          gears: {
-            reverse,
-            forward
-          }
-        }
-      } = this.props
-
-      return (
-        <div className='alpha'>
-          <Count
-            index={index}
-            count={count} />
-          <Alpha
-            onSubmit={onSubmit}
-            definitions={definitions} />
-          <Gears
-            reverse={reverse}
-            forward={forward}
-            pattern={Signals.ALPHA_PATTERN} />
-        </div>
-      )
-    }
-    return false
+const AlphaStage = ({ status, ...alpha }) => {
+  switch (status) {
+    case Signals.FAILURE: return (
+      <Failure
+        {...getErrorProps(alpha)} />
+    )
+    case Signals.SUCCESS: return (
+      <Success
+        {...getStageProps(alpha)} />
+    )
+    case Signals.IN_PROGRESS: return (
+      <InProgress
+        {...getStageProps(alpha)} />
+    )
+    case Signals.NO_DECISION: return (
+      <NoDecision
+        {...getStageProps(alpha)} />
+    )
+    case Signals.COMPLETE: return (
+      <Complete
+        {...getStageProps(alpha)} />
+    )
+    default: return (
+      <Pending
+        {...getStageProps(alpha)} />
+    )
   }
 }
 
-AlphaStage.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  alpha: PropTypes.shape({
+AlphaStage.propTypes = PropTypes.oneOfType([
+  PropTypes.shape({
+    status: PropTypes.number.isRequired,
     definitions: PropTypes.array.isRequired,
     onSubmit: PropTypes.func.isRequired
-  }).isRequired
-}
+  }),
+  PropTypes.shape({
+    status: PropTypes.number.isRequired,
+    exception: PropTypes.object.isRequired,
+    onSubmit: PropTypes.func.isRequired
+  })
+]).isRequired
 
 AlphaStage.defaultProps = {
-  onSubmit: () => {},
-  alpha: {
-    definitions: [],
-    onSubmit: () => {}
-  }
+  status: Signals.PENDING,
+  definitions: [],
+  onSubmit: () => {}
 }
+
+export default AlphaStage

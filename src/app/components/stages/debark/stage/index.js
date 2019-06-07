@@ -5,50 +5,60 @@ import {
   Signals
 } from 'shinkansen-signals'
 
-const Failure = () => (
-  <h2>Failure</h2>
-)
+import {
+  Complete,
+  Failure,
+  Success,
+  InProgress,
+  NoDecision,
+  Pending
+} from './status'
 
-const Success = () => (
-  <h2>Success</h2>
-)
-
-const InProgress = () => (
-  <h2>In Progress</h2>
-)
-
-const NoDecision = () => (
-  <h2>No Decision</h2>
-)
-
-const Complete = () => (
-  <h2>Complete</h2>
-)
-
-const Pending = () => (
-  <h2>Pending</h2>
-)
-
-export default function Status ({ debark: { status } }) {
+const Debark = ({ debark: { status, definition, exception } }) => {
   switch (status) {
-    case Signals.FAILURE: return <Failure />
-    case Signals.SUCCESS: return <Success />
-    case Signals.IN_PROGRESS: return <InProgress />
-    case Signals.NO_DECISION: return <NoDecision />
-    case Signals.COMPLETE: return <Complete />
+    case Signals.COMPLETE: return (
+      <Complete
+        {...definition} />
+    )
+    case Signals.FAILURE: return (
+      <Failure
+        {...definition} />
+    )
+    case Signals.SUCCESS: return (
+      <Success
+        {...definition} />
+    )
+    case Signals.IN_PROGRESS: return (
+      <InProgress
+        {...definition} />
+    )
+    case Signals.NO_DECISION: return (
+      <NoDecision
+        {...exception} />
+    )
     default:
       return <Pending />
   }
 }
 
-Status.propTypes = {
-  debark: PropTypes.shape({
-    status: PropTypes.number.isRequired
-  }).isRequired
+Debark.propTypes = {
+  debark: PropTypes.oneOfType([
+    PropTypes.shape({
+      status: PropTypes.number.isRequired,
+      exception: PropTypes.object.isRequired
+    }),
+    PropTypes.shape({
+      status: PropTypes.number.isRequired,
+      definition: PropTypes.object.isRequired
+    })
+  ]).isRequired
 }
 
-Status.defaultProps = {
+Debark.defaultProps = {
   debark: {
-    status: Signals.PENDING
+    status: Signals.PENDING,
+    definition: {}
   }
 }
+
+export default Debark
