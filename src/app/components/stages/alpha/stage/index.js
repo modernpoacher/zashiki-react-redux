@@ -64,8 +64,6 @@ AlphaStage.propTypes = {
 }
 
 AlphaStage.defaultProps = {
-  onSubmit: () => {},
   state: {},
-  definitions: [],
   gears: {}
 }

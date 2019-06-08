@@ -1,66 +1,43 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import {
+  connect
+} from 'react-redux'
+
+import {
+  withRouter
+} from 'react-router'
 
 import {
   Signals
 } from 'shinkansen-signals'
 
-import Complete from './status/complete'
-import Failure from './status/failure'
-import Success from './status/success'
-import InProgress from './status/in-progress'
-import NoDecision from './status/no-decision'
-import Pending from './status/pending'
+import {
+  transform
+} from '@modernpoacher/zashiki-react-redux/app/transformers/stages/omega'
 
-const getErrorProps = ({ exception }) => ({ exception })
-const getStageProps = ({ state, definition, gears, onSubmit }) => ({ state, definition, gears, onSubmit })
+import { submit, change } from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
 
-const OmegaStage = ({ status, ...omega }) => {
-  switch (status) {
-    case Signals.FAILURE: return (
-      <Failure
-        {...getErrorProps(omega)} />
-    )
-    case Signals.SUCCESS: return (
-      <Success
-        {...getStageProps(omega)} />
-    )
-    case Signals.IN_PROGRESS: return (
-      <InProgress
-        {...getStageProps(omega)} />
-    )
-    case Signals.NO_DECISION: return (
-      <NoDecision
-        {...getStageProps(omega)} />
-    )
-    case Signals.COMPLETE: return (
-      <Complete
-        {...getStageProps(omega)} />
-    )
-    default: return (
-      <Pending
-        {...getStageProps(omega)} />
-    )
+import OmegaStage from './component'
+
+const {
+  OMEGA
+} = Signals
+
+const mapStateToProps = ({ [OMEGA]: omega = {} }) => ({ ...transform(omega) })
+
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit: (resource, response) => {
+    dispatch(submit(resource, response))
+  },
+  onChange: (resource) => {
+    dispatch(change(resource))
   }
-}
+})
 
-OmegaStage.propTypes = PropTypes.oneOfType([
-  PropTypes.shape({
-    status: PropTypes.number.isRequired,
-    definition: PropTypes.object.isRequired,
-    onSubmit: PropTypes.func.isRequired
-  }),
-  PropTypes.shape({
-    status: PropTypes.number.isRequired,
-    exception: PropTypes.object.isRequired,
-    onSubmit: PropTypes.func.isRequired
-  })
-]).isRequired
+const mergeProps = (stateProps, { onSubmit, onChange }, ownProps) => ({
+  ...stateProps,
+  onSubmit,
+  onChange,
+  ...ownProps
+})
 
-OmegaStage.defaultProps = {
-  status: Signals.PENDING,
-  definition: {},
-  onSubmit: () => {}
-}
-
-export default OmegaStage
+export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(OmegaStage))

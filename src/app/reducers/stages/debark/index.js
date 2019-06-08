@@ -10,8 +10,7 @@ import {
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
 
 const {
-  PENDING,
-  COMPLETE
+  PENDING
 } = Signals
 const STATE = {
   status: PENDING
@@ -26,59 +25,64 @@ const FETCH_REJECTED = FETCH.concat('_REJECTED')
 const STORE_REJECTED = STORE.concat('_REJECTED')
 const DEBARK_REJECTED = DEBARK.concat('_REJECTED')
 
+/**
+ *  Remove stale attributes by ommission
+ */
+const transform = ({ status }) => ({ status })
+
 const fetch = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const store = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const debark = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data, status: COMPLETE })
+}) => ({ ...transform(state), ...data })
 
 const fetchFulfilled = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const storeFulfilled = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const debarkFulfilled = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const fetchRejected = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const storeRejected = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const debarkRejected = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 /**
  *  DebarkStage Reducer

@@ -1,38 +1,43 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import {
+  connect
+} from 'react-redux'
+
+import {
+  withRouter
+} from 'react-router'
 
 import {
   Signals
 } from 'shinkansen-signals'
 
-import Stage from './stage'
+import {
+  transform
+} from '@modernpoacher/zashiki-react-redux/app/transformers/stages/embark'
 
-const EmbarkStage = ({ embark, onSubmit }) => (
-  <Stage
-    embark={embark}
-    onSubmit={onSubmit} />
-)
+import { fetch, submit } from '@modernpoacher/zashiki-react-redux/app/actions/stages/embark'
 
-EmbarkStage.propTypes = {
-  embark: PropTypes.oneOfType([
-    PropTypes.shape({
-      status: PropTypes.number.isRequired,
-      definition: PropTypes.object.isRequired
-    }),
-    PropTypes.shape({
-      status: PropTypes.number.isRequired,
-      exception: PropTypes.object.isRequired
-    })
-  ]).isRequired,
-  onSubmit: PropTypes.func.isRequired
-}
+import EmbarkStage from './component'
 
-EmbarkStage.defaultProps = {
-  embark: {
-    status: Signals.PENDING,
-    definition: {}
+const {
+  EMBARK
+} = Signals
+
+const mapStateToProps = ({ [EMBARK]: embark = {} }) => ({ ...transform(embark) })
+
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit: (response) => {
+    dispatch(submit(response))
   },
-  onSubmit: () => {}
-}
+  onEmbark: () => {
+    dispatch(fetch())
+  }
+})
 
-export default EmbarkStage
+const mergeProps = (stateProps, { onSubmit, onEmbark }, ownProps) => ({
+  ...stateProps,
+  onSubmit,
+  onEmbark,
+  ...ownProps
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(EmbarkStage))

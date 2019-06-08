@@ -28,77 +28,82 @@ const FETCH_REJECTED = FETCH.concat('_REJECTED')
 const STORE_REJECTED = STORE.concat('_REJECTED')
 const QUERY_REJECTED = QUERY.concat('_REJECTED')
 
+/**
+ *  Remove stale attributes by ommission
+ */
+const transform = ({ status }) => ({ status })
+
 const change = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const fetch = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const store = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const query = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const changeFulfilled = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const fetchFulfilled = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const storeFulfilled = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const queryFulfilled = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const changeRejected = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const fetchRejected = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const storeRejected = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 const queryRejected = (state, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...state, ...data })
+}) => ({ ...transform(state), ...data })
 
 /**
  *  Zashiki/Alpha Reducer

@@ -1,7 +1,2 @@
-import Zashiki from './zashiki'
-import Navigation from './navigation'
-
-export {
-  Zashiki,
-  Navigation
-}
+export Zashiki from './zashiki'
+export Navigation from './navigation'

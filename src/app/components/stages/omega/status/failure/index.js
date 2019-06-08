@@ -13,7 +13,7 @@ const Failure = ({ code, name, message }) => (
 )
 
 Failure.propTypes = {
-  code: PropTypes.string.isRequired,
+  code: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   message: PropTypes.string
 }

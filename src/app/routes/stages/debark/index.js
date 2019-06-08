@@ -39,7 +39,7 @@ class DebarkStagePage extends React.Component {
     } = this.props
 
     /**
-     *  Dispatch and notify the Node App via Axios
+     *  Dispatch and notify the Node app
      */
     dispatch(fetch())
   }
@@ -50,7 +50,7 @@ class DebarkStagePage extends React.Component {
     } = this.props
 
     /**
-     *  Dispatch and notify the Node App via Axios
+     *  Dispatch and notify the Node app
      */
     dispatch(submit(response))
   }

@@ -60,14 +60,10 @@ OmegaStage.propTypes = {
   gears: PropTypes.shape({
     forward: PropTypes.object,
     reverse: PropTypes.object
-  }).isRequired
+  })
 }
 
 OmegaStage.defaultProps = {
-  onSubmit: () => {},
-  omega: {
-    state: {},
-    definition: {},
-    gears: {}
-  }
+  state: {},
+  gears: {}
 }

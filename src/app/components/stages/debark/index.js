@@ -1,38 +1,43 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import {
+  connect
+} from 'react-redux'
+
+import {
+  withRouter
+} from 'react-router'
 
 import {
   Signals
 } from 'shinkansen-signals'
 
-import Debark from './stage'
+import {
+  transform
+} from '@modernpoacher/zashiki-react-redux/app/transformers/stages/debark'
 
-const DebarkStage = ({ debark, onSubmit }) => (
-  <Debark
-    debark={debark}
-    onSubmit={onSubmit} />
-)
+import { fetch, submit } from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
 
-DebarkStage.propTypes = {
-  debark: PropTypes.oneOfType([
-    PropTypes.shape({
-      status: PropTypes.number.isRequired,
-      exception: PropTypes.object.isRequired
-    }),
-    PropTypes.shape({
-      status: PropTypes.number.isRequired,
-      definition: PropTypes.object.isRequired
-    })
-  ]).isRequired,
-  onSubmit: PropTypes.func.isRequired
-}
+import DebarkStage from './component'
 
-DebarkStage.defaultProps = {
-  debark: {
-    status: Signals.PENDING,
-    definition: {}
+const {
+  DEBARK
+} = Signals
+
+const mapStateToProps = ({ [DEBARK]: debark = {} }) => ({ ...transform(debark) })
+
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit: (response) => {
+    dispatch(submit(response))
   },
-  onSubmit: () => {}
-}
+  onDebark: () => {
+    dispatch(fetch())
+  }
+})
 
-export default DebarkStage
+const mergeProps = (stateProps, { onSubmit, onDebark }, ownProps) => ({
+  ...stateProps,
+  onSubmit,
+  onDebark,
+  ...ownProps
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(DebarkStage))
