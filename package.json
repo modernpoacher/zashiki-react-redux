@@ -40,8 +40,8 @@
     "shinkansen-pantograph": "0.0.16",
     "shinkansen-rails": "0.0.16",
     "shinkansen-signals": "0.0.16",
-    "zashiki-promise-middleware": "1.0.8",
-    "zashiki-routing-middleware": "1.0.8"
+    "zashiki-promise-middleware": "1.0.9",
+    "zashiki-routing-middleware": "1.0.9"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
