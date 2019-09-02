@@ -24,6 +24,7 @@ export default class OmegaStage extends React.Component {
     if (index || count) {
       const {
         onSubmit,
+        resource,
         definition,
         gears: {
           reverse,
@@ -38,6 +39,7 @@ export default class OmegaStage extends React.Component {
             count={count} />
           <Omega
             onSubmit={onSubmit}
+            resource={resource}
             definition={definition} />
           <Gears
             reverse={reverse}
@@ -56,6 +58,7 @@ OmegaStage.propTypes = {
     index: PropTypes.number,
     count: PropTypes.number
   }),
+  resource: PropTypes.object.isRequired,
   definition: PropTypes.object.isRequired,
   gears: PropTypes.shape({
     forward: PropTypes.object,

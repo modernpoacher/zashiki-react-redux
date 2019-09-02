@@ -15,7 +15,7 @@ import NoDecision from './status/no-decision'
 import Pending from './status/pending'
 
 const getErrorProps = ({ exception }) => exception
-const getStageProps = ({ state, definition, gears, onSubmit }) => ({ state, definition, gears, onSubmit })
+const getStageProps = ({ state, resource, definition, gears, onSubmit }) => ({ state, resource, definition, gears, onSubmit })
 
 export default class OmegaStage extends Zashiki {
   render () {

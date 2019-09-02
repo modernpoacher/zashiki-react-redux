@@ -5,16 +5,17 @@ import {
   Motor
 } from 'shinkansen-motor'
 
-const Omega = ({ onSubmit, definition }) => (
+const Omega = ({ onSubmit, resource, definition }) => (
   <div className='omega'>
     <Motor
-      onSubmit={onSubmit}
+      onSubmit={(response) => onSubmit(resource, response)}
       definition={definition} />
   </div>
 )
 
 Omega.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  resource: PropTypes.object.isRequired,
   definition: PropTypes.object.isRequired
 }
 
