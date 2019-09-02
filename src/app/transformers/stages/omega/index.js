@@ -5,7 +5,6 @@ import {
 import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
 const transformOmega = (status, {
-  alpha = {},
   resource,
   definition: schema,
   response: formData = {},
@@ -18,11 +17,10 @@ const transformOmega = (status, {
     count: 0
   }
 }) => ({
-  alpha,
-  ...(resource ? { resource } : {}),
   definition: {
     ...(schema ? { schema, formData } : {})
   },
+  ...(resource ? { resource } : {}),
   gears,
   state,
   status

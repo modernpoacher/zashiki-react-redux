@@ -63,7 +63,7 @@ class DebarkStagePage extends React.Component {
     return (
       <section>
         <header>
-          <h1>Debark Route</h1>
+          <h1>Debark Stage</h1>
         </header>
         <DebarkStage
           onSubmit={this.onSubmit}

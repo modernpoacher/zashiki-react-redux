@@ -25,64 +25,59 @@ const FETCH_REJECTED = FETCH.concat('_REJECTED')
 const STORE_REJECTED = STORE.concat('_REJECTED')
 const EMBARK_REJECTED = EMBARK.concat('_REJECTED')
 
-/**
- *  Remove stale attributes by ommission
- */
-const transform = ({ status }) => ({ status })
-
-const fetch = (state, {
+const fetch = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const store = (state, {
+const store = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const embark = (state, {
+const embark = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const fetchFulfilled = (state, {
+const fetchFulfilled = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const storeFulfilled = (state, {
+const storeFulfilled = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const embarkFulfilled = (state, {
+const embarkFulfilled = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const fetchRejected = (state, {
+const fetchRejected = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const storeRejected = (state, {
+const storeRejected = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const embarkRejected = (state, {
+const embarkRejected = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
 /**
  *  EmbarkStage Reducer

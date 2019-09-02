@@ -57,7 +57,7 @@ export default class Debark extends Component {
         <Complete
           {...getDebarkProps(debark)} />
       )
-      default:return (
+      default: return (
         <Pending
           {...getDebarkProps(debark)} />
       )

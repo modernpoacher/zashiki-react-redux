@@ -28,82 +28,77 @@ const FETCH_REJECTED = FETCH.concat('_REJECTED')
 const STORE_REJECTED = STORE.concat('_REJECTED')
 const QUERY_REJECTED = QUERY.concat('_REJECTED')
 
-/**
- *  Remove stale attributes by ommission
- */
-const transform = ({ status }) => ({ status })
-
-const change = (state, {
+const change = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const fetch = (state, {
+const fetch = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const store = (state, {
+const store = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const query = (state, {
+const query = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const changeFulfilled = (state, {
+const changeFulfilled = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const fetchFulfilled = (state, {
+const fetchFulfilled = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const storeFulfilled = (state, {
+const storeFulfilled = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const queryFulfilled = (state, {
+const queryFulfilled = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const changeRejected = (state, {
+const changeRejected = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const fetchRejected = (state, {
+const fetchRejected = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const storeRejected = (state, {
+const storeRejected = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
-const queryRejected = (state, {
+const queryRejected = ({ status = PENDING } = {}, {
   payload: {
     data = {}
   } = {}
-}) => ({ ...transform(state), ...data })
+} = {}) => ({ status, ...data })
 
 /**
  *  Zashiki/Alpha Reducer

@@ -9,7 +9,7 @@ import {
 export default () => (
   <section>
     <header>
-      <h1>Embark Route</h1>
+      <h1>Embark Stage</h1>
     </header>
     <EmbarkStage />
     <Navigation />
