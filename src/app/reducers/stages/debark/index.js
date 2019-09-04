@@ -54,8 +54,6 @@ const submitRejected = ({ status = PENDING } = {}, { error = {} } = {}) => ({ st
  *  @param {Object} action
  */
 export default function debarkReducer (state = STATE, { type, ...action } = ACTION) {
-  console.log('debarkReducer', type)
-
   switch (type) {
     case ROUTE:
 

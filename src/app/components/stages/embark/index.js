@@ -26,13 +26,9 @@ const mapStateToProps = ({ [EMBARK]: embark = {} }) => ({ ...transform(embark) }
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit: (response) => {
-    console.log('onSubmit')
-
     dispatch(submit(response))
   },
   onEmbark: () => {
-    console.log('onEmbark')
-
     dispatch(fetch())
   }
 })

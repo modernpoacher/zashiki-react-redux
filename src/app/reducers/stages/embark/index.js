@@ -54,8 +54,6 @@ const sbmitRejected = ({ status = PENDING } = {}, { error = {} } = {}) => ({ sta
  *  @param {Object} action
  */
 export default function embarkReducer (state = STATE, { type, ...action } = ACTION) {
-  console.log('embarkReducer', type)
-
   switch (type) {
     case ROUTE:
 

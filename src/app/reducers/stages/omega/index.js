@@ -72,8 +72,6 @@ const submitRejected = ({ status = PENDING } = {}, { error = {} } = {}) => ({ st
  *  @param {Object} action
  */
 export default function omegaReducer (state = STATE, { type, ...action } = ACTION) {
-  console.log('omegaReducer', type)
-
   switch (type) {
     case ROUTE:
 

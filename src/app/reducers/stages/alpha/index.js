@@ -72,8 +72,6 @@ const submitRejected = ({ status = PENDING } = {}, { error = {} } = {}) => ({ st
  *  @param {Object} action
  */
 export default function alphaReducer (state = STATE, { type, ...action } = ACTION) {
-  console.log('alphaReducer', type)
-
   switch (type) {
     case ROUTE:
 
