@@ -1,28 +1,28 @@
 module.exports = {
-  'compact': true,
-  'comments': false,
-  'presets': [
+  compact: true,
+  comments: false,
+  presets: [
     [
       '@babel/env', {
-        'targets': {
-          'node': 'current',
-          'browsers': [
+        targets: {
+          node: 'current',
+          browsers: [
             'last 2 versions'
           ]
         },
-        'useBuiltIns': 'usage',
-        'corejs': '3'
+        useBuiltIns: 'usage',
+        corejs: '3'
       }
     ],
     '@babel/react'
   ],
-  'plugins': [
+  plugins: [
     '@babel/proposal-export-namespace-from',
     '@babel/proposal-export-default-from',
     '@babel/proposal-class-properties',
     [
       'module-resolver', {
-        'alias': {
+        alias: {
           '@modernpoacher/zashiki-react-redux': './src'
         }
       }

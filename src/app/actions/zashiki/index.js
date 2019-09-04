@@ -1,94 +1,144 @@
 /**
  * Zashiki Actions
  */
-import {
-  request
-} from '@modernpoacher/zashiki-react-redux/app/actions'
 
 /**
  * Action Types
  */
-export const ZASHIKI_ERROR = 'ZASHIKI_ERROR'
-export const ZASHIKI_CHANGE = 'ZASHIKI_CHANGE'
-export const ZASHIKI_FETCH = 'ZASHIKI_FETCH'
-export const ZASHIKI_STORE = 'ZASHIKI_STORE'
-export const ZASHIKI_QUERY = 'ZASHIKI_QUERY'
+export const ERROR = 'ZASHIKI_ERROR'
+
+export const CHANGE = 'ZASHIKI_CHANGE'
+
+export const FETCH = 'ZASHIKI_FETCH'
+export const STORE = 'ZASHIKI_STORE'
+export const QUERY = 'ZASHIKI_QUERY'
+
+export const SUBMIT = 'ZASHIKI_SUBMIT'
+
+export const CHANGE_FULFILLED = CHANGE.concat('_FULFILLED')
+export const SUBMIT_FULFILLED = SUBMIT.concat('_FULFILLED')
+
+export const FETCH_FULFILLED = FETCH.concat('_FULFILLED')
+export const STORE_FULFILLED = STORE.concat('_FULFILLED')
+export const QUERY_FULFILLED = QUERY.concat('_FULFILLED')
+
+export const CHANGE_REJECTED = CHANGE.concat('_REJECTED')
+export const SUBMIT_REJECTED = SUBMIT.concat('_REJECTED')
+
+export const FETCH_REJECTED = FETCH.concat('_REJECTED')
+export const STORE_REJECTED = STORE.concat('_REJECTED')
+export const QUERY_REJECTED = QUERY.concat('_REJECTED')
 
 /**
  * Action Creators
  */
-function routeError (error) {
+export function changeRoute (route) {
   return {
-    type: ZASHIKI_ERROR,
+    type: CHANGE,
+    route
+  }
+}
+
+export function changeRouteFulfilled (response) {
+  return {
+    type: CHANGE_FULFILLED,
+    response
+  }
+}
+
+export function changeRouteRejected (error) {
+  return {
+    type: CHANGE_REJECTED,
     error
   }
 }
 
-function changeRoute (route) {
+export function submitRoute (route) {
   return {
-    type: ZASHIKI_CHANGE,
-    payload: {
-      promise: request.patch('zashiki/stages/change', route)
-    }
+    type: SUBMIT,
+    route
   }
 }
 
-function fetchRoute () {
+export function submitRouteFulfilled (response) {
   return {
-    type: ZASHIKI_FETCH,
-    payload: {
-      promise: request.get('zashiki/stages/fetch')
-    }
+    type: SUBMIT_FULFILLED,
+    response
   }
 }
 
-function storeRoute (route) {
+export function submitRouteRejected (error) {
   return {
-    type: ZASHIKI_STORE,
-    payload: {
-      promise: request.put('zashiki/stages/store', route)
-    }
+    type: SUBMIT_REJECTED,
+    error
   }
 }
 
-function queryRoute () {
+export function fetchRoute () {
   return {
-    type: ZASHIKI_QUERY,
-    payload: {
-      promise: request.get('zashiki/stages/query')
-    }
+    type: FETCH
   }
 }
 
-export const change = (resource) => async (dispatch) => {
-  try {
-    await dispatch(changeRoute({ resource }))
-  } catch (e) {
-    await dispatch(routeError(e))
+export function fetchRouteFulfilled (response) {
+  return {
+    type: FETCH_FULFILLED,
+    response
   }
 }
 
-export const fetch = (resource) => async (dispatch) => {
-  try {
-    await dispatch(fetchRoute({ resource }))
-  } catch (e) {
-    await dispatch(routeError(e))
+export function fetchRouteRejected (error) {
+  return {
+    type: FETCH_REJECTED,
+    error
   }
 }
 
-export const store = (resource, response) => async (dispatch) => {
-  try {
-    await dispatch(storeRoute({ resource, response }))
-  } catch (e) {
-    await dispatch(routeError(e))
+export function storeRoute (route) {
+  return {
+    type: STORE,
+    route
   }
 }
 
-export const submit = (resource, response) => async (dispatch) => {
-  try {
-    await dispatch(storeRoute({ resource, response }))
-    await dispatch(queryRoute())
-  } catch (e) {
-    await dispatch(routeError(e))
+export function storeRouteFulfilled (response) {
+  return {
+    type: STORE_FULFILLED,
+    response
   }
 }
+
+export function storeRouteRejected (error) {
+  return {
+    type: STORE_REJECTED,
+    error
+  }
+}
+
+export function queryRoute () {
+  return {
+    type: QUERY
+  }
+}
+
+export function queryRouteFulfilled (response) {
+  return {
+    type: QUERY_FULFILLED,
+    response
+  }
+}
+
+export function queryRouteRejected (error) {
+  return {
+    type: QUERY_REJECTED,
+    error
+  }
+}
+
+export const change = (resource) => changeRoute({ resource })
+
+export const submit = (resource, response) => submitRoute({ resource, response })
+
+export const fetch = (resource) => fetchRoute({ resource })
+
+export const store = (resource, response) => storeRoute({ resource, response })

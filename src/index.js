@@ -4,9 +4,7 @@ import {
   Provider
 } from 'react-redux'
 
-import {
-  configureStore
-} from '@modernpoacher/zashiki-react-redux/app/store'
+import configureStore from '@modernpoacher/zashiki-react-redux/app/store'
 
 import Router from '@modernpoacher/zashiki-react-redux/app/router'
 

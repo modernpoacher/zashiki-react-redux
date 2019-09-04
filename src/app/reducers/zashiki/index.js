@@ -3,11 +3,22 @@ import {
 } from 'shinkansen-signals'
 
 import {
-  ZASHIKI_ERROR as ERROR,
-  ZASHIKI_CHANGE as CHANGE,
-  ZASHIKI_FETCH as FETCH,
-  ZASHIKI_STORE as STORE,
-  ZASHIKI_QUERY as QUERY
+  ERROR,
+
+  CHANGE,
+  FETCH,
+  STORE,
+  QUERY,
+
+  CHANGE_FULFILLED,
+  FETCH_FULFILLED,
+  STORE_FULFILLED,
+  QUERY_FULFILLED,
+
+  CHANGE_REJECTED,
+  FETCH_REJECTED,
+  STORE_REJECTED,
+  QUERY_REJECTED
 } from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
 
 const {
@@ -18,87 +29,53 @@ const STATE = {
 }
 const ACTION = {}
 
-const CHANGE_FULFILLED = CHANGE.concat('_FULFILLED')
-const FETCH_FULFILLED = FETCH.concat('_FULFILLED')
-const STORE_FULFILLED = STORE.concat('_FULFILLED')
-const QUERY_FULFILLED = QUERY.concat('_FULFILLED')
-
-const CHANGE_REJECTED = CHANGE.concat('_REJECTED')
-const FETCH_REJECTED = FETCH.concat('_REJECTED')
-const STORE_REJECTED = STORE.concat('_REJECTED')
-const QUERY_REJECTED = QUERY.concat('_REJECTED')
-
 const change = (state, {
-  payload: {
-    data = {}
-  } = {}
-}) => ({ ...state, ...data })
+  response = {}
+}) => ({ ...state, ...response })
 
 const fetch = (state, {
-  payload: {
-    data = {}
-  } = {}
-}) => ({ ...state, ...data })
+  response = {}
+}) => ({ ...state, ...response })
 
 const store = (state, {
-  payload: {
-    data = {}
-  } = {}
-}) => ({ ...state, ...data })
+  response = {}
+}) => ({ ...state, ...response })
 
 const query = (state, {
-  payload: {
-    data = {}
-  } = {}
-}) => ({ ...state, ...data })
+  response = {}
+}) => ({ ...state, ...response })
 
 const changeFulfilled = (state, {
-  payload: {
-    data = {}
-  } = {}
-}) => ({ ...state, ...data })
+  response = {}
+}) => ({ ...state, ...response })
 
 const fetchFulfilled = (state, {
-  payload: {
-    data = {}
-  } = {}
-}) => ({ ...state, ...data })
+  response = {}
+}) => ({ ...state, ...response })
 
 const storeFulfilled = (state, {
-  payload: {
-    data = {}
-  } = {}
-}) => ({ ...state, ...data })
+  response = {}
+}) => ({ ...state, ...response })
 
 const queryFulfilled = (state, {
-  payload: {
-    data = {}
-  } = {}
-}) => ({ ...state, ...data })
+  response = {}
+}) => ({ ...state, ...response })
 
 const changeRejected = (state, {
-  payload: {
-    data = {}
-  } = {}
-}) => ({ ...state, ...data })
+  response = {}
+}) => ({ ...state, ...response })
 
 const fetchRejected = (state, {
-  payload: {
-    data = {}
-  } = {}
-}) => ({ ...state, ...data })
+  response = {}
+}) => ({ ...state, ...response })
 
 const storeRejected = (state, {
-  payload: {
-    data = {}
-  } = {}
-}) => ({ ...state, ...data })
+  response = {}
+}) => ({ ...state, ...response })
 
 const queryRejected = (state, {
-  payload: {
-    data = {}
-  } = {}
-}) => ({ ...state, ...data })
+  response = {}
+}) => ({ ...state, ...response })
 
 /**
  *  Zashiki Reducer

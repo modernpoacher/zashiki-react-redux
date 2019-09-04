@@ -4,24 +4,42 @@ import {
   applyMiddleware
 } from 'redux'
 
-import thunk from 'redux-thunk'
-import promiseMiddleware from 'zashiki-promise-middleware'
+import createSagaMiddleware from 'redux-saga'
+
 import routingMiddleware from 'zashiki-routing-middleware'
 
 import reducers from '@modernpoacher/zashiki-react-redux/app/reducers'
-import axios from '@modernpoacher/zashiki-react-redux/app/actions'
+import axios from '@modernpoacher/zashiki-react-redux/api'
+import sagas from '@modernpoacher/zashiki-react-redux/app/sagas'
 
-export const configureStore = (state) => (
-  createStore(
+/*
+ *  "Before running a Saga, you must mount the Saga middleware on the Store using applyMiddleware"
+ */
+export default function configureStore (state) {
+  /*
+   *  Create the Saga middleware
+   */
+  const sagaMiddleware = createSagaMiddleware()
+
+  /*
+   *  Mount the Store and the Saga middleware
+   */
+  const store = createStore(
     reducers,
     state,
     compose(
       applyMiddleware(
         axios,
-        thunk,
-        promiseMiddleware(),
+        sagaMiddleware,
         routingMiddleware
       )
     )
   )
-)
+
+  /*
+   *  Run the Sagas
+   */
+  sagaMiddleware.run(sagas)
+
+  return store
+}

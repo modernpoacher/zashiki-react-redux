@@ -26,9 +26,13 @@ const mapStateToProps = ({ [OMEGA]: omega = {} }) => ({ ...transform(omega) })
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit: (resource, response) => {
+    console.log('onSubmit') // , submit(resource, response))
+
     dispatch(submit(resource, response))
   },
   onChange: (resource) => {
+    console.log('onChange') // , change(resource))
+
     dispatch(change(resource))
   }
 })

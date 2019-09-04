@@ -3,102 +3,67 @@ import {
 } from 'shinkansen-signals'
 
 import {
-  ZASHIKI_OMEGA_ERROR as ERROR,
-  ZASHIKI_OMEGA_CHANGE as CHANGE,
-  ZASHIKI_OMEGA_FETCH as FETCH,
-  ZASHIKI_OMEGA_STORE as STORE,
-  ZASHIKI_OMEGA_QUERY as QUERY
+  ROUTE,
+  CHANGE,
+  SUBMIT,
+  FETCH,
+  STORE,
+  QUERY,
+
+  CHANGE_FULFILLED,
+  SUBMIT_FULFILLED,
+  FETCH_FULFILLED,
+  STORE_FULFILLED,
+  QUERY_FULFILLED,
+
+  CHANGE_REJECTED,
+  SUBMIT_REJECTED,
+  FETCH_REJECTED,
+  STORE_REJECTED,
+  QUERY_REJECTED
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
 
 const {
   PENDING
 } = Signals
+
 const STATE = {
   status: PENDING
 }
+
 const ACTION = {}
 
-const CHANGE_FULFILLED = CHANGE.concat('_FULFILLED')
-const FETCH_FULFILLED = FETCH.concat('_FULFILLED')
-const STORE_FULFILLED = STORE.concat('_FULFILLED')
-const QUERY_FULFILLED = QUERY.concat('_FULFILLED')
+const route = ({ status = PENDING } = {}, { route = {} } = {}) => ({ status, ...route })
 
-const CHANGE_REJECTED = CHANGE.concat('_REJECTED')
-const FETCH_REJECTED = FETCH.concat('_REJECTED')
-const STORE_REJECTED = STORE.concat('_REJECTED')
-const QUERY_REJECTED = QUERY.concat('_REJECTED')
+const change = ({ status = PENDING } = {}, { route = {} } = {}) => ({ status, ...route })
 
-const change = ({ status = PENDING } = {}, {
-  payload: {
-    data = {}
-  } = {}
-} = {}) => ({ status, ...data })
+const fetch = ({ status = PENDING } = {}, action = {}) => ({ status, ...action })
 
-const fetch = ({ status = PENDING } = {}, {
-  payload: {
-    data = {}
-  } = {}
-} = {}) => ({ status, ...data })
+const store = ({ status = PENDING } = {}, { route = {} } = {}) => ({ status, ...route })
 
-const store = ({ status = PENDING } = {}, {
-  payload: {
-    data = {}
-  } = {}
-} = {}) => ({ status, ...data })
+const query = ({ status = PENDING } = {}, action = {}) => ({ status, ...action })
 
-const query = ({ status = PENDING } = {}, {
-  payload: {
-    data = {}
-  } = {}
-} = {}) => ({ status, ...data })
+const submit = ({ status = PENDING } = {}, { route = {} } = {}) => ({ status, ...route })
 
-const changeFulfilled = ({ status = PENDING } = {}, {
-  payload: {
-    data = {}
-  } = {}
-} = {}) => ({ status, ...data })
+const changeFulfilled = ({ status = PENDING } = {}, { response = {} } = {}) => ({ status, ...response })
 
-const fetchFulfilled = ({ status = PENDING } = {}, {
-  payload: {
-    data = {}
-  } = {}
-} = {}) => ({ status, ...data })
+const fetchFulfilled = ({ status = PENDING } = {}, { response = {} } = {}) => ({ status, ...response })
 
-const storeFulfilled = ({ status = PENDING } = {}, {
-  payload: {
-    data = {}
-  } = {}
-} = {}) => ({ status, ...data })
+const storeFulfilled = ({ status = PENDING } = {}, { response = {} } = {}) => ({ status, ...response })
 
-const queryFulfilled = ({ status = PENDING } = {}, {
-  payload: {
-    data = {}
-  } = {}
-} = {}) => ({ status, ...data })
+const queryFulfilled = ({ status = PENDING } = {}, { response = {} } = {}) => ({ status, ...response })
 
-const changeRejected = ({ status = PENDING } = {}, {
-  payload: {
-    data = {}
-  } = {}
-} = {}) => ({ status, ...data })
+const submitFulfilled = ({ status = PENDING } = {}, { response = {} } = {}) => ({ status, ...response })
 
-const fetchRejected = ({ status = PENDING } = {}, {
-  payload: {
-    data = {}
-  } = {}
-} = {}) => ({ status, ...data })
+const changeRejected = ({ status = PENDING } = {}, { error = {} } = {}) => ({ status, error })
 
-const storeRejected = ({ status = PENDING } = {}, {
-  payload: {
-    data = {}
-  } = {}
-} = {}) => ({ status, ...data })
+const fetchRejected = ({ status = PENDING } = {}, { error = {} } = {}) => ({ status, error })
 
-const queryRejected = ({ status = PENDING } = {}, {
-  payload: {
-    data = {}
-  } = {}
-} = {}) => ({ status, ...data })
+const storeRejected = ({ status = PENDING } = {}, { error = {} } = {}) => ({ status, error })
+
+const queryRejected = ({ status = PENDING } = {}, { error = {} } = {}) => ({ status, error })
+
+const submitRejected = ({ status = PENDING } = {}, { error = {} } = {}) => ({ status, error })
 
 /**
  *  Zashiki/Omega Reducer
@@ -107,10 +72,12 @@ const queryRejected = ({ status = PENDING } = {}, {
  *  @param {Object} action
  */
 export default function omegaReducer (state = STATE, { type, ...action } = ACTION) {
-  switch (type) {
-    case ERROR:
+  console.log('omegaReducer', type)
 
-      return { ...state }
+  switch (type) {
+    case ROUTE:
+
+      return route(state, action)
     case CHANGE:
 
       return change(state, action)
@@ -123,6 +90,9 @@ export default function omegaReducer (state = STATE, { type, ...action } = ACTIO
     case QUERY:
 
       return query(state, action)
+    case SUBMIT:
+
+      return submit(state, action)
     case CHANGE_FULFILLED:
 
       return changeFulfilled(state, action)
@@ -135,6 +105,9 @@ export default function omegaReducer (state = STATE, { type, ...action } = ACTIO
     case QUERY_FULFILLED:
 
       return queryFulfilled(state, action)
+    case SUBMIT_FULFILLED:
+
+      return submitFulfilled(state, action)
     case CHANGE_REJECTED:
 
       return changeRejected(state, action)
@@ -147,6 +120,9 @@ export default function omegaReducer (state = STATE, { type, ...action } = ACTIO
     case QUERY_REJECTED:
 
       return queryRejected(state, action)
+    case SUBMIT_REJECTED:
+
+      return submitRejected(state, action)
     default:
 
       return state

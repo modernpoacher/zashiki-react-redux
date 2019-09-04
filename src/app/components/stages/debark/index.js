@@ -26,9 +26,13 @@ const mapStateToProps = ({ [DEBARK]: debark = {} }) => ({ ...transform(debark) }
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit: (response) => {
+    console.log('onSubmit') // , submit(response))
+
     dispatch(submit(response))
   },
   onDebark: () => {
+    console.log('onDebark') // , fetch())
+
     dispatch(fetch())
   }
 })

@@ -5,112 +5,158 @@ import {
   Pantograph
 } from 'shinkansen-pantograph'
 
-import {
-  request
-} from '@modernpoacher/zashiki-react-redux/app/actions'
-
 const {
-  ERROR: ZASHIKI_OMEGA_ERROR,
-  CHANGE: ZASHIKI_OMEGA_CHANGE,
-  FETCH: ZASHIKI_OMEGA_FETCH,
-  STORE: ZASHIKI_OMEGA_STORE,
-  QUERY: ZASHIKI_OMEGA_QUERY
+  ERROR,
+  ROUTE,
+  CHANGE,
+  SUBMIT,
+  FETCH,
+  STORE,
+  QUERY
 } = Pantograph.OMEGA
 
 /**
  * Action Types
  */
 export {
-  ZASHIKI_OMEGA_ERROR,
-  ZASHIKI_OMEGA_CHANGE,
-  ZASHIKI_OMEGA_FETCH,
-  ZASHIKI_OMEGA_STORE,
-  ZASHIKI_OMEGA_QUERY
+  ERROR,
+  ROUTE,
+  CHANGE,
+  SUBMIT,
+  FETCH,
+  STORE,
+  QUERY
 }
+
+export const CHANGE_FULFILLED = CHANGE.concat('_FULFILLED')
+export const SUBMIT_FULFILLED = SUBMIT.concat('_FULFILLED')
+export const FETCH_FULFILLED = FETCH.concat('_FULFILLED')
+export const STORE_FULFILLED = STORE.concat('_FULFILLED')
+export const QUERY_FULFILLED = QUERY.concat('_FULFILLED')
+
+export const CHANGE_REJECTED = CHANGE.concat('_REJECTED')
+export const SUBMIT_REJECTED = SUBMIT.concat('_REJECTED')
+export const FETCH_REJECTED = FETCH.concat('_REJECTED')
+export const STORE_REJECTED = STORE.concat('_REJECTED')
+export const QUERY_REJECTED = QUERY.concat('_REJECTED')
 
 /**
  * Action Creators
  */
-function routeError (error) {
+export function omegaRoute (route) {
   return {
-    type: ZASHIKI_OMEGA_ERROR,
+    type: ROUTE,
+    route
+  }
+}
+
+export function changeRoute (route) {
+  return {
+    type: CHANGE,
+    route
+  }
+}
+
+export function changeRouteFulfilled (response) {
+  return {
+    type: CHANGE_FULFILLED,
+    response
+  }
+}
+
+export function changeRouteRejected (error) {
+  return {
+    type: CHANGE_REJECTED,
     error
   }
 }
 
-function changeRoute (route) {
+export function submitRoute (route) {
   return {
-    type: ZASHIKI_OMEGA_CHANGE,
-    payload: {
-      promise: request.patch('zashiki/stages/change', route)
-    }
+    type: SUBMIT,
+    route
   }
 }
 
-function fetchRoute () {
+export function submitRouteFulfilled (response) {
   return {
-    type: ZASHIKI_OMEGA_FETCH,
-    payload: {
-      promise: request.get('zashiki/stages/fetch')
-    }
+    type: SUBMIT_FULFILLED,
+    response
   }
 }
 
-function storeRoute (route) {
+export function submitRouteRejected (error) {
   return {
-    type: ZASHIKI_OMEGA_STORE,
-    payload: {
-      promise: request.put('zashiki/stages/store', route)
-    }
+    type: SUBMIT_REJECTED,
+    error
   }
 }
 
-function queryRoute () {
+export function fetchRoute () {
   return {
-    type: ZASHIKI_OMEGA_QUERY,
-    payload: {
-      promise: request.get('zashiki/stages/query')
-    }
+    type: FETCH
   }
 }
 
-export const change = (resource) => async (dispatch) => {
-  try {
-    await dispatch(changeRoute({ resource }))
-  } catch (e) {
-    await dispatch(routeError(e))
+export function fetchRouteFulfilled (response) {
+  return {
+    type: FETCH_FULFILLED,
+    response
   }
 }
 
-export const fetch = (resource) => async (dispatch) => {
-  try {
-    await dispatch(fetchRoute({ resource }))
-  } catch (e) {
-    await dispatch(routeError(e))
+export function fetchRouteRejected (error) {
+  return {
+    type: FETCH_REJECTED,
+    error
   }
 }
 
-export const store = (resource, response) => async (dispatch) => {
-  try {
-    await dispatch(storeRoute({ resource, response }))
-  } catch (e) {
-    await dispatch(routeError(e))
+export function storeRoute (route) {
+  return {
+    type: STORE,
+    route
   }
 }
 
-export const query = () => async (dispatch) => {
-  try {
-    await dispatch(queryRoute())
-  } catch (e) {
-    await dispatch(routeError(e))
+export function storeRouteFulfilled (response) {
+  return {
+    type: STORE_FULFILLED,
+    response
   }
 }
 
-export const submit = (resource, response) => async (dispatch) => {
-  try {
-    await dispatch(storeRoute({ resource, response }))
-    await dispatch(queryRoute())
-  } catch (e) {
-    await dispatch(routeError(e))
+export function storeRouteRejected (error) {
+  return {
+    type: STORE_REJECTED,
+    error
   }
 }
+
+export function queryRoute () {
+  return {
+    type: QUERY
+  }
+}
+
+export function queryRouteFulfilled (response) {
+  return {
+    type: QUERY_FULFILLED,
+    response
+  }
+}
+
+export function queryRouteRejected (error) {
+  return {
+    type: QUERY_REJECTED,
+    error
+  }
+}
+
+export const change = (resource) => changeRoute({ resource })
+
+export const submit = (resource, response) => submitRoute({ resource, response })
+
+export const fetch = (resource) => fetchRoute({ resource })
+
+export const store = (resource, response) => storeRoute({ resource, response })

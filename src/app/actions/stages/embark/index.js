@@ -1,93 +1,111 @@
 /**
- * DebarkStage Actions
+ * EmbarkStage Actions
  */
-import {
-  request
-} from '@modernpoacher/zashiki-react-redux/app/actions'
-
 import {
   Pantograph
 } from 'shinkansen-pantograph'
 
-import {
-  Rails
-} from 'shinkansen-rails'
-
 const {
-  ERROR: ZASHIKI_EMBARK_ERROR,
-  ROUTE: ZASHIKI_EMBARK,
-  FETCH: ZASHIKI_EMBARK_FETCH,
-  STORE: ZASHIKI_EMBARK_STORE
+  SUBMIT,
+  ERROR,
+  ROUTE,
+  FETCH,
+  STORE
 } = Pantograph.EMBARK
 
 /**
  * Action Types
  */
 export {
-  ZASHIKI_EMBARK_ERROR,
-  ZASHIKI_EMBARK,
-  ZASHIKI_EMBARK_FETCH,
-  ZASHIKI_EMBARK_STORE
+  SUBMIT,
+  ERROR,
+  ROUTE,
+  FETCH,
+  STORE
 }
+
+export const SUBMIT_FULFILLED = SUBMIT.concat('_FULFILLED')
+export const FETCH_FULFILLED = FETCH.concat('_FULFILLED')
+export const STORE_FULFILLED = STORE.concat('_FULFILLED')
+
+export const SUBMIT_REJECTED = SUBMIT.concat('_REJECTED')
+export const FETCH_REJECTED = FETCH.concat('_REJECTED')
+export const STORE_REJECTED = STORE.concat('_REJECTED')
 
 /**
  * Action Creators
  */
-function routeError (error) {
+export function embarkRoute (route) {
   return {
-    type: ZASHIKI_EMBARK_ERROR,
+    type: ROUTE,
+    route
+  }
+}
+
+export function submitRoute (route) {
+  return {
+    type: SUBMIT,
+    route
+  }
+}
+
+export function submitRouteFulfilled (response) {
+  return {
+    type: SUBMIT_FULFILLED,
+    response
+  }
+}
+
+export function submitRouteRejected (error) {
+  return {
+    type: SUBMIT_REJECTED,
     error
   }
 }
 
-function embarkRoute (route) {
+export function fetchRoute () {
   return {
-    type: ZASHIKI_EMBARK,
-    payload: {
-      promise: request.post('zashiki/embark', route)
-    }
+    type: FETCH
   }
 }
 
-function fetchRoute () {
+export function fetchRouteFulfilled (response) {
   return {
-    type: ZASHIKI_EMBARK_FETCH,
-    payload: {
-      promise: request.get('zashiki/embark/fetch')
-    }
+    type: FETCH_FULFILLED,
+    response
   }
 }
 
-function storeRoute (route) {
+export function fetchRouteRejected (error) {
   return {
-    type: ZASHIKI_EMBARK_STORE,
-    payload: {
-      promise: request.put('zashiki/embark/store', route)
-    }
+    type: FETCH_REJECTED,
+    error
   }
 }
 
-export const fetch = () => async (dispatch) => {
-  try {
-    await dispatch(fetchRoute())
-  } catch (e) {
-    await dispatch(routeError(e))
+export function storeRoute (route) {
+  return {
+    type: STORE,
+    route
   }
 }
 
-export const store = ({ statement }) => async (dispatch) => {
-  try {
-    await dispatch(storeRoute({ response: { statement } }))
-  } catch (e) {
-    await dispatch(routeError(e))
+export function storeRouteFulfilled (response) {
+  return {
+    type: STORE_FULFILLED,
+    response
   }
 }
 
-export const submit = ({ statement }) => async (dispatch) => {
-  try {
-    await dispatch(storeRoute({ response: { statement } }))
-    await dispatch(embarkRoute({ response: { embark: Rails.rail(statement) } }))
-  } catch (e) {
-    await dispatch(routeError(e))
+export function storeRouteRejected (error) {
+  return {
+    type: STORE_REJECTED,
+    error
   }
 }
+
+export const submit = (route) => submitRoute(route)
+
+export const fetch = () => fetchRoute()
+
+export const store = ({ statement }) => storeRoute({ response: { statement } })
