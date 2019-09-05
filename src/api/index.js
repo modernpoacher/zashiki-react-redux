@@ -74,7 +74,7 @@ const configure = (request) => {
   }
 }
 
-export const request = axios.create()
+export const getTransport = () => axios.create()
 
 export default (store) => {
   /*

@@ -11,7 +11,7 @@ module.exports = {
           ]
         },
         useBuiltIns: 'usage',
-        corejs: '3'
+        corejs: 3
       }
     ],
     '@babel/react'

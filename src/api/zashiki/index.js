@@ -2,13 +2,13 @@
  * Zashiki API
  */
 import {
-  request
+  getTransport
 } from '@modernpoacher/zashiki-react-redux/api'
 
-export const changeRoute = (route) => request.patch('zashiki/stages/change', route)
+export const changeRoute = (route) => getTransport().patch('zashiki/stages/change', route)
 
-export const fetchRoute = () => request.get('zashiki/stages/fetch')
+export const fetchRoute = () => getTransport().get('zashiki/stages/fetch')
 
-export const storeRoute = (route) => request.put('zashiki/stages/store', route)
+export const storeRoute = (route) => getTransport().put('zashiki/stages/store', route)
 
-export const queryRoute = () => request.get('zashiki/stages/query')
+export const queryRoute = () => getTransport().get('zashiki/stages/query')
