@@ -1,5 +1,5 @@
 /**
- * Zashiki: Omega API
+ *  Zashiki/Omega API
  */
 import {
   getTransport

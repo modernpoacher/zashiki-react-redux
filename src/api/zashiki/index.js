@@ -1,5 +1,5 @@
 /**
- * Zashiki API
+ *  Zashiki API
  */
 import {
   getTransport

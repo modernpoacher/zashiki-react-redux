@@ -33,37 +33,74 @@ const STATE = {
 
 const ACTION = {}
 
-const route = ({ status = PENDING } = {}, { route = {} } = {}) => ({ status, ...route })
+/**
+ *  Get all from state
+ *  Add `redirect`
+ */
+const route = ({ status = PENDING, ...state } = {}, { history, redirect = {} } = {}) => ({ status, ...state, history, redirect })
 
-const change = ({ status = PENDING } = {}, { route = {} } = {}) => ({ status, ...route })
+/**
+ *  Get all from state
+ *  Set `history` `route` from action
+ */
+const change = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
 
-const fetch = ({ status = PENDING } = {}, action = {}) => ({ status, ...action })
+/**
+ *  Get all from state
+ *  Set all from action
+ */
+const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ status, ...state, ...action })
 
-const store = ({ status = PENDING } = {}, { route = {} } = {}) => ({ status, ...route })
+/**
+ *  Get `resource` `response` from state
+ *  Set `history` `route` from action
+ */
+const store = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
 
-const query = ({ status = PENDING } = {}, action = {}) => ({ status, ...action })
+/**
+ *  Get all from state
+ *  Add `redirect`
+ */
+const query = ({ status = PENDING, ...state } = {}, action = {}) => ({ status, ...state, ...action })
 
-const submit = ({ status = PENDING } = {}, { route = {} } = {}) => ({ status, ...route })
+/**
+ *  Get all from state
+ *  Set `history` `route` from action
+ */
+const submit = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
 
-const changeFulfilled = ({ status = PENDING } = {}, { response = {} } = {}) => ({ status, ...response })
+/**
+ *  Not `redirect` from state
+ */
+const changeFulfilled = ({ status = PENDING, omega, definitions, gears, resource, state } = {}, { response = {} } = {}) => ({
+  status,
+  ...(omega ? { omega } : {}),
+  ...(definitions ? { definitions } : {}),
+  ...(gears ? { gears } : {}),
+  ...(resource ? { resource } : {}),
+  ...(state ? { state } : {}),
+  resource: {},
+  response: {},
+  ...response
+})
 
-const fetchFulfilled = ({ status = PENDING } = {}, { response = {} } = {}) => ({ status, ...response })
+const fetchFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
-const storeFulfilled = ({ status = PENDING } = {}, { response = {} } = {}) => ({ status, ...response })
+const storeFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
-const queryFulfilled = ({ status = PENDING } = {}, { response = {} } = {}) => ({ status, ...response })
+const queryFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
-const submitFulfilled = ({ status = PENDING } = {}, { response = {} } = {}) => ({ status, ...response })
+const submitFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
-const changeRejected = ({ status = PENDING } = {}, { error = {} } = {}) => ({ status, error })
+const changeRejected = ({ status = PENDING, history } = {}, { error = {} } = {}) => ({ status, ...(history ? { history } : {}), error })
 
-const fetchRejected = ({ status = PENDING } = {}, { error = {} } = {}) => ({ status, error })
+const fetchRejected = ({ status = PENDING, history } = {}, { error = {} } = {}) => ({ status, ...(history ? { history } : {}), error })
 
-const storeRejected = ({ status = PENDING } = {}, { error = {} } = {}) => ({ status, error })
+const storeRejected = ({ status = PENDING, history } = {}, { error = {} } = {}) => ({ status, ...(history ? { history } : {}), error })
 
-const queryRejected = ({ status = PENDING } = {}, { error = {} } = {}) => ({ status, error })
+const queryRejected = ({ status = PENDING, history } = {}, { error = {} } = {}) => ({ status, ...(history ? { history } : {}), error })
 
-const submitRejected = ({ status = PENDING } = {}, { error = {} } = {}) => ({ status, error })
+const submitRejected = ({ status = PENDING, history } = {}, { error = {} } = {}) => ({ status, ...(history ? { history } : {}), error })
 
 /**
  *  Zashiki/Alpha Reducer

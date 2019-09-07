@@ -28,9 +28,11 @@ import {
 
 import * as api from '@modernpoacher/zashiki-react-redux/api/stages/debark'
 
-function * fetchRoute (route) {
+function * fetchRoute () {
+  console.log('fetchRoute')
+
   try {
-    const { data: response = {} } = yield call(api.fetchRoute, route)
+    const { data: response = {} } = yield call(api.fetchRoute)
     yield put(fetchRouteFulfilled(response))
   } catch (e) {
     yield put(fetchRouteRejected(Boom.badImplementation(e)))
@@ -38,6 +40,8 @@ function * fetchRoute (route) {
 }
 
 function * storeRoute (route) {
+  console.log('storeRoute', route)
+
   try {
     const { data: response = {} } = yield call(api.storeRoute, route)
     yield put(storeRouteFulfilled(response))
@@ -46,12 +50,14 @@ function * storeRoute (route) {
   }
 }
 
-function * submitRoute ({ route: { statement } }) {
+function * submitRoute ({ route: { statement }, history }) {
+  console.log('submitRoute', statement, history)
+
   try {
     yield storeRoute({ response: { statement } })
     const { data: response = {} } = yield call(api.submitRoute, { response: { debark: Rails.rail(statement) } })
     yield put(submitRouteFulfilled(response))
-    yield put(debarkRoute(response))
+    yield put(debarkRoute(response, history))
   } catch (e) {
     yield put(submitRouteRejected(Boom.badImplementation(e)))
   }

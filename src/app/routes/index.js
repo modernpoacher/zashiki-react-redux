@@ -1,9 +1,9 @@
-import React from 'react' // eslint-disable-line no-unused-vars
+import React from 'react'
 
 import {
-  Route,
-  IndexRoute
-} from 'react-router'
+  Switch,
+  Route
+} from 'react-router-dom'
 
 import {
   Signals
@@ -36,13 +36,11 @@ const EMBARK_ROUTE = Rails.to({ [EMBARK]: EMBARK_STAGE }, EMBARK_PATTERN)
 const DEBARK_ROUTE = Rails.to({ [DEBARK]: DEBARK_STAGE }, DEBARK_PATTERN)
 
 export default (
-  <Route path='/'>
-    <IndexRoute component={IndexPage} />
-    <Route path={EMBARK_ROUTE} component={EmbarkStagePage} />
-    <Route path={DEBARK_ROUTE} component={DebarkStagePage} />
-    <Route path={ALPHA_PATTERN}>
-      <IndexRoute component={AlphaStagePage} />
-      <Route path={OMEGA_PATTERN} component={OmegaStagePage} />
-    </Route>
-  </Route>
+  <Switch>
+    <Route exact path='/' component={IndexPage} />
+    <Route exact path={EMBARK_ROUTE} component={EmbarkStagePage} />
+    <Route exact path={DEBARK_ROUTE} component={DebarkStagePage} />
+    <Route exact path={ALPHA_PATTERN} component={AlphaStagePage} />
+    <Route exact path={OMEGA_PATTERN} component={OmegaStagePage} />
+  </Switch>
 )

@@ -24,19 +24,17 @@ const {
 
 const mapStateToProps = ({ [DEBARK]: debark = {} }) => ({ ...transform(debark) })
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({ dispatch })
+
+const mergeProps = (stateProps, { dispatch }, { history, ...ownProps }) => ({
+  ...stateProps,
   onSubmit: (response) => {
-    dispatch(submit(response))
+    dispatch(submit(response, history))
   },
   onDebark: () => {
-    dispatch(fetch())
-  }
-})
-
-const mergeProps = (stateProps, { onSubmit, onDebark }, ownProps) => ({
-  ...stateProps,
-  onSubmit,
-  onDebark,
+    dispatch(fetch(history))
+  },
+  history,
   ...ownProps
 })
 

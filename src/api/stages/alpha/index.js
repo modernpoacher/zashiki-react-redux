@@ -1,5 +1,5 @@
 /**
- * Zashiki: Alpha API
+ *  Zashiki/Alpha API
  */
 import {
   getTransport

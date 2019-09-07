@@ -1,5 +1,5 @@
 /**
- * Zashiki: Debark API
+ *  Zashiki/Debark API
  */
 import {
   getTransport

@@ -1,10 +1,8 @@
-import React from 'react' // eslint-disable-line no-unused-vars
+import React from 'react'
 
 import Zashiki from '@modernpoacher/zashiki-react-redux/app/components/zashiki'
 
-import {
-  Navigation
-} from '@modernpoacher/zashiki-react-redux/app/components'
+import Navigation from '@modernpoacher/zashiki-react-redux/app/components/navigation'
 
 export default () => (
   <Zashiki>

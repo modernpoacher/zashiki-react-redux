@@ -13,10 +13,14 @@ export default class Zashiki extends Component {
   constructor (props) {
     super(props)
 
+    // console.log('(Zashiki)constructor()', props)
+
     const {
-      params: {
-        alpha,
-        omega
+      match: {
+        params: {
+          alpha,
+          omega
+        }
       }
     } = props
 
@@ -30,12 +34,14 @@ export default class Zashiki extends Component {
   /**
    *  Interrogate initial props for current Route 'params' (if the component has mounted, the route has changed)
    */
-  componentDidMount () { // console.log('(Zashiki)componentDidMount()') // eslint-disable-line
+  componentDidMount () { // console.log('(Zashiki)componentDidMount()')
     const {
       onChange,
-      params: {
-        alpha,
-        omega
+      match: {
+        params: {
+          alpha,
+          omega
+        }
       }
     } = this.props
 
@@ -51,11 +57,13 @@ export default class Zashiki extends Component {
    *  @param {Object} props   Latest props
    *  @param {Object} state   Current state
    */
-  static getDerivedStateFromProps (props, state) { // console.log('[Zashiki]getDerivedStateFromProps()', props, state) // eslint-disable-line
+  static getDerivedStateFromProps (props, state) { // console.log('[Zashiki]getDerivedStateFromProps()', props, state)
     const {
-      params: {
-        alpha,
-        omega
+      match: {
+        params: {
+          alpha,
+          omega
+        }
       }
     } = props
 
@@ -105,7 +113,7 @@ export default class Zashiki extends Component {
 
 Zashiki.propTypes = {
   onChange: PropTypes.func.isRequired,
-  params: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element

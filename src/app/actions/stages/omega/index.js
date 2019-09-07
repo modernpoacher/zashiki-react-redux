@@ -1,5 +1,5 @@
 /**
- * Zashiki/Omega Actions
+ *  Zashiki/Omega Actions
  */
 import {
   Pantograph
@@ -16,7 +16,7 @@ const {
 } = Pantograph.OMEGA
 
 /**
- * Action Types
+ *  Action Types
  */
 export {
   ERROR,
@@ -41,19 +41,21 @@ export const STORE_REJECTED = STORE.concat('_REJECTED')
 export const QUERY_REJECTED = QUERY.concat('_REJECTED')
 
 /**
- * Action Creators
+ *  Action Creators
  */
-export function omegaRoute (route) {
+export function omegaRoute (redirect, history) {
   return {
     type: ROUTE,
-    route
+    redirect,
+    history
   }
 }
 
-export function changeRoute (route) {
+export function changeRoute (route, history) {
   return {
     type: CHANGE,
-    route
+    route,
+    history
   }
 }
 
@@ -71,10 +73,11 @@ export function changeRouteRejected (error) {
   }
 }
 
-export function submitRoute (route) {
+export function submitRoute (route, history) {
   return {
     type: SUBMIT,
-    route
+    route,
+    history
   }
 }
 
@@ -112,10 +115,11 @@ export function fetchRouteRejected (error) {
   }
 }
 
-export function storeRoute (route) {
+export function storeRoute (route, history) {
   return {
     type: STORE,
-    route
+    route,
+    history
   }
 }
 
@@ -153,10 +157,10 @@ export function queryRouteRejected (error) {
   }
 }
 
-export const change = (resource) => changeRoute({ resource })
+export const change = (resource, history) => changeRoute({ resource }, history)
 
-export const submit = (resource, response) => submitRoute({ resource, response })
+export const submit = (resource, response, history) => submitRoute({ resource, response }, history)
 
-export const fetch = (resource) => fetchRoute({ resource })
+export const fetch = () => fetchRoute()
 
-export const store = (resource, response) => storeRoute({ resource, response })
+export const store = (resource, response, history) => storeRoute({ resource, response }, history)

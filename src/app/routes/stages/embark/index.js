@@ -2,9 +2,7 @@ import React from 'react'
 
 import EmbarkStage from '@modernpoacher/zashiki-react-redux/app/components/stages/embark'
 
-import {
-  Navigation
-} from '@modernpoacher/zashiki-react-redux/app/components'
+import Navigation from '@modernpoacher/zashiki-react-redux/app/components/navigation'
 
 export default () => (
   <section>

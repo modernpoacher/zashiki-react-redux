@@ -1,5 +1,5 @@
 /**
- * Zashiki: Embark API
+ *  Zashiki/Embark API
  */
 import {
   getTransport

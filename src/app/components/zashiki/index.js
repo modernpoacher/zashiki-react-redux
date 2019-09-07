@@ -1,4 +1,4 @@
-import React from 'react' // eslint-disable-line no-unused-vars
+// import React from 'react'
 
 import {
   connect
@@ -14,19 +14,17 @@ import Zashiki from './component'
 
 const mapStateToProps = ({ zashiki = {} } = {}) => ({ zashiki })
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({ dispatch })
+
+const mergeProps = (stateProps, { dispatch }, { history, ...ownProps }) => ({
+  ...stateProps,
   onSubmit: (resource, response) => {
-    dispatch(submit(resource, response))
+    dispatch(submit(resource, response, history))
   },
   onChange: (resource) => {
-    dispatch(change(resource))
-  }
-})
-
-const mergeProps = (stateProps, { onSubmit, onChange }, ownProps) => ({
-  ...stateProps,
-  onSubmit,
-  onChange,
+    dispatch(change(resource, history))
+  },
+  history,
   ...ownProps
 })
 

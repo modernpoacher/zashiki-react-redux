@@ -54,6 +54,8 @@ const hasStoreError = ({ [OMEGA]: omega = {} }) => ('error' in omega)
 const hasQueryError = ({ [OMEGA]: omega = {} }) => ('error' in omega)
 
 function * changeRouteSaga ({ route }) {
+  console.log('changeRouteSaga', route)
+
   try {
     const { data: response = {} } = yield call(api.changeRoute, route)
     yield put(changeRouteFulfilled(response))
@@ -62,9 +64,11 @@ function * changeRouteSaga ({ route }) {
   }
 }
 
-function * fetchRouteSaga ({ route }) {
+function * fetchRouteSaga () {
+  console.log('fetchRouteSaga')
+
   try {
-    const { data: response = {} } = yield call(api.fetchRoute, route)
+    const { data: response = {} } = yield call(api.fetchRoute)
     yield put(fetchRouteFulfilled(response))
   } catch (e) {
     yield put(fetchRouteRejected(Boom.badImplementation(e)))
@@ -72,6 +76,8 @@ function * fetchRouteSaga ({ route }) {
 }
 
 function * storeRouteSaga ({ route }) {
+  console.log('storeRouteSaga', route)
+
   try {
     const { data: response = {} } = yield call(api.storeRoute, route)
     yield put(storeRouteFulfilled(response))
@@ -81,6 +87,8 @@ function * storeRouteSaga ({ route }) {
 }
 
 function * queryRouteSaga () {
+  console.log('queryRouteSaga')
+
   try {
     const { data: response = {} } = yield call(api.queryRoute)
     yield put(queryRouteFulfilled(response))
@@ -89,8 +97,10 @@ function * queryRouteSaga () {
   }
 }
 
-function * submitRouteSaga ({ route }) {
-  yield put(storeRoute(route))
+function * submitRouteSaga ({ route, history }) {
+  console.log('submitRouteSaga', route, history)
+
+  yield put(storeRoute(route, history))
 
   yield race([
     take(STORE_FULFILLED),
@@ -116,7 +126,8 @@ function * submitRouteSaga ({ route }) {
     } else {
       const state = yield select(getState)
       yield put(submitRouteFulfilled(state))
-      yield put(omegaRoute(state))
+      const { redirect, history } = state
+      yield put(omegaRoute(redirect, history))
     }
   }
 }

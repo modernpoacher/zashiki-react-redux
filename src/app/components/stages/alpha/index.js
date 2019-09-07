@@ -24,19 +24,17 @@ const {
 
 const mapStateToProps = ({ [ALPHA]: alpha = {} }) => ({ ...transform(alpha) })
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({ dispatch })
+
+const mergeProps = (stateProps, { dispatch }, { history, ...ownProps }) => ({
+  ...stateProps,
   onSubmit: (resource, response) => {
-    dispatch(submit(resource, response))
+    dispatch(submit(resource, response, history))
   },
   onChange: (resource) => {
-    dispatch(change(resource))
-  }
-})
-
-const mergeProps = (stateProps, { onSubmit, onChange }, ownProps) => ({
-  ...stateProps,
-  onSubmit,
-  onChange,
+    dispatch(change(resource, history))
+  },
+  history,
   ...ownProps
 })
 

@@ -1,5 +1,5 @@
 /**
- * DebarkStage Actions
+ *  DebarkStage Actions
  */
 import {
   Pantograph
@@ -13,7 +13,7 @@ const {
 } = Pantograph.DEBARK
 
 /**
- * Action Types
+ *  Action Types
  */
 export {
   SUBMIT,
@@ -31,19 +31,21 @@ export const FETCH_REJECTED = FETCH.concat('_REJECTED')
 export const STORE_REJECTED = STORE.concat('_REJECTED')
 
 /**
- * Action Creators
+ *  Action Creators
  */
-export function debarkRoute (route) {
+export function debarkRoute (redirect, history) {
   return {
     type: ROUTE,
-    route
+    redirect,
+    history
   }
 }
 
-export function submitRoute (route) {
+export function submitRoute (route, history) {
   return {
     type: SUBMIT,
-    route
+    route,
+    history
   }
 }
 
@@ -61,9 +63,10 @@ export function submitRouteRejected (error) {
   }
 }
 
-export function fetchRoute () {
+export function fetchRoute (history) {
   return {
-    type: FETCH
+    type: FETCH,
+    history
   }
 }
 
@@ -81,10 +84,11 @@ export function fetchRouteRejected (error) {
   }
 }
 
-export function storeRoute (route) {
+export function storeRoute (route, history) {
   return {
     type: STORE,
-    route
+    route,
+    history
   }
 }
 
@@ -102,8 +106,8 @@ export function storeRouteRejected (error) {
   }
 }
 
-export const submit = (route) => submitRoute(route)
+export const submit = (route, history) => submitRoute(route, history)
 
-export const fetch = () => fetchRoute()
+export const fetch = (history) => fetchRoute(history)
 
-export const store = ({ statement }) => storeRoute({ response: { statement } })
+export const store = ({ statement }, history) => storeRoute({ response: { statement } }, history)
