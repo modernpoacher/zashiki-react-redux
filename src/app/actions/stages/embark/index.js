@@ -7,7 +7,6 @@ import {
 
 const {
   SUBMIT,
-  ERROR,
   ROUTE,
   FETCH,
   STORE
@@ -18,7 +17,6 @@ const {
  */
 export {
   SUBMIT,
-  ERROR,
   ROUTE,
   FETCH,
   STORE

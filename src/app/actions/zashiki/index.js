@@ -8,12 +8,11 @@
 export const ERROR = 'ZASHIKI_ERROR'
 
 export const CHANGE = 'ZASHIKI_CHANGE'
+export const SUBMIT = 'ZASHIKI_SUBMIT'
 
 export const FETCH = 'ZASHIKI_FETCH'
 export const STORE = 'ZASHIKI_STORE'
 export const QUERY = 'ZASHIKI_QUERY'
-
-export const SUBMIT = 'ZASHIKI_SUBMIT'
 
 export const CHANGE_FULFILLED = CHANGE.concat('_FULFILLED')
 export const SUBMIT_FULFILLED = SUBMIT.concat('_FULFILLED')
@@ -76,11 +75,9 @@ export function submitRouteRejected (error) {
   }
 }
 
-export function fetchRoute (route, history) {
+export function fetchRoute () {
   return {
-    type: FETCH,
-    route,
-    history
+    type: FETCH
   }
 }
 
@@ -144,6 +141,6 @@ export const change = (resource, history) => changeRoute({ resource }, history)
 
 export const submit = (resource, response, history) => submitRoute({ resource, response }, history)
 
-export const fetch = (resource, history) => fetchRoute({ resource }, history)
+export const fetch = () => fetchRoute()
 
 export const store = (resource, response, history) => storeRoute({ resource, response }, history)

@@ -4,12 +4,14 @@ import {
   takeLatest
 } from 'redux-saga/effects'
 
-import Boom from '@hapi/boom'
-
 import {
   CHANGE,
   changeRouteFulfilled,
   changeRouteRejected,
+
+  SUBMIT,
+  submitRouteFulfilled,
+  submitRouteRejected,
 
   FETCH,
   fetchRouteFulfilled,
@@ -19,51 +21,66 @@ import {
   storeRouteFulfilled,
   storeRouteRejected,
 
-  SUBMIT,
-  submitRouteFulfilled,
-  submitRouteRejected
+  QUERY,
+  queryRouteFulfilled,
+  queryRouteRejected
 } from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
 
 import * as api from '@modernpoacher/zashiki-react-redux/api/zashiki'
 
-function * changeRouteSaga ({ route, history }) {
+import { transformError } from '@modernpoacher/zashiki-react-redux/app/transformers'
+
+function * changeRouteSaga ({ route }) {
   try {
-    const { data: response = {} } = yield call(api.changeRoute, route, history)
+    const { data: response = {} } = yield call(api.changeRoute, route)
     yield put(changeRouteFulfilled(response))
   } catch (e) {
-    yield put(changeRouteRejected(Boom.badImplementation(e)))
+    yield put(changeRouteRejected(transformError(e)))
   }
 }
 
-function * fetchRouteSaga ({ route, history }) {
+function * submitRouteSaga ({ route }) {
   try {
-    const { data: response = {} } = yield call(api.fetchRoute, route, history)
-    yield put(fetchRouteFulfilled(response))
-  } catch (e) {
-    yield put(fetchRouteRejected(Boom.badImplementation(e)))
-  }
-}
-
-function * storeRouteSaga ({ route, history }) {
-  try {
-    const { data: response = {} } = yield call(api.storeRoute, route, history)
-    yield put(storeRouteFulfilled(response))
-  } catch (e) {
-    yield put(storeRouteRejected(Boom.badImplementation(e)))
-  }
-}
-
-function * submitRouteSaga ({ route, history }) {
-  try {
-    const { data: response = {} } = yield call(api.submitRoute, route, history)
+    const { data: response = {} } = yield call(api.submitRoute, route)
     yield put(submitRouteFulfilled(response))
   } catch (e) {
-    yield put(submitRouteRejected(Boom.badImplementation(e)))
+    yield put(submitRouteRejected(transformError(e)))
+  }
+}
+
+function * fetchRouteSaga () {
+  try {
+    const { data: response = {} } = yield call(api.fetchRoute)
+    yield put(fetchRouteFulfilled(response))
+  } catch (e) {
+    yield put(fetchRouteRejected(transformError(e)))
+  }
+}
+
+function * storeRouteSaga ({ route }) {
+  try {
+    const { data: response = {} } = yield call(api.storeRoute, route)
+    yield put(storeRouteFulfilled(response))
+  } catch (e) {
+    yield put(storeRouteRejected(transformError(e)))
+  }
+}
+
+function * queryRouteSaga () {
+  try {
+    const { data: response = {} } = yield call(api.queryRoute)
+    yield put(queryRouteFulfilled(response))
+  } catch (e) {
+    yield put(queryRouteRejected(transformError(e)))
   }
 }
 
 export function * watchZashikiChange () {
   yield takeLatest(CHANGE, changeRouteSaga)
+}
+
+export function * watchZashikiSubmit () {
+  yield takeLatest(SUBMIT, submitRouteSaga)
 }
 
 export function * watchZashikiFetch () {
@@ -74,6 +91,6 @@ export function * watchZashikiStore () {
   yield takeLatest(STORE, storeRouteSaga)
 }
 
-export function * watchZashikiSubmit () {
-  yield takeLatest(SUBMIT, submitRouteSaga)
+export function * watchZashikiQuery () {
+  yield takeLatest(QUERY, queryRouteSaga)
 }

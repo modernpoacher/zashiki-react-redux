@@ -3,73 +3,75 @@ import {
 } from 'redux-saga/effects'
 
 import {
-  watchEmbarkFetch,
-  watchEmbarkStore,
-  watchEmbarkSubmit,
-  watchEmbarkRoute
-} from './stages/embark'
-
-import {
+  watchAlphaRoute,
   watchAlphaChange,
+  watchAlphaSubmit,
   watchAlphaFetch,
   watchAlphaStore,
-  watchAlphaQuery,
-  watchAlphaSubmit,
-  watchAlphaRoute
+  watchAlphaQuery
 } from './stages/alpha'
 
 import {
+  watchOmegaRoute,
   watchOmegaChange,
+  watchOmegaSubmit,
   watchOmegaFetch,
   watchOmegaStore,
-  watchOmegaQuery,
-  watchOmegaSubmit,
-  watchOmegaRoute
+  watchOmegaQuery
 } from './stages/omega'
 
 import {
-  watchDebarkFetch,
-  watchDebarkStore,
+  watchEmbarkRoute,
+  watchEmbarkSubmit,
+  watchEmbarkFetch,
+  watchEmbarkStore
+} from './stages/embark'
+
+import {
+  watchDebarkRoute,
   watchDebarkSubmit,
-  watchDebarkRoute
+  watchDebarkFetch,
+  watchDebarkStore
 } from './stages/debark'
 
 import {
   watchZashikiChange,
+  watchZashikiSubmit,
   watchZashikiFetch,
   watchZashikiStore,
-  watchZashikiSubmit
+  watchZashikiQuery
 } from './zashiki'
 
 export default function * rootSaga () {
   yield all([
-    watchEmbarkFetch(),
-    watchEmbarkStore(),
-    watchEmbarkSubmit(),
-    watchEmbarkRoute(),
-
+    watchAlphaRoute(),
     watchAlphaChange(),
+    watchAlphaSubmit(),
     watchAlphaFetch(),
     watchAlphaStore(),
     watchAlphaQuery(),
-    watchAlphaSubmit(),
-    watchAlphaRoute(),
 
+    watchOmegaRoute(),
     watchOmegaChange(),
+    watchOmegaSubmit(),
     watchOmegaFetch(),
     watchOmegaStore(),
     watchOmegaQuery(),
-    watchOmegaSubmit(),
-    watchOmegaRoute(),
 
+    watchEmbarkRoute(),
+    watchEmbarkSubmit(),
+    watchEmbarkFetch(),
+    watchEmbarkStore(),
+
+    watchDebarkRoute(),
     watchDebarkFetch(),
     watchDebarkStore(),
     watchDebarkSubmit(),
-    watchDebarkRoute(),
 
     watchZashikiChange(),
+    watchZashikiSubmit(),
     watchZashikiFetch(),
     watchZashikiStore(),
-    watchZashikiSubmit()
+    watchZashikiQuery()
   ])
 }

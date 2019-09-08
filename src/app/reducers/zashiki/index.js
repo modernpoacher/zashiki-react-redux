@@ -3,79 +3,85 @@ import {
 } from 'shinkansen-signals'
 
 import {
-  ERROR,
-
   CHANGE,
+  SUBMIT,
   FETCH,
   STORE,
   QUERY,
 
   CHANGE_FULFILLED,
+  SUBMIT_FULFILLED,
   FETCH_FULFILLED,
   STORE_FULFILLED,
   QUERY_FULFILLED,
 
   CHANGE_REJECTED,
+  SUBMIT_REJECTED,
   FETCH_REJECTED,
   STORE_REJECTED,
   QUERY_REJECTED
 } from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
 
 const {
-  PENDING
+  PENDING,
+  FAILURE
 } = Signals
+
 const STATE = {
   status: PENDING
 }
+
 const ACTION = {}
 
-const change = (state, {
-  response = {}
-}) => ({ ...state, ...response })
+/**
+ *  Get all from state
+ *  Set `history` `route` from action
+ */
+export const change = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
 
-const fetch = (state, {
-  response = {}
-}) => ({ ...state, ...response })
+/**
+ *  Get all from state
+ *  Set `history` `route` from action
+ */
+export const submit = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
 
-const store = (state, {
-  response = {}
-}) => ({ ...state, ...response })
+/**
+ *  Get all from state
+ *  Set `history` `route` from action
+ */
+export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ status, ...state, ...action })
 
-const query = (state, {
-  response = {}
-}) => ({ ...state, ...response })
+/**
+ *  Get all from state
+ *  Set `history` `route` from action
+ */
+export const store = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
 
-const changeFulfilled = (state, {
-  response = {}
-}) => ({ ...state, ...response })
+/**
+ *  Get all from state
+ *  Add all from action
+ */
+export const query = ({ status = PENDING, ...state } = {}, action = {}) => ({ status, ...state, ...action })
 
-const fetchFulfilled = (state, {
-  response = {}
-}) => ({ ...state, ...response })
+export const changeFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
-const storeFulfilled = (state, {
-  response = {}
-}) => ({ ...state, ...response })
+export const submitFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
-const queryFulfilled = (state, {
-  response = {}
-}) => ({ ...state, ...response })
+export const fetchFulfilled = ({ status = PENDING, ...state } = {}, { response = {} }) => ({ status, ...state, ...response })
 
-const changeRejected = (state, {
-  response = {}
-}) => ({ ...state, ...response })
+export const storeFulfilled = ({ status = PENDING, ...state } = {}, { response = {} }) => ({ status, ...state, ...response })
 
-const fetchRejected = (state, {
-  response = {}
-}) => ({ ...state, ...response })
+export const queryFulfilled = ({ status = PENDING, ...state } = {}, { response = {} }) => ({ status, ...state, ...response })
 
-const storeRejected = (state, {
-  response = {}
-}) => ({ ...state, ...response })
+export const changeRejected = ({ history }, { status = FAILURE, error = {} }) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
 
-const queryRejected = (state, {
-  response = {}
-}) => ({ ...state, ...response })
+export const submitRejected = ({ history }, { status = FAILURE, error = {} }) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
+
+export const fetchRejected = ({ history }, { status = FAILURE, error = {} }) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
+
+export const storeRejected = ({ history }, { status = FAILURE, error = {} }) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
+
+export const queryRejected = ({ history }, { status = FAILURE, error = {} }) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
 
 /**
  *  Zashiki Reducer
@@ -85,12 +91,12 @@ const queryRejected = (state, {
  */
 export default function zashikiReducer (state = STATE, { type, ...action } = ACTION) {
   switch (type) {
-    case ERROR:
-
-      return { ...state }
     case CHANGE:
 
       return change(state, action)
+    case SUBMIT:
+
+      return submit(state, action)
     case FETCH:
 
       return fetch(state, action)
@@ -103,6 +109,9 @@ export default function zashikiReducer (state = STATE, { type, ...action } = ACT
     case CHANGE_FULFILLED:
 
       return changeFulfilled(state, action)
+    case SUBMIT_FULFILLED:
+
+      return submitFulfilled(state, action)
     case FETCH_FULFILLED:
 
       return fetchFulfilled(state, action)
@@ -115,6 +124,9 @@ export default function zashikiReducer (state = STATE, { type, ...action } = ACT
     case CHANGE_REJECTED:
 
       return changeRejected(state, action)
+    case SUBMIT_REJECTED:
+
+      return submitRejected(state, action)
     case FETCH_REJECTED:
 
       return fetchRejected(state, action)

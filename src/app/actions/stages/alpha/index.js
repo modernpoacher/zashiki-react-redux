@@ -6,7 +6,6 @@ import {
 } from 'shinkansen-pantograph'
 
 const {
-  ERROR,
   ROUTE,
   CHANGE,
   SUBMIT,
@@ -19,7 +18,6 @@ const {
  *  Action Types
  */
 export {
-  ERROR,
   ROUTE,
   CHANGE,
   SUBMIT,

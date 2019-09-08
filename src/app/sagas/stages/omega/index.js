@@ -7,16 +7,21 @@ import {
   takeLatest
 } from 'redux-saga/effects'
 
-import Boom from '@hapi/boom'
-
 import {
   Signals
 } from 'shinkansen-signals'
 
 import {
+  ROUTE,
+  omegaRoute,
+
   CHANGE,
   changeRouteFulfilled,
   changeRouteRejected,
+
+  SUBMIT,
+  submitRouteFulfilled,
+  submitRouteRejected,
 
   FETCH,
   fetchRouteFulfilled,
@@ -34,17 +39,12 @@ import {
   QUERY_REJECTED,
   queryRoute,
   queryRouteFulfilled,
-  queryRouteRejected,
-
-  SUBMIT,
-  submitRouteFulfilled,
-  submitRouteRejected,
-
-  ROUTE,
-  omegaRoute
+  queryRouteRejected
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
 
 import * as api from '@modernpoacher/zashiki-react-redux/api/stages/omega'
+
+import { transformError } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
 import getPathname from '@modernpoacher/zashiki-react-redux/app/common/get-pathname'
 
@@ -56,39 +56,26 @@ const getState = ({ [OMEGA]: omega = {} }) => omega
 const hasStoreError = ({ [OMEGA]: omega = {} }) => ('error' in omega)
 const hasQueryError = ({ [OMEGA]: omega = {} }) => ('error' in omega)
 
+function * omegaRouteSaga ({ redirect, history }) {
+  const pathname = getPathname(redirect)
+
+  if (pathname) {
+    const {
+      location: {
+        pathname: currentPathname
+      } = {}
+    } = history
+
+    if (pathname !== currentPathname) history.push(pathname)
+  }
+}
+
 function * changeRouteSaga ({ route }) {
   try {
     const { data: response = {} } = yield call(api.changeRoute, route)
     yield put(changeRouteFulfilled(response))
   } catch (e) {
-    yield put(changeRouteRejected(Boom.badImplementation(e)))
-  }
-}
-
-function * fetchRouteSaga () {
-  try {
-    const { data: response = {} } = yield call(api.fetchRoute)
-    yield put(fetchRouteFulfilled(response))
-  } catch (e) {
-    yield put(fetchRouteRejected(Boom.badImplementation(e)))
-  }
-}
-
-function * storeRouteSaga ({ route }) {
-  try {
-    const { data: response = {} } = yield call(api.storeRoute, route)
-    yield put(storeRouteFulfilled(response))
-  } catch (e) {
-    yield put(storeRouteRejected(Boom.badImplementation(e)))
-  }
-}
-
-function * queryRouteSaga () {
-  try {
-    const { data: response = {} } = yield call(api.queryRoute)
-    yield put(queryRouteFulfilled(response))
-  } catch (e) {
-    yield put(queryRouteRejected(Boom.badImplementation(e)))
+    yield put(changeRouteRejected(transformError(e)))
   }
 }
 
@@ -125,22 +112,43 @@ function * submitRouteSaga ({ route, history }) {
   }
 }
 
-function * omegaRouteSaga ({ redirect, history }) {
-  const pathname = getPathname(redirect)
-
-  if (pathname) {
-    const {
-      location: {
-        pathname: currentPathname
-      } = {}
-    } = history
-
-    if (pathname !== currentPathname) history.push(pathname)
+function * fetchRouteSaga () {
+  try {
+    const { data: response = {} } = yield call(api.fetchRoute)
+    yield put(fetchRouteFulfilled(response))
+  } catch (e) {
+    yield put(fetchRouteRejected(transformError(e)))
   }
+}
+
+function * storeRouteSaga ({ route }) {
+  try {
+    const { data: response = {} } = yield call(api.storeRoute, route)
+    yield put(storeRouteFulfilled(response))
+  } catch (e) {
+    yield put(storeRouteRejected(transformError(e)))
+  }
+}
+
+function * queryRouteSaga () {
+  try {
+    const { data: response = {} } = yield call(api.queryRoute)
+    yield put(queryRouteFulfilled(response))
+  } catch (e) {
+    yield put(queryRouteRejected(transformError(e)))
+  }
+}
+
+export function * watchOmegaRoute () {
+  yield takeLatest(ROUTE, omegaRouteSaga)
 }
 
 export function * watchOmegaChange () {
   yield takeLatest(CHANGE, changeRouteSaga)
+}
+
+export function * watchOmegaSubmit () {
+  yield takeLatest(SUBMIT, submitRouteSaga)
 }
 
 export function * watchOmegaFetch () {
@@ -153,12 +161,4 @@ export function * watchOmegaStore () {
 
 export function * watchOmegaQuery () {
   yield takeLatest(QUERY, queryRouteSaga)
-}
-
-export function * watchOmegaSubmit () {
-  yield takeLatest(SUBMIT, submitRouteSaga)
-}
-
-export function * watchOmegaRoute () {
-  yield takeLatest(ROUTE, omegaRouteSaga)
 }

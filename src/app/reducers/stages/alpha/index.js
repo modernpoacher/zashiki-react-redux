@@ -32,7 +32,8 @@ import {
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
 
 const {
-  PENDING
+  PENDING,
+  FAILURE
 } = Signals
 
 const STATE = {
@@ -45,42 +46,42 @@ const ACTION = {}
  *  Get all from state
  *  Add `redirect`
  */
-const route = ({ status = PENDING, ...state } = {}, { history, redirect = {} } = {}) => ({ status, ...state, history, redirect })
+export const route = ({ status = PENDING, ...state } = {}, { history, redirect = {} } = {}) => ({ status, ...state, history, redirect })
 
 /**
  *  Get all from state
  *  Set `history` `route` from action
  */
-const change = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
+export const change = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
+
+/**
+ *  Get all from state
+ *  Set `history` `route` from action
+ */
+export const submit = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
 
 /**
  *  Get all from state
  *  Set all from action
  */
-const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ status, ...state, ...action })
+export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ status, ...state, ...action })
 
 /**
  *  Get `resource` `response` from state
  *  Set `history` `route` from action
  */
-const store = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
+export const store = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
 
 /**
  *  Get all from state
  *  Add `redirect`
  */
-const query = ({ status = PENDING, ...state } = {}, action = {}) => ({ status, ...state, ...action })
-
-/**
- *  Get all from state
- *  Set `history` `route` from action
- */
-const submit = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
+export const query = ({ status = PENDING, ...state } = {}, action = {}) => ({ status, ...state, ...action })
 
 /**
  *  Not `redirect` from state
  */
-const changeFulfilled = ({ status = PENDING, omega, definitions, gears, resource, state } = {}, { response = {} } = {}) => ({
+export const changeFulfilled = ({ status = PENDING, omega, definitions, gears, resource, state } = {}, { response = {} } = {}) => ({
   status,
   ...(omega ? { omega } : {}),
   ...(definitions ? { definitions } : {}),
@@ -92,23 +93,23 @@ const changeFulfilled = ({ status = PENDING, omega, definitions, gears, resource
   ...response
 })
 
-const fetchFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
+export const submitFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
-const storeFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
+export const fetchFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
-const queryFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
+export const storeFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
-const submitFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
+export const queryFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
-const changeRejected = ({ status = PENDING, history } = {}, { error = {} } = {}) => ({ status, ...(history ? { history } : {}), error })
+export const changeRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
 
-const fetchRejected = ({ status = PENDING, history } = {}, { error = {} } = {}) => ({ status, ...(history ? { history } : {}), error })
+export const submitRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
 
-const storeRejected = ({ status = PENDING, history } = {}, { error = {} } = {}) => ({ status, ...(history ? { history } : {}), error })
+export const fetchRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
 
-const queryRejected = ({ status = PENDING, history } = {}, { error = {} } = {}) => ({ status, ...(history ? { history } : {}), error })
+export const storeRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
 
-const submitRejected = ({ status = PENDING, history } = {}, { error = {} } = {}) => ({ status, ...(history ? { history } : {}), error })
+export const queryRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
 
 /**
  *  Zashiki/Alpha Reducer
@@ -124,6 +125,9 @@ export default function alphaReducer (state = STATE, { type, ...action } = ACTIO
     case CHANGE:
 
       return change(state, action)
+    case SUBMIT:
+
+      return submit(state, action)
     case FETCH:
 
       return fetch(state, action)
@@ -133,12 +137,12 @@ export default function alphaReducer (state = STATE, { type, ...action } = ACTIO
     case QUERY:
 
       return query(state, action)
-    case SUBMIT:
-
-      return submit(state, action)
     case CHANGE_FULFILLED:
 
       return changeFulfilled(state, action)
+    case SUBMIT_FULFILLED:
+
+      return submitFulfilled(state, action)
     case FETCH_FULFILLED:
 
       return fetchFulfilled(state, action)
@@ -148,12 +152,12 @@ export default function alphaReducer (state = STATE, { type, ...action } = ACTIO
     case QUERY_FULFILLED:
 
       return queryFulfilled(state, action)
-    case SUBMIT_FULFILLED:
-
-      return submitFulfilled(state, action)
     case CHANGE_REJECTED:
 
       return changeRejected(state, action)
+    case SUBMIT_REJECTED:
+
+      return submitRejected(state, action)
     case FETCH_REJECTED:
 
       return fetchRejected(state, action)
@@ -163,9 +167,6 @@ export default function alphaReducer (state = STATE, { type, ...action } = ACTIO
     case QUERY_REJECTED:
 
       return queryRejected(state, action)
-    case SUBMIT_REJECTED:
-
-      return submitRejected(state, action)
     case EMBARK_ROUTE:
     case DEBARK_ROUTE:
 

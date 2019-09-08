@@ -10,3 +10,5 @@
 .npmrc
 
 config
+
+__tests__
