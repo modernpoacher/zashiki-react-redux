@@ -23,6 +23,14 @@ import {
   QUERY_REJECTED
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
 
+import {
+  ROUTE as EMBARK_ROUTE
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/embark'
+
+import {
+  ROUTE as DEBARK_ROUTE
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
+
 const {
   PENDING
 } = Signals
@@ -158,6 +166,10 @@ export default function alphaReducer (state = STATE, { type, ...action } = ACTIO
     case SUBMIT_REJECTED:
 
       return submitRejected(state, action)
+    case EMBARK_ROUTE:
+    case DEBARK_ROUTE:
+
+      return STATE
     default:
 
       return state

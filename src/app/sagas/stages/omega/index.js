@@ -40,10 +40,13 @@ import {
   submitRouteFulfilled,
   submitRouteRejected,
 
+  ROUTE,
   omegaRoute
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
 
 import * as api from '@modernpoacher/zashiki-react-redux/api/stages/omega'
+
+import getPathname from '@modernpoacher/zashiki-react-redux/app/common/get-pathname'
 
 const {
   OMEGA
@@ -54,8 +57,6 @@ const hasStoreError = ({ [OMEGA]: omega = {} }) => ('error' in omega)
 const hasQueryError = ({ [OMEGA]: omega = {} }) => ('error' in omega)
 
 function * changeRouteSaga ({ route }) {
-  console.log('changeRouteSaga', route)
-
   try {
     const { data: response = {} } = yield call(api.changeRoute, route)
     yield put(changeRouteFulfilled(response))
@@ -65,8 +66,6 @@ function * changeRouteSaga ({ route }) {
 }
 
 function * fetchRouteSaga () {
-  console.log('fetchRouteSaga')
-
   try {
     const { data: response = {} } = yield call(api.fetchRoute)
     yield put(fetchRouteFulfilled(response))
@@ -76,8 +75,6 @@ function * fetchRouteSaga () {
 }
 
 function * storeRouteSaga ({ route }) {
-  console.log('storeRouteSaga', route)
-
   try {
     const { data: response = {} } = yield call(api.storeRoute, route)
     yield put(storeRouteFulfilled(response))
@@ -87,8 +84,6 @@ function * storeRouteSaga ({ route }) {
 }
 
 function * queryRouteSaga () {
-  console.log('queryRouteSaga')
-
   try {
     const { data: response = {} } = yield call(api.queryRoute)
     yield put(queryRouteFulfilled(response))
@@ -98,8 +93,6 @@ function * queryRouteSaga () {
 }
 
 function * submitRouteSaga ({ route, history }) {
-  console.log('submitRouteSaga', route, history)
-
   yield put(storeRoute(route, history))
 
   yield race([
@@ -132,6 +125,20 @@ function * submitRouteSaga ({ route, history }) {
   }
 }
 
+function * omegaRouteSaga ({ redirect, history }) {
+  const pathname = getPathname(redirect)
+
+  if (pathname) {
+    const {
+      location: {
+        pathname: currentPathname
+      } = {}
+    } = history
+
+    if (pathname !== currentPathname) history.push(pathname)
+  }
+}
+
 export function * watchOmegaChange () {
   yield takeLatest(CHANGE, changeRouteSaga)
 }
@@ -150,4 +157,8 @@ export function * watchOmegaQuery () {
 
 export function * watchOmegaSubmit () {
   yield takeLatest(SUBMIT, submitRouteSaga)
+}
+
+export function * watchOmegaRoute () {
+  yield takeLatest(ROUTE, omegaRouteSaga)
 }

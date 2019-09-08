@@ -23,14 +23,15 @@ import {
   submitRouteFulfilled,
   submitRouteRejected,
 
+  ROUTE,
   embarkRoute
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/embark'
 
 import * as api from '@modernpoacher/zashiki-react-redux/api/stages/embark'
 
-function * fetchRoute () {
-  console.log('fetchRoute')
+import getPathname from '@modernpoacher/zashiki-react-redux/app/common/get-pathname'
 
+function * fetchRoute () {
   try {
     const { data: response = {} } = yield call(api.fetchRoute)
     yield put(fetchRouteFulfilled(response))
@@ -40,8 +41,6 @@ function * fetchRoute () {
 }
 
 function * storeRoute (route) {
-  console.log('storeRoute', route)
-
   try {
     const { data: response = {} } = yield call(api.storeRoute, route)
     yield put(storeRouteFulfilled(response))
@@ -51,15 +50,28 @@ function * storeRoute (route) {
 }
 
 function * submitRoute ({ route: { statement }, history }) {
-  console.log('submitRoute', statement, history)
-
   try {
     yield storeRoute({ response: { statement } })
     const { data: response = {} } = yield call(api.submitRoute, { response: { embark: Rails.rail(statement) } })
     yield put(submitRouteFulfilled(response))
-    yield put(embarkRoute(response, history))
+    const { redirect } = response
+    yield put(embarkRoute(redirect, history))
   } catch (e) {
     yield put(submitRouteRejected(Boom.badImplementation(e)))
+  }
+}
+
+function * embarkRouteSaga ({ redirect, history }) {
+  const pathname = getPathname(redirect)
+
+  if (pathname) {
+    const {
+      location: {
+        pathname: currentPathname
+      } = {}
+    } = history
+
+    if (pathname !== currentPathname) history.push(pathname)
   }
 }
 
@@ -73,4 +85,8 @@ export function * watchEmbarkStore () {
 
 export function * watchEmbarkSubmit () {
   yield takeLatest(SUBMIT, submitRoute)
+}
+
+export function * watchEmbarkRoute () {
+  yield takeLatest(ROUTE, embarkRouteSaga)
 }

@@ -23,14 +23,15 @@ import {
   submitRouteFulfilled,
   submitRouteRejected,
 
+  ROUTE,
   debarkRoute
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
 
 import * as api from '@modernpoacher/zashiki-react-redux/api/stages/debark'
 
-function * fetchRoute () {
-  console.log('fetchRoute')
+import getPathname from '@modernpoacher/zashiki-react-redux/app/common/get-pathname'
 
+function * fetchRoute () {
   try {
     const { data: response = {} } = yield call(api.fetchRoute)
     yield put(fetchRouteFulfilled(response))
@@ -40,8 +41,6 @@ function * fetchRoute () {
 }
 
 function * storeRoute (route) {
-  console.log('storeRoute', route)
-
   try {
     const { data: response = {} } = yield call(api.storeRoute, route)
     yield put(storeRouteFulfilled(response))
@@ -51,15 +50,28 @@ function * storeRoute (route) {
 }
 
 function * submitRoute ({ route: { statement }, history }) {
-  console.log('submitRoute', statement, history)
-
   try {
     yield storeRoute({ response: { statement } })
     const { data: response = {} } = yield call(api.submitRoute, { response: { debark: Rails.rail(statement) } })
     yield put(submitRouteFulfilled(response))
-    yield put(debarkRoute(response, history))
+    const { redirect } = response
+    yield put(debarkRoute(redirect, history))
   } catch (e) {
     yield put(submitRouteRejected(Boom.badImplementation(e)))
+  }
+}
+
+function * debarkRouteSaga ({ redirect, history }) {
+  const pathname = getPathname(redirect)
+
+  if (pathname) {
+    const {
+      location: {
+        pathname: currentPathname
+      } = {}
+    } = history
+
+    if (pathname !== currentPathname) history.push(pathname)
   }
 }
 
@@ -73,4 +85,8 @@ export function * watchDebarkStore () {
 
 export function * watchDebarkSubmit () {
   yield takeLatest(SUBMIT, submitRoute)
+}
+
+export function * watchDebarkRoute () {
+  yield takeLatest(ROUTE, debarkRouteSaga)
 }

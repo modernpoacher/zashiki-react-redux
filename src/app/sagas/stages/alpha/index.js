@@ -40,10 +40,13 @@ import {
   submitRouteFulfilled,
   submitRouteRejected,
 
+  ROUTE,
   alphaRoute
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
 
 import * as api from '@modernpoacher/zashiki-react-redux/api/stages/alpha'
+
+import getPathname from '@modernpoacher/zashiki-react-redux/app/common/get-pathname'
 
 const {
   ALPHA
@@ -54,8 +57,6 @@ const hasStoreError = ({ [ALPHA]: alpha = {} }) => ('error' in alpha)
 const hasQueryError = ({ [ALPHA]: alpha = {} }) => ('error' in alpha)
 
 function * changeRouteSaga ({ route }) {
-  console.log('changeRouteSaga', route)
-
   try {
     const { data: response = {} } = yield call(api.changeRoute, route)
     yield put(changeRouteFulfilled(response))
@@ -65,8 +66,6 @@ function * changeRouteSaga ({ route }) {
 }
 
 function * fetchRouteSaga () {
-  console.log('fetchRouteSaga')
-
   try {
     const { data: response = {} } = yield call(api.fetchRoute)
     yield put(fetchRouteFulfilled(response))
@@ -76,8 +75,6 @@ function * fetchRouteSaga () {
 }
 
 function * storeRouteSaga ({ route }) {
-  console.log('storeRouteSaga', route)
-
   try {
     const { data: response = {} } = yield call(api.storeRoute, route)
     yield put(storeRouteFulfilled(response))
@@ -87,8 +84,6 @@ function * storeRouteSaga ({ route }) {
 }
 
 function * queryRouteSaga () {
-  console.log('queryRouteSaga')
-
   try {
     const { data: response = {} } = yield call(api.queryRoute)
     yield put(queryRouteFulfilled(response))
@@ -98,8 +93,6 @@ function * queryRouteSaga () {
 }
 
 function * submitRouteSaga ({ route, history }) {
-  console.log('submitRouteSaga', route, history)
-
   yield put(storeRoute(route, history))
 
   yield race([
@@ -132,6 +125,20 @@ function * submitRouteSaga ({ route, history }) {
   }
 }
 
+function * alphaRouteSaga ({ redirect, history }) {
+  const pathname = getPathname(redirect)
+
+  if (pathname) {
+    const {
+      location: {
+        pathname: currentPathname
+      } = {}
+    } = history
+
+    if (pathname !== currentPathname) history.push(pathname)
+  }
+}
+
 export function * watchAlphaChange () {
   yield takeLatest(CHANGE, changeRouteSaga)
 }
@@ -150,4 +157,8 @@ export function * watchAlphaQuery () {
 
 export function * watchAlphaSubmit () {
   yield takeLatest(SUBMIT, submitRouteSaga)
+}
+
+export function * watchAlphaRoute () {
+  yield takeLatest(ROUTE, alphaRouteSaga)
 }

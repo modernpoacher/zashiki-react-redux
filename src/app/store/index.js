@@ -6,8 +6,6 @@ import {
 
 import createSagaMiddleware from 'redux-saga'
 
-import routingMiddleware from 'zashiki-routing-middleware'
-
 import reducers from '@modernpoacher/zashiki-react-redux/app/reducers'
 import axios from '@modernpoacher/zashiki-react-redux/api'
 import sagas from '@modernpoacher/zashiki-react-redux/app/sagas'
@@ -30,8 +28,7 @@ export default function configureStore (state) {
     compose(
       applyMiddleware(
         axios,
-        sagaMiddleware,
-        routingMiddleware
+        sagaMiddleware
       )
     )
   )

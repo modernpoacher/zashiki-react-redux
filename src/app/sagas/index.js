@@ -5,7 +5,8 @@ import {
 import {
   watchEmbarkFetch,
   watchEmbarkStore,
-  watchEmbarkSubmit
+  watchEmbarkSubmit,
+  watchEmbarkRoute
 } from './stages/embark'
 
 import {
@@ -13,7 +14,8 @@ import {
   watchAlphaFetch,
   watchAlphaStore,
   watchAlphaQuery,
-  watchAlphaSubmit
+  watchAlphaSubmit,
+  watchAlphaRoute
 } from './stages/alpha'
 
 import {
@@ -21,13 +23,15 @@ import {
   watchOmegaFetch,
   watchOmegaStore,
   watchOmegaQuery,
-  watchOmegaSubmit
+  watchOmegaSubmit,
+  watchOmegaRoute
 } from './stages/omega'
 
 import {
   watchDebarkFetch,
   watchDebarkStore,
-  watchDebarkSubmit
+  watchDebarkSubmit,
+  watchDebarkRoute
 } from './stages/debark'
 
 import {
@@ -42,22 +46,26 @@ export default function * rootSaga () {
     watchEmbarkFetch(),
     watchEmbarkStore(),
     watchEmbarkSubmit(),
+    watchEmbarkRoute(),
 
     watchAlphaChange(),
     watchAlphaFetch(),
     watchAlphaStore(),
     watchAlphaQuery(),
     watchAlphaSubmit(),
+    watchAlphaRoute(),
 
     watchOmegaChange(),
     watchOmegaFetch(),
     watchOmegaStore(),
     watchOmegaQuery(),
     watchOmegaSubmit(),
+    watchOmegaRoute(),
 
     watchDebarkFetch(),
     watchDebarkStore(),
     watchDebarkSubmit(),
+    watchDebarkRoute(),
 
     watchZashikiChange(),
     watchZashikiFetch(),

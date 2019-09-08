@@ -1,12 +1,15 @@
 require('./mock')()
 
 console.log('zashiki-react-redux')
-console.log('zashiki-react-redux',
-  !!require('../lib/app/actions'),
-  !!require('../lib/app/components'),
-  !!require('../lib/app/reducers'),
-  !!require('../lib/app/router'),
-  !!require('../lib/app/routes'),
-  !!require('../lib/app/store'),
-  !!require('../lib/app/transformers'))
+console.table({
+  'app/actions': !!require('../lib/app/actions'),
+  'app/common': !!require('../lib/app/common'),
+  'app/components': !!require('../lib/app/components'),
+  'app/reducers': !!require('../lib/app/reducers'),
+  'app/router': !!require('../lib/app/router'),
+  'app/routes': !!require('../lib/app/routes'),
+  'app/sagas': !!require('../lib/app/sagas'),
+  'app/store': !!require('../lib/app/store'),
+  'app/transformers': !!require('../lib/app/transformers')
+})
 process.exit()
