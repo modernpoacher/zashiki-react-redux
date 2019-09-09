@@ -12,8 +12,8 @@ import InProgress from './status/in-progress'
 import NoDecision from './status/no-decision'
 import Pending from './status/pending'
 
-const getErrorProps = ({ exception }) => exception
-const getDebarkProps = ({ definition, onSubmit }) => ({ definition, onSubmit })
+export const getErrorProps = ({ exception }) => exception
+export const getDebarkProps = ({ definition, onSubmit }) => ({ definition, onSubmit })
 
 export default class Debark extends Component {
   /**

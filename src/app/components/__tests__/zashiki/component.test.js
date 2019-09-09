@@ -1,5 +1,5 @@
 import React from 'react'
-import Enzyme, { mount } from 'enzyme'
+import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
 import Immutable from 'immutable'
@@ -7,6 +7,11 @@ import Immutable from 'immutable'
 import Zashiki, { resource } from '@modernpoacher/zashiki-react-redux/app/components/zashiki/component'
 
 Enzyme.configure({ adapter: new Adapter() })
+
+jest.mock('immutable', () => ({
+  is: jest.fn(),
+  Map: jest.fn().mockImplementation((v) => v)
+}))
 
 describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', () => {
   const MOCK_ONCHANGE = jest.fn()
@@ -31,7 +36,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', 
     let wrapper
 
     beforeEach(() => {
-      wrapper = mount(component)
+      wrapper = shallow(component)
     })
 
     it('mounts', () => {
@@ -79,19 +84,25 @@ describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', 
   describe('`Zashiki.getDerivedStateFromProps()`', () => {
     describe('props have changed', () => {
       const mockProps = { match: MOCK_MATCH, onChange: MOCK_ONCHANGE }
-      const mockState = { now: Immutable.Map({ alpha: 'MOCK ALPHA' }) }
+      const mockState = { now: { alpha: 'MOCK ALPHA' } }
 
       let state
 
       beforeEach(() => {
+        Immutable.is.mockReturnValue(false)
         state = Zashiki.getDerivedStateFromProps(mockProps, mockState)
+      })
+
+      it('invokes `Immutable.is`', () => {
+        expect(Immutable.is)
+          .toBeCalledWith({ alpha: 'MOCK ALPHA' }, { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' })
       })
 
       it('returns the state', () => {
         expect(state)
           .toEqual({
-            was: Immutable.Map({ alpha: 'MOCK ALPHA' }),
-            now: Immutable.Map({ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' })
+            was: { alpha: 'MOCK ALPHA' },
+            now: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }
           })
       })
 
@@ -103,18 +114,24 @@ describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', 
 
     describe('props have not changed', () => {
       const mockProps = { match: MOCK_MATCH, onChange: MOCK_ONCHANGE }
-      const mockState = { now: Immutable.Map({ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }) }
+      const mockState = { now: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' } }
 
       let state
 
       beforeEach(() => {
+        Immutable.is.mockReturnValue(true)
         state = Zashiki.getDerivedStateFromProps(mockProps, mockState)
+      })
+
+      it('invokes `Immutable.is`', () => {
+        expect(Immutable.is)
+          .toBeCalledWith({ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }, { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' })
       })
 
       it('returns the state', () => {
         expect(state)
           .toEqual({
-            now: Immutable.Map({ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' })
+            now: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }
           })
       })
 

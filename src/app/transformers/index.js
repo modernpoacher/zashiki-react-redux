@@ -3,11 +3,13 @@ import {
 } from 'shinkansen-signals'
 
 export const transformError = ({
-  code = 500,
-  name = 'Internal Server Error',
+  code,
+  name = 'Application Error',
   message
 } = {}) => ({
-  code,
+  ...(
+    code ? { code } : {}
+  ),
   name,
   ...(
     message ? { message } : {}

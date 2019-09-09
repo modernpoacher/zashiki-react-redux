@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/embark/component \`Signals.COMPLETE\` renders 1`] = `ShallowWrapper {}`;
+
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/embark/component \`Signals.FAILURE\` renders 1`] = `ShallowWrapper {}`;
+
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/embark/component \`Signals.IN_PROGRESS\` renders 1`] = `ShallowWrapper {}`;
+
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/embark/component \`Signals.NO_DECISION\` renders 1`] = `ShallowWrapper {}`;
+
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/embark/component \`Signals.PENDING\` renders 1`] = `ShallowWrapper {}`;
+
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/embark/component \`Signals.SUCCESS\` renders 1`] = `ShallowWrapper {}`;
+
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/embark/component Always renders 1`] = `ShallowWrapper {}`;

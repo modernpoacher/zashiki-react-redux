@@ -14,8 +14,8 @@ import InProgress from './status/in-progress'
 import NoDecision from './status/no-decision'
 import Pending from './status/pending'
 
-const getErrorProps = ({ exception }) => exception
-const getStageProps = ({ state, definitions, gears, onSubmit }) => ({ state, definitions, gears, onSubmit })
+export const getErrorProps = ({ exception }) => exception
+export const getStageProps = ({ state, definitions, gears, onSubmit }) => ({ state, definitions, gears, onSubmit })
 
 export default class AlphaStage extends Zashiki {
   render () {

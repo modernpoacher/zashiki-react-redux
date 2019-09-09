@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const Failure = ({ code, name, message }) => (
   <div className='debark failure'>
-    <h2>{code}: {name}</h2>
+    {code ? <h2>{code}: {name}</h2> : <h2>{name}</h2> }
     {message && (
       <p>
         {message}
@@ -13,7 +13,7 @@ const Failure = ({ code, name, message }) => (
 )
 
 Failure.propTypes = {
-  code: PropTypes.number.isRequired,
+  code: PropTypes.number,
   name: PropTypes.string.isRequired,
   message: PropTypes.string
 }

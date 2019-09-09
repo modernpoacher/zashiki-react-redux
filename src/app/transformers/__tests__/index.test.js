@@ -6,15 +6,13 @@ import {
 jest.mock('shinkansen-signals', () => ({ Signals: { FAILURE: 'MOCK FAILURE' } }))
 
 const DEFAULT_ERROR = {
-  code: 500,
-  name: 'Internal Server Error'
+  name: 'Application Error'
 }
 
 const DEFAULT_FAILURE = {
   status: 'MOCK FAILURE',
   exception: {
-    code: 500,
-    name: 'Internal Server Error'
+    name: 'Application Error'
   }
 }
 
