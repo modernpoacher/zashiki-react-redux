@@ -5,12 +5,4 @@ import {
 import configureStore from '@modernpoacher/zashiki-react-redux/app/store'
 import routes from '@modernpoacher/zashiki-react-redux/app/routes'
 
-export default (state, location) => {
-  const store = configureStore(state)
-
-  try {
-    return renderToString(store, { location }, routes)
-  } catch (e) {
-    return e
-  }
-}
+export default (state, location) => renderToString(configureStore(state), { location }, routes)
