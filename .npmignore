@@ -10,5 +10,5 @@
 .npmrc
 
 config
-
+coverage
 __tests__
