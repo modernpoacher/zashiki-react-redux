@@ -1,12 +1,10 @@
 /**
  *  Zashiki/Embark API
  */
-import {
-  getTransport
-} from '@modernpoacher/zashiki-react-redux/api'
+import api from '@modernpoacher/zashiki-react-redux/api'
 
-export const submitRoute = (route) => getTransport().post('zashiki/embark', route)
+export const submitRoute = (route) => api().post('zashiki/embark', route)
 
-export const fetchRoute = () => getTransport().get('zashiki/embark/fetch')
+export const fetchRoute = () => api().get('zashiki/embark/fetch')
 
-export const storeRoute = (route) => getTransport().put('zashiki/embark/store', route)
+export const storeRoute = (route) => api().put('zashiki/embark/store', route)

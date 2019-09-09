@@ -4,7 +4,7 @@ import {
   storeRoute
 } from '@modernpoacher/zashiki-react-redux/api/stages/embark'
 
-import { getTransport } from '@modernpoacher/zashiki-react-redux/api'
+import api from '@modernpoacher/zashiki-react-redux/api'
 
 const mockTransport = {
   get: jest.fn(),
@@ -12,9 +12,7 @@ const mockTransport = {
   post: jest.fn()
 }
 
-jest.mock('@modernpoacher/zashiki-react-redux/api', () => ({
-  getTransport: jest.fn().mockImplementation(() => mockTransport)
-}))
+jest.mock('@modernpoacher/zashiki-react-redux/api', () => jest.fn().mockImplementation(() => mockTransport))
 
 describe('@modernpoacher/zashiki-react-redux/api/stages/embark', () => {
   beforeEach(() => {
@@ -49,8 +47,8 @@ describe('@modernpoacher/zashiki-react-redux/api/stages/embark', () => {
       submitRoute(mockRoute)
     })
 
-    it('invokes `getTransport`', () => {
-      expect(getTransport)
+    it('invokes `api`', () => {
+      expect(api)
         .toBeCalled()
     })
 
@@ -65,8 +63,8 @@ describe('@modernpoacher/zashiki-react-redux/api/stages/embark', () => {
       fetchRoute()
     })
 
-    it('invokes `getTransport`', () => {
-      expect(getTransport)
+    it('invokes `api`', () => {
+      expect(api)
         .toBeCalled()
     })
 
@@ -83,8 +81,8 @@ describe('@modernpoacher/zashiki-react-redux/api/stages/embark', () => {
       storeRoute(mockRoute)
     })
 
-    it('invokes `getTransport`', () => {
-      expect(getTransport)
+    it('invokes `api`', () => {
+      expect(api)
         .toBeCalled()
     })
 

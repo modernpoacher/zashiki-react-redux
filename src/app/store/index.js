@@ -7,7 +7,7 @@ import {
 import createSagaMiddleware from 'redux-saga'
 
 import reducers from '@modernpoacher/zashiki-react-redux/app/reducers'
-import axios from '@modernpoacher/zashiki-react-redux/api'
+import axios from '@modernpoacher/zashiki-react-redux/api/axios'
 import sagas from '@modernpoacher/zashiki-react-redux/app/sagas'
 
 /*
