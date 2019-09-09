@@ -1,0 +1,18 @@
+import React from 'react'
+import Enzyme, { shallow } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/stage'
+
+Enzyme.configure({ adapter: new Adapter() })
+
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/stage', () => {
+  it('renders', () => {
+    const component = (
+      <Stage definition={{}} onSubmit={jest.fn()} />
+    )
+
+    expect(shallow(component))
+      .toMatchSnapshot()
+  })
+})
