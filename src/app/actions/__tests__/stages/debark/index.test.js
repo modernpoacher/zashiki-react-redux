@@ -48,7 +48,6 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
   const MOCK_REDIRECT = {}
   const MOCK_ROUTE = {}
   const MOCK_HISTORY = {}
-  const MOCK_RESOURCE = {}
   const MOCK_RESPONSE = { statement: 'MOCK STATEMENT' }
   const MOCK_ERROR = {}
 
