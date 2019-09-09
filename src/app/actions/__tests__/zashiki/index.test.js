@@ -42,12 +42,13 @@ import {
   store
 } from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
 
-const MOCK_ROUTE = {}
-const MOCK_HISTORY = {}
-const MOCK_RESPONSE = {}
-const MOCK_ERROR = {}
-
 describe('@modernpoacher/zashiki-react-redux/app/actions/zashiki', () => {
+  const MOCK_ROUTE = {}
+  const MOCK_HISTORY = {}
+  const MOCK_RESOURCE = {}
+  const MOCK_RESPONSE = {}
+  const MOCK_ERROR = {}
+
   describe('`ERROR`', () => {
     it('is defined', () => {
       expect(ERROR)
@@ -440,6 +441,56 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/zashiki', () => {
         .toEqual({
           type: 'ZASHIKI_QUERY_REJECTED',
           error: MOCK_ERROR
+        })
+    })
+  })
+
+  describe('`change()`', () => {
+    it('returns the `changeRoute` action', () => {
+      expect(change(MOCK_RESOURCE, MOCK_HISTORY))
+        .toEqual({
+          type: 'ZASHIKI_CHANGE',
+          route: {
+            resource: MOCK_RESOURCE
+          },
+          history: MOCK_HISTORY
+        })
+    })
+  })
+
+  describe('`submit()`', () => {
+    it('returns the `submitRoute` action', () => {
+      expect(submit(MOCK_RESOURCE, MOCK_RESPONSE, MOCK_HISTORY))
+        .toEqual({
+          type: 'ZASHIKI_SUBMIT',
+          route: {
+            resource: MOCK_RESOURCE,
+            response: MOCK_RESPONSE
+          },
+          history: MOCK_HISTORY
+        })
+    })
+  })
+
+  describe('`fetch()`', () => {
+    it('returns the `fetchRoute` action', () => {
+      expect(fetch())
+        .toEqual({
+          type: 'ZASHIKI_FETCH'
+        })
+    })
+  })
+
+  describe('`store()`', () => {
+    it('returns the `storeRoute` action', () => {
+      expect(store(MOCK_RESOURCE, MOCK_RESPONSE, MOCK_HISTORY))
+        .toEqual({
+          type: 'ZASHIKI_STORE',
+          route: {
+            resource: MOCK_RESOURCE,
+            response: MOCK_RESPONSE
+          },
+          history: MOCK_HISTORY
         })
     })
   })

@@ -57,13 +57,14 @@ jest.mock('shinkansen-pantograph', () => ({
   }
 }))
 
-const MOCK_REDIRECT = {}
-const MOCK_ROUTE = {}
-const MOCK_HISTORY = {}
-const MOCK_RESPONSE = {}
-const MOCK_ERROR = {}
-
 describe('@modernpoacher/zashiki-react-redux/app/actions/stages/omega', () => {
+  const MOCK_REDIRECT = {}
+  const MOCK_ROUTE = {}
+  const MOCK_HISTORY = {}
+  const MOCK_RESOURCE = {}
+  const MOCK_RESPONSE = {}
+  const MOCK_ERROR = {}
+
   describe('`ROUTE`', () => {
     it('is defined', () => {
       expect(ROUTE)
@@ -474,6 +475,58 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/omega', () => {
         .toEqual({
           type: 'MOCK QUERY_REJECTED',
           error: MOCK_ERROR
+        })
+    })
+  })
+
+  describe('`change()`', () => {
+    it('returns the `changeRoute` action', () => {
+      const MOCK_RESOURCE = {}
+
+      expect(change(MOCK_RESOURCE, MOCK_HISTORY))
+        .toEqual({
+          type: 'MOCK CHANGE',
+          route: {
+            resource: MOCK_RESOURCE
+          },
+          history: MOCK_HISTORY
+        })
+    })
+  })
+
+  describe('`submit()`', () => {
+    it('returns the `submitRoute` action', () => {
+      expect(submit(MOCK_RESOURCE, MOCK_RESPONSE, MOCK_HISTORY))
+        .toEqual({
+          type: 'MOCK SUBMIT',
+          route: {
+            resource: MOCK_RESOURCE,
+            response: MOCK_RESPONSE
+          },
+          history: MOCK_HISTORY
+        })
+    })
+  })
+
+  describe('`fetch()`', () => {
+    it('returns the `fetchRoute` action', () => {
+      expect(fetch())
+        .toEqual({
+          type: 'MOCK FETCH'
+        })
+    })
+  })
+
+  describe('`store()`', () => {
+    it('returns the `storeRoute` action', () => {
+      expect(store(MOCK_RESOURCE, MOCK_RESPONSE, MOCK_HISTORY))
+        .toEqual({
+          type: 'MOCK STORE',
+          route: {
+            resource: MOCK_RESOURCE,
+            response: MOCK_RESPONSE
+          },
+          history: MOCK_HISTORY
         })
     })
   })
