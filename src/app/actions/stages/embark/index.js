@@ -6,8 +6,8 @@ import {
 } from 'shinkansen-pantograph'
 
 const {
-  SUBMIT,
   ROUTE,
+  SUBMIT,
   FETCH,
   STORE
 } = Pantograph.EMBARK
@@ -16,8 +16,8 @@ const {
  *  Action Types
  */
 export {
-  SUBMIT,
   ROUTE,
+  SUBMIT,
   FETCH,
   STORE
 }
