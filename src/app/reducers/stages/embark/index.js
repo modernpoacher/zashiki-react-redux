@@ -38,7 +38,7 @@ export const route = ({ status = PENDING, ...state } = {}, { history, redirect =
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const submit = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
+export const submit = ({ status = PENDING, ...state } = {}, { history, embark = {} } = {}) => ({ status, ...state, history, ...embark })
 
 /**
  *  Get all from state

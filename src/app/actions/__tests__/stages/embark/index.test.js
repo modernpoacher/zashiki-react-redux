@@ -229,7 +229,7 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
       expect(submitRoute(MOCK_ROUTE, MOCK_HISTORY))
         .toEqual({
           type: 'MOCK SUBMIT',
-          route: MOCK_ROUTE,
+          embark: MOCK_ROUTE,
           history: MOCK_HISTORY
         })
     })
@@ -317,13 +317,10 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
 
   describe('`submit()`', () => {
     it('returns the `submitRoute` action', () => {
-      expect(submit({ resource: MOCK_RESOURCE, response: MOCK_RESPONSE }, MOCK_HISTORY))
+      expect(submit(MOCK_RESPONSE, MOCK_HISTORY))
         .toEqual({
           type: 'MOCK SUBMIT',
-          route: {
-            resource: MOCK_RESOURCE,
-            response: MOCK_RESPONSE
-          },
+          embark: MOCK_RESPONSE,
           history: MOCK_HISTORY
         })
     })

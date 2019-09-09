@@ -45,7 +45,7 @@ function * debarkRouteSaga ({ redirect, history }) {
   }
 }
 
-function * submitRouteSaga ({ route: { statement }, history }) {
+function * submitRouteSaga ({ debark: { statement }, history }) {
   try {
     yield storeRouteSaga({ response: { statement } })
     const { data: response = {} } = yield call(api.submitRoute, { response: { debark: Rails.rail(statement) } })

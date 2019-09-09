@@ -128,7 +128,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/debark', () => 
 
       describe('The action `type` is `SUBMIT`', () => {
         it('returns the state', () => {
-          expect(debarkReducer(DEFAULT, { type: 'MOCK SUBMIT', route: { mockField: 'MOCK VALUE' } }))
+          expect(debarkReducer(DEFAULT, { type: 'MOCK SUBMIT', debark: { mockField: 'MOCK VALUE' } }))
             .toEqual({ ...DEFAULT, mockField: 'MOCK VALUE' })
         })
       })
@@ -212,7 +212,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/debark', () => 
 
   describe('`submit()`', () => {
     it('returns the state', () => {
-      expect(submit({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { history: 'MOCK HISTORY', route: { mockActionField: 'MOCK ACTION VALUE' } }))
+      expect(submit({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { history: 'MOCK HISTORY', debark: { mockActionField: 'MOCK ACTION VALUE' } }))
         .toEqual({
           status: 'MOCK PENDING',
           mockStateField: 'MOCK STATE VALUE',

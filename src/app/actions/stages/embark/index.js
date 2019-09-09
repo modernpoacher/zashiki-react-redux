@@ -41,10 +41,10 @@ export function embarkRoute (redirect, history) {
   }
 }
 
-export function submitRoute (route, history) {
+export function submitRoute (embark, history) {
   return {
     type: SUBMIT,
-    route,
+    embark,
     history
   }
 }
@@ -106,8 +106,8 @@ export function storeRouteRejected (error) {
   }
 }
 
-export const submit = (route, history) => submitRoute(route, history)
+export const submit = (embark, history) => submitRoute(embark, history)
 
 export const fetch = (history) => fetchRoute(history)
 
-export const store = ({ statement }, history) => storeRoute({ response: { statement } }, history)
+export const store = (response, history) => storeRoute({ response }, history)

@@ -45,7 +45,7 @@ function * embarkRouteSaga ({ redirect, history }) {
   }
 }
 
-function * submitRouteSaga ({ route: { statement }, history }) {
+function * submitRouteSaga ({ embark: { statement }, history }) {
   try {
     yield storeRouteSaga({ response: { statement } })
     const { data: response = {} } = yield call(api.submitRoute, { response: { embark: Rails.rail(statement) } })
