@@ -21,13 +21,18 @@ jest.mock('shinkansen-signals', () => ({
   }
 }))
 
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/zashiki/component')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/omega/status/complete')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/omega/status/failure')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/omega/status/success')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/omega/status/in-progress')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/omega/status/no-decision')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/omega/status/pending')
+
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/component', () => {
-  /**
-   *  Inherited from `@modernpoacher/zashiki-react-redux/app/components/zashiki`
-   */
-  const MOCK_ONCHANGE = jest.fn()
-  const MOCK_MATCH = { params: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' } }
-  const MOCK_CHILDREN = []
+  const MOCK_DEFINITION = {}
+  const MOCK_RESOURCE = {}
+  const MOCK_ONSUBMIT = jest.fn()
 
   const mockProps = {
     state: {
@@ -57,12 +62,9 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
     const component = (
       <Omega
         status={Signals.PENDING}
-        definition={{}}
-        resource={{}}
-        onSubmit={jest.fn()}
-        onChange={MOCK_ONCHANGE}
-        match={MOCK_MATCH}
-        children={MOCK_CHILDREN}
+        definition={MOCK_DEFINITION}
+        resource={MOCK_RESOURCE}
+        onSubmit={MOCK_ONSUBMIT}
       />
     )
 
@@ -89,12 +91,9 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
       const component = (
         <Omega
           status={Signals.PENDING}
-          definition={{}}
-          resource={{}}
-          onSubmit={jest.fn()}
-          onChange={MOCK_ONCHANGE}
-          match={MOCK_MATCH}
-          children={MOCK_CHILDREN}
+          definition={MOCK_DEFINITION}
+          resource={MOCK_RESOURCE}
+          onSubmit={MOCK_ONSUBMIT}
         />
       )
 
@@ -112,10 +111,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
             name: 'MOCK NAME',
             message: 'MOCK MESSAGE'
           }}
-          onSubmit={jest.fn()}
-          onChange={MOCK_ONCHANGE}
-          match={MOCK_MATCH}
-          children={MOCK_CHILDREN}
+          onSubmit={MOCK_ONSUBMIT}
         />
       )
 
@@ -129,12 +125,9 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
       const component = (
         <Omega
           status={Signals.SUCCESS}
-          definition={{}}
-          resource={{}}
-          onSubmit={jest.fn()}
-          onChange={MOCK_ONCHANGE}
-          match={MOCK_MATCH}
-          children={MOCK_CHILDREN}
+          definition={MOCK_DEFINITION}
+          resource={MOCK_RESOURCE}
+          onSubmit={MOCK_ONSUBMIT}
         />
       )
 
@@ -148,12 +141,9 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
       const component = (
         <Omega
           status={Signals.IN_PROGRESS}
-          definition={{}}
-          resource={{}}
-          onSubmit={jest.fn()}
-          onChange={MOCK_ONCHANGE}
-          match={MOCK_MATCH}
-          children={MOCK_CHILDREN}
+          definition={MOCK_DEFINITION}
+          resource={MOCK_RESOURCE}
+          onSubmit={MOCK_ONSUBMIT}
         />
       )
 
@@ -167,12 +157,9 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
       const component = (
         <Omega
           status={Signals.NO_DECISION}
-          definition={{}}
-          resource={{}}
-          onSubmit={jest.fn()}
-          onChange={MOCK_ONCHANGE}
-          match={MOCK_MATCH}
-          children={MOCK_CHILDREN}
+          definition={MOCK_DEFINITION}
+          resource={MOCK_RESOURCE}
+          onSubmit={MOCK_ONSUBMIT}
         />
       )
 
@@ -186,12 +173,9 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
       const component = (
         <Omega
           status={Signals.COMPLETE}
-          definition={{}}
-          resource={{}}
-          onSubmit={jest.fn()}
-          onChange={MOCK_ONCHANGE}
-          match={MOCK_MATCH}
-          children={MOCK_CHILDREN}
+          definition={MOCK_DEFINITION}
+          resource={MOCK_RESOURCE}
+          onSubmit={MOCK_ONSUBMIT}
         />
       )
 

@@ -21,7 +21,16 @@ jest.mock('shinkansen-signals', () => ({
   }
 }))
 
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/complete')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/failure')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/success')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/in-progress')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/no-decision')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/pending')
+
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/component', () => {
+  const MOCK_DEFINITION = {}
+  const MOCK_RESOURCE = {}
   const MOCK_ONSUBMIT = jest.fn()
   const MOCK_ONDEBARK = jest.fn()
 
@@ -42,8 +51,8 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/compon
     const component = (
       <Debark
         status={Signals.PENDING}
-        definition={{}}
-        resource={{}}
+        definition={MOCK_DEFINITION}
+        resource={MOCK_RESOURCE}
         onSubmit={MOCK_ONSUBMIT}
         onDebark={MOCK_ONDEBARK}
       />
@@ -92,7 +101,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/compon
       const component = (
         <Debark
           status={Signals.PENDING}
-          definition={{}}
+          definition={MOCK_DEFINITION}
           onSubmit={MOCK_ONSUBMIT}
           onDebark={MOCK_ONDEBARK}
         />
@@ -127,7 +136,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/compon
       const component = (
         <Debark
           status={Signals.SUCCESS}
-          definition={{}}
+          definition={MOCK_DEFINITION}
           onSubmit={MOCK_ONSUBMIT}
           onDebark={MOCK_ONDEBARK}
         />
@@ -143,7 +152,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/compon
       const component = (
         <Debark
           status={Signals.IN_PROGRESS}
-          definition={{}}
+          definition={MOCK_DEFINITION}
           onSubmit={MOCK_ONSUBMIT}
           onDebark={MOCK_ONDEBARK}
         />
@@ -159,7 +168,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/compon
       const component = (
         <Debark
           status={Signals.NO_DECISION}
-          definition={{}}
+          definition={MOCK_DEFINITION}
           onSubmit={MOCK_ONSUBMIT}
           onDebark={MOCK_ONDEBARK}
         />
@@ -175,7 +184,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/compon
       const component = (
         <Debark
           status={Signals.COMPLETE}
-          definition={{}}
+          definition={MOCK_DEFINITION}
           onSubmit={MOCK_ONSUBMIT}
           onDebark={MOCK_ONDEBARK}
         />

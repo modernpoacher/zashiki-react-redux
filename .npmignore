@@ -12,3 +12,4 @@
 config
 coverage
 __tests__
+jest.config.js

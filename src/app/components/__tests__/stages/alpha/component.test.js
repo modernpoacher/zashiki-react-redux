@@ -21,13 +21,17 @@ jest.mock('shinkansen-signals', () => ({
   }
 }))
 
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/zashiki/component')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/status/complete')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/status/failure')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/status/success')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/status/in-progress')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/status/no-decision')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/status/pending')
+
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/component', () => {
-  /**
-   *  Inherited from `@modernpoacher/zashiki-react-redux/app/components/zashiki`
-   */
-  const MOCK_ONCHANGE = jest.fn()
-  const MOCK_MATCH = { params: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' } }
-  const MOCK_CHILDREN = []
+  const MOCK_DEFINITIONS = []
+  const MOCK_ONSUBMIT = jest.fn()
 
   const mockProps = {
     state: {
@@ -56,11 +60,8 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/compone
     const component = (
       <Alpha
         status={Signals.PENDING}
-        definitions={[]}
-        onSubmit={jest.fn()}
-        onChange={MOCK_ONCHANGE}
-        match={MOCK_MATCH}
-        children={MOCK_CHILDREN}
+        definitions={MOCK_DEFINITIONS}
+        onSubmit={MOCK_ONSUBMIT}
       />
     )
 
@@ -87,11 +88,8 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/compone
       const component = (
         <Alpha
           status={Signals.PENDING}
-          definitions={[]}
-          onSubmit={jest.fn()}
-          onChange={MOCK_ONCHANGE}
-          match={MOCK_MATCH}
-          children={MOCK_CHILDREN}
+          definitions={MOCK_DEFINITIONS}
+          onSubmit={MOCK_ONSUBMIT}
         />
       )
 
@@ -109,10 +107,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/compone
             name: 'MOCK NAME',
             message: 'MOCK MESSAGE'
           }}
-          onSubmit={jest.fn()}
-          onChange={MOCK_ONCHANGE}
-          match={MOCK_MATCH}
-          children={MOCK_CHILDREN}
+          onSubmit={MOCK_ONSUBMIT}
         />
       )
 
@@ -126,11 +121,8 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/compone
       const component = (
         <Alpha
           status={Signals.SUCCESS}
-          definitions={[]}
-          onSubmit={jest.fn()}
-          onChange={MOCK_ONCHANGE}
-          match={MOCK_MATCH}
-          children={MOCK_CHILDREN}
+          definitions={MOCK_DEFINITIONS}
+          onSubmit={MOCK_ONSUBMIT}
         />
       )
 
@@ -144,11 +136,8 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/compone
       const component = (
         <Alpha
           status={Signals.IN_PROGRESS}
-          definitions={[]}
-          onSubmit={jest.fn()}
-          onChange={MOCK_ONCHANGE}
-          match={MOCK_MATCH}
-          children={MOCK_CHILDREN}
+          definitions={MOCK_DEFINITIONS}
+          onSubmit={MOCK_ONSUBMIT}
         />
       )
 
@@ -162,11 +151,8 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/compone
       const component = (
         <Alpha
           status={Signals.NO_DECISION}
-          definitions={[]}
-          onSubmit={jest.fn()}
-          onChange={MOCK_ONCHANGE}
-          match={MOCK_MATCH}
-          children={MOCK_CHILDREN}
+          definitions={MOCK_DEFINITIONS}
+          onSubmit={MOCK_ONSUBMIT}
         />
       )
 
@@ -180,11 +166,8 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/compone
       const component = (
         <Alpha
           status={Signals.COMPLETE}
-          definitions={[]}
-          onSubmit={jest.fn()}
-          onChange={MOCK_ONCHANGE}
-          match={MOCK_MATCH}
-          children={MOCK_CHILDREN}
+          definitions={MOCK_DEFINITIONS}
+          onSubmit={MOCK_ONSUBMIT}
         />
       )
 

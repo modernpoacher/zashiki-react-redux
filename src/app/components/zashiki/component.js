@@ -2,13 +2,11 @@ import { Component } from 'react'
 import PropTypes from 'prop-types'
 import Immutable from 'immutable'
 
-export const resource = (alpha, omega) => ({
-  ...(alpha ? { alpha, ...(omega ? { omega } : {}) } : {})
-})
+export const resource = (alpha, omega) => ({ ...(alpha ? { alpha, ...(omega ? { omega } : {}) } : {}) })
 
 export default class Zashiki extends Component {
   /**
-   *  Create initial 'state' from initial 'props'
+   *  Create initial state from initial props
    */
   constructor (props) {
     super(props)
@@ -25,9 +23,7 @@ export default class Zashiki extends Component {
     } = props
 
     this.state = {
-      now: Immutable.Map(
-        resource(alpha, omega)
-      )
+      now: Immutable.Map(resource(alpha, omega))
     }
   }
 
@@ -70,9 +66,7 @@ export default class Zashiki extends Component {
     /**
      *  Create const 'now' from params 'alpha' and 'omega' (as an Immutable 'Map')
      */
-    const now = Immutable.Map(
-      resource(alpha, omega)
-    )
+    const now = Immutable.Map(resource(alpha, omega))
 
     /**
      *  Assign state 'now' to const 'was' (it's an Immutable 'Map')

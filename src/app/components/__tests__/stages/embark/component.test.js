@@ -21,7 +21,16 @@ jest.mock('shinkansen-signals', () => ({
   }
 }))
 
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/complete')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/failure')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/success')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/in-progress')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/no-decision')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/pending')
+
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/component', () => {
+  const MOCK_DEFINITION = {}
+  const MOCK_RESOURCE = {}
   const MOCK_ONSUBMIT = jest.fn()
   const MOCK_ONEMBARK = jest.fn()
 
@@ -42,8 +51,8 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/compon
     const component = (
       <Embark
         status={Signals.PENDING}
-        definition={{}}
-        resource={{}}
+        definition={MOCK_DEFINITION}
+        resource={MOCK_RESOURCE}
         onSubmit={MOCK_ONSUBMIT}
         onEmbark={MOCK_ONEMBARK}
       />
@@ -92,7 +101,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/compon
       const component = (
         <Embark
           status={Signals.PENDING}
-          definition={{}}
+          definition={MOCK_DEFINITION}
           onSubmit={MOCK_ONSUBMIT}
           onEmbark={MOCK_ONEMBARK}
         />
@@ -127,7 +136,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/compon
       const component = (
         <Embark
           status={Signals.SUCCESS}
-          definition={{}}
+          definition={MOCK_DEFINITION}
           onSubmit={MOCK_ONSUBMIT}
           onEmbark={MOCK_ONEMBARK}
         />
@@ -143,7 +152,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/compon
       const component = (
         <Embark
           status={Signals.IN_PROGRESS}
-          definition={{}}
+          definition={MOCK_DEFINITION}
           onSubmit={MOCK_ONSUBMIT}
           onEmbark={MOCK_ONEMBARK}
         />
@@ -159,7 +168,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/compon
       const component = (
         <Embark
           status={Signals.NO_DECISION}
-          definition={{}}
+          definition={MOCK_DEFINITION}
           onSubmit={MOCK_ONSUBMIT}
           onEmbark={MOCK_ONEMBARK}
         />
@@ -175,7 +184,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/compon
       const component = (
         <Embark
           status={Signals.COMPLETE}
-          definition={{}}
+          definition={MOCK_DEFINITION}
           onSubmit={MOCK_ONSUBMIT}
           onEmbark={MOCK_ONEMBARK}
         />
