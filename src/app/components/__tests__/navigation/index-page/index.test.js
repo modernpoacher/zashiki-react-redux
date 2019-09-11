@@ -6,6 +6,8 @@ import IndexPage from '@modernpoacher/zashiki-react-redux/app/components/navigat
 
 Enzyme.configure({ adapter: new Adapter() })
 
+jest.mock('react-router-dom')
+
 describe('@modernpoacher/zashiki-react-redux/app/components/navigation/index-page', () => {
   it('renders', () => {
     expect(shallow(<IndexPage />))

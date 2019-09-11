@@ -8,6 +8,8 @@ import {
 
 import Debark from '@modernpoacher/zashiki-react-redux/app/components/navigation/stages/debark'
 
+Enzyme.configure({ adapter: new Adapter() })
+
 jest.mock('shinkansen-rails', () => ({
   Rails: {
     to: jest.fn().mockImplementation(() => 'MOCK TO')
@@ -22,7 +24,7 @@ jest.mock('shinkansen-signals', () => ({
   }
 }))
 
-Enzyme.configure({ adapter: new Adapter() })
+jest.mock('react-router-dom')
 
 describe('@modernpoacher/zashiki-react-redux/app/components/navigation/stages/debark', () => {
   it('renders', () => {
