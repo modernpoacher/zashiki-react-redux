@@ -18,10 +18,7 @@
     "lint": "eslint *.js src config",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest --verbose false --collect-coverage false",
-    "pre-commit": "npm run lint && npm run test && npm run babel && git add lib",
-    "deps": "deps",
-    "deps:prod": "deps --save-prod",
-    "deps:dev": "deps --save-dev"
+    "pre-commit": "npm run lint && npm run test && npm run babel && git add lib"
   },
   "author": "Jonathan Perry for Modern Poacher Limited",
   "license": "UNLICENSED",
@@ -30,7 +27,6 @@
     "axios": "^0.19.0",
     "cross-env": "^6.0.3",
     "immutable": "3.8.2",
-    "mock-browser": "^0.92.14",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -71,6 +67,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "husky": "^3.1.0",
     "jest": "^24.9.0",
+    "mock-browser": "^0.92.14",
     "rimraf": "^3.0.0"
   },
   "husky": {
