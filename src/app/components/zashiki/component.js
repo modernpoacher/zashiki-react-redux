@@ -5,13 +5,11 @@ import Immutable from 'immutable'
 export const resource = (alpha, omega) => ({ ...(alpha ? { alpha, ...(omega ? { omega } : {}) } : {}) })
 
 export default class Zashiki extends Component {
-  /**
+  /*
    *  Create initial state from initial props
    */
   constructor (props) {
     super(props)
-
-    // console.log('(Zashiki)constructor()', props)
 
     const {
       match: {
@@ -27,7 +25,7 @@ export default class Zashiki extends Component {
     }
   }
 
-  /**
+  /*
    *  Interrogate initial props for current Route 'params' (if the component has mounted, the route has changed)
    */
   componentDidMount () { // console.log('(Zashiki)componentDidMount()')
@@ -41,7 +39,7 @@ export default class Zashiki extends Component {
       }
     } = this.props
 
-    /**
+    /*
      *  Dispatch and notify the Node app
      */
     onChange(resource(alpha, omega))
@@ -63,12 +61,12 @@ export default class Zashiki extends Component {
       }
     } = props
 
-    /**
+    /*
      *  Create const 'now' from params 'alpha' and 'omega' (as an Immutable 'Map')
      */
     const now = Immutable.Map(resource(alpha, omega))
 
-    /**
+    /*
      *  Assign state 'now' to const 'was' (it's an Immutable 'Map')
      */
     const {
@@ -80,12 +78,12 @@ export default class Zashiki extends Component {
         onChange
       } = props
 
-      /**
+      /*
        *  Dispatch and notify the Node app
        */
       onChange(resource(alpha, omega))
 
-      /**
+      /*
        *  Changed state
        */
       return {
@@ -94,7 +92,7 @@ export default class Zashiki extends Component {
       }
     }
 
-    /**
+    /*
      *  Unchanged state
      */
     return state

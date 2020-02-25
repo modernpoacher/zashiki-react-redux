@@ -33,31 +33,31 @@ const STATE = {
 
 const ACTION = {}
 
-/**
+/*
  *  Get all from state
  *  Set `history` `route` from action
  */
 export const change = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
 
-/**
+/*
  *  Get all from state
  *  Set `history` `route` from action
  */
 export const submit = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
 
-/**
+/*
  *  Get all from state
  *  Set `history` `route` from action
  */
 export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ status, ...state, ...action })
 
-/**
+/*
  *  Get all from state
  *  Set `history` `route` from action
  */
 export const store = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
 
-/**
+/*
  *  Get all from state
  *  Add all from action
  */

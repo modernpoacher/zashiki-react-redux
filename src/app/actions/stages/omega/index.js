@@ -1,4 +1,4 @@
-/**
+/*
  *  Zashiki/Omega Actions
  */
 import {
@@ -14,7 +14,7 @@ const {
   QUERY
 } = Pantograph.OMEGA
 
-/**
+/*
  *  Action Types
  */
 export {
@@ -38,7 +38,7 @@ export const FETCH_REJECTED = FETCH.concat('_REJECTED')
 export const STORE_REJECTED = STORE.concat('_REJECTED')
 export const QUERY_REJECTED = QUERY.concat('_REJECTED')
 
-/**
+/*
  *  Action Creators
  */
 export function omegaRoute (redirect, history) {

@@ -16,7 +16,7 @@ export const getErrorProps = ({ exception }) => exception
 export const getDebarkProps = ({ definition, onSubmit }) => ({ definition, onSubmit })
 
 export default class Debark extends Component {
-  /**
+  /*
    *  List routes
    */
   componentDidMount () { // console.log('(DebarkStage)componentDidMount()') // eslint-disable-line
@@ -24,7 +24,7 @@ export default class Debark extends Component {
       onDebark
     } = this.props
 
-    /**
+    /*
      *  Dispatch and notify the Node app
      */
     onDebark()

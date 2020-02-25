@@ -16,7 +16,7 @@ export const getErrorProps = ({ exception }) => exception
 export const getEmbarkProps = ({ definition, onSubmit }) => ({ definition, onSubmit })
 
 export default class Embark extends Component {
-  /**
+  /*
    *  List routes
    */
   componentDidMount () { // console.log('(EmbarkStage)componentDidMount()') // eslint-disable-line
@@ -24,7 +24,7 @@ export default class Embark extends Component {
       onEmbark
     } = this.props
 
-    /**
+    /*
      *  Dispatch and notify the Node app
      */
     onEmbark()

@@ -1,4 +1,4 @@
-/**
+/*
  *  DebarkStage Actions
  */
 import {
@@ -12,7 +12,7 @@ const {
   STORE
 } = Pantograph.DEBARK
 
-/**
+/*
  *  Action Types
  */
 export {
@@ -30,7 +30,7 @@ export const SUBMIT_REJECTED = SUBMIT.concat('_REJECTED')
 export const FETCH_REJECTED = FETCH.concat('_REJECTED')
 export const STORE_REJECTED = STORE.concat('_REJECTED')
 
-/**
+/*
  *  Action Creators
  */
 export function debarkRoute (redirect, history) {

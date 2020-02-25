@@ -1,8 +1,8 @@
-/**
+/*
  *  Zashiki Actions
  */
 
-/**
+/*
  *  Action Types
  */
 export const ERROR = 'ZASHIKI_ERROR'
@@ -28,7 +28,7 @@ export const FETCH_REJECTED = FETCH.concat('_REJECTED')
 export const STORE_REJECTED = STORE.concat('_REJECTED')
 export const QUERY_REJECTED = QUERY.concat('_REJECTED')
 
-/**
+/*
  *  Action Creators
  */
 export function changeRoute (route, history) {

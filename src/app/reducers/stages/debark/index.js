@@ -28,25 +28,25 @@ const STATE = {
 
 const ACTION = {}
 
-/**
+/*
  *  Get all from state
  *  Add `redirect`
  */
 export const route = ({ status = PENDING, ...state } = {}, { history, redirect = {} } = {}) => ({ status, ...state, history, redirect })
 
-/**
+/*
  *  Get all from state
  *  Set `history` `route` from action
  */
 export const submit = ({ status = PENDING, ...state } = {}, { history, debark = {} } = {}) => ({ status, ...state, history, ...debark })
 
-/**
+/*
  *  Get all from state
  *  Set all from action
  */
 export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ status, ...state, ...action })
 
-/**
+/*
  *  Get `resource` `response` from state
  *  Set `history` `route` from action
  */

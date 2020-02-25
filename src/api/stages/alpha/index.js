@@ -1,4 +1,4 @@
-/**
+/*
  *  Zashiki/Alpha API
  */
 import api from '@modernpoacher/zashiki-react-redux/api'

@@ -42,43 +42,43 @@ const STATE = {
 
 const ACTION = {}
 
-/**
+/*
  *  Get all from state
  *  Add `redirect`
  */
 export const route = ({ status = PENDING, ...state } = {}, { history, redirect = {} } = {}) => ({ status, ...state, history, redirect })
 
-/**
+/*
  *  Get all from state
  *  Set `history` `route` from action
  */
 export const change = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
 
-/**
+/*
  *  Get all from state
  *  Set `history` `route` from action
  */
 export const submit = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
 
-/**
+/*
  *  Get all from state
  *  Set all from action
  */
 export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ status, ...state, ...action })
 
-/**
+/*
  *  Get `resource` `response` from state
  *  Set `history` `route` from action
  */
 export const store = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
 
-/**
+/*
  *  Get all from state
  *  Add `redirect`
  */
 export const query = ({ status = PENDING, ...state } = {}, action = {}) => ({ status, ...state, ...action })
 
-/**
+/*
  *  Not `redirect` from state
  */
 export const changeFulfilled = ({ status = PENDING, omega, definitions, gears, resource, state } = {}, { response = {} } = {}) => ({

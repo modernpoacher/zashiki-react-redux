@@ -7,7 +7,7 @@ import Immutable from 'immutable'
  */
 let SETTINGS = Immutable.Map()
 
-const configure = (request) => {
+function configure (request) {
   /*
    *  Destructure only the necessary fields
    */
