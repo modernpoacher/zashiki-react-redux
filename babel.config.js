@@ -10,7 +10,7 @@ module.exports = {
             'last 2 versions'
           ]
         },
-        useBuiltIns: 'usage',
+        useBuiltIns: 'entry',
         corejs: 3
       }
     ],
