@@ -19,6 +19,14 @@
   "rules": {
     "react/display-name": 0
   },
+  "overrides": [
+    {
+      "files": ["src/app/transformers/stages/index.js"],
+      "rules": {
+        "import/export": "off"
+      }
+    }
+  ],
   "settings": {
     "react": {
       "version": "detect"
