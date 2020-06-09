@@ -58,7 +58,7 @@ OmegaStage.propTypes = {
     index: PropTypes.number,
     count: PropTypes.number
   }),
-  resource: PropTypes.object.isRequired,
+  resource: PropTypes.object, // .isRequired,
   definition: PropTypes.object.isRequired,
   gears: PropTypes.shape({
     forward: PropTypes.object,
