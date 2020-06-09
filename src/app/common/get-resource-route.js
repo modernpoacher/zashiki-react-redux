@@ -3,7 +3,7 @@ import debug from 'debug'
 import Rails from 'shinkansen-engine/lib/components/rails'
 import Signals from 'shinkansen-engine/lib/components/signals'
 
-const log = debug('zashiki:app:common:get-pathname')
+const log = debug('zashiki:app:common:get-resource-route')
 
 const {
   OMEGA_PATTERN,
@@ -13,10 +13,10 @@ const {
   ALPHA_PATTERN
 } = Signals
 
-export default function getPathname (resource = {}) {
-  log('getPathname')
+export default function getResourceRoute (resource = {}) {
+  log('getResourceRoute')
 
-  if (Rails.go(resource, OMEGA_PATTERN)) { // omega cannot appear on its own
+  if (Rails.go(resource, OMEGA_PATTERN)) {
     return Rails.to(resource, OMEGA_PATTERN)
   } else {
     if (Rails.go(resource, DEBARK_PATTERN)) {
@@ -28,7 +28,7 @@ export default function getPathname (resource = {}) {
         if (Rails.go(resource, EMBARK_PATTERN)) {
           return Rails.to(resource, EMBARK_PATTERN)
         } else {
-          if (Rails.go(resource, ALPHA_PATTERN)) { // alpha can appear on its own
+          if (Rails.go(resource, ALPHA_PATTERN)) {
             return Rails.to(resource, ALPHA_PATTERN)
           }
         }
@@ -36,5 +36,5 @@ export default function getPathname (resource = {}) {
     }
   }
 
-  return null
+  throw new Error('Incompatible with Zashiki')
 }

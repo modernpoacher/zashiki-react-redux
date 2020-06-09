@@ -1,6 +1,6 @@
 import Rails from 'shinkansen-engine/lib/components/rails'
 
-import getPathname from '@modernpoacher/zashiki-react-redux/app/common/get-pathname'
+import getResourceRoute from '@modernpoacher/zashiki-react-redux/app/common/get-resource-route'
 
 jest.mock('shinkansen-engine/lib/components/rails', () => ({
   go: jest.fn(),
@@ -18,14 +18,14 @@ jest.mock('shinkansen-engine/lib/components/signals', () => ({
   DEBARK_PATTERN: 'MOCK DEBARK PATTERN'
 }))
 
-describe('@modernpoacher/zashiki-react-redux/app/common/get-pathname', () => {
-  describe('`getPathname`', () => {
+describe('@modernpoacher/zashiki-react-redux/app/common/get-resource-route', () => {
+  describe('`getResourceRoute`', () => {
     it('is defined', () => {
-      expect(getPathname).toBeDefined()
+      expect(getResourceRoute).toBeDefined()
     })
   })
 
-  describe('`getPathname()`', () => {
+  describe('`getResourceRoute()`', () => {
     beforeEach(() => {
       Rails.go.mockImplementation((route, pattern) => {
         switch (pattern) {
@@ -63,7 +63,7 @@ describe('@modernpoacher/zashiki-react-redux/app/common/get-pathname', () => {
         beforeEach(() => {
           Rails.to.mockReturnValue('MOCK ALPHA ROUTE')
 
-          returnValue = getPathname({ 'MOCK ALPHA': 'MOCK ALPHA VALUE' })
+          returnValue = getResourceRoute({ 'MOCK ALPHA': 'MOCK ALPHA VALUE' })
         })
 
         it('invokes `Rails.go`', () => {
@@ -88,7 +88,7 @@ describe('@modernpoacher/zashiki-react-redux/app/common/get-pathname', () => {
         beforeEach(() => {
           Rails.to.mockReturnValue('MOCK OMEGA ROUTE')
 
-          returnValue = getPathname({ 'MOCK ALPHA': 'MOCK ALPHA VALUE', 'MOCK OMEGA': 'MOCK OMEGA VALUE' })
+          returnValue = getResourceRoute({ 'MOCK ALPHA': 'MOCK ALPHA VALUE', 'MOCK OMEGA': 'MOCK OMEGA VALUE' })
         })
 
         it('invokes `Rails.go`', () => {
@@ -113,7 +113,7 @@ describe('@modernpoacher/zashiki-react-redux/app/common/get-pathname', () => {
         beforeEach(() => {
           Rails.to.mockReturnValue('MOCK EMBARK ROUTE')
 
-          returnValue = getPathname({ 'MOCK EMBARK': 'MOCK EMBARK VALUE' })
+          returnValue = getResourceRoute({ 'MOCK EMBARK': 'MOCK EMBARK VALUE' })
         })
 
         it('invokes `Rails.go`', () => {
@@ -138,7 +138,7 @@ describe('@modernpoacher/zashiki-react-redux/app/common/get-pathname', () => {
         beforeEach(() => {
           Rails.to.mockReturnValue('MOCK DEBARK ROUTE')
 
-          returnValue = getPathname({ 'MOCK DEBARK': 'MOCK DEBARK VALUE' })
+          returnValue = getResourceRoute({ 'MOCK DEBARK': 'MOCK DEBARK VALUE' })
         })
 
         it('invokes `Rails.go`', () => {
@@ -159,25 +159,9 @@ describe('@modernpoacher/zashiki-react-redux/app/common/get-pathname', () => {
     })
 
     describe('Without parameters', () => {
-      let returnValue
-
-      beforeEach(() => {
-        returnValue = getPathname()
-      })
-
-      it('invokes `Rails.go`', () => {
-        expect(Rails.go)
-          .toBeCalled()
-      })
-
-      it('does not invoke `Rails.to`', () => {
-        expect(Rails.to)
-          .not.toBeCalled()
-      })
-
-      it('returns undefined', () => {
-        expect(returnValue)
-          .toBeNull()
+      it('throws', () => {
+        expect(() => getResourceRoute())
+          .toThrow()
       })
     })
   })
