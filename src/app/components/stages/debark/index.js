@@ -6,15 +6,18 @@ import {
   withRouter
 } from 'react-router'
 
-import {
-  Signals
-} from 'shinkansen-signals'
+import Signals from 'shinkansen-engine/lib/components/signals'
 
 import {
-  transform
+  fromDocumentToZashiki,
+  fromZashikiToDocument
 } from '@modernpoacher/zashiki-react-redux/app/transformers/stages/debark'
 
-import { fetch, submit } from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
+import {
+  fetch,
+  change,
+  submit
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
 
 import DebarkStage from './component'
 
@@ -22,13 +25,16 @@ const {
   DEBARK
 } = Signals
 
-const mapStateToProps = ({ [DEBARK]: debark = {} }) => ({ ...transform(debark) })
+const mapStateToProps = ({ [DEBARK]: debark = {} }) => ({ ...fromDocumentToZashiki(debark), [DEBARK]: debark })
 
 const mapDispatchToProps = (dispatch) => ({ dispatch })
 
-const mergeProps = (stateProps, { dispatch }, { history, ...ownProps }) => ({
+const mergeProps = ({ [DEBARK]: { definition, response }, ...stateProps }, { dispatch }, { history, ...ownProps }) => ({
   ...stateProps,
-  onSubmit: (response) => {
+  onChange: (key, value) => {
+    dispatch(change(fromZashikiToDocument({ definition, response: { [key]: value } }), history))
+  },
+  onSubmit: () => {
     dispatch(submit(response, history))
   },
   onDebark: () => {

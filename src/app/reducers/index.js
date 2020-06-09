@@ -2,9 +2,7 @@ import {
   combineReducers
 } from 'redux'
 
-import {
-  Signals
-} from 'shinkansen-signals'
+import Signals from 'shinkansen-engine/lib/components/signals'
 
 import debark from './stages/debark'
 import embark from './stages/embark'

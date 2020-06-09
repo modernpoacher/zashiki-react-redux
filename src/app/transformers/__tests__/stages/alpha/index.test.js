@@ -1,7 +1,10 @@
 import { transform } from '@modernpoacher/zashiki-react-redux/app/transformers/stages/alpha'
 import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
-jest.mock('shinkansen-signals', () => ({ Signals: { FAILURE: 'MOCK FAILURE' } }))
+jest.mock('shinkansen-engine/lib/components/signals', () => ({
+  FAILURE: 'MOCK FAILURE'
+}))
+
 jest.mock('@modernpoacher/zashiki-react-redux/app/transformers', () => ({ transformFailure: jest.fn() }))
 
 const DEFAULT = {

@@ -22,6 +22,7 @@ import {
 
 import {
   watchEmbarkRoute,
+  watchEmbarkChange,
   watchEmbarkSubmit,
   watchEmbarkFetch,
   watchEmbarkStore
@@ -29,6 +30,7 @@ import {
 
 import {
   watchDebarkRoute,
+  watchDebarkChange,
   watchDebarkSubmit,
   watchDebarkFetch,
   watchDebarkStore
@@ -59,14 +61,16 @@ export default function * rootSaga () {
     watchOmegaQuery(),
 
     watchEmbarkRoute(),
+    watchEmbarkChange(),
     watchEmbarkSubmit(),
     watchEmbarkFetch(),
     watchEmbarkStore(),
 
     watchDebarkRoute(),
+    watchDebarkChange(),
+    watchDebarkSubmit(),
     watchDebarkFetch(),
     watchDebarkStore(),
-    watchDebarkSubmit(),
 
     watchZashikiChange(),
     watchZashikiSubmit(),

@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import {
-  Signals
-} from 'shinkansen-signals'
+import Signals from 'shinkansen-engine/lib/components/signals'
 
-import {
-  Gears
-} from 'shinkansen-gears'
+import Gears from 'shinkansen-engine/lib/components/gears'
 
 import Count from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/count'
 import Alpha from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/alpha'
@@ -23,6 +19,7 @@ export default class AlphaStage extends Component {
 
     if (count || index) {
       const {
+        onChange,
         onSubmit,
         definitions,
         gears: {
@@ -37,6 +34,7 @@ export default class AlphaStage extends Component {
             index={index}
             count={count} />
           <Alpha
+            onChange={onChange}
             onSubmit={onSubmit}
             definitions={definitions} />
           <Gears
@@ -51,6 +49,7 @@ export default class AlphaStage extends Component {
 }
 
 AlphaStage.propTypes = {
+  onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   state: PropTypes.shape({
     index: PropTypes.number,

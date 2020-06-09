@@ -5,13 +5,10 @@ import {
   Route
 } from 'react-router-dom'
 
-import {
-  Signals
-} from 'shinkansen-signals'
+import Signals from 'shinkansen-engine/lib/components/signals'
 
-import {
-  Rails
-} from 'shinkansen-rails'
+import getEmbarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-embark-route'
+import getDebarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-debark-route'
 
 import IndexPage from './index-page'
 
@@ -22,24 +19,15 @@ import AlphaStagePage from './stages/alpha'
 import OmegaStagePage from './stages/omega'
 
 const {
-  EMBARK,
-  DEBARK,
-  EMBARK_STAGE,
-  DEBARK_STAGE,
   ALPHA_PATTERN,
-  OMEGA_PATTERN,
-  EMBARK_PATTERN,
-  DEBARK_PATTERN
+  OMEGA_PATTERN
 } = Signals
-
-const EMBARK_ROUTE = Rails.to({ [EMBARK]: EMBARK_STAGE }, EMBARK_PATTERN)
-const DEBARK_ROUTE = Rails.to({ [DEBARK]: DEBARK_STAGE }, DEBARK_PATTERN)
 
 export default (
   <Switch>
     <Route exact path='/' component={IndexPage} />
-    <Route exact path={EMBARK_ROUTE} component={EmbarkStagePage} />
-    <Route exact path={DEBARK_ROUTE} component={DebarkStagePage} />
+    <Route exact path={getEmbarkRoute()} component={EmbarkStagePage} />
+    <Route exact path={getDebarkRoute()} component={DebarkStagePage} />
     <Route exact path={ALPHA_PATTERN} component={AlphaStagePage} />
     <Route exact path={OMEGA_PATTERN} component={OmegaStagePage} />
   </Switch>

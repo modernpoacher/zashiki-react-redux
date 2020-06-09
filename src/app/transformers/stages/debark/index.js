@@ -1,17 +1,21 @@
 import {
-  Signals
-} from 'shinkansen-signals'
+  toZashiki,
+  fromDocumentToHash,
+  fromHashToDocument
+} from 'shinkansen-engine/lib/transformers/transmission'
+
+import Signals from 'shinkansen-engine/lib/components/signals'
 
 import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
 const transformDebark = (status, {
-  definition: schema,
-  response: formData = {}
+  definition,
+  response
 }) => ({
-  definition: {
-    ...(schema ? { schema, formData } : {})
-  },
+  definition: toZashiki(definition, response !== undefined ? fromDocumentToHash(response, definition) : undefined),
   status
 })
 
-export const transform = ({ status, ...debark }) => (status === Signals.FAILURE) ? transformFailure(status, debark) : transformDebark(status, debark)
+export const fromDocumentToZashiki = ({ status, ...embark } = {}) => (status === Signals.FAILURE) ? transformFailure(status, embark) : transformDebark(status, embark)
+
+export const fromZashikiToDocument = ({ definition = {}, response } = {}) => fromHashToDocument(definition, response)

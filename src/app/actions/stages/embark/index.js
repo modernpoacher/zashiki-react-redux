@@ -6,10 +6,11 @@ import {
 } from 'shinkansen-pantograph'
 
 const {
-  ROUTE,
-  SUBMIT,
-  FETCH,
-  STORE
+  ROUTE = 'EMBARK_ROUTE',
+  CHANGE = 'EMBARK_CHANGE',
+  SUBMIT = 'EMBARK_SUBMIT',
+  FETCH = 'EMBARK_ROUTE',
+  STORE = 'EMBARK_ROUTE'
 } = Pantograph.EMBARK
 
 /*
@@ -17,15 +18,18 @@ const {
  */
 export {
   ROUTE,
+  CHANGE,
   SUBMIT,
   FETCH,
   STORE
 }
 
+export const CHANGE_FULFILLED = SUBMIT.concat('_FULFILLED')
 export const SUBMIT_FULFILLED = SUBMIT.concat('_FULFILLED')
 export const FETCH_FULFILLED = FETCH.concat('_FULFILLED')
 export const STORE_FULFILLED = STORE.concat('_FULFILLED')
 
+export const CHANGE_REJECTED = SUBMIT.concat('_REJECTED')
 export const SUBMIT_REJECTED = SUBMIT.concat('_REJECTED')
 export const FETCH_REJECTED = FETCH.concat('_REJECTED')
 export const STORE_REJECTED = STORE.concat('_REJECTED')
@@ -38,6 +42,28 @@ export function embarkRoute (redirect, history) {
     type: ROUTE,
     redirect,
     history
+  }
+}
+
+export function changeRoute (embark, history) {
+  return {
+    type: CHANGE,
+    embark,
+    history
+  }
+}
+
+export function changeRouteFulfilled (response) {
+  return {
+    type: CHANGE_FULFILLED,
+    response
+  }
+}
+
+export function changeRouteRejected (error) {
+  return {
+    type: CHANGE_REJECTED,
+    error
   }
 }
 
@@ -105,6 +131,8 @@ export function storeRouteRejected (error) {
     error
   }
 }
+
+export const change = (embark, history) => changeRoute(embark, history)
 
 export const submit = (embark, history) => submitRoute(embark, history)
 

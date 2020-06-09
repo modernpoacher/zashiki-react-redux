@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import {
-  Signals
-} from 'shinkansen-signals'
+import Signals from 'shinkansen-engine/lib/components/signals'
 
 import Zashiki from '@modernpoacher/zashiki-react-redux/app/components/zashiki/component'
 

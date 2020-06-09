@@ -3,7 +3,9 @@ import {
   transformFailure
 } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
-jest.mock('shinkansen-signals', () => ({ Signals: { FAILURE: 'MOCK FAILURE' } }))
+jest.mock('shinkansen-engine/lib/components/signals', () => ({
+  FAILURE: 'MOCK FAILURE'
+}))
 
 const DEFAULT_ERROR = {
   name: 'Application Error'

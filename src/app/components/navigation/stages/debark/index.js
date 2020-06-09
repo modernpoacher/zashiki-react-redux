@@ -3,13 +3,9 @@ import {
   Link
 } from 'react-router-dom'
 
-import {
-  Rails
-} from 'shinkansen-rails'
+import Rails from 'shinkansen-engine/lib/components/rails'
 
-import {
-  Signals
-} from 'shinkansen-signals'
+import Signals from 'shinkansen-engine/lib/components/signals'
 
 const {
   DEBARK,

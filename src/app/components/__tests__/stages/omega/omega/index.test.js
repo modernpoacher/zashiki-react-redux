@@ -9,7 +9,7 @@ Enzyme.configure({ adapter: new Adapter() })
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/omega', () => {
   it('renders', () => {
     const component = (
-      <Omega definition={{}} resource={{}} onSubmit={jest.fn()} />
+      <Omega definition={{}} resource={{}} onChange={jest.fn()} onSubmit={jest.fn()} />
     )
 
     expect(mount(component))

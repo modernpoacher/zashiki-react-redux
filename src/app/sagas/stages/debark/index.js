@@ -4,13 +4,15 @@ import {
   takeLatest
 } from 'redux-saga/effects'
 
-import {
-  Rails
-} from 'shinkansen-rails'
+import Rails from 'shinkansen-engine/lib/components/rails'
 
 import {
   ROUTE,
   debarkRoute,
+
+  CHANGE,
+  changeRouteFulfilled,
+  changeRouteRejected,
 
   SUBMIT,
   submitRouteFulfilled,
@@ -42,6 +44,15 @@ function * debarkRouteSaga ({ redirect, history }) {
     } = history
 
     if (pathname !== currentPathname) history.push(pathname)
+  }
+}
+
+function * changeRouteSaga ({ embark: { statement }, history }) {
+  try {
+    yield storeRouteSaga({ response: { statement } })
+    yield put(changeRouteFulfilled({ statement }))
+  } catch (e) {
+    yield put(changeRouteRejected(transformError(e)))
   }
 }
 
@@ -77,6 +88,10 @@ function * storeRouteSaga (route) {
 
 export function * watchDebarkRoute () {
   yield takeLatest(ROUTE, debarkRouteSaga)
+}
+
+export function * watchDebarkChange () {
+  yield takeLatest(CHANGE, changeRouteSaga)
 }
 
 export function * watchDebarkSubmit () {

@@ -1,26 +1,20 @@
-import {
-  Rails
-} from 'shinkansen-rails'
+import Rails from 'shinkansen-engine/lib/components/rails'
 
 import getPathname from '@modernpoacher/zashiki-react-redux/app/common/get-pathname'
 
-jest.mock('shinkansen-rails', () => ({
-  Rails: {
-    to: jest.fn()
-  }
+jest.mock('shinkansen-engine/lib/components/rails', () => ({
+  to: jest.fn()
 }))
 
-jest.mock('shinkansen-signals', () => ({
-  Signals: {
-    ALPHA: 'MOCK ALPHA',
-    OMEGA: 'MOCK OMEGA',
-    EMBARK: 'MOCK EMBARK',
-    DEBARK: 'MOCK DEBARK',
-    ALPHA_PATTERN: 'MOCK ALPHA PATTERN',
-    OMEGA_PATTERN: 'MOCK OMEGA PATTERN',
-    EMBARK_PATTERN: 'MOCK EMBARK PATTERN',
-    DEBARK_PATTERN: 'MOCK DEBARK PATTERN'
-  }
+jest.mock('shinkansen-engine/lib/components/signals', () => ({
+  ALPHA: 'MOCK ALPHA',
+  OMEGA: 'MOCK OMEGA',
+  EMBARK: 'MOCK EMBARK',
+  DEBARK: 'MOCK DEBARK',
+  ALPHA_PATTERN: 'MOCK ALPHA PATTERN',
+  OMEGA_PATTERN: 'MOCK OMEGA PATTERN',
+  EMBARK_PATTERN: 'MOCK EMBARK PATTERN',
+  DEBARK_PATTERN: 'MOCK DEBARK PATTERN'
 }))
 
 describe('@modernpoacher/zashiki-react-redux/app/common/get-pathname', () => {

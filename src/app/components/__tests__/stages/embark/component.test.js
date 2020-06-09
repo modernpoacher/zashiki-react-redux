@@ -2,23 +2,19 @@ import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
-import {
-  Signals
-} from 'shinkansen-signals'
+import Signals from 'shinkansen-engine/lib/components/signals'
 
 import Embark, { getErrorProps, getEmbarkProps } from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/component'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-jest.mock('shinkansen-signals', () => ({
-  Signals: {
-    PENDING: 'MOCK PENDING',
-    FAILURE: 'MOCK FAILURE',
-    SUCCESS: 'MOCK SUCCESS',
-    IN_PROGRESS: 'MOCK IN PROGRESS',
-    NO_DECISION: 'MOCK NO DECISION',
-    COMPLETE: 'MOCK COMPLETE'
-  }
+jest.mock('shinkansen-engine/lib/components/signals', () => ({
+  PENDING: 'MOCK PENDING',
+  FAILURE: 'MOCK FAILURE',
+  SUCCESS: 'MOCK SUCCESS',
+  IN_PROGRESS: 'MOCK IN PROGRESS',
+  NO_DECISION: 'MOCK NO DECISION',
+  COMPLETE: 'MOCK COMPLETE'
 }))
 
 jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/complete')
@@ -29,7 +25,10 @@ jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/statu
 jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/pending')
 
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/component', () => {
-  const MOCK_DEFINITION = {}
+  const MOCK_DEFINITION = {
+    meta: {},
+    elements: {}
+  }
   const MOCK_RESOURCE = {}
   const MOCK_ONSUBMIT = jest.fn()
   const MOCK_ONEMBARK = jest.fn()

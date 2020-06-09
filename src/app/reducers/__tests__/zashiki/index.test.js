@@ -18,11 +18,9 @@ import zashikiReducer, {
   queryRejected
 } from '@modernpoacher/zashiki-react-redux/app/reducers/zashiki'
 
-jest.mock('shinkansen-signals', () => ({
-  Signals: {
-    PENDING: 'MOCK PENDING',
-    FAILURE: 'MOCK FAILURE'
-  }
+jest.mock('shinkansen-engine/lib/components/signals', () => ({
+  PENDING: 'MOCK PENDING',
+  FAILURE: 'MOCK FAILURE'
 }))
 
 jest.mock('@modernpoacher/zashiki-react-redux/app/actions/zashiki', () => ({

@@ -13,23 +13,24 @@ import embarkReducer, {
   storeRejected
 } from '@modernpoacher/zashiki-react-redux/app/reducers/stages/embark'
 
-jest.mock('shinkansen-signals', () => ({
-  Signals: {
-    PENDING: 'MOCK PENDING',
-    FAILURE: 'MOCK FAILURE'
-  }
+jest.mock('shinkansen-engine/lib/components/signals', () => ({
+  PENDING: 'MOCK PENDING',
+  FAILURE: 'MOCK FAILURE'
 }))
 
 jest.mock('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => ({
   ROUTE: 'MOCK ROUTE',
+  CHANGE: 'MOCK CHANGE',
   SUBMIT: 'MOCK SUBMIT',
   FETCH: 'MOCK FETCH',
   STORE: 'MOCK STORE',
 
+  CHANGE_FULFILLED: 'MOCK CHANGE FULFILLED',
   SUBMIT_FULFILLED: 'MOCK SUBMIT FULFILLED',
   FETCH_FULFILLED: 'MOCK FETCH FULFILLED',
   STORE_FULFILLED: 'MOCK STORE FULFILLED',
 
+  CHANGE_REJECTED: 'MOCK CHANGE REJECTED',
   SUBMIT_REJECTED: 'MOCK SUBMIT REJECTED',
   FETCH_REJECTED: 'MOCK FETCH REJECTED',
   STORE_REJECTED: 'MOCK STORE REJECTED'

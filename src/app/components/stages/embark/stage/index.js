@@ -1,21 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import {
-  Motor
-} from 'shinkansen-motor'
+import Pinion from 'shinkansen-engine/lib/components/pinion'
 
-const EmbarkStage = ({ definition, onSubmit }) => (
+import getEmbarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-embark-route'
+
+const EmbarkStage = ({ onChange, onSubmit, definition }) => (
   <div className='embark'>
-    <Motor
-      onSubmit={onSubmit}
-      definition={definition} />
+    <form method='POST' action={getEmbarkRoute()} onSubmit={(event) => {
+      event.preventDefault()
+
+      onSubmit()
+    }}>
+      <Pinion
+        onChange={onChange}
+        pinion={definition}
+      />
+      <button type='submit'>
+        Continue
+      </button>
+    </form>
   </div>
 )
 
 EmbarkStage.propTypes = {
-  definition: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  definition: PropTypes.object.isRequired
 }
 
 export default EmbarkStage

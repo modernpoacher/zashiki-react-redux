@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import {
-  Signals
-} from 'shinkansen-signals'
+import Signals from 'shinkansen-engine/lib/components/signals'
 
 import Complete from './status/complete'
 import Failure from './status/failure'
@@ -13,7 +11,7 @@ import NoDecision from './status/no-decision'
 import Pending from './status/pending'
 
 export const getErrorProps = ({ exception }) => exception
-export const getEmbarkProps = ({ definition, onSubmit }) => ({ definition, onSubmit })
+export const getEmbarkProps = ({ definition, onChange, onSubmit }) => ({ definition, onChange, onSubmit })
 
 export default class Embark extends Component {
   /*
@@ -27,7 +25,7 @@ export default class Embark extends Component {
     /*
      *  Dispatch and notify the Node app
      */
-    onEmbark()
+    return onEmbark()
   }
 
   render () {
@@ -37,30 +35,36 @@ export default class Embark extends Component {
     } = this.props
 
     switch (status) {
-      case Signals.FAILURE: return (
-        <Failure
-          {...getErrorProps(embark)} />
-      )
-      case Signals.SUCCESS: return (
-        <Success
-          {...getEmbarkProps(embark)} />
-      )
-      case Signals.IN_PROGRESS: return (
-        <InProgress
-          {...getEmbarkProps(embark)} />
-      )
-      case Signals.NO_DECISION: return (
-        <NoDecision
-          {...getEmbarkProps(embark)} />
-      )
-      case Signals.COMPLETE: return (
-        <Complete
-          {...getEmbarkProps(embark)} />
-      )
-      default:return (
-        <Pending
-          {...getEmbarkProps(embark)} />
-      )
+      case Signals.FAILURE:
+        return (
+          <Failure
+            {...getErrorProps(embark)} />
+        )
+      case Signals.SUCCESS:
+        return (
+          <Success
+            {...getEmbarkProps(embark)} />
+        )
+      case Signals.IN_PROGRESS:
+        return (
+          <InProgress
+            {...getEmbarkProps(embark)} />
+        )
+      case Signals.NO_DECISION:
+        return (
+          <NoDecision
+            {...getEmbarkProps(embark)} />
+        )
+      case Signals.COMPLETE:
+        return (
+          <Complete
+            {...getEmbarkProps(embark)} />
+        )
+      default:
+        return (
+          <Pending
+            {...getEmbarkProps(embark)} />
+        )
     }
   }
 }
@@ -69,12 +73,14 @@ Embark.propTypes = PropTypes.oneOfType([
   PropTypes.shape({
     status: PropTypes.number.isRequired,
     definition: PropTypes.object.isRequired,
+    onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onEmbark: PropTypes.func.isRequired
   }),
   PropTypes.shape({
     status: PropTypes.number.isRequired,
     exception: PropTypes.object.isRequired,
+    onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onEmbark: PropTypes.func.isRequired
   })

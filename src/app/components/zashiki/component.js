@@ -1,6 +1,9 @@
 import { Component } from 'react'
 import PropTypes from 'prop-types'
 import Immutable from 'immutable'
+import debug from 'debug'
+
+const log = debug('zashiki-react-redux:app:components:zashiki')
 
 export const resource = (alpha, omega) => ({ ...(alpha ? { alpha, ...(omega ? { omega } : {}) } : {}) })
 
@@ -28,7 +31,9 @@ export default class Zashiki extends Component {
   /*
    *  Interrogate initial props for current Route 'params' (if the component has mounted, the route has changed)
    */
-  componentDidMount () { // console.log('(Zashiki)componentDidMount()')
+  componentDidMount () {
+    log('componentDidMount()')
+
     const {
       onChange,
       match: {
@@ -42,7 +47,7 @@ export default class Zashiki extends Component {
     /*
      *  Dispatch and notify the Node app
      */
-    onChange(resource(alpha, omega))
+    return onChange(resource(alpha, omega))
   }
 
   /**
@@ -51,7 +56,9 @@ export default class Zashiki extends Component {
    *  @param {Object} props   Latest props
    *  @param {Object} state   Current state
    */
-  static getDerivedStateFromProps (props, state) { // console.log('[Zashiki]getDerivedStateFromProps()', props, state)
+  static getDerivedStateFromProps (props, state) {
+    log('getDerivedStateFromProps()')
+
     const {
       match: {
         params: {

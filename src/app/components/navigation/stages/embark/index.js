@@ -3,24 +3,10 @@ import {
   Link
 } from 'react-router-dom'
 
-import {
-  Rails
-} from 'shinkansen-rails'
-
-import {
-  Signals
-} from 'shinkansen-signals'
-
-const {
-  EMBARK,
-  EMBARK_STAGE,
-  EMBARK_PATTERN
-} = Signals
-
-const EMBARK_ROUTE = Rails.to({ [EMBARK]: EMBARK_STAGE }, EMBARK_PATTERN)
+import getEmbarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-embark-route'
 
 export default () => (
-  <Link to={EMBARK_ROUTE}>
+  <Link to={getEmbarkRoute()}>
     Embark Stage
   </Link>
 )

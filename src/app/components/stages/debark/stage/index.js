@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const DebarkStage = ({ definition, onSubmit }) => (
+const DebarkStage = ({ onChange, onSubmit, definition }) => (
   <div className='debark'>
     <h2>
       Complete
@@ -10,8 +10,9 @@ const DebarkStage = ({ definition, onSubmit }) => (
 )
 
 DebarkStage.propTypes = {
-  definition: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  definition: PropTypes.object.isRequired
 }
 
 export default DebarkStage

@@ -9,7 +9,7 @@ Enzyme.configure({ adapter: new Adapter() })
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/stage', () => {
   it('renders', () => {
     const component = (
-      <Stage definition={{}} onSubmit={jest.fn()} />
+      <Stage definition={{}} onChange={jest.fn()} onSubmit={jest.fn()} />
     )
 
     expect(shallow(component))

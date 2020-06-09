@@ -6,9 +6,7 @@ import {
   withRouter
 } from 'react-router'
 
-import {
-  Signals
-} from 'shinkansen-signals'
+import Signals from 'shinkansen-engine/lib/components/signals'
 
 import {
   transform
@@ -28,11 +26,11 @@ const mapDispatchToProps = (dispatch) => ({ dispatch })
 
 const mergeProps = (stateProps, { dispatch }, { history, ...ownProps }) => ({
   ...stateProps,
-  onSubmit: (resource, response) => {
-    dispatch(submit(resource, response, history))
-  },
   onChange: (resource) => {
     dispatch(change(resource, history))
+  },
+  onSubmit: (resource, response) => {
+    dispatch(submit(resource, response, history))
   },
   history,
   ...ownProps

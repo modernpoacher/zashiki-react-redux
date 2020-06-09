@@ -1,6 +1,4 @@
-import {
-  Signals
-} from 'shinkansen-signals'
+import Signals from 'shinkansen-engine/lib/components/signals'
 
 import {
   CHANGE,

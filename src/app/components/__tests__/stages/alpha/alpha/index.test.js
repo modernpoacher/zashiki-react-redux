@@ -9,7 +9,7 @@ Enzyme.configure({ adapter: new Adapter() })
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/alpha', () => {
   it('renders', () => {
     const component = (
-      <Alpha definitions={[{ definition: {}, resource: {} }]} onSubmit={jest.fn()} />
+      <Alpha definitions={[{ definition: {}, resource: {} }]} onChange={jest.fn()} onSubmit={jest.fn()} />
     )
 
     expect(mount(component))

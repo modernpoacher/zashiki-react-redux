@@ -1,17 +1,18 @@
-import {
-  Signals
-} from 'shinkansen-signals'
+import Signals from 'shinkansen-engine/lib/components/signals'
 
 import {
   ROUTE,
+  CHANGE,
   SUBMIT,
   FETCH,
   STORE,
 
+  CHANGE_FULFILLED,
   SUBMIT_FULFILLED,
   FETCH_FULFILLED,
   STORE_FULFILLED,
 
+  CHANGE_REJECTED,
   SUBMIT_REJECTED,
   FETCH_REJECTED,
   STORE_REJECTED
@@ -38,6 +39,12 @@ export const route = ({ status = PENDING, ...state } = {}, { history, redirect =
  *  Get all from state
  *  Set `history` `route` from action
  */
+export const change = ({ status = PENDING, ...state } = {}, { history, embark = {} } = {}) => ({ status, ...state, history, response: { ...embark } })
+
+/*
+ *  Get all from state
+ *  Set `history` `route` from action
+ */
 export const submit = ({ status = PENDING, ...state } = {}, { history, embark = {} } = {}) => ({ status, ...state, history, ...embark })
 
 /*
@@ -52,11 +59,15 @@ export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ st
  */
 export const store = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
 
+export const changeFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
+
 export const submitFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
 export const fetchFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
 export const storeFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
+
+export const changeRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
 
 export const submitRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
 
@@ -75,6 +86,9 @@ export default function embarkReducer (state = STATE, { type, ...action } = ACTI
     case ROUTE:
 
       return route(state, action)
+    case CHANGE:
+
+      return change(state, action)
     case SUBMIT:
 
       return submit(state, action)
@@ -84,6 +98,9 @@ export default function embarkReducer (state = STATE, { type, ...action } = ACTI
     case STORE:
 
       return store(state, action)
+    case CHANGE_FULFILLED:
+
+      return changeFulfilled(state, action)
     case SUBMIT_FULFILLED:
 
       return submitFulfilled(state, action)
@@ -93,6 +110,9 @@ export default function embarkReducer (state = STATE, { type, ...action } = ACTI
     case STORE_FULFILLED:
 
       return storeFulfilled(state, action)
+    case CHANGE_REJECTED:
+
+      return changeRejected(state, action)
     case SUBMIT_REJECTED:
 
       return submitRejected(state, action)

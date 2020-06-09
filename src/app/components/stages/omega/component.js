@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import {
-  Signals
-} from 'shinkansen-signals'
+import Signals from 'shinkansen-engine/lib/components/signals'
 
 import Zashiki from '@modernpoacher/zashiki-react-redux/app/components/zashiki/component'
 
@@ -15,7 +13,7 @@ import NoDecision from './status/no-decision'
 import Pending from './status/pending'
 
 export const getErrorProps = ({ exception }) => exception
-export const getStageProps = ({ state, resource, definition, gears, onSubmit }) => ({ state, resource, definition, gears, onSubmit })
+export const getStageProps = ({ state, resource, definition, gears, onChange, onSubmit }) => ({ state, resource, definition, gears, onChange, onSubmit })
 
 export default class OmegaStage extends Zashiki {
   render () {
@@ -58,12 +56,14 @@ OmegaStage.propTypes = PropTypes.oneOfType([
     ...Zashiki.propTypes,
     status: PropTypes.number.isRequired,
     definition: PropTypes.object.isRequired,
+    onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired
   }),
   PropTypes.shape({
     ...Zashiki.propTypes,
     status: PropTypes.number.isRequired,
     exception: PropTypes.object.isRequired,
+    onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired
   })
 ]).isRequired
