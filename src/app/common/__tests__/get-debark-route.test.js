@@ -3,7 +3,7 @@ import Rails from 'shinkansen-engine/lib/components/rails'
 import getDebarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-debark-route'
 
 jest.mock('shinkansen-engine/lib/components/rails', () => ({
-  to: jest.fn().mockImplementation(() => 'MOCK DEBARK ROUTE')
+  to: jest.fn().mockReturnValue('MOCK DEBARK ROUTE')
 }))
 
 jest.mock('shinkansen-engine/lib/components/signals', () => ({

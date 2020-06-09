@@ -10,7 +10,7 @@ Enzyme.configure({ adapter: new Adapter() })
 
 jest.mock('immutable', () => ({
   is: jest.fn(),
-  Map: jest.fn().mockImplementation((v) => v)
+  Map: jest.fn().mockImplementation((map) => map)
 }))
 
 describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', () => {

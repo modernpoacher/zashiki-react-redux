@@ -16,9 +16,9 @@ jest.mock('shinkansen-engine/lib/components/signals', () => ({
 }))
 
 jest.mock('shinkansen-engine/lib/transformers/transmission', () => ({
-  toZashiki: jest.fn().mockImplementation(() => 'MOCK ZASHIKI'),
-  fromDocumentToHash: jest.fn().mockImplementation(() => 'MOCK FROM DOCUMENT TO HASH'),
-  fromHashToDocument: jest.fn().mockImplementation(() => 'MOCK FROM HASH TO DOCUMENT')
+  toZashiki: jest.fn().mockReturnValue('MOCK ZASHIKI'),
+  fromDocumentToHash: jest.fn().mockReturnValue('MOCK FROM DOCUMENT TO HASH'),
+  fromHashToDocument: jest.fn().mockReturnValue('MOCK FROM HASH TO DOCUMENT')
 }))
 
 jest.mock('@modernpoacher/zashiki-react-redux/app/transformers', () => ({ transformFailure: jest.fn() }))
