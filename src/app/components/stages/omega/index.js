@@ -20,20 +20,22 @@ const {
   OMEGA
 } = Signals
 
-const mapStateToProps = ({ [OMEGA]: omega = {} }) => ({ ...transform(omega) })
+const mapStateToProps = ({ [OMEGA]: omega = {} }) => omega
 
 const mapDispatchToProps = (dispatch) => ({ dispatch })
 
-const mergeProps = (stateProps, { dispatch }, { history, ...ownProps }) => ({
-  ...stateProps,
-  onChange: (resource) => {
-    dispatch(change(resource, history))
-  },
-  onSubmit: (resource, response) => {
-    dispatch(submit(resource, response, history))
-  },
-  history,
-  ...ownProps
-})
+function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
+  return {
+    ...transform(stateProps),
+    onChange (resource) {
+      dispatch(change(resource, history))
+    },
+    onSubmit (resource, response) {
+      dispatch(submit(resource, response, history))
+    },
+    history,
+    ...ownProps
+  }
+}
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(OmegaStage))

@@ -25,7 +25,7 @@ const {
   EMBARK
 } = Signals
 
-const mapStateToProps = ({ [EMBARK]: stateProps = {} }) => stateProps
+const mapStateToProps = ({ [EMBARK]: embark = {} }) => embark
 
 const mapDispatchToProps = (dispatch) => ({ dispatch })
 
