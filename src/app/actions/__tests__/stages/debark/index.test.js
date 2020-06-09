@@ -31,16 +31,14 @@ import {
   store
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
 
-jest.mock('shinkansen-pantograph', () => ({
-  Pantograph: {
-    DEBARK: {
-      ROUTE: 'MOCK ROUTE',
-      CHANGE: 'MOCK CHANGE',
-      SUBMIT: 'MOCK SUBMIT',
-      FETCH: 'MOCK FETCH',
-      STORE: 'MOCK STORE',
-      QUERY: 'MOCK QUERY'
-    }
+jest.mock('shinkansen-engine/lib/components/pantograph', () => ({
+  DEBARK: {
+    ROUTE: 'MOCK ROUTE',
+    CHANGE: 'MOCK CHANGE',
+    SUBMIT: 'MOCK SUBMIT',
+    FETCH: 'MOCK FETCH',
+    STORE: 'MOCK STORE',
+    QUERY: 'MOCK QUERY'
   }
 }))
 

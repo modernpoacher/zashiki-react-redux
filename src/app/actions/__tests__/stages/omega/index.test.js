@@ -44,16 +44,14 @@ import {
   store
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
 
-jest.mock('shinkansen-pantograph', () => ({
-  Pantograph: {
-    OMEGA: {
-      ROUTE: 'MOCK ROUTE',
-      CHANGE: 'MOCK CHANGE',
-      SUBMIT: 'MOCK SUBMIT',
-      FETCH: 'MOCK FETCH',
-      STORE: 'MOCK STORE',
-      QUERY: 'MOCK QUERY'
-    }
+jest.mock('shinkansen-engine/lib/components/pantograph', () => ({
+  OMEGA: {
+    ROUTE: 'MOCK ROUTE',
+    CHANGE: 'MOCK CHANGE',
+    SUBMIT: 'MOCK SUBMIT',
+    FETCH: 'MOCK FETCH',
+    STORE: 'MOCK STORE',
+    QUERY: 'MOCK QUERY'
   }
 }))
 

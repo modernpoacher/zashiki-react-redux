@@ -1,16 +1,14 @@
 /*
  *  DebarkStage Actions
  */
-import {
-  Pantograph
-} from 'shinkansen-pantograph'
+import Pantograph from 'shinkansen-engine/lib/components/pantograph'
 
 const {
   ROUTE = 'DEBARK_ROUTE',
   CHANGE = 'DEBARK_CHANGE',
   SUBMIT = 'DEBARK_SUBMIT',
-  FETCH = 'DEBARK_ROUTE',
-  STORE = 'DEBARK_ROUTE'
+  FETCH = 'DEBARK_FETCH',
+  STORE = 'DEBARK_STORE'
 } = Pantograph.DEBARK
 
 /*

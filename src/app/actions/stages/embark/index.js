@@ -1,16 +1,14 @@
 /*
  *  EmbarkStage Actions
  */
-import {
-  Pantograph
-} from 'shinkansen-pantograph'
+import Pantograph from 'shinkansen-engine/lib/components/pantograph'
 
 const {
   ROUTE = 'EMBARK_ROUTE',
   CHANGE = 'EMBARK_CHANGE',
   SUBMIT = 'EMBARK_SUBMIT',
-  FETCH = 'EMBARK_ROUTE',
-  STORE = 'EMBARK_ROUTE'
+  FETCH = 'EMBARK_FETCH',
+  STORE = 'EMBARK_STORE'
 } = Pantograph.EMBARK
 
 /*

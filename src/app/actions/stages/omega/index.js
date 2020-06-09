@@ -1,17 +1,15 @@
 /*
  *  Zashiki/Omega Actions
  */
-import {
-  Pantograph
-} from 'shinkansen-pantograph'
+import Pantograph from 'shinkansen-engine/lib/components/pantograph'
 
 const {
-  ROUTE,
-  CHANGE,
-  SUBMIT,
-  FETCH,
-  STORE,
-  QUERY
+  ROUTE = 'OMEGA_ROUTE',
+  CHANGE = 'OMEGA_CHANGE',
+  SUBMIT = 'OMEGA_SUBMIT',
+  FETCH = 'OMEGA_FETCH',
+  STORE = 'OMEGA_STORE',
+  QUERY = 'OMEGA_QUERY'
 } = Pantograph.OMEGA
 
 /*

@@ -1,17 +1,15 @@
 /*
  *  Zashiki/Alpha Actions
  */
-import {
-  Pantograph
-} from 'shinkansen-pantograph'
+import Pantograph from 'shinkansen-engine/lib/components/pantograph'
 
 const {
-  ROUTE,
-  CHANGE,
-  SUBMIT,
-  FETCH,
-  STORE,
-  QUERY
+  ROUTE = 'ALPHA_ROUTE',
+  CHANGE = 'ALPHA_CHANGE',
+  SUBMIT = 'ALPHA_SUBMIT',
+  FETCH = 'ALPHA_FETCH',
+  STORE = 'ALPHA_STORE',
+  QUERY = 'ALPHA_QUERY'
 } = Pantograph.ALPHA
 
 /*

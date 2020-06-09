@@ -38,8 +38,7 @@
     "redux": "^4.0.5",
     "redux-saga": "^1.1.3",
     "regenerator-runtime": "^0.13.5",
-    "shinkansen-engine": "0.0.6",
-    "shinkansen-pantograph": "1.0.8"
+    "shinkansen-engine": "0.0.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
