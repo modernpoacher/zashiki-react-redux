@@ -25,23 +25,33 @@ const {
   DEBARK
 } = Signals
 
-const mapStateToProps = ({ [DEBARK]: debark = {} }) => ({ ...fromDocumentToZashiki(debark), [DEBARK]: debark })
+const mapStateToProps = ({ [DEBARK]: stateProps = {} }) => stateProps
 
 const mapDispatchToProps = (dispatch) => ({ dispatch })
 
-const mergeProps = ({ [DEBARK]: { definition, response }, ...stateProps }, { dispatch }, { history, ...ownProps }) => ({
-  ...stateProps,
-  onChange: (key, value) => {
-    dispatch(change(fromZashikiToDocument({ definition, response: { [key]: value } }), history))
-  },
-  onSubmit: () => {
-    dispatch(submit(response, history))
-  },
-  onDebark: () => {
-    dispatch(fetch(history))
-  },
-  history,
-  ...ownProps
-})
+function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
+  return {
+    ...fromDocumentToZashiki(stateProps),
+    onChange (key, value) {
+      const {
+        definition
+      } = stateProps
+
+      dispatch(change(fromZashikiToDocument({ definition, response: { [key]: value } }), history))
+    },
+    onSubmit () {
+      const {
+        response
+      } = stateProps
+
+      dispatch(submit(response, history))
+    },
+    onDebark () {
+      dispatch(fetch(history))
+    },
+    history,
+    ...ownProps
+  }
+}
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(DebarkStage))

@@ -25,23 +25,33 @@ const {
   EMBARK
 } = Signals
 
-const mapStateToProps = ({ [EMBARK]: embark = {} }) => ({ ...fromDocumentToZashiki(embark), [EMBARK]: embark })
+const mapStateToProps = ({ [EMBARK]: stateProps = {} }) => stateProps
 
 const mapDispatchToProps = (dispatch) => ({ dispatch })
 
-const mergeProps = ({ [EMBARK]: { definition = {}, response }, ...stateProps }, { dispatch }, { history, ...ownProps }) => ({
-  ...stateProps,
-  onChange: (key, value) => {
-    dispatch(change(fromZashikiToDocument({ definition, response: { [key]: value } }), history))
-  },
-  onSubmit: () => {
-    dispatch(submit(response, history))
-  },
-  onEmbark: () => {
-    dispatch(fetch(history))
-  },
-  history,
-  ...ownProps
-})
+function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
+  return {
+    ...fromDocumentToZashiki(stateProps),
+    onChange (key, value) {
+      const {
+        definition
+      } = stateProps
+
+      dispatch(change(fromZashikiToDocument({ definition, response: { [key]: value } }), history))
+    },
+    onSubmit () {
+      const {
+        response
+      } = stateProps
+
+      dispatch(submit(response, history))
+    },
+    onEmbark () {
+      dispatch(fetch(history))
+    },
+    history,
+    ...ownProps
+  }
+}
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(EmbarkStage))
