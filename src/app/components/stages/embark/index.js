@@ -1,3 +1,5 @@
+import debug from 'debug'
+
 import {
   connect
 } from 'react-redux'
@@ -21,6 +23,8 @@ import {
 
 import EmbarkStage from './component'
 
+const log = debug('zashiki-react-redux:app:components:stages:embark')
+
 const {
   EMBARK
 } = Signals
@@ -32,7 +36,14 @@ const mapDispatchToProps = (dispatch) => ({ dispatch })
 function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
   return {
     ...fromDocumentToZashiki(stateProps),
+    onEmbark () {
+      log('onEmbark')
+
+      dispatch(fetch(history))
+    },
     onChange (key, value) {
+      log('onChange')
+
       const {
         definition
       } = stateProps
@@ -40,14 +51,13 @@ function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
       dispatch(change(fromZashikiToDocument({ definition, response: { [key]: value } }), history))
     },
     onSubmit () {
+      log('onSubmit')
+
       const {
         response
       } = stateProps
 
       dispatch(submit(response, history))
-    },
-    onEmbark () {
-      dispatch(fetch(history))
     },
     history,
     ...ownProps

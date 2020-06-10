@@ -12,7 +12,11 @@ import {
   transform
 } from '@modernpoacher/zashiki-react-redux/app/transformers/stages/alpha'
 
-import { submit, change } from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
+import {
+  mount,
+  change,
+  submit
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
 
 import AlphaStage from './component'
 
@@ -27,6 +31,9 @@ const mapDispatchToProps = (dispatch) => ({ dispatch })
 function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
   return {
     ...transform(stateProps),
+    onMount (resource) {
+      dispatch(mount(resource, history))
+    },
     onChange (resource) {
       dispatch(change(resource, history))
     },

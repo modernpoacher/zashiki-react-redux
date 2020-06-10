@@ -12,7 +12,7 @@ const transformEmbark = (status, {
   definition,
   response
 }) => ({
-  definition: toZashiki(definition, response !== undefined ? fromDocumentToHash(response, definition) : undefined),
+  ...(definition ? { definition: toZashiki(definition, response !== undefined ? fromDocumentToHash(response, definition) : undefined) } : { definition: {} }),
   status
 })
 

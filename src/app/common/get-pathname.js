@@ -3,7 +3,7 @@ import debug from 'debug'
 import Rails from 'shinkansen-engine/lib/components/rails'
 import Signals from 'shinkansen-engine/lib/components/signals'
 
-const log = debug('zashiki:app:common:get-pathname')
+const log = debug('zashiki-react-redux:app:common:get-pathname')
 
 const {
   OMEGA_PATTERN,

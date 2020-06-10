@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import debug from 'debug'
 
 import Signals from 'shinkansen-engine/lib/components/signals'
 
@@ -10,14 +11,20 @@ import InProgress from './status/in-progress'
 import NoDecision from './status/no-decision'
 import Pending from './status/pending'
 
+const log = debug('zashiki-react-redux:app:components:stages:embark')
+
 export const getErrorProps = ({ exception }) => exception
 export const getDebarkProps = ({ definition, onChange, onSubmit }) => ({ definition, onChange, onSubmit })
 
-export default class Debark extends Component {
+log('`DebarkStage` is awake')
+
+export default class DebarkStage extends Component {
   /*
    *  List routes
    */
-  componentDidMount () { // console.log('(DebarkStage)componentDidMount()') // eslint-disable-line
+  componentDidMount () {
+    log('componentDidMount()')
+
     const {
       onDebark
     } = this.props
@@ -68,7 +75,7 @@ export default class Debark extends Component {
   }
 }
 
-Debark.propTypes = PropTypes.oneOfType([
+DebarkStage.propTypes = PropTypes.oneOfType([
   PropTypes.shape({
     status: PropTypes.number.isRequired,
     definition: PropTypes.object.isRequired,

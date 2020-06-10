@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import debug from 'debug'
 
 import Signals from 'shinkansen-engine/lib/components/signals'
 
@@ -12,8 +13,12 @@ import InProgress from './status/in-progress'
 import NoDecision from './status/no-decision'
 import Pending from './status/pending'
 
+const log = debug('zashiki-react-redux:app:components:stages:alpha')
+
 export const getErrorProps = ({ exception }) => exception
 export const getStageProps = ({ state, definitions, gears, onSubmit }) => ({ state, definitions, gears, onSubmit })
+
+log('`AlphaStage` is awake')
 
 export default class AlphaStage extends Zashiki {
   render () {

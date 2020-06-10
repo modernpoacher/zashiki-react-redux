@@ -6,7 +6,11 @@ import {
   withRouter
 } from 'react-router'
 
-import { submit, change } from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
+import {
+  mount,
+  submit,
+  change
+} from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
 
 import Zashiki from './component'
 
@@ -16,6 +20,9 @@ const mapDispatchToProps = (dispatch) => ({ dispatch })
 
 const mergeProps = (stateProps, { dispatch }, { history, ...ownProps }) => ({
   ...stateProps,
+  onMount: (resource) => {
+    dispatch(mount(resource, history))
+  },
   onSubmit: (resource, response) => {
     dispatch(submit(resource, response, history))
   },

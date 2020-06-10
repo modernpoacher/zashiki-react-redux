@@ -4,7 +4,7 @@ import Signals from 'shinkansen-engine/lib/components/signals'
 
 import Rails from 'shinkansen-engine/lib/components/rails'
 
-const log = debug('zashiki:app:common:get-debark-route')
+const log = debug('zashiki-react-redux:app:common:get-debark-route')
 
 const {
   DEBARK,

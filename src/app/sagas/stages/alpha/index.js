@@ -1,3 +1,5 @@
+import debug from 'debug'
+
 import {
   call,
   put,
@@ -13,13 +15,9 @@ import {
   ROUTE,
   alphaRoute,
 
-  CHANGE,
-  changeRouteFulfilled,
-  changeRouteRejected,
-
-  SUBMIT,
-  submitRouteFulfilled,
-  submitRouteRejected,
+  MOUNT,
+  mountRouteFulfilled,
+  mountRouteRejected,
 
   FETCH,
   fetchRouteFulfilled,
@@ -37,7 +35,11 @@ import {
   QUERY_REJECTED,
   queryRoute,
   queryRouteFulfilled,
-  queryRouteRejected
+  queryRouteRejected,
+
+  SUBMIT,
+  submitStateFulfilled,
+  submitStateRejected
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
 
 import * as api from '@modernpoacher/zashiki-react-redux/api/stages/alpha'
@@ -45,6 +47,8 @@ import * as api from '@modernpoacher/zashiki-react-redux/api/stages/alpha'
 import { transformError } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
 import getPathname from '@modernpoacher/zashiki-react-redux/app/common/get-pathname'
+
+const log = debug('zashiki-react-redux:app:sagas:stages:alpha')
 
 const {
   ALPHA
@@ -55,6 +59,8 @@ const hasStoreError = ({ [ALPHA]: alpha = {} }) => ('error' in alpha)
 const hasQueryError = ({ [ALPHA]: alpha = {} }) => ('error' in alpha)
 
 function * alphaRouteSaga ({ redirect, history }) {
+  log('alphaRouteSaga')
+
   const pathname = getPathname(redirect)
 
   if (pathname) {
@@ -68,16 +74,53 @@ function * alphaRouteSaga ({ redirect, history }) {
   }
 }
 
-function * changeRouteSaga ({ route }) {
+function * mountRouteSaga ({ route }) {
+  log('mountRouteSaga')
+
   try {
-    const { data: response = {} } = yield call(api.changeRoute, route)
-    yield put(changeRouteFulfilled(response))
+    const { data: response = {} } = yield call(api.mountRoute, route)
+    yield put(mountRouteFulfilled(response))
   } catch (e) {
-    yield put(changeRouteRejected(transformError(e)))
+    yield put(mountRouteRejected(transformError(e)))
   }
 }
 
-function * submitRouteSaga ({ route, history }) {
+function * fetchRouteSaga () {
+  log('fetchRouteSaga')
+
+  try {
+    const { data: response = {} } = yield call(api.fetchRoute)
+    yield put(fetchRouteFulfilled(response))
+  } catch (e) {
+    yield put(fetchRouteRejected(transformError(e)))
+  }
+}
+
+function * storeRouteSaga ({ route }) {
+  log('storeRouteSaga')
+
+  try {
+    const { data: response = {} } = yield call(api.storeRoute, route)
+    yield put(storeRouteFulfilled(response))
+  } catch (e) {
+    yield put(storeRouteRejected(transformError(e)))
+  }
+}
+
+function * queryRouteSaga () {
+  log('queryRouteSaga')
+
+  try {
+    const { data: response = {} } = yield call(api.queryRoute)
+    yield put(queryRouteFulfilled(response))
+  } catch (e) {
+    yield put(queryRouteRejected(transformError(e)))
+  }
+}
+
+function * submitStateSaga ({ route, history }) {
+  log('submitStateSaga')
+
   yield put(storeRoute(route, history))
 
   yield race([
@@ -88,7 +131,7 @@ function * submitRouteSaga ({ route, history }) {
   const hasError = yield select(hasStoreError)
 
   if (hasError) {
-    yield put(submitRouteRejected())
+    yield put(submitStateRejected())
   } else {
     yield put(queryRoute())
 
@@ -100,40 +143,13 @@ function * submitRouteSaga ({ route, history }) {
     const hasError = yield select(hasQueryError)
 
     if (hasError) {
-      yield put(submitRouteRejected())
+      yield put(submitStateRejected())
     } else {
       const state = yield select(getState)
-      yield put(submitRouteFulfilled(state))
+      yield put(submitStateFulfilled(state))
       const { redirect, history } = state
       yield put(alphaRoute(redirect, history))
     }
-  }
-}
-
-function * fetchRouteSaga () {
-  try {
-    const { data: response = {} } = yield call(api.fetchRoute)
-    yield put(fetchRouteFulfilled(response))
-  } catch (e) {
-    yield put(fetchRouteRejected(transformError(e)))
-  }
-}
-
-function * storeRouteSaga ({ route }) {
-  try {
-    const { data: response = {} } = yield call(api.storeRoute, route)
-    yield put(storeRouteFulfilled(response))
-  } catch (e) {
-    yield put(storeRouteRejected(transformError(e)))
-  }
-}
-
-function * queryRouteSaga () {
-  try {
-    const { data: response = {} } = yield call(api.queryRoute)
-    yield put(queryRouteFulfilled(response))
-  } catch (e) {
-    yield put(queryRouteRejected(transformError(e)))
   }
 }
 
@@ -141,12 +157,8 @@ export function * watchAlphaRoute () {
   yield takeLatest(ROUTE, alphaRouteSaga)
 }
 
-export function * watchAlphaChange () {
-  yield takeLatest(CHANGE, changeRouteSaga)
-}
-
-export function * watchAlphaSubmit () {
-  yield takeLatest(SUBMIT, submitRouteSaga)
+export function * watchAlphaMount () {
+  yield takeLatest(MOUNT, mountRouteSaga)
 }
 
 export function * watchAlphaFetch () {
@@ -159,4 +171,8 @@ export function * watchAlphaStore () {
 
 export function * watchAlphaQuery () {
   yield takeLatest(QUERY, queryRouteSaga)
+}
+
+export function * watchAlphaSubmit () {
+  yield takeLatest(SUBMIT, submitStateSaga)
 }

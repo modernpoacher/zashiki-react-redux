@@ -4,78 +4,74 @@ import {
 
 import {
   watchAlphaRoute,
-  watchAlphaChange,
-  watchAlphaSubmit,
+  watchAlphaMount,
   watchAlphaFetch,
   watchAlphaStore,
-  watchAlphaQuery
+  watchAlphaQuery,
+  watchAlphaSubmit
 } from './stages/alpha'
 
 import {
   watchOmegaRoute,
-  watchOmegaChange,
-  watchOmegaSubmit,
+  watchOmegaMount,
   watchOmegaFetch,
   watchOmegaStore,
-  watchOmegaQuery
+  watchOmegaQuery,
+  watchOmegaSubmit
 } from './stages/omega'
 
 import {
   watchEmbarkRoute,
-  watchEmbarkChange,
-  watchEmbarkSubmit,
   watchEmbarkFetch,
-  watchEmbarkStore
+  watchEmbarkStore,
+  watchEmbarkSubmit
 } from './stages/embark'
 
 import {
   watchDebarkRoute,
-  watchDebarkChange,
-  watchDebarkSubmit,
   watchDebarkFetch,
-  watchDebarkStore
+  watchDebarkStore,
+  watchDebarkSubmit
 } from './stages/debark'
 
 import {
-  watchZashikiChange,
-  watchZashikiSubmit,
+  watchZashikiMount,
   watchZashikiFetch,
   watchZashikiStore,
-  watchZashikiQuery
+  watchZashikiQuery,
+  watchZashikiSubmit
 } from './zashiki'
 
 export default function * rootSaga () {
   yield all([
     watchAlphaRoute(),
-    watchAlphaChange(),
-    watchAlphaSubmit(),
+    watchAlphaMount(),
     watchAlphaFetch(),
     watchAlphaStore(),
     watchAlphaQuery(),
+    watchAlphaSubmit(),
 
     watchOmegaRoute(),
-    watchOmegaChange(),
-    watchOmegaSubmit(),
+    watchOmegaMount(),
     watchOmegaFetch(),
     watchOmegaStore(),
     watchOmegaQuery(),
+    watchOmegaSubmit(),
 
     watchEmbarkRoute(),
-    watchEmbarkChange(),
-    watchEmbarkSubmit(),
     watchEmbarkFetch(),
     watchEmbarkStore(),
+    watchEmbarkSubmit(),
 
     watchDebarkRoute(),
-    watchDebarkChange(),
-    watchDebarkSubmit(),
     watchDebarkFetch(),
     watchDebarkStore(),
+    watchDebarkSubmit(),
 
-    watchZashikiChange(),
-    watchZashikiSubmit(),
+    watchZashikiMount(),
     watchZashikiFetch(),
     watchZashikiStore(),
-    watchZashikiQuery()
+    watchZashikiQuery(),
+    watchZashikiSubmit()
   ])
 }

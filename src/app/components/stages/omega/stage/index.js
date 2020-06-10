@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import debug from 'debug'
 
 import Signals from 'shinkansen-engine/lib/components/signals'
 
@@ -46,6 +47,7 @@ export default class OmegaStage extends React.Component {
         </div>
       )
     }
+
     return false
   }
 }
@@ -58,7 +60,7 @@ OmegaStage.propTypes = {
     count: PropTypes.number
   }),
   resource: PropTypes.object, // .isRequired,
-  definition: PropTypes.object.isRequired,
+  definition: PropTypes.object, // .isRequired,
   gears: PropTypes.shape({
     forward: PropTypes.object,
     reverse: PropTypes.object
