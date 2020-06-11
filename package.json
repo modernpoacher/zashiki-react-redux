@@ -24,7 +24,7 @@
   "author": "Jonathan Perry for Modern Poacher Limited",
   "license": "UNLICENSED",
   "dependencies": {
-    "@modernpoacher/isomorphic": "0.0.8",
+    "@modernpoacher/isomorphic": "0.0.10",
     "axios": "^0.19.2",
     "cross-env": "^7.0.2",
     "debug": "^4.1.1",
