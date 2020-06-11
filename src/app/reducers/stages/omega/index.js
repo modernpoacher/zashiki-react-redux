@@ -72,7 +72,7 @@ export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ st
  *  Get `resource` `response` from state
  *  Set `history` `route` from action
  */
-export const store = ({ status = PENDING, ...state } = {}, { history, route: { resource = {} } = {} } = {}) => ({ status, ...state, history, resource, response: {} })
+export const store = ({ status = PENDING, ...state } = {}, { history, route: { resource = {} } = {} } = {}) => ({ status, ...state, history, resource })
 
 /*
  *  Get all from state

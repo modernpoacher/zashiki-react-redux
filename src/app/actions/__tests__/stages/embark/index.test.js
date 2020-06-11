@@ -1,44 +1,50 @@
 import {
   ROUTE,
-  SUBMIT,
   FETCH,
   STORE,
+  CHANGE,
+  SUBMIT,
 
-  SUBMIT_FULFILLED,
   FETCH_FULFILLED,
   STORE_FULFILLED,
+  CHANGE_FULFILLED,
+  SUBMIT_FULFILLED,
 
-  SUBMIT_REJECTED,
   FETCH_REJECTED,
   STORE_REJECTED,
+  CHANGE_REJECTED,
+  SUBMIT_REJECTED,
 
   embarkRoute,
 
-  submitRoute,
   fetchRoute,
   storeRoute,
+  changeState,
+  submitState,
 
-  submitRouteFulfilled,
   fetchRouteFulfilled,
   storeRouteFulfilled,
+  changeStateFulfilled,
+  submitStateFulfilled,
 
-  submitRouteRejected,
   fetchRouteRejected,
   storeRouteRejected,
+  changeStateRejected,
+  submitStateRejected,
 
-  submit,
   fetch,
-  store
+  store,
+  change,
+  submit
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/embark'
 
 jest.mock('shinkansen-engine/lib/components/pantograph', () => ({
   EMBARK: {
     ROUTE: 'MOCK ROUTE',
-    CHANGE: 'MOCK CHANGE',
-    SUBMIT: 'MOCK SUBMIT',
     FETCH: 'MOCK FETCH',
     STORE: 'MOCK STORE',
-    QUERY: 'MOCK QUERY'
+    CHANGE: 'MOCK CHANGE',
+    SUBMIT: 'MOCK SUBMIT'
   }
 }))
 
@@ -56,13 +62,6 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
     })
   })
 
-  describe('`SUBMIT`', () => {
-    it('is defined', () => {
-      expect(SUBMIT)
-        .toBe('MOCK SUBMIT')
-    })
-  })
-
   describe('`FETCH`', () => {
     it('is defined', () => {
       expect(FETCH)
@@ -77,10 +76,17 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
     })
   })
 
-  describe('`SUBMIT_FULFILLED`', () => {
+  describe('`SUBMIT`', () => {
     it('is defined', () => {
-      expect(SUBMIT_FULFILLED)
-        .toBe('MOCK SUBMIT_FULFILLED')
+      expect(SUBMIT)
+        .toBe('MOCK SUBMIT')
+    })
+  })
+
+  describe('`CHANGE`', () => {
+    it('is defined', () => {
+      expect(CHANGE)
+        .toBe('MOCK CHANGE')
     })
   })
 
@@ -98,10 +104,17 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
     })
   })
 
-  describe('`SUBMIT_REJECTED`', () => {
+  describe('`CHANGE_FULFILLED`', () => {
     it('is defined', () => {
-      expect(SUBMIT_REJECTED)
-        .toBe('MOCK SUBMIT_REJECTED')
+      expect(CHANGE_FULFILLED)
+        .toBe('MOCK CHANGE_FULFILLED')
+    })
+  })
+
+  describe('`SUBMIT_FULFILLED`', () => {
+    it('is defined', () => {
+      expect(SUBMIT_FULFILLED)
+        .toBe('MOCK SUBMIT_FULFILLED')
     })
   })
 
@@ -119,16 +132,23 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
     })
   })
 
-  describe('`embarkRoute`', () => {
+  describe('`CHANGE_REJECTED`', () => {
     it('is defined', () => {
-      expect(embarkRoute)
-        .toBeDefined()
+      expect(CHANGE_REJECTED)
+        .toBe('MOCK CHANGE_REJECTED')
     })
   })
 
-  describe('`submit`', () => {
+  describe('`SUBMIT_REJECTED`', () => {
     it('is defined', () => {
-      expect(submit)
+      expect(SUBMIT_REJECTED)
+        .toBe('MOCK SUBMIT_REJECTED')
+    })
+  })
+
+  describe('`embarkRoute`', () => {
+    it('is defined', () => {
+      expect(embarkRoute)
         .toBeDefined()
     })
   })
@@ -147,9 +167,16 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
     })
   })
 
-  describe('`submitRoute`', () => {
+  describe('`change`', () => {
     it('is defined', () => {
-      expect(submitRoute)
+      expect(change)
+        .toBeDefined()
+    })
+  })
+
+  describe('`submit`', () => {
+    it('is defined', () => {
+      expect(submit)
         .toBeDefined()
     })
   })
@@ -168,9 +195,16 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
     })
   })
 
-  describe('`submitRouteFulfilled`', () => {
+  describe('`changeState`', () => {
     it('is defined', () => {
-      expect(submitRouteFulfilled)
+      expect(changeState)
+        .toBeDefined()
+    })
+  })
+
+  describe('`submitState`', () => {
+    it('is defined', () => {
+      expect(submitState)
         .toBeDefined()
     })
   })
@@ -189,9 +223,16 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
     })
   })
 
-  describe('`submitRouteRejected`', () => {
+  describe('`changeStateFulfilled`', () => {
     it('is defined', () => {
-      expect(submitRouteRejected)
+      expect(changeStateFulfilled)
+        .toBeDefined()
+    })
+  })
+
+  describe('`submitStateFulfilled`', () => {
+    it('is defined', () => {
+      expect(submitStateFulfilled)
         .toBeDefined()
     })
   })
@@ -210,23 +251,26 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
     })
   })
 
+  describe('`changeStateRejected`', () => {
+    it('is defined', () => {
+      expect(changeStateRejected)
+        .toBeDefined()
+    })
+  })
+
+  describe('`submitStateRejected`', () => {
+    it('is defined', () => {
+      expect(submitStateRejected)
+        .toBeDefined()
+    })
+  })
+
   describe('`embarkRoute()`', () => {
     it('returns the action', () => {
       expect(embarkRoute(MOCK_REDIRECT, MOCK_HISTORY))
         .toEqual({
           type: 'MOCK ROUTE',
           redirect: MOCK_REDIRECT,
-          history: MOCK_HISTORY
-        })
-    })
-  })
-
-  describe('`submitRoute()`', () => {
-    it('returns the action', () => {
-      expect(submitRoute(MOCK_ROUTE, MOCK_HISTORY))
-        .toEqual({
-          type: 'MOCK SUBMIT',
-          embark: MOCK_ROUTE,
           history: MOCK_HISTORY
         })
     })
@@ -252,12 +296,24 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
     })
   })
 
-  describe('`submitRouteFulfilled()`', () => {
+  describe('`changeState()`', () => {
     it('returns the action', () => {
-      expect(submitRouteFulfilled(MOCK_RESPONSE))
+      expect(changeState(MOCK_ROUTE, MOCK_HISTORY))
         .toEqual({
-          type: 'MOCK SUBMIT_FULFILLED',
-          response: MOCK_RESPONSE
+          type: 'MOCK CHANGE',
+          embark: MOCK_ROUTE,
+          history: MOCK_HISTORY
+        })
+    })
+  })
+
+  describe('`submitState()`', () => {
+    it('returns the action', () => {
+      expect(submitState(MOCK_ROUTE, MOCK_HISTORY))
+        .toEqual({
+          type: 'MOCK SUBMIT',
+          embark: MOCK_ROUTE,
+          history: MOCK_HISTORY
         })
     })
   })
@@ -282,12 +338,22 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
     })
   })
 
-  describe('`submitRouteRejected()`', () => {
+  describe('`changeStateFulfilled()`', () => {
     it('returns the action', () => {
-      expect(submitRouteRejected(MOCK_ERROR))
+      expect(changeStateFulfilled(MOCK_RESPONSE))
         .toEqual({
-          type: 'MOCK SUBMIT_REJECTED',
-          error: MOCK_ERROR
+          type: 'MOCK CHANGE_FULFILLED',
+          response: MOCK_RESPONSE
+        })
+    })
+  })
+
+  describe('`submitStateFulfilled()`', () => {
+    it('returns the action', () => {
+      expect(submitStateFulfilled(MOCK_RESPONSE))
+        .toEqual({
+          type: 'MOCK SUBMIT_FULFILLED',
+          response: MOCK_RESPONSE
         })
     })
   })
@@ -312,13 +378,22 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
     })
   })
 
-  describe('`submit()`', () => {
-    it('returns the `submitRoute` action', () => {
-      expect(submit(MOCK_RESPONSE, MOCK_HISTORY))
+  describe('`changeStateRejected()`', () => {
+    it('returns the action', () => {
+      expect(changeStateRejected(MOCK_ERROR))
         .toEqual({
-          type: 'MOCK SUBMIT',
-          embark: MOCK_RESPONSE,
-          history: MOCK_HISTORY
+          type: 'MOCK CHANGE_REJECTED',
+          error: MOCK_ERROR
+        })
+    })
+  })
+
+  describe('`submitStateRejected()`', () => {
+    it('returns the action', () => {
+      expect(submitStateRejected(MOCK_ERROR))
+        .toEqual({
+          type: 'MOCK SUBMIT_REJECTED',
+          error: MOCK_ERROR
         })
     })
   })
@@ -340,6 +415,28 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
           route: {
             response: MOCK_RESPONSE
           },
+          history: MOCK_HISTORY
+        })
+    })
+  })
+
+  describe('`change()`', () => {
+    it('returns the `changeState` action', () => {
+      expect(change(MOCK_RESPONSE, MOCK_HISTORY))
+        .toEqual({
+          type: 'MOCK CHANGE',
+          embark: MOCK_RESPONSE,
+          history: MOCK_HISTORY
+        })
+    })
+  })
+
+  describe('`submit()`', () => {
+    it('returns the `submitState` action', () => {
+      expect(submit(MOCK_RESPONSE, MOCK_HISTORY))
+        .toEqual({
+          type: 'MOCK SUBMIT',
+          embark: MOCK_RESPONSE,
           history: MOCK_HISTORY
         })
     })

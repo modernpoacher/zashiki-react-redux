@@ -21,7 +21,8 @@ import omegaReducer, {
 
 jest.mock('shinkansen-engine/lib/components/signals', () => ({
   PENDING: 'MOCK PENDING',
-  FAILURE: 'MOCK FAILURE'
+  FAILURE: 'MOCK FAILURE',
+  COMPLETE: 'MOCK COMPLETE'
 }))
 
 jest.mock('@modernpoacher/zashiki-react-redux/app/actions/stages/omega', () => ({
@@ -185,7 +186,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/omega', () => {
       describe('The action `type` is `CHANGE`', () => {
         it('returns the state', () => {
           expect(omegaReducer(DEFAULT, { type: 'MOCK CHANGE', history: 'MOCK HISTORY', route: { mockField: 'MOCK VALUE' } }))
-            .toEqual({ ...DEFAULT, history: 'MOCK HISTORY', mockField: 'MOCK VALUE' })
+            .toEqual({ ...DEFAULT, history: 'MOCK HISTORY', mockField: 'MOCK VALUE', response: {} })
         })
       })
 
@@ -205,8 +206,8 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/omega', () => {
 
       describe('The action `type` is `STORE`', () => {
         it('returns the state', () => {
-          expect(omegaReducer(DEFAULT, { type: 'MOCK STORE', history: 'MOCK HISTORY', route: { mockField: 'MOCK VALUE' } }))
-            .toEqual({ ...DEFAULT, history: 'MOCK HISTORY', mockField: 'MOCK VALUE' })
+          expect(omegaReducer(DEFAULT, { type: 'MOCK STORE', history: 'MOCK HISTORY', route: { resource: 'MOCK RESOURCE', response: 'MOCK RESPONSE' } }))
+            .toEqual({ ...DEFAULT, history: 'MOCK HISTORY', resource: 'MOCK RESOURCE' })
         })
       })
 
@@ -220,7 +221,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/omega', () => {
       describe('The action `type` is `CHANGE_FULFILLED`', () => {
         it('returns the state', () => {
           expect(omegaReducer(DEFAULT, { type: 'MOCK CHANGE FULFILLED', response: { mockField: 'MOCK VALUE' } }))
-            .toEqual({ ...DEFAULT, resource: {}, response: {}, mockField: 'MOCK VALUE' })
+            .toEqual({ ...DEFAULT, mockField: 'MOCK VALUE' })
         })
       })
 
@@ -289,15 +290,15 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/omega', () => {
 
       describe('The action `type` is `EMBARK_ROUTE`', () => {
         it('returns the state', () => {
-          expect(omegaReducer(DEFAULT, { type: 'MOCK EMBARK ROUTE' }))
-            .toEqual(DEFAULT)
+          expect(omegaReducer(DEFAULT, { type: 'MOCK EMBARK ROUTE', redirect: 'MOCK REDIRECT' }))
+            .toEqual({ ...DEFAULT, resource: 'MOCK REDIRECT' })
         })
       })
 
       describe('The action `type` is `DEBARK_ROUTE`', () => {
         it('returns the state', () => {
           expect(omegaReducer(DEFAULT, { type: 'MOCK DEBARK ROUTE' }))
-            .toEqual(DEFAULT)
+            .toEqual({ ...DEFAULT, status: 'MOCK COMPLETE' })
         })
       })
     })
@@ -329,7 +330,8 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/omega', () => {
           status: 'MOCK PENDING',
           mockStateField: 'MOCK STATE VALUE',
           history: 'MOCK HISTORY',
-          mockActionField: 'MOCK ACTION VALUE'
+          mockActionField: 'MOCK ACTION VALUE',
+          response: {}
         })
     })
   })
@@ -359,12 +361,12 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/omega', () => {
 
   describe('`store()`', () => {
     it('returns the state', () => {
-      expect(store({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { history: 'MOCK HISTORY', route: { mockActionField: 'MOCK ACTION VALUE' } }))
+      expect(store({ ...DEFAULT, response: 'MOCK STATE RESPONSE' }, { history: 'MOCK HISTORY', route: { resource: 'MOCK RESOURCE', response: 'MOCK RESPONSE' } }))
         .toEqual({
           status: 'MOCK PENDING',
-          mockStateField: 'MOCK STATE VALUE',
+          response: 'MOCK STATE RESPONSE',
           history: 'MOCK HISTORY',
-          mockActionField: 'MOCK ACTION VALUE'
+          resource: 'MOCK RESOURCE'
         })
     })
   })

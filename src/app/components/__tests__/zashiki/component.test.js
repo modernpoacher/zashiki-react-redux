@@ -14,7 +14,7 @@ jest.mock('immutable', () => ({
 }))
 
 describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', () => {
-  const MOCK_ONCHANGE = jest.fn()
+  const MOCK_ONMOUNT = jest.fn()
   const MOCK_MATCH = { params: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' } }
   const MOCK_CHILDREN = []
 
@@ -25,7 +25,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', 
   describe('Always', () => {
     const component = (
       <Zashiki
-        onChange={MOCK_ONCHANGE}
+        onMount={MOCK_ONMOUNT}
         match={MOCK_MATCH}
         children={MOCK_CHILDREN}
       />
@@ -49,8 +49,8 @@ describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', 
         .toHaveBeenCalled()
     })
 
-    it('invokes `onChange`', () => {
-      expect(MOCK_ONCHANGE)
+    it('invokes `onMount`', () => {
+      expect(MOCK_ONMOUNT)
         .toHaveBeenCalledWith({ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' })
     })
   })
@@ -83,7 +83,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', 
 
   describe('`Zashiki.getDerivedStateFromProps()`', () => {
     describe('props have changed', () => {
-      const mockProps = { match: MOCK_MATCH, onChange: MOCK_ONCHANGE }
+      const mockProps = { match: MOCK_MATCH, onMount: MOCK_ONMOUNT }
       const mockState = { now: { alpha: 'MOCK ALPHA' } }
 
       let state
@@ -106,14 +106,14 @@ describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', 
           })
       })
 
-      it('invokes `onChange`', () => {
-        expect(MOCK_ONCHANGE)
+      it('invokes `onMount`', () => {
+        expect(MOCK_ONMOUNT)
           .toBeCalledWith({ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' })
       })
     })
 
     describe('props have not changed', () => {
-      const mockProps = { match: MOCK_MATCH, onChange: MOCK_ONCHANGE }
+      const mockProps = { match: MOCK_MATCH, onMount: MOCK_ONMOUNT }
       const mockState = { now: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' } }
 
       let state
@@ -135,8 +135,8 @@ describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', 
           })
       })
 
-      it('does not invoke `onChange`', () => {
-        expect(MOCK_ONCHANGE)
+      it('does not invoke `onMount`', () => {
+        expect(MOCK_ONMOUNT)
           .not.toBeCalled()
       })
     })

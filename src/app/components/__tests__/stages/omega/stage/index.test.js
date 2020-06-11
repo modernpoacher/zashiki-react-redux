@@ -14,7 +14,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/stage',
   describe('Always', () => {
     it('renders', () => {
       const component = (
-        <Stage definition={{}} resource={{}} onChange={jest.fn()} onSubmit={jest.fn()} />
+        <Stage definition={{}} resource={{}} response={{}} onChange={jest.fn()} onSubmit={jest.fn()} />
       )
 
       expect(shallow(component))
@@ -26,7 +26,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/stage',
     describe('`count` is an integer', () => {
       it('renders', () => {
         const component = (
-          <Stage definition={{}} resource={{}} onChange={jest.fn()} onSubmit={jest.fn()} state={{ count: 1, index: 0 }} />
+          <Stage definition={{}} resource={{}} response={{}} onChange={jest.fn()} onSubmit={jest.fn()} state={{ count: 1, index: 0 }} />
         )
 
         expect(shallow(component))
@@ -37,7 +37,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/stage',
     describe('`index` is an integer', () => {
       it('renders', () => {
         const component = (
-          <Stage definition={{}} resource={{}} onChange={jest.fn()} onSubmit={jest.fn()} state={{ count: 0, index: 1 }} />
+          <Stage definition={{}} resource={{}} response={{}} onChange={jest.fn()} onSubmit={jest.fn()} state={{ count: 0, index: 1 }} />
         )
 
         expect(shallow(component))
@@ -48,7 +48,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/stage',
     describe('`count` is an integer and `index` is an integer', () => {
       it('renders', () => {
         const component = (
-          <Stage definition={{}} resource={{}} onChange={jest.fn()} onSubmit={jest.fn()} state={{ count: 1, index: 1 }} />
+          <Stage definition={{}} resource={{}} response={{}} onChange={jest.fn()} onSubmit={jest.fn()} state={{ count: 1, index: 1 }} />
         )
 
         expect(shallow(component))

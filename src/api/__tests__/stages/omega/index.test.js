@@ -1,5 +1,5 @@
 import {
-  changeRoute,
+  mountRoute,
   fetchRoute,
   storeRoute,
   queryRoute
@@ -20,9 +20,9 @@ describe('@modernpoacher/zashiki-react-redux/api/stages/omega', () => {
     jest.clearAllMocks()
   })
 
-  describe('`changeRoute`', () => {
+  describe('`mountRoute`', () => {
     it('is defined', () => {
-      expect(changeRoute)
+      expect(mountRoute)
         .toBeDefined()
     })
   })
@@ -48,11 +48,11 @@ describe('@modernpoacher/zashiki-react-redux/api/stages/omega', () => {
     })
   })
 
-  describe('`changeRoute()`', () => {
+  describe('`mountRoute()`', () => {
     const mockRoute = {}
 
     beforeEach(() => {
-      changeRoute(mockRoute)
+      mountRoute(mockRoute)
     })
 
     it('invokes `api`', () => {

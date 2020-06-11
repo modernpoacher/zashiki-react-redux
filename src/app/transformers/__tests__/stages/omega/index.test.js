@@ -1,8 +1,19 @@
-import { transform } from '@modernpoacher/zashiki-react-redux/app/transformers/stages/omega'
+import {
+  toZashiki
+} from 'shinkansen-engine/lib/transformers/transmission'
+
+import {
+  transform
+} from '@modernpoacher/zashiki-react-redux/app/transformers/stages/omega'
+
 import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
 jest.mock('shinkansen-engine/lib/components/signals', () => ({
   FAILURE: 'MOCK FAILURE'
+}))
+
+jest.mock('shinkansen-engine/lib/transformers/transmission', () => ({
+  toZashiki: jest.fn().mockReturnValue('MOCK ZASHIKI')
 }))
 
 jest.mock('@modernpoacher/zashiki-react-redux/app/transformers', () => ({ transformFailure: jest.fn() }))
@@ -10,6 +21,7 @@ jest.mock('@modernpoacher/zashiki-react-redux/app/transformers', () => ({ transf
 const DEFAULT = {
   status: 'MOCK STATUS',
   definition: {},
+  response: {},
   gears: {
     forward: {},
     reverse: {}
@@ -66,10 +78,8 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/omega', () 
             }))
               .toEqual({
                 ...DEFAULT,
-                definition: {
-                  schema: 'MOCK DEFINITION',
-                  formData: 'MOCK RESPONSE'
-                }
+                definition: 'MOCK ZASHIKI',
+                response: 'MOCK RESPONSE'
               })
           })
         })
@@ -82,10 +92,7 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/omega', () 
             }))
               .toEqual({
                 ...DEFAULT,
-                definition: {
-                  schema: 'MOCK DEFINITION',
-                  formData: {}
-                }
+                definition: 'MOCK ZASHIKI'
               })
           })
         })

@@ -165,8 +165,8 @@ export function queryRouteRejected (error) {
   }
 }
 
-export function changeRoute (route, history) {
-  log('changeRoute')
+export function changeState (route, history) {
+  log('changeState')
 
   return {
     type: CHANGE,
@@ -175,8 +175,8 @@ export function changeRoute (route, history) {
   }
 }
 
-export function changeRouteFulfilled (response) {
-  log('changeRouteFulfilled')
+export function changeStateFulfilled (response) {
+  log('changeStateFulfilled')
 
   return {
     type: CHANGE_FULFILLED,
@@ -184,8 +184,8 @@ export function changeRouteFulfilled (response) {
   }
 }
 
-export function changeRouteRejected (error) {
-  log('changeRouteRejected')
+export function changeStateRejected (error) {
+  log('changeStateRejected')
 
   return {
     type: CHANGE_REJECTED,
@@ -193,8 +193,8 @@ export function changeRouteRejected (error) {
   }
 }
 
-export function submitRoute (route, history) {
-  log('submitRoute')
+export function submitState (route, history) {
+  log('submitState')
 
   return {
     type: SUBMIT,
@@ -203,8 +203,8 @@ export function submitRoute (route, history) {
   }
 }
 
-export function submitRouteFulfilled (response) {
-  log('submitRouteFulfilled')
+export function submitStateFulfilled (response) {
+  log('submitStateFulfilled')
 
   return {
     type: SUBMIT_FULFILLED,
@@ -212,8 +212,8 @@ export function submitRouteFulfilled (response) {
   }
 }
 
-export function submitRouteRejected (error) {
-  log('submitRouteRejected')
+export function submitStateRejected (error) {
+  log('submitStateRejected')
 
   return {
     type: SUBMIT_REJECTED,
@@ -227,6 +227,6 @@ export const fetch = () => fetchRoute()
 
 export const store = (resource, response, history) => storeRoute({ resource, response }, history)
 
-export const change = (resource, history) => changeRoute({ resource }, history)
+export const change = (resource, response, history) => changeState({ resource, response }, history)
 
-export const submit = (resource, response, history) => submitRoute({ resource, response }, history)
+export const submit = (resource, response, history) => submitState({ resource, response }, history)
