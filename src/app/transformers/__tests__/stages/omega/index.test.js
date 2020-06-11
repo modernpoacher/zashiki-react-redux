@@ -1,6 +1,8 @@
+/*
 import {
   toZashiki
 } from 'shinkansen-engine/lib/transformers/transmission'
+*/
 
 import {
   transform
