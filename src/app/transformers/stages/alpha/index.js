@@ -45,4 +45,4 @@ function transformAlpha (status, {
   }
 }
 
-export const transform = ({ status = Signals.FAILURE, ...alpha } = {}) => (status === Signals.FAILURE) ? transformFailure(status, alpha) : transformAlpha(status, alpha)
+export const transform = ({ status, ...alpha } = {}) => (status === Signals.FAILURE) ? transformFailure(status, alpha) : transformAlpha(status, alpha)
