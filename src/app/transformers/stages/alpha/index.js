@@ -3,14 +3,15 @@ import debug from 'debug'
 import Signals from 'shinkansen-engine/lib/components/signals'
 
 import {
-  toZashiki
+  toZashiki,
+  fromDocumentToHash
 } from 'shinkansen-engine/lib/transformers/transmission'
 
 import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
 const log = debug('zashiki-react-redux:app:transformers:stages:alpha')
 
-function transformAlpha (status, {
+export function transformAlpha (status, {
   omega = [],
   resource,
   gears = {
@@ -42,6 +43,25 @@ function transformAlpha (status, {
     gears,
     state,
     status
+  }
+}
+
+export function transformOmega ({ definition, response, ...route }) {
+  log('transformOmega')
+
+  return {
+    ...route,
+    definition,
+    response: fromDocumentToHash(response, definition)
+  }
+}
+
+export function transformRoute ({ omega = [], ...route }) {
+  log('transformRoute')
+
+  return {
+    ...route,
+    omega: omega.map(transformOmega)
   }
 }
 
