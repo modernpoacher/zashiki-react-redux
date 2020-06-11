@@ -14,7 +14,7 @@ import Pending from './status/pending'
 const log = debug('zashiki-react-redux:app:components:stages:embark')
 
 export const getErrorProps = ({ exception }) => exception
-export const getEmbarkProps = ({ definition, onChange, onSubmit }) => ({ definition, onChange, onSubmit })
+export const getEmbarkProps = ({ definition, response, onChange, onSubmit }) => ({ definition, response, onChange, onSubmit })
 
 log('`EmbarkStage` is awake')
 
@@ -23,7 +23,7 @@ export default class EmbarkStage extends Component {
    *  List routes
    */
   componentDidMount () {
-    log('componentDidMount()')
+    log('componentDidMount')
 
     const {
       onEmbark
@@ -80,6 +80,7 @@ EmbarkStage.propTypes = PropTypes.oneOfType([
   PropTypes.shape({
     status: PropTypes.number.isRequired,
     definition: PropTypes.object.isRequired,
+    response: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onEmbark: PropTypes.func.isRequired
@@ -87,6 +88,7 @@ EmbarkStage.propTypes = PropTypes.oneOfType([
   PropTypes.shape({
     status: PropTypes.number.isRequired,
     exception: PropTypes.object.isRequired,
+    response: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onEmbark: PropTypes.func.isRequired

@@ -221,7 +221,7 @@ export function submitStateRejected (error) {
   }
 }
 
-export const mount = (resource, response, history) => mountRoute({ resource, response }, history)
+export const mount = (resource, history) => mountRoute({ resource }, history)
 
 export const fetch = () => fetchRoute()
 

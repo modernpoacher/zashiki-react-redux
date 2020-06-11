@@ -1,17 +1,19 @@
+import debug from 'debug'
+
 import Signals from 'shinkansen-engine/lib/components/signals'
 
 import {
-  toZashiki,
-  fromDocumentToHash,
-  fromHashToDocument
+  toZashiki
 } from 'shinkansen-engine/lib/transformers/transmission'
 
 import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
-const transformOmega = (status, {
+const log = debug('zashiki-react-redux:app:transformers:stages:omega')
+
+function transformOmega (status, {
   resource,
   definition,
-  response,
+  response = {}, // hash
   gears = {
     reverse: {},
     forward: {}
@@ -20,16 +22,17 @@ const transformOmega = (status, {
     index: 0,
     count: 0
   }
-}) => {
-  return ({
-    ...(definition ? { definition: toZashiki(definition, response !== undefined ? fromDocumentToHash(response, definition) : undefined) } : { definition: {} }),
+}) {
+  log('transformOmega')
+
+  return {
+    ...(definition ? { definition: toZashiki(definition, response) } : { definition: {} }),
+    response,
     ...(resource ? { resource } : {}),
     gears,
     state,
     status
-  })
+  }
 }
 
-export const fromDocumentToZashiki = ({ status, ...omega }) => (status === Signals.FAILURE) ? transformFailure(status, omega) : transformOmega(status, omega)
-
-export const fromZashikiToDocument = ({ definition = {}, response } = {}) => fromHashToDocument(definition, response)
+export const transform = ({ status, ...omega }) => (status === Signals.FAILURE) ? transformFailure(status, omega) : transformOmega(status, omega)

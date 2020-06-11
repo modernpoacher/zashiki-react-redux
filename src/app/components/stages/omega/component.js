@@ -16,7 +16,7 @@ import Pending from './status/pending'
 const log = debug('zashiki-react-redux:app:components:stages:omega')
 
 export const getErrorProps = ({ exception }) => exception
-export const getStageProps = ({ state, resource, definition, gears, onChange, onSubmit }) => ({ state, resource, definition, gears, onChange, onSubmit })
+export const getStageProps = ({ state, resource, definition, response, gears, onChange, onSubmit }) => ({ state, resource, definition, response, gears, onChange, onSubmit })
 
 log('`OmegaStage` is awake')
 
@@ -28,30 +28,36 @@ export default class OmegaStage extends Zashiki {
     } = this.props
 
     switch (status) {
-      case Signals.FAILURE: return (
-        <Failure
-          {...getErrorProps(omega)} />
-      )
-      case Signals.SUCCESS: return (
-        <Success
-          {...getStageProps(omega)} />
-      )
-      case Signals.IN_PROGRESS: return (
-        <InProgress
-          {...getStageProps(omega)} />
-      )
-      case Signals.NO_DECISION: return (
-        <NoDecision
-          {...getStageProps(omega)} />
-      )
-      case Signals.COMPLETE: return (
-        <Complete
-          {...getStageProps(omega)} />
-      )
-      default: return (
-        <Pending
-          {...getStageProps(omega)} />
-      )
+      case Signals.FAILURE:
+        return (
+          <Failure
+            {...getErrorProps(omega)} />
+        )
+      case Signals.SUCCESS:
+        return (
+          <Success
+            {...getStageProps(omega)} />
+        )
+      case Signals.IN_PROGRESS:
+        return (
+          <InProgress
+            {...getStageProps(omega)} />
+        )
+      case Signals.NO_DECISION:
+        return (
+          <NoDecision
+            {...getStageProps(omega)} />
+        )
+      case Signals.COMPLETE:
+        return (
+          <Complete
+            {...getStageProps(omega)} />
+        )
+      default:
+        return (
+          <Pending
+            {...getStageProps(omega)} />
+        )
     }
   }
 }
@@ -60,14 +66,18 @@ OmegaStage.propTypes = PropTypes.oneOfType([
   PropTypes.shape({
     ...Zashiki.propTypes,
     status: PropTypes.number.isRequired,
+    resource: PropTypes.object.isRequired,
     definition: PropTypes.object.isRequired,
+    response: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired
   }),
   PropTypes.shape({
     ...Zashiki.propTypes,
     status: PropTypes.number.isRequired,
+    resource: PropTypes.object.isRequired,
     exception: PropTypes.object.isRequired,
+    response: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired
   })

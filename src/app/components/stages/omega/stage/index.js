@@ -9,8 +9,14 @@ import Gears from 'shinkansen-engine/lib/components/gears'
 import Count from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/count'
 import Omega from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/omega'
 
+const log = debug('zashiki-react-redux:app:components:stages:omega:stage')
+
+log('`OmegaStage` is awake')
+
 export default class OmegaStage extends React.Component {
-  render () { // console.log('(OmegaStage)render()') // eslint-disable-line
+  render () {
+    log('render')
+
     const {
       state: {
         index,
@@ -20,10 +26,11 @@ export default class OmegaStage extends React.Component {
 
     if (index || count) {
       const {
-        onChange,
-        onSubmit,
         resource,
         definition,
+        response,
+        onChange,
+        onSubmit,
         gears: {
           reverse,
           forward
@@ -36,10 +43,11 @@ export default class OmegaStage extends React.Component {
             index={index}
             count={count} />
           <Omega
-            onChange={onChange}
-            onSubmit={onSubmit}
             resource={resource}
-            definition={definition} />
+            definition={definition}
+            response={response}
+            onChange={onChange}
+            onSubmit={onSubmit} />
           <Gears
             reverse={reverse}
             forward={forward}
@@ -53,14 +61,15 @@ export default class OmegaStage extends React.Component {
 }
 
 OmegaStage.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
   state: PropTypes.shape({
     index: PropTypes.number,
     count: PropTypes.number
   }),
   resource: PropTypes.object, // .isRequired,
   definition: PropTypes.object, // .isRequired,
+  response: PropTypes.object, // .isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   gears: PropTypes.shape({
     forward: PropTypes.object,
     reverse: PropTypes.object

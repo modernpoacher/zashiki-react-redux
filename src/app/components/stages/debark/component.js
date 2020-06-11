@@ -11,10 +11,10 @@ import InProgress from './status/in-progress'
 import NoDecision from './status/no-decision'
 import Pending from './status/pending'
 
-const log = debug('zashiki-react-redux:app:components:stages:embark')
+const log = debug('zashiki-react-redux:app:components:stages:debark')
 
 export const getErrorProps = ({ exception }) => exception
-export const getDebarkProps = ({ definition, onChange, onSubmit }) => ({ definition, onChange, onSubmit })
+export const getDebarkProps = ({ definition, response, onChange, onSubmit }) => ({ definition, response, onChange, onSubmit })
 
 log('`DebarkStage` is awake')
 
@@ -23,7 +23,7 @@ export default class DebarkStage extends Component {
    *  List routes
    */
   componentDidMount () {
-    log('componentDidMount()')
+    log('componentDidMount')
 
     const {
       onDebark
@@ -79,6 +79,7 @@ DebarkStage.propTypes = PropTypes.oneOfType([
   PropTypes.shape({
     status: PropTypes.number.isRequired,
     definition: PropTypes.object.isRequired,
+    response: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onDebark: PropTypes.func.isRequired
@@ -86,6 +87,7 @@ DebarkStage.propTypes = PropTypes.oneOfType([
   PropTypes.shape({
     status: PropTypes.number.isRequired,
     exception: PropTypes.object.isRequired,
+    response: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onDebark: PropTypes.func.isRequired

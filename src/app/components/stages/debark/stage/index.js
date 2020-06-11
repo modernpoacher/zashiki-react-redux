@@ -1,7 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import debug from 'debug'
 
-const DebarkStage = ({ onChange, onSubmit, definition }) => (
+const log = debug('zashiki-react-redux:app:components:stages:debark:stage')
+
+log('`DebarkStage` is awake')
+
+const DebarkStage = ({ definition, response, onChange, onSubmit }) => (
   <div className='debark'>
     <h2>
       Complete
@@ -10,9 +15,10 @@ const DebarkStage = ({ onChange, onSubmit, definition }) => (
 )
 
 DebarkStage.propTypes = {
+  definition: PropTypes.object.isRequired,
+  response: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  definition: PropTypes.object.isRequired
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default DebarkStage

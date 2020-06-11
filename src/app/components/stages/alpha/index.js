@@ -1,3 +1,5 @@
+import debug from 'debug'
+
 import {
   connect
 } from 'react-redux'
@@ -20,6 +22,8 @@ import {
 
 import AlphaStage from './component'
 
+const log = debug('zashiki-react-redux:app:components:stages:alpha')
+
 const {
   ALPHA
 } = Signals
@@ -32,12 +36,18 @@ function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
   return {
     ...transform(stateProps),
     onMount (resource) {
+      log('onMount')
+
       dispatch(mount(resource, history))
     },
-    onChange (resource) {
-      dispatch(change(resource, history))
+    onChange (resource, response) {
+      log('onChange')
+
+      dispatch(change(resource, response, history))
     },
     onSubmit (resource, response) {
+      log('onSubmit')
+
       dispatch(submit(resource, response, history))
     },
     history,

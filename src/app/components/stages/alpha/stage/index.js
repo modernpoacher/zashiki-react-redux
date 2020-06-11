@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import debug from 'debug'
 
 import Signals from 'shinkansen-engine/lib/components/signals'
 
@@ -8,8 +9,14 @@ import Gears from 'shinkansen-engine/lib/components/gears'
 import Count from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/count'
 import Alpha from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/alpha'
 
+const log = debug('zashiki-react-redux:app:components:stages:alpha:stage')
+
+log('`AlphaStage` is awake')
+
 export default class AlphaStage extends Component {
-  render () { // console.log('(AlphaStage)render()') // eslint-disable-line
+  render () {
+    log('render')
+
     const {
       state: {
         index,
@@ -19,9 +26,10 @@ export default class AlphaStage extends Component {
 
     if (count || index) {
       const {
+        definitions,
+        response,
         onChange,
         onSubmit,
-        definitions,
         gears: {
           reverse,
           forward
@@ -34,9 +42,10 @@ export default class AlphaStage extends Component {
             index={index}
             count={count} />
           <Alpha
+            definitions={definitions}
+            response={response}
             onChange={onChange}
-            onSubmit={onSubmit}
-            definitions={definitions} />
+            onSubmit={onSubmit} />
           <Gears
             reverse={reverse}
             forward={forward}
@@ -49,13 +58,14 @@ export default class AlphaStage extends Component {
 }
 
 AlphaStage.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
   state: PropTypes.shape({
     index: PropTypes.number,
     count: PropTypes.number
   }),
   definitions: PropTypes.array.isRequired,
+  response: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   gears: PropTypes.shape({
     forward: PropTypes.object,
     reverse: PropTypes.object

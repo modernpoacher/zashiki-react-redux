@@ -10,6 +10,10 @@ import {
 } from 'redux-saga/effects'
 
 import Signals from 'shinkansen-engine/lib/components/signals'
+import {
+  fromDocumentToHash,
+  fromHashToDocument
+} from 'shinkansen-engine/lib/transformers/transmission'
 
 import {
   ROUTE,
@@ -55,8 +59,25 @@ const {
 } = Signals
 
 const getState = ({ [OMEGA]: omega = {} }) => omega
+const getDefinition = ({ [OMEGA]: { definition } = {} }) => definition
 const hasStoreError = ({ [OMEGA]: omega = {} }) => ('error' in omega)
 const hasQueryError = ({ [OMEGA]: omega = {} }) => ('error' in omega)
+
+function transformData (data) {
+  if (Reflect.has(data, 'response')) {
+    const {
+      response,
+      definition
+    } = data
+
+    return {
+      ...data,
+      response: fromDocumentToHash(response, definition)
+    }
+  }
+
+  return data
+}
 
 function * omegaRouteSaga ({ redirect, history }) {
   log('omegaRouteSaga')
@@ -78,8 +99,8 @@ function * mountRouteSaga ({ route }) {
   log('mountRouteSaga')
 
   try {
-    const { data: response = {} } = yield call(api.mountRoute, route)
-    yield put(mountRouteFulfilled(response))
+    const { data = {} } = yield call(api.mountRoute, route)
+    yield put(mountRouteFulfilled(transformData(data)))
   } catch (e) {
     yield put(mountRouteRejected(transformError(e)))
   }
@@ -89,8 +110,8 @@ function * fetchRouteSaga () {
   log('fetchRouteSaga')
 
   try {
-    const { data: response = {} } = yield call(api.fetchRoute)
-    yield put(fetchRouteFulfilled(response))
+    const { data = {} } = yield call(api.fetchRoute)
+    yield put(fetchRouteFulfilled(transformData(data)))
   } catch (e) {
     yield put(fetchRouteRejected(transformError(e)))
   }
@@ -99,9 +120,11 @@ function * fetchRouteSaga () {
 function * storeRouteSaga ({ route }) {
   log('storeRouteSaga')
 
+  log(route)
+
   try {
-    const { data: response = {} } = yield call(api.storeRoute, route)
-    yield put(storeRouteFulfilled(response))
+    const { data = {} } = yield call(api.storeRoute, route)
+    yield put(storeRouteFulfilled(transformData(data)))
   } catch (e) {
     yield put(storeRouteRejected(transformError(e)))
   }
@@ -111,17 +134,22 @@ function * queryRouteSaga () {
   log('queryRouteSaga')
 
   try {
-    const { data: response = {} } = yield call(api.queryRoute)
-    yield put(queryRouteFulfilled(response))
+    const { data = {} } = yield call(api.queryRoute)
+    yield put(queryRouteFulfilled(transformData(data)))
   } catch (e) {
     yield put(queryRouteRejected(transformError(e)))
   }
 }
 
-function * submitStateSaga ({ route, history }) {
+function * submitStateSaga ({ route: { resource, response }, history }) {
   log('submitStateSaga')
 
-  yield put(storeRoute(route, history))
+  const definition = yield select(getDefinition)
+
+  yield put(storeRoute({
+    resource,
+    response: fromHashToDocument(definition, response)
+  }, history))
 
   yield race([
     take(STORE_FULFILLED),

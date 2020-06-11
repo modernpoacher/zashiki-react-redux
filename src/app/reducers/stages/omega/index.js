@@ -1,3 +1,5 @@
+import debug from 'debug'
+
 import Signals from 'shinkansen-engine/lib/components/signals'
 
 import {
@@ -31,6 +33,10 @@ import {
 import {
   ROUTE as DEBARK_ROUTE
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
+
+const log = debug('zashiki-react-redux:app:reducers:stages:omega')
+
+log('`omega` is awake')
 
 const {
   PENDING,
@@ -66,7 +72,7 @@ export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ st
  *  Get `resource` `response` from state
  *  Set `history` `route` from action
  */
-export const store = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
+export const store = ({ status = PENDING, ...state } = {}, { history, route: { resource = {} } = {} } = {}) => ({ status, ...state, history, resource, response: {} })
 
 /*
  *  Get all from state
@@ -78,7 +84,7 @@ export const query = ({ status = PENDING, ...state } = {}, action = {}) => ({ st
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const change = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
+export const change = ({ status = PENDING, response: RESPONSE, ...state } = {}, { history, route: { response, ...route } = {} } = {}) => ({ status, ...state, history, ...route, response: { ...RESPONSE, ...response } })
 
 /*
  *  Get all from state
@@ -94,7 +100,7 @@ export const mountFulfilled = ({ alpha, definition, gears, resource, state } = {
   ...(alpha ? { alpha } : {}),
   ...(definition ? { definition } : {}),
   ...(gears ? { gears } : {}),
-  ...(resource ? { resource } : {}),
+  // ...(resource ? { resource } : {}),
   ...(state ? { state } : {}),
   resource: {},
   response: {},
@@ -107,20 +113,7 @@ export const storeFulfilled = ({ status = PENDING, ...state } = {}, { response =
 
 export const queryFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
-/*
- *  Not `redirect` from state
- */
-export const changeFulfilled = ({ alpha, definition, gears, resource, state } = {}, { status = PENDING, response = {} } = {}) => ({
-  status,
-  ...(alpha ? { alpha } : {}),
-  ...(definition ? { definition } : {}),
-  ...(gears ? { gears } : {}),
-  ...(resource ? { resource } : {}),
-  ...(state ? { state } : {}),
-  resource: {},
-  response: {},
-  ...response
-})
+export const changeFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
 export const submitFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 

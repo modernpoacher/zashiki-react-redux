@@ -5,7 +5,7 @@ import {
   Motor
 } from 'shinkansen-motor'
 */
-const Alpha = ({ onSubmit, definitions }) => (
+const Alpha = ({ definitions, response, onSubmit }) => (
   <ol className='alpha'>
     {definitions
       .map(({ resource, definition }, key) => (
@@ -23,9 +23,10 @@ const Alpha = ({ onSubmit, definitions }) => (
 )
 
 Alpha.propTypes = {
+  definitions: PropTypes.array.isRequired,
+  response: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  definitions: PropTypes.array.isRequired
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default Alpha

@@ -3,10 +3,16 @@ import debug from 'debug'
 import {
   call,
   put,
+  select,
   takeLatest
 } from 'redux-saga/effects'
 
+import Signals from 'shinkansen-engine/lib/components/signals'
 import Rails from 'shinkansen-engine/lib/components/rails'
+import {
+  fromDocumentToHash,
+  fromHashToDocument
+} from 'shinkansen-engine/lib/transformers/transmission'
 
 import {
   ROUTE,
@@ -33,6 +39,28 @@ import getPathname from '@modernpoacher/zashiki-react-redux/app/common/get-pathn
 
 const log = debug('zashiki-react-redux:app:sagas:stages:embark')
 
+const {
+  EMBARK
+} = Signals
+
+const getDefinition = ({ [EMBARK]: { definition } = {} }) => definition
+
+function transformData (data) {
+  if (Reflect.has(data, 'response')) {
+    const {
+      response,
+      definition
+    } = data
+
+    return {
+      ...data,
+      response: fromDocumentToHash(response, definition)
+    }
+  }
+
+  return data
+}
+
 function * embarkRouteSaga ({ redirect, history }) {
   log('embarkRouteSaga')
 
@@ -53,8 +81,8 @@ function * fetchRouteSaga () {
   log('fetchRouteSaga')
 
   try {
-    const { data: response = {} } = yield call(api.fetchRoute)
-    yield put(fetchRouteFulfilled(response))
+    const { data = {} } = yield call(api.fetchRoute)
+    yield put(fetchRouteFulfilled(transformData(data)))
   } catch (e) {
     yield put(fetchRouteRejected(transformError(e)))
   }
@@ -64,21 +92,26 @@ function * storeRouteSaga (route) {
   log('storeRouteSaga')
 
   try {
-    const { data: response = {} } = yield call(api.storeRoute, route)
-    yield put(storeRouteFulfilled(response))
+    const { data = {} } = yield call(api.storeRoute, route)
+    yield put(storeRouteFulfilled(transformData(data)))
   } catch (e) {
     yield put(storeRouteRejected(transformError(e)))
   }
 }
 
-function * submitStateSaga ({ embark: { statement }, history }) {
+function * submitStateSaga ({ embark, history }) {
   log('submitStateSaga')
 
   try {
+    const definition = yield select(getDefinition)
+    const {
+      statement
+    } = fromHashToDocument(definition, embark)
+
     yield storeRouteSaga({ response: { statement } })
-    const { data: response = {} } = yield call(api.submitState, { response: { embark: Rails.rail(statement) } })
-    yield put(submitStateFulfilled(response))
-    const { redirect } = response
+    const { data = {} } = yield call(api.submitState, { response: { embark: Rails.rail(statement) } })
+    yield put(submitStateFulfilled(transformData(data)))
+    const { redirect } = data
     yield put(embarkRoute(redirect, history))
   } catch (e) {
     yield put(submitStateRejected(transformError(e)))

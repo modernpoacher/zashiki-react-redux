@@ -11,8 +11,7 @@ import {
 import Signals from 'shinkansen-engine/lib/components/signals'
 
 import {
-  fromDocumentToZashiki,
-  fromZashikiToDocument
+  transform
 } from '@modernpoacher/zashiki-react-redux/app/transformers/stages/embark'
 
 import {
@@ -35,27 +34,19 @@ const mapDispatchToProps = (dispatch) => ({ dispatch })
 
 function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
   return {
-    ...fromDocumentToZashiki(stateProps),
+    ...transform(stateProps),
     onEmbark () {
       log('onEmbark')
 
       dispatch(fetch(history))
     },
-    onChange (key, value) {
+    onChange (response) {
       log('onChange')
 
-      const {
-        definition
-      } = stateProps
-
-      dispatch(change(fromZashikiToDocument({ definition, response: { [key]: value } }), history))
+      dispatch(change(response, history))
     },
-    onSubmit () {
+    onSubmit (response) {
       log('onSubmit')
-
-      const {
-        response
-      } = stateProps
 
       dispatch(submit(response, history))
     },

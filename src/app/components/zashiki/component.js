@@ -32,7 +32,7 @@ export default class Zashiki extends Component {
    *  Interrogate initial props for current Route 'params' (if the component has mounted then the route has changed)
    */
   componentDidMount () {
-    log('componentDidMount()')
+    log('componentDidMount')
 
     const {
       onMount,
@@ -57,7 +57,7 @@ export default class Zashiki extends Component {
    *  @param {Object} state   Current state
    */
   static getDerivedStateFromProps (props, state) {
-    log('getDerivedStateFromProps()')
+    log('getDerivedStateFromProps')
 
     const {
       match: {

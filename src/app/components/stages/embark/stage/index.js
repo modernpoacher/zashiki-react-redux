@@ -1,19 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import debug from 'debug'
 
 import Pinion from 'shinkansen-engine/lib/components/pinion'
 
 import getEmbarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-embark-route'
 
-const EmbarkStage = ({ onChange, onSubmit, definition }) => (
+const log = debug('zashiki-react-redux:app:components:stages:embark:stage')
+
+log('`EmbarkStage` is awake')
+
+const EmbarkStage = ({ onSubmit, response, onChange, definition }) => (
   <div className='embark'>
     <form method='POST' action={getEmbarkRoute()} onSubmit={(event) => {
       event.preventDefault()
 
-      onSubmit()
+      onSubmit(response)
     }}>
       <Pinion
-        onChange={onChange}
+        onChange={(key, value) => onChange({ [key]: value })}
         pinion={definition}
       />
       <button type='submit'>
@@ -24,8 +29,9 @@ const EmbarkStage = ({ onChange, onSubmit, definition }) => (
 )
 
 EmbarkStage.propTypes = {
-  onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  response: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
   definition: PropTypes.object.isRequired
 }
 

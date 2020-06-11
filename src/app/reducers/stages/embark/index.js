@@ -1,3 +1,5 @@
+import debug from 'debug'
+
 import Signals from 'shinkansen-engine/lib/components/signals'
 
 import {
@@ -17,6 +19,10 @@ import {
   CHANGE_REJECTED,
   SUBMIT_REJECTED
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/embark'
+
+const log = debug('zashiki-react-redux:app:reducers:stages:embark')
+
+log('`embark` is awake')
 
 const {
   PENDING,
@@ -51,29 +57,29 @@ export const store = ({ status = PENDING, ...state } = {}, { history, route = {}
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const changeState = ({ status = PENDING, ...state } = {}, { history, embark = {} } = {}) => ({ status, ...state, history, response: { ...embark } })
+export const change = ({ status = PENDING, response: RESPONSE, ...state } = {}, { history, embark = {} } = {}) => ({ status, ...state, history, response: { ...RESPONSE, ...embark } })
 
 /*
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const submitState = ({ status = PENDING, ...state } = {}, { history, embark = {} } = {}) => ({ status, ...state, history, ...embark })
+export const submit = ({ status = PENDING, ...state } = {}, { history, embark = {} } = {}) => ({ status, ...state, history, ...embark })
 
 export const fetchFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
 export const storeFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
-export const changeStateFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
+export const changeFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
-export const submitStateFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
+export const submitFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
 export const fetchRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
 
 export const storeRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
 
-export const changeStateRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
+export const changeRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
 
-export const submitStateRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
+export const submitRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
 
 /**
  *  EmbarkStage Reducer
@@ -94,10 +100,10 @@ export default function embarkReducer (state = STATE, { type, ...action } = ACTI
       return store(state, action)
     case CHANGE:
 
-      return changeState(state, action)
+      return change(state, action)
     case SUBMIT:
 
-      return submitState(state, action)
+      return submit(state, action)
     case FETCH_FULFILLED:
 
       return fetchFulfilled(state, action)
@@ -106,10 +112,10 @@ export default function embarkReducer (state = STATE, { type, ...action } = ACTI
       return storeFulfilled(state, action)
     case CHANGE_FULFILLED:
 
-      return changeStateFulfilled(state, action)
+      return changeFulfilled(state, action)
     case SUBMIT_FULFILLED:
 
-      return submitStateFulfilled(state, action)
+      return submitFulfilled(state, action)
     case FETCH_REJECTED:
 
       return fetchRejected(state, action)
@@ -118,10 +124,10 @@ export default function embarkReducer (state = STATE, { type, ...action } = ACTI
       return storeRejected(state, action)
     case CHANGE_REJECTED:
 
-      return changeStateRejected(state, action)
+      return changeRejected(state, action)
     case SUBMIT_REJECTED:
 
-      return submitStateRejected(state, action)
+      return submitRejected(state, action)
     default:
 
       return state

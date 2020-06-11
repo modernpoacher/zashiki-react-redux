@@ -2,9 +2,8 @@ import React from 'react'
 
 import EmbarkStage from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/stage'
 
-const Pending = (props) => (
-  <EmbarkStage
-    {...props} />
+const Pending = () => (
+  <div className='embark pending' />
 )
 
 Pending.propTypes = {

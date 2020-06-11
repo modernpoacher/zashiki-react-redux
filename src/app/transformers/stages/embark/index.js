@@ -1,21 +1,23 @@
+import debug from 'debug'
+
 import {
-  toZashiki,
-  fromDocumentToHash,
-  fromHashToDocument
+  toZashiki
 } from 'shinkansen-engine/lib/transformers/transmission'
 
 import Signals from 'shinkansen-engine/lib/components/signals'
 
 import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
-const transformEmbark = (status, {
-  definition,
-  response
-}) => ({
-  ...(definition ? { definition: toZashiki(definition, response !== undefined ? fromDocumentToHash(response, definition) : undefined) } : { definition: {} }),
-  status
-})
+const log = debug('zashiki-react-redux:app:transformers:stages:alpha')
 
-export const fromDocumentToZashiki = ({ status, ...embark } = {}) => (status === Signals.FAILURE) ? transformFailure(status, embark) : transformEmbark(status, embark)
+function transformEmbark (status, { definition, response = {} }) {
+  log('transformEmbark')
 
-export const fromZashikiToDocument = ({ definition = {}, response } = {}) => fromHashToDocument(definition, response)
+  return {
+    ...(definition ? { definition: toZashiki(definition, response) } : { definition: {} }),
+    response,
+    status
+  }
+}
+
+export const transform = ({ status, ...embark } = {}) => (status === Signals.FAILURE) ? transformFailure(status, embark) : transformEmbark(status, embark)
