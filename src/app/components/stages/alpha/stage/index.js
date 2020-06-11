@@ -27,7 +27,6 @@ export default class AlphaStage extends Component {
     if (count || index) {
       const {
         definitions,
-        response,
         onChange,
         onSubmit,
         gears: {
@@ -43,7 +42,6 @@ export default class AlphaStage extends Component {
             count={count} />
           <Alpha
             definitions={definitions}
-            response={response}
             onChange={onChange}
             onSubmit={onSubmit} />
           <Gears
@@ -63,7 +61,6 @@ AlphaStage.propTypes = {
     count: PropTypes.number
   }),
   definitions: PropTypes.array.isRequired,
-  response: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   gears: PropTypes.shape({

@@ -2,6 +2,10 @@ import debug from 'debug'
 
 import Signals from 'shinkansen-engine/lib/components/signals'
 
+import {
+  toZashiki
+} from 'shinkansen-engine/lib/transformers/transmission'
+
 import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
 const log = debug('zashiki-react-redux:app:transformers:stages:alpha')
@@ -22,15 +26,18 @@ function transformAlpha (status, {
 
   return {
     definitions: omega.map(({
+      description,
+      definition,
       resource,
-      definition: schema,
-      response: formData = {} // hash
-    }) => ({
-      ...(resource ? { resource } : {}),
-      definition: {
-        ...(schema ? { schema, formData } : {})
+      response = {} // hash
+    }) => {
+      return {
+        ...(description ? { description } : {}),
+        ...(definition ? { definition: toZashiki(definition, response) } : { definition: {} }),
+        ...(resource ? { resource } : {}),
+        response
       }
-    })),
+    }),
     ...(resource ? { resource } : {}),
     gears,
     state,

@@ -1,5 +1,7 @@
 import debug from 'debug'
 
+import equal from 'fast-deep-equal'
+
 import Signals from 'shinkansen-engine/lib/components/signals'
 
 import {
@@ -69,7 +71,7 @@ export const mount = ({ status = PENDING, ...state } = {}, { history, route = {}
 export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ status, ...state, ...action })
 
 /*
- *  Get `resource` `response` from state
+ *  Get `resource` `responses` from state
  *  Set `history` `route` from action
  */
 export const store = ({ status = PENDING, ...state } = {}, { history, route: { resource } = {} } = {}) => ({ status, ...state, history, resource })
@@ -84,7 +86,41 @@ export const query = ({ status = PENDING, ...state } = {}, action = {}) => ({ st
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const change = ({ status = PENDING, response: RESPONSE, ...state } = {}, { history, route: { response, ...route } = {} } = {}) => ({ status, ...state, history, ...route, response: { ...RESPONSE, ...response } })
+export const change = ({ status = PENDING, omega = [], ...state } = {}, { history, route: { resource: RESOURCE = {}, response: RESPONSE = {} } = {} } = {}) => {
+  /*
+   *  While it's cheaper and faster to change just one item, Redux doesn't see it
+   *
+   *  Instead, we change the whole array (as simply as possible)
+   *
+   *  Redux prefers a flat data structure. We could make one but we don't need it yet
+   */
+  return {
+    status,
+    ...state,
+    history,
+    omega: omega.map((item) => {
+      const {
+        resource
+      } = item
+
+      if (equal(resource, RESOURCE)) {
+        const {
+          response
+        } = item
+
+        return {
+          ...item,
+          response: {
+            ...response,
+            ...RESPONSE
+          }
+        }
+      }
+
+      return item
+    })
+  }
+}
 
 /*
  *  Get all from state
@@ -95,17 +131,18 @@ export const submit = ({ status = PENDING, ...state } = {}, { history, route = {
 /*
  *  Not `redirect` from state
  */
-export const mountFulfilled = ({ status = PENDING, omega, definitions, gears, resource, state } = {}, { response = {} } = {}) => ({
-  status,
-  ...(omega ? { omega } : {}),
-  ...(definitions ? { definitions } : {}),
-  ...(gears ? { gears } : {}),
-  // ...(resource ? { resource } : {}),
-  ...(state ? { state } : {}),
-  resource: {},
-  response: {},
-  ...response
-})
+export const mountFulfilled = ({ status = PENDING, omega, gears, resource, state, history } = {}, { response = {} } = {}) => {
+  return {
+    status,
+    ...(omega ? { omega } : {}),
+    ...(gears ? { gears } : {}),
+    ...(state ? { state } : {}),
+    history,
+    resource: {},
+    response: {},
+    ...response
+  }
+}
 
 export const fetchFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 

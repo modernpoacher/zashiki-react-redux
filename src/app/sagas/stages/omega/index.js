@@ -20,6 +20,7 @@ import {
   omegaRoute,
 
   MOUNT,
+  mountRoute,
   mountRouteFulfilled,
   mountRouteRejected,
 
@@ -64,6 +65,8 @@ const hasStoreError = ({ [OMEGA]: omega = {} }) => ('error' in omega)
 const hasQueryError = ({ [OMEGA]: omega = {} }) => ('error' in omega)
 
 function transformData (data) {
+  log('transformData')
+
   if (Reflect.has(data, 'response')) {
     const {
       response,
@@ -120,8 +123,6 @@ function * fetchRouteSaga () {
 function * storeRouteSaga ({ route }) {
   log('storeRouteSaga')
 
-  log(route)
-
   try {
     const { data = {} } = yield call(api.storeRoute, route)
     yield put(storeRouteFulfilled(transformData(data)))
@@ -144,8 +145,16 @@ function * queryRouteSaga () {
 function * submitStateSaga ({ route: { resource, response }, history }) {
   log('submitStateSaga')
 
+  /*
+   *  Mount the route
+   */
+  yield put(mountRoute({ resource }, history))
+
   const definition = yield select(getDefinition)
 
+  /*
+   *  Store the route `response`
+   */
   yield put(storeRoute({
     resource,
     response: fromHashToDocument(definition, response)

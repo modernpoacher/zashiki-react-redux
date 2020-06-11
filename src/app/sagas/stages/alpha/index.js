@@ -1,5 +1,7 @@
 import debug from 'debug'
 
+import equal from 'fast-deep-equal'
+
 import {
   call,
   put,
@@ -20,6 +22,7 @@ import {
   alphaRoute,
 
   MOUNT,
+  mountRoute,
   mountRouteFulfilled,
   mountRouteRejected,
 
@@ -59,20 +62,37 @@ const {
 } = Signals
 
 const getState = ({ [ALPHA]: alpha = {} }) => alpha
-const getDefinition = ({ [ALPHA]: { definition } = {} }) => definition
+const getDefinition = ({ [ALPHA]: { omega = [] } = {} }, RESOURCE) => {
+  const {
+    definition
+  } = omega.find(({ resource }) => equal(resource, RESOURCE))
+
+  return definition
+}
 const hasStoreError = ({ [ALPHA]: alpha = {} }) => ('error' in alpha)
 const hasQueryError = ({ [ALPHA]: alpha = {} }) => ('error' in alpha)
 
 function transformData (data) {
-  if (Reflect.has(data, 'response')) {
+  log('transformData')
+
+  if (Reflect.has(data, 'omega')) {
     const {
-      response,
-      definition
+      omega = []
     } = data
 
     return {
       ...data,
-      response: fromDocumentToHash(response, definition)
+      omega: omega.map((item) => {
+        const {
+          response,
+          definition
+        } = item
+
+        return {
+          ...item,
+          response: fromDocumentToHash(response, definition)
+        }
+      })
     }
   }
 
@@ -142,8 +162,16 @@ function * queryRouteSaga () {
 function * submitStateSaga ({ route: { resource, response }, history }) {
   log('submitStateSaga')
 
-  const definition = yield select(getDefinition)
+  /*
+   *  Mount the route
+   */
+  yield put(mountRoute({ resource }, history))
 
+  const definition = yield select(getDefinition, resource)
+
+  /*
+   *  Store the route `response`
+   */
   yield put(storeRoute({
     resource,
     response: fromHashToDocument(definition, response)

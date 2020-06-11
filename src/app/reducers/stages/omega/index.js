@@ -84,7 +84,7 @@ export const query = ({ status = PENDING, ...state } = {}, action = {}) => ({ st
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const change = ({ status = PENDING, response: RESPONSE, ...state } = {}, { history, route: { response, ...route } = {} } = {}) => ({ status, ...state, history, ...route, response: { ...RESPONSE, ...response } })
+export const change = ({ status = PENDING, response: RESPONSE, ...state } = {}, { history, route: { resource, response } = {} } = {}) => ({ status, ...state, history, resource, response: { ...RESPONSE, ...response } })
 
 /*
  *  Get all from state
@@ -95,17 +95,19 @@ export const submit = ({ status = PENDING, ...state } = {}, { history, route = {
 /*
  *  Not `redirect` from state
  */
-export const mountFulfilled = ({ alpha, definition, gears, resource, state } = {}, { status = PENDING, response = {} } = {}) => ({
-  status,
-  ...(alpha ? { alpha } : {}),
-  ...(definition ? { definition } : {}),
-  ...(gears ? { gears } : {}),
-  // ...(resource ? { resource } : {}),
-  ...(state ? { state } : {}),
-  resource: {},
-  response: {},
-  ...response
-})
+export const mountFulfilled = ({ alpha, definition, gears, resource, state, history } = {}, { status = PENDING, response = {} } = {}) => {
+  return {
+    status,
+    ...(alpha ? { alpha } : {}),
+    ...(definition ? { definition } : {}),
+    ...(gears ? { gears } : {}),
+    ...(state ? { state } : {}),
+    history,
+    resource: {},
+    response: {},
+    ...response
+  }
+}
 
 export const fetchFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 

@@ -1,22 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-/*
-import {
-  Motor
-} from 'shinkansen-motor'
-*/
-const Alpha = ({ definitions, response, onSubmit }) => (
+
+import Pinion from 'shinkansen-engine/lib/components/pinion'
+
+import getResourceRoute from '@modernpoacher/zashiki-react-redux/app/common/get-resource-route'
+
+const Alpha = ({ definitions, onSubmit, onChange }) => (
   <ol className='alpha'>
     {definitions
-      .map(({ resource, definition }, key) => (
+      .map(({ resource, response, definition }, key) => (
         <li key={key}>
-          { /*
+          <form method='POST' action={getResourceRoute(resource)} onSubmit={(event) => {
+            event.preventDefault()
 
-          <Motor
-            onSubmit={(response) => onSubmit(resource, response)}
-            definition={definition} />
-
-          */ }
+            onSubmit(resource, response)
+          }}>
+            <Pinion
+              onChange={(key, value) => onChange(resource, { [key]: value })}
+              pinion={definition}
+            />
+            <button type='submit'>
+        Continue
+            </button>
+          </form>
         </li>
       ))}
   </ol>
@@ -24,7 +30,6 @@ const Alpha = ({ definitions, response, onSubmit }) => (
 
 Alpha.propTypes = {
   definitions: PropTypes.array.isRequired,
-  response: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
 }
