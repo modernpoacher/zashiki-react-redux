@@ -9,7 +9,12 @@ Enzyme.configure({ adapter: new Adapter() })
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/complete', () => {
   it('renders', () => {
     const component = (
-      <Complete definition={{}} response={{}} onChange={jest.fn()} onSubmit={jest.fn()} />
+      <Complete
+        definition={{}}
+        response={{}}
+        onChange={jest.fn()}
+        onSubmit={jest.fn()}
+      />
     )
 
     expect(shallow(component))

@@ -10,7 +10,10 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status
   describe('Always', () => {
     it('renders', () => {
       const component = (
-        <Failure name='MOCK NAME' response={{}} onSubmit={jest.fn()} />
+        <Failure
+          name='MOCK NAME'
+          onSubmit={jest.fn()}
+        />
       )
 
       expect(shallow(component))
@@ -21,7 +24,11 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status
   describe('`code` is an integer', () => {
     it('renders', () => {
       const component = (
-        <Failure code={1} name='MOCK NAME' response={{}} onSubmit={jest.fn()} />
+        <Failure
+          code={1}
+          name='MOCK NAME'
+          onSubmit={jest.fn()}
+        />
       )
 
       expect(shallow(component))
@@ -32,7 +39,11 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status
   describe('`message` is a string', () => {
     it('renders', () => {
       const component = (
-        <Failure name='MOCK NAME' message='MOCK MESSAGE' response={{}} onSubmit={jest.fn()} />
+        <Failure
+          name='MOCK NAME'
+          message='MOCK MESSAGE'
+          onSubmit={jest.fn()}
+        />
       )
 
       expect(shallow(component))

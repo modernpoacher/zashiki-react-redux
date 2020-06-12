@@ -30,7 +30,11 @@ const MOCK_RESPONSE = {
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/alpha', () => {
   it('renders', () => {
     const component = (
-      <Alpha definitions={[{ definition: MOCK_DEFINITION, resource: MOCK_RESOURCE }]} response={MOCK_RESPONSE} onChange={jest.fn()} onSubmit={jest.fn()} />
+      <Alpha
+        definitions={[{ definition: MOCK_DEFINITION, resource: MOCK_RESOURCE, response: MOCK_RESPONSE }]}
+        onChange={jest.fn()}
+        onSubmit={jest.fn()}
+      />
     )
 
     expect(mount(component))

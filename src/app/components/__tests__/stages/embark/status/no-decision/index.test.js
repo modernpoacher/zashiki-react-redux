@@ -9,7 +9,12 @@ Enzyme.configure({ adapter: new Adapter() })
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/no-decision', () => {
   it('renders', () => {
     const component = (
-      <NoDecision definition={{}} response={{}} onChange={jest.fn()} onSubmit={jest.fn()} />
+      <NoDecision
+        definition={{}}
+        response={{}}
+        onChange={jest.fn()}
+        onSubmit={jest.fn()}
+      />
     )
 
     expect(shallow(component))

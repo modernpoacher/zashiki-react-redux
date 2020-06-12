@@ -14,7 +14,12 @@ const MOCK_DEFINITION = {
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/stage', () => {
   it('renders', () => {
     const component = (
-      <Stage definition={MOCK_DEFINITION} response={{}} onChange={jest.fn()} onSubmit={jest.fn()} />
+      <Stage
+        definition={MOCK_DEFINITION}
+        response={{}}
+        onChange={jest.fn()}
+        onSubmit={jest.fn()}
+      />
     )
 
     expect(shallow(component))

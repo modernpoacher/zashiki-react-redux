@@ -9,7 +9,12 @@ Enzyme.configure({ adapter: new Adapter() })
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/in-progress', () => {
   it('renders', () => {
     const component = (
-      <InProgress definition={{}} response={{}} onChange={jest.fn()} onSubmit={jest.fn()} />
+      <InProgress
+        definition={{}}
+        response={{}}
+        onChange={jest.fn()}
+        onSubmit={jest.fn()}
+      />
     )
 
     expect(shallow(component))
