@@ -6,6 +6,8 @@ import Omega from '@modernpoacher/zashiki-react-redux/app/components/stages/omeg
 
 Enzyme.configure({ adapter: new Adapter() })
 
+const MOCK_DESCRIPTION = 'MOCK DESCRIPTION'
+
 const MOCK_DEFINITION = {
   meta: {
     uri: '#/'
@@ -30,7 +32,7 @@ const MOCK_RESPONSE = {
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/omega', () => {
   it('renders', () => {
     const component = (
-      <Omega definition={MOCK_DEFINITION} resource={MOCK_RESOURCE} response={MOCK_RESPONSE} onChange={jest.fn()} onSubmit={jest.fn()} />
+      <Omega description={MOCK_DESCRIPTION} definition={MOCK_DEFINITION} resource={MOCK_RESOURCE} response={MOCK_RESPONSE} onChange={jest.fn()} onSubmit={jest.fn()} />
     )
 
     expect(mount(component))

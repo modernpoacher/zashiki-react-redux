@@ -2,6 +2,8 @@ import {
   toZashiki
 } from 'shinkansen-engine/lib/transformers/transmission'
 
+import toCheckAnswers from 'shinkansen-pinion/lib/transformers/check-answers'
+
 import {
   transform
 } from '@modernpoacher/zashiki-react-redux/app/transformers/stages/debark'
@@ -16,13 +18,9 @@ jest.mock('shinkansen-engine/lib/transformers/transmission', () => ({
   toZashiki: jest.fn().mockReturnValue('MOCK ZASHIKI')
 }))
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/transformers', () => ({ transformFailure: jest.fn() }))
+jest.mock('shinkansen-pinion/lib/transformers/check-answers', () => jest.fn().mockReturnValue('MOCK CHECK ANSWERS'))
 
-const DEFAULT = {
-  status: 'MOCK STATUS',
-  definition: {},
-  response: {}
-}
+jest.mock('@modernpoacher/zashiki-react-redux/app/transformers', () => ({ transformFailure: jest.fn() }))
 
 describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/debark', () => {
   describe('`transform`', () => {
@@ -47,49 +45,32 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/debark', ()
       })
 
       describe('`status` is not `Signals.FAILURE`', () => {
-        it('does not invoke `transformFailure`', () => {
-          transform({ status: 'MOCK STATUS' })
-
-          expect(transformFailure)
-            .not.toBeCalled()
-        })
-
-        it('returns an object with default values', () => {
-          expect(transform({ status: 'MOCK STATUS' }))
-            .toEqual(DEFAULT)
-        })
-      })
-
-      describe('`definition` is an object', () => {
         let returnValue
 
         beforeEach(() => {
           jest.clearAllMocks()
 
           returnValue = transform({
-            status: 'MOCK STATUS',
-            definition: 'MOCK DEFINITION',
-            response: 'MOCK RESPONSE'
+            status: 'MOCK STATUS'
           })
         })
 
-        describe('`response` is an object', () => {
-          it('invokes `toZashiki`', () => {
-            expect(toZashiki)
-              .toBeCalledWith('MOCK DEFINITION', 'MOCK RESPONSE')
-          })
-
-          it('returns an object with `definition` and default values', () => {
-            expect(returnValue)
-              .toEqual({
-                ...DEFAULT,
-                definition: 'MOCK ZASHIKI',
-                response: 'MOCK RESPONSE'
-              })
-          })
+        it('does not invoke `transformFailure`', () => {
+          expect(transformFailure)
+            .not.toBeCalled()
         })
 
-        describe('`response` is not an object', () => {
+        it('returns an object', () => {
+          expect(returnValue)
+            .toEqual({
+              status: 'MOCK STATUS',
+              definition: {},
+              definitions: [],
+              token: {}
+            })
+        })
+
+        describe('`omega` is an array', () => {
           let returnValue
 
           beforeEach(() => {
@@ -97,20 +78,40 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/debark', ()
 
             returnValue = transform({
               status: 'MOCK STATUS',
-              definition: 'MOCK DEFINITION'
+              alpha: {},
+              omega: [
+                {
+                  definition: 'MOCK DEFINITION',
+                  resource: 'MOCK RESOURCE',
+                  response: 'MOCK RESPONSE'
+                }
+              ]
             })
           })
 
           it('invokes `toZashiki`', () => {
             expect(toZashiki)
-              .toBeCalledWith('MOCK DEFINITION', {})
+              .toBeCalledWith('MOCK DEFINITION', 'MOCK RESPONSE')
           })
 
-          it('returns an object with `definition` and default values', () => {
+          it('invokes `toCheckAnswers`', () => {
+            expect(toCheckAnswers)
+              .toBeCalledWith('MOCK ZASHIKI', 'MOCK RESOURCE')
+          })
+
+          it('returns an object', () => {
             expect(returnValue)
               .toEqual({
-                ...DEFAULT,
-                definition: 'MOCK ZASHIKI'
+                status: 'MOCK STATUS',
+                definition: {},
+                definitions: [
+                  {
+                    definition: 'MOCK CHECK ANSWERS',
+                    resource: 'MOCK RESOURCE',
+                    response: 'MOCK RESPONSE'
+                  }
+                ],
+                token: {}
               })
           })
         })

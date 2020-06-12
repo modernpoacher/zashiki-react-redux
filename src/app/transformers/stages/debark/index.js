@@ -7,6 +7,9 @@ import {
 
 import Signals from 'shinkansen-engine/lib/components/signals'
 
+/*
+ *  Correct this path
+ */
 import toCheckAnswers from 'shinkansen-pinion/lib/transformers/check-answers'
 
 import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'

@@ -10,7 +10,7 @@ const log = debug('zashiki-react-redux:app:components:stages:debark:stage')
 
 log('`DebarkStage` is awake')
 
-const DebarkStage = ({ definitions, token, onChange, onSubmit }) => (
+const DebarkStage = ({ definitions, token, onSubmit }) => (
   <div className='debark'>
     <form method='POST' action={getDebarkRoute()} onSubmit={(event) => {
       event.preventDefault()
@@ -35,7 +35,6 @@ const DebarkStage = ({ definitions, token, onChange, onSubmit }) => (
 DebarkStage.propTypes = {
   definitions: PropTypes.array.isRequired,
   token: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
 }
 

@@ -2,39 +2,32 @@ import {
   ROUTE,
   FETCH,
   STORE,
-  CHANGE,
   SUBMIT,
 
   FETCH_FULFILLED,
   STORE_FULFILLED,
-  CHANGE_FULFILLED,
   SUBMIT_FULFILLED,
 
   FETCH_REJECTED,
   STORE_REJECTED,
-  CHANGE_REJECTED,
   SUBMIT_REJECTED,
 
   debarkRoute,
 
   fetchRoute,
   storeRoute,
-  changeState,
   submitState,
 
   fetchRouteFulfilled,
   storeRouteFulfilled,
-  changeStateFulfilled,
   submitStateFulfilled,
 
   fetchRouteRejected,
   storeRouteRejected,
-  changeStateRejected,
   submitStateRejected,
 
   fetch,
   store,
-  change,
   submit
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
 
@@ -43,7 +36,6 @@ jest.mock('shinkansen-engine/lib/components/pantograph', () => ({
     ROUTE: 'MOCK ROUTE',
     FETCH: 'MOCK FETCH',
     STORE: 'MOCK STORE',
-    CHANGE: 'MOCK CHANGE',
     SUBMIT: 'MOCK SUBMIT'
   }
 }))
@@ -83,13 +75,6 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     })
   })
 
-  describe('`CHANGE`', () => {
-    it('is defined', () => {
-      expect(CHANGE)
-        .toBe('MOCK CHANGE')
-    })
-  })
-
   describe('`FETCH_FULFILLED`', () => {
     it('is defined', () => {
       expect(FETCH_FULFILLED)
@@ -101,13 +86,6 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     it('is defined', () => {
       expect(STORE_FULFILLED)
         .toBe('MOCK STORE_FULFILLED')
-    })
-  })
-
-  describe('`CHANGE_FULFILLED`', () => {
-    it('is defined', () => {
-      expect(CHANGE_FULFILLED)
-        .toBe('MOCK CHANGE_FULFILLED')
     })
   })
 
@@ -129,13 +107,6 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     it('is defined', () => {
       expect(STORE_REJECTED)
         .toBe('MOCK STORE_REJECTED')
-    })
-  })
-
-  describe('`CHANGE_REJECTED`', () => {
-    it('is defined', () => {
-      expect(CHANGE_REJECTED)
-        .toBe('MOCK CHANGE_REJECTED')
     })
   })
 
@@ -167,13 +138,6 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     })
   })
 
-  describe('`change`', () => {
-    it('is defined', () => {
-      expect(change)
-        .toBeDefined()
-    })
-  })
-
   describe('`submit`', () => {
     it('is defined', () => {
       expect(submit)
@@ -191,13 +155,6 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
   describe('`storeRoute`', () => {
     it('is defined', () => {
       expect(storeRoute)
-        .toBeDefined()
-    })
-  })
-
-  describe('`changeState`', () => {
-    it('is defined', () => {
-      expect(changeState)
         .toBeDefined()
     })
   })
@@ -223,13 +180,6 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     })
   })
 
-  describe('`changeStateFulfilled`', () => {
-    it('is defined', () => {
-      expect(changeStateFulfilled)
-        .toBeDefined()
-    })
-  })
-
   describe('`submitStateFulfilled`', () => {
     it('is defined', () => {
       expect(submitStateFulfilled)
@@ -247,13 +197,6 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
   describe('`storeRouteRejected`', () => {
     it('is defined', () => {
       expect(storeRouteRejected)
-        .toBeDefined()
-    })
-  })
-
-  describe('`changeStateRejected`', () => {
-    it('is defined', () => {
-      expect(changeStateRejected)
         .toBeDefined()
     })
   })
@@ -296,17 +239,6 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     })
   })
 
-  describe('`changeState()`', () => {
-    it('returns the action', () => {
-      expect(changeState(MOCK_ROUTE, MOCK_HISTORY))
-        .toEqual({
-          type: 'MOCK CHANGE',
-          debark: MOCK_ROUTE,
-          history: MOCK_HISTORY
-        })
-    })
-  })
-
   describe('`submitState()`', () => {
     it('returns the action', () => {
       expect(submitState(MOCK_ROUTE, MOCK_HISTORY))
@@ -333,16 +265,6 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
       expect(storeRouteFulfilled(MOCK_RESPONSE))
         .toEqual({
           type: 'MOCK STORE_FULFILLED',
-          response: MOCK_RESPONSE
-        })
-    })
-  })
-
-  describe('`changeStateFulfilled()`', () => {
-    it('returns the action', () => {
-      expect(changeStateFulfilled(MOCK_RESPONSE))
-        .toEqual({
-          type: 'MOCK CHANGE_FULFILLED',
           response: MOCK_RESPONSE
         })
     })
@@ -378,16 +300,6 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     })
   })
 
-  describe('`changeStateRejected()`', () => {
-    it('returns the action', () => {
-      expect(changeStateRejected(MOCK_ERROR))
-        .toEqual({
-          type: 'MOCK CHANGE_REJECTED',
-          error: MOCK_ERROR
-        })
-    })
-  })
-
   describe('`submitStateRejected()`', () => {
     it('returns the action', () => {
       expect(submitStateRejected(MOCK_ERROR))
@@ -415,17 +327,6 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
           route: {
             response: MOCK_RESPONSE
           },
-          history: MOCK_HISTORY
-        })
-    })
-  })
-
-  describe('`change()`', () => {
-    it('returns the `changeState` action', () => {
-      expect(change(MOCK_RESPONSE, MOCK_HISTORY))
-        .toEqual({
-          type: 'MOCK CHANGE',
-          debark: MOCK_RESPONSE,
           history: MOCK_HISTORY
         })
     })
