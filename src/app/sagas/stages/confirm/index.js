@@ -106,7 +106,7 @@ function * submitStateSaga ({ confirm, history }) {
     const definition = yield select(getDefinition)
     const {
       statement
-    } = fromHashToDocument(definition, confirm)
+    } = fromHashToDocument(confirm, definition)
 
     yield storeRouteSaga({ response: { statement } })
     const { data = {} } = yield call(api.submitState, { response: { confirm: Rails.rail(statement) } })

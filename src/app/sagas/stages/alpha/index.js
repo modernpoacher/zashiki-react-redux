@@ -173,7 +173,7 @@ function * submitStateSaga ({ route: { resource, response }, history }) {
    */
   yield put(storeRoute({
     resource,
-    response: fromHashToDocument(definition, response)
+    response: fromHashToDocument(response, definition)
   }, history))
 
   yield race([
