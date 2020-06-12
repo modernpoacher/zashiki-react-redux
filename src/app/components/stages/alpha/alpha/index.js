@@ -6,7 +6,7 @@ import Pinion from 'shinkansen-engine/lib/components/pinion'
 import getResourceRoute from '@modernpoacher/zashiki-react-redux/app/common/get-resource-route'
 
 const Alpha = ({ definitions, onSubmit, onChange }) => (
-  <ol className='alpha'>
+  <ol>
     {definitions
       .map(({ resource, response, description, definition }, key) => (
         <li key={key}>
