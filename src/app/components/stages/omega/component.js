@@ -16,7 +16,7 @@ import Pending from './status/pending'
 const log = debug('zashiki-react-redux:app:components:stages:omega')
 
 export const getErrorProps = ({ exception }) => exception
-export const getStageProps = ({ state, resource, definition, response, gears, onChange, onSubmit }) => ({ state, resource, definition, response, gears, onChange, onSubmit })
+export const getStageProps = ({ state, resource, description, definition, response, gears, onChange, onSubmit }) => ({ state, resource, description, definition, response, gears, onChange, onSubmit })
 
 log('`OmegaStage` is awake')
 
@@ -67,6 +67,7 @@ OmegaStage.propTypes = PropTypes.oneOfType([
     ...Zashiki.propTypes,
     status: PropTypes.number.isRequired,
     resource: PropTypes.object.isRequired,
+    description: PropTypes.string.isRequired,
     definition: PropTypes.object.isRequired,
     response: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
@@ -76,6 +77,7 @@ OmegaStage.propTypes = PropTypes.oneOfType([
     ...Zashiki.propTypes,
     status: PropTypes.number.isRequired,
     resource: PropTypes.object.isRequired,
+    description: PropTypes.string.isRequired,
     exception: PropTypes.object.isRequired,
     response: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,

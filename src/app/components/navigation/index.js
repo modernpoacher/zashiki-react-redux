@@ -2,6 +2,7 @@ import React from 'react'
 
 import IndexPage from './index-page'
 import EmbarkStagePage from './stages/embark'
+import ConfirmStagePage from './stages/confirm'
 import DebarkStagePage from './stages/debark'
 
 export default () => (
@@ -15,6 +16,9 @@ export default () => (
       </li>
       <li>
         <DebarkStagePage />
+      </li>
+      <li>
+        <ConfirmStagePage />
       </li>
     </ul>
   </nav>

@@ -6,17 +6,14 @@ import {
   ROUTE,
   FETCH,
   STORE,
-  CHANGE,
   SUBMIT,
 
   FETCH_FULFILLED,
   STORE_FULFILLED,
-  CHANGE_FULFILLED,
   SUBMIT_FULFILLED,
 
   FETCH_REJECTED,
   STORE_REJECTED,
-  CHANGE_REJECTED,
   SUBMIT_REJECTED
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
 
@@ -57,19 +54,11 @@ export const store = ({ status = PENDING, ...state } = {}, { history, route = {}
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const change = ({ status = PENDING, response: RESPONSE, ...state } = {}, { history, debark = {} } = {}) => ({ status, ...state, history, response: { ...RESPONSE, ...debark } })
-
-/*
- *  Get all from state
- *  Set `history` `route` from action
- */
 export const submit = ({ status = PENDING, ...state } = {}, { history, debark = {} } = {}) => ({ status, ...state, history, ...debark })
 
 export const fetchFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
 export const storeFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
-
-export const changeFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
 export const submitFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
 
@@ -77,12 +66,10 @@ export const fetchRejected = ({ history } = {}, { status = FAILURE, error = {} }
 
 export const storeRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
 
-export const changeRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
-
 export const submitRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
 
 /**
- *  DebarkStage Reducer
+ *  Zashiki/Debark Reducer
  *
  *  @param {Object} state Initial state
  *  @param {Object} action
@@ -98,9 +85,6 @@ export default function debarkReducer (state = STATE, { type, ...action } = ACTI
     case STORE:
 
       return store(state, action)
-    case CHANGE:
-
-      return change(state, action)
     case SUBMIT:
 
       return submit(state, action)
@@ -110,9 +94,6 @@ export default function debarkReducer (state = STATE, { type, ...action } = ACTI
     case STORE_FULFILLED:
 
       return storeFulfilled(state, action)
-    case CHANGE_FULFILLED:
-
-      return changeFulfilled(state, action)
     case SUBMIT_FULFILLED:
 
       return submitFulfilled(state, action)
@@ -122,9 +103,6 @@ export default function debarkReducer (state = STATE, { type, ...action } = ACTI
     case STORE_REJECTED:
 
       return storeRejected(state, action)
-    case CHANGE_REJECTED:
-
-      return changeRejected(state, action)
     case SUBMIT_REJECTED:
 
       return submitRejected(state, action)

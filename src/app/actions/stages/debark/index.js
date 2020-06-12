@@ -11,7 +11,6 @@ const {
   ROUTE = 'DEBARK_ROUTE',
   FETCH = 'DEBARK_FETCH',
   STORE = 'DEBARK_STORE',
-  CHANGE = 'DEBARK_CHANGE',
   SUBMIT = 'DEBARK_SUBMIT'
 } = Pantograph.DEBARK
 
@@ -22,18 +21,15 @@ export {
   ROUTE,
   FETCH,
   STORE,
-  CHANGE,
   SUBMIT
 }
 
 export const FETCH_FULFILLED = FETCH.concat('_FULFILLED')
 export const STORE_FULFILLED = STORE.concat('_FULFILLED')
-export const CHANGE_FULFILLED = CHANGE.concat('_FULFILLED')
 export const SUBMIT_FULFILLED = SUBMIT.concat('_FULFILLED')
 
 export const FETCH_REJECTED = FETCH.concat('_REJECTED')
 export const STORE_REJECTED = STORE.concat('_REJECTED')
-export const CHANGE_REJECTED = CHANGE.concat('_REJECTED')
 export const SUBMIT_REJECTED = SUBMIT.concat('_REJECTED')
 
 /*
@@ -104,34 +100,6 @@ export function storeRouteRejected (error) {
   }
 }
 
-export function changeState (debark, history) {
-  log('changeState')
-
-  return {
-    type: CHANGE,
-    debark,
-    history
-  }
-}
-
-export function changeStateFulfilled (response) {
-  log('changeStateFulfilled')
-
-  return {
-    type: CHANGE_FULFILLED,
-    response
-  }
-}
-
-export function changeStateRejected (error) {
-  log('changeStateRejected')
-
-  return {
-    type: CHANGE_REJECTED,
-    error
-  }
-}
-
 export function submitState (debark, history) {
   log('submitState')
 
@@ -163,7 +131,5 @@ export function submitStateRejected (error) {
 export const fetch = (history) => fetchRoute(history)
 
 export const store = (response, history) => storeRoute({ response }, history)
-
-export const change = (debark, history) => changeState(debark, history)
 
 export const submit = (debark, history) => submitState(debark, history)

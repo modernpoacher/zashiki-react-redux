@@ -1,3 +1,5 @@
+export getResourceRoute from './get-resource-route'
 export getEmbarkRoute from './get-embark-route'
 export getDebarkRoute from './get-debark-route'
+export getConfirmRoute from './get-confirm-route'
 export getPathname from './get-pathname'

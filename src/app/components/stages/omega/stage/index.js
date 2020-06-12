@@ -27,6 +27,7 @@ export default class OmegaStage extends React.Component {
     if (index || count) {
       const {
         resource,
+        description,
         definition,
         response,
         onChange,
@@ -44,6 +45,7 @@ export default class OmegaStage extends React.Component {
             count={count} />
           <Omega
             resource={resource}
+            description={description}
             definition={definition}
             response={response}
             onChange={onChange}
@@ -65,9 +67,10 @@ OmegaStage.propTypes = {
     index: PropTypes.number,
     count: PropTypes.number
   }),
-  resource: PropTypes.object, // .isRequired,
-  definition: PropTypes.object, // .isRequired,
-  response: PropTypes.object, // .isRequired,
+  resource: PropTypes.object,
+  description: PropTypes.string,
+  definition: PropTypes.object,
+  response: PropTypes.object,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   gears: PropTypes.shape({

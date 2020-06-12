@@ -71,7 +71,7 @@ export const mount = ({ status = PENDING, ...state } = {}, { history, route = {}
 export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ status, ...state, ...action })
 
 /*
- *  Get `resource` `responses` from state
+ *  Get `resource` from state
  *  Set `history` `route` from action
  */
 export const store = ({ status = PENDING, ...state } = {}, { history, route: { resource } = {} } = {}) => ({ status, ...state, history, resource })

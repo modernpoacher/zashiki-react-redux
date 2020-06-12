@@ -24,6 +24,8 @@ import AlphaStage from './component'
 
 const log = debug('zashiki-react-redux:app:components:stages:alpha')
 
+log('`alpha` is awake')
+
 const {
   ALPHA
 } = Signals

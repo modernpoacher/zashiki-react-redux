@@ -3,15 +3,11 @@ import debug from 'debug'
 import {
   call,
   put,
-  select,
   takeLatest
 } from 'redux-saga/effects'
 
-import Signals from 'shinkansen-engine/lib/components/signals'
-import Rails from 'shinkansen-engine/lib/components/rails'
 import {
-  fromDocumentToHash,
-  fromHashToDocument
+  fromDocumentToHash
 } from 'shinkansen-engine/lib/transformers/transmission'
 
 import {
@@ -39,22 +35,27 @@ import getPathname from '@modernpoacher/zashiki-react-redux/app/common/get-pathn
 
 const log = debug('zashiki-react-redux:app:sagas:stages:embark')
 
-const {
-  DEBARK
-} = Signals
-
-const getDefinition = ({ [DEBARK]: { definition } = {} }) => definition
-
 function transformData (data) {
-  if (Reflect.has(data, 'response')) {
+  log('transformData')
+
+  if (Reflect.has(data, 'omega')) {
     const {
-      response,
-      definition
+      omega = []
     } = data
 
     return {
       ...data,
-      response: fromDocumentToHash(response, definition)
+      omega: omega.map((item) => {
+        const {
+          response,
+          definition
+        } = item
+
+        return {
+          ...item,
+          response: fromDocumentToHash(response, definition)
+        }
+      })
     }
   }
 
@@ -103,13 +104,8 @@ function * submitStateSaga ({ debark, history }) {
   log('submitStateSaga')
 
   try {
-    const definition = yield select(getDefinition)
-    const {
-      statement
-    } = fromHashToDocument(definition, debark)
-
-    yield storeRouteSaga({ response: { statement } })
-    const { data = {} } = yield call(api.submitState, { response: { debark: Rails.rail(statement) } })
+    yield storeRouteSaga({ response: debark })
+    const { data = {} } = yield call(api.submitState, { response: debark })
     yield put(submitStateFulfilled(transformData(data)))
     const { redirect } = data
     yield put(debarkRoute(redirect, history))

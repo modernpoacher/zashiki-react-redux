@@ -24,6 +24,8 @@ import EmbarkStage from './component'
 
 const log = debug('zashiki-react-redux:app:components:stages:embark')
 
+log('`embark` is awake')
+
 const {
   EMBARK
 } = Signals

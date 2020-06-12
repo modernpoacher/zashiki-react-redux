@@ -24,6 +24,8 @@ import OmegaStage from './component'
 
 const log = debug('zashiki-react-redux:app:components:stages:omega')
 
+log('`omega` is awake')
+
 const {
   OMEGA
 } = Signals

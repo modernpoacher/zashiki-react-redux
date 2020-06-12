@@ -82,7 +82,7 @@ export const changeRejected = ({ history } = {}, { status = FAILURE, error = {} 
 export const submitRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
 
 /**
- *  EmbarkStage Reducer
+ *  Zashiki/Embark Reducer
  *
  *  @param {Object} state Initial state
  *  @param {Object} action

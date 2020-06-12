@@ -12,8 +12,9 @@ import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transfo
 const log = debug('zashiki-react-redux:app:transformers:stages:omega')
 
 export function transformOmega (status, {
-  resource,
+  description,
   definition,
+  resource,
   response = {}, // hash
   gears = {
     reverse: {},
@@ -27,9 +28,10 @@ export function transformOmega (status, {
   log('transformOmega')
 
   return {
+    ...(description ? { description } : {}),
     ...(definition ? { definition: toZashiki(definition, response) } : { definition: {} }),
-    response,
     ...(resource ? { resource } : {}),
+    response,
     gears,
     state,
     status

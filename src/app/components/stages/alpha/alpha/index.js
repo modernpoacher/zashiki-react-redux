@@ -8,19 +8,20 @@ import getResourceRoute from '@modernpoacher/zashiki-react-redux/app/common/get-
 const Alpha = ({ definitions, onSubmit, onChange }) => (
   <ol className='alpha'>
     {definitions
-      .map(({ resource, response, definition }, key) => (
+      .map(({ resource, response, description, definition }, key) => (
         <li key={key}>
           <form method='POST' action={getResourceRoute(resource)} onSubmit={(event) => {
             event.preventDefault()
 
             onSubmit(resource, response)
           }}>
+            <h2>{description}</h2>
             <Pinion
-              onChange={(key, value) => onChange(resource, { [key]: value })}
               pinion={definition}
+              onChange={(key, value) => onChange(resource, { [key]: value })}
             />
             <button type='submit'>
-        Continue
+              Continue
             </button>
           </form>
         </li>

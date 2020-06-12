@@ -14,7 +14,7 @@ import Pending from './status/pending'
 const log = debug('zashiki-react-redux:app:components:stages:debark')
 
 export const getErrorProps = ({ exception }) => exception
-export const getDebarkProps = ({ definition, response, onChange, onSubmit }) => ({ definition, response, onChange, onSubmit })
+export const getDebarkProps = ({ definitions, token, onSubmit }) => ({ definitions, token, onSubmit })
 
 log('`DebarkStage` is awake')
 
@@ -78,17 +78,15 @@ export default class DebarkStage extends Component {
 DebarkStage.propTypes = PropTypes.oneOfType([
   PropTypes.shape({
     status: PropTypes.number.isRequired,
-    definition: PropTypes.object.isRequired,
-    response: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired,
+    definitions: PropTypes.object.isRequired,
+    token: PropTypes.object.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onDebark: PropTypes.func.isRequired
   }),
   PropTypes.shape({
     status: PropTypes.number.isRequired,
     exception: PropTypes.object.isRequired,
-    response: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired,
+    token: PropTypes.object.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onDebark: PropTypes.func.isRequired
   })

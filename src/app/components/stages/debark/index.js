@@ -16,13 +16,14 @@ import {
 
 import {
   fetch,
-  change,
   submit
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
 
 import DebarkStage from './component'
 
 const log = debug('zashiki-react-redux:app:components:stages:debark')
+
+log('`debark` is awake')
 
 const {
   DEBARK
@@ -39,11 +40,6 @@ function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
       log('onDebark')
 
       dispatch(fetch(history))
-    },
-    onChange (response) {
-      log('onChange')
-
-      dispatch(change(response, history))
     },
     onSubmit (response) {
       log('onSubmit', response)

@@ -3,7 +3,7 @@ import React from 'react'
 import DebarkStage from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/stage'
 
 const Pending = () => (
-  <div className='embark pending' />
+  <div className='debark pending' />
 )
 
 Pending.propTypes = {

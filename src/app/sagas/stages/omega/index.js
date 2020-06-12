@@ -20,7 +20,6 @@ import {
   omegaRoute,
 
   MOUNT,
-  mountRoute,
   mountRouteFulfilled,
   mountRouteRejected,
 
@@ -146,9 +145,9 @@ function * submitStateSaga ({ route: { resource, response }, history }) {
   log('submitStateSaga')
 
   /*
-   *  Mount the route
+   *  Mount the route (via the api not the Saga)
    */
-  yield put(mountRoute({ resource }, history))
+  yield call(api.mountRoute, { resource })
 
   const definition = yield select(getDefinition)
 

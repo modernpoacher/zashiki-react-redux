@@ -35,6 +35,13 @@ import {
 } from './stages/debark'
 
 import {
+  watchConfirmRoute,
+  watchConfirmFetch,
+  watchConfirmStore,
+  watchConfirmSubmit
+} from './stages/confirm'
+
+import {
   watchZashikiMount,
   watchZashikiFetch,
   watchZashikiStore,
@@ -67,6 +74,11 @@ export default function * rootSaga () {
     watchDebarkFetch(),
     watchDebarkStore(),
     watchDebarkSubmit(),
+
+    watchConfirmRoute(),
+    watchConfirmFetch(),
+    watchConfirmStore(),
+    watchConfirmSubmit(),
 
     watchZashikiMount(),
     watchZashikiFetch(),
