@@ -42,7 +42,7 @@ function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
       dispatch(fetch(history))
     },
     onSubmit (response) {
-      log('onSubmit', response)
+      log('onSubmit')
 
       dispatch(submit(response, history))
     },
