@@ -32,7 +32,7 @@ jest.mock('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => 
   FETCH_REJECTED: 'MOCK FETCH REJECTED',
   STORE_REJECTED: 'MOCK STORE REJECTED',
   SUBMIT_REJECTED: 'MOCK SUBMIT REJECTED'
- }))
+}))
 
 const DEFAULT = {
   status: 'MOCK PENDING'
@@ -357,5 +357,4 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/debark', () => 
       })
     })
   })
-
 })
