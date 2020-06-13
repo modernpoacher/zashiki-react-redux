@@ -1,18 +1,17 @@
-import React from 'react'
+import classnames from 'classnames'
 
-import DebarkStage from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/stage'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/stage'
 
-const InProgress = (props) => (
-  <DebarkStage
-    {...props} />
-)
+export default class InProgress extends Stage {
+  getClassName () {
+    return classnames(super.getClassName(), 'in-progress')
+  }
+}
 
 InProgress.propTypes = {
-  ...DebarkStage.propTypes
+  ...Stage.propTypes
 }
 
 InProgress.defaultProps = {
-  ...DebarkStage.defaultProps
+  ...Stage.defaultProps
 }
-
-export default InProgress

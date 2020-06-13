@@ -1,18 +1,17 @@
-import React from 'react'
+import classnames from 'classnames'
 
-import DebarkStage from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/stage'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/stage'
 
-const NoDecision = (props) => (
-  <DebarkStage
-    {...props} />
-)
+export default class NoDecision extends Stage {
+  getClassName () {
+    return classnames(super.getClassName(), 'no-decision')
+  }
+}
 
 NoDecision.propTypes = {
-  ...DebarkStage.propTypes
+  ...Stage.propTypes
 }
 
 NoDecision.defaultProps = {
-  ...DebarkStage.defaultProps
+  ...Stage.defaultProps
 }
-
-export default NoDecision

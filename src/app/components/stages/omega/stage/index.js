@@ -1,19 +1,21 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import debug from 'debug'
 
 import Signals from 'shinkansen-engine/lib/components/signals'
 
 import Gears from 'shinkansen-engine/lib/components/gears'
-
-import Count from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/count'
 import Omega from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/omega'
 
 const log = debug('zashiki-react-redux:app:components:stages:omega:stage')
 
-log('`OmegaStage` is awake')
+log('`Omega Stage` is awake')
 
-export default class OmegaStage extends React.Component {
+export default class Stage extends Component {
+  getClassName () {
+    return 'omega'
+  }
+
   render () {
     log('render')
 
@@ -27,7 +29,6 @@ export default class OmegaStage extends React.Component {
     if (index || count) {
       const {
         resource,
-        description,
         definition,
         response,
         onChange,
@@ -39,13 +40,9 @@ export default class OmegaStage extends React.Component {
       } = this.props
 
       return (
-        <div className='omega'>
-          <Count
-            index={index}
-            count={count} />
+        <div className={this.getClassName()}>
           <Omega
             resource={resource}
-            description={description}
             definition={definition}
             response={response}
             onChange={onChange}
@@ -58,17 +55,16 @@ export default class OmegaStage extends React.Component {
       )
     }
 
-    return false
+    return null
   }
 }
 
-OmegaStage.propTypes = {
+Stage.propTypes = {
   state: PropTypes.shape({
     index: PropTypes.number,
     count: PropTypes.number
   }),
   resource: PropTypes.object,
-  description: PropTypes.string,
   definition: PropTypes.object,
   response: PropTypes.object,
   onChange: PropTypes.func.isRequired,
@@ -79,7 +75,7 @@ OmegaStage.propTypes = {
   })
 }
 
-OmegaStage.defaultProps = {
+Stage.defaultProps = {
   state: {},
   gears: {}
 }

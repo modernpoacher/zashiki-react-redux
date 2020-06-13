@@ -26,9 +26,9 @@ jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/omega/status
 jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/omega/status/pending')
 
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/component', () => {
-  const MOCK_DESCRIPTION = 'MOCK DESCRIPTION'
   const MOCK_DEFINITION = {}
   const MOCK_RESOURCE = {}
+  const MOCK_ONCHANGE = jest.fn()
   const MOCK_ONSUBMIT = jest.fn()
 
   const mockProps = {
@@ -36,7 +36,6 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
       index: 'MOCK INDEX',
       count: 'MOCK COUNT'
     },
-    description: 'MOCK DESCRIPTION',
     definition: {},
     resource: {},
     gears: {
@@ -49,6 +48,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
         omega: 'MOCK OMEGA'
       }
     },
+    onChange: jest.fn(),
     onSubmit: jest.fn(),
     exception: {
       name: 'MOCK NAME',
@@ -60,9 +60,9 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
     const component = (
       <Omega
         status={Signals.PENDING}
-        description={MOCK_DESCRIPTION}
         definition={MOCK_DEFINITION}
         resource={MOCK_RESOURCE}
+        onChange={MOCK_ONCHANGE}
         onSubmit={MOCK_ONSUBMIT}
       />
     )
@@ -90,9 +90,9 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
       const component = (
         <Omega
           status={Signals.PENDING}
-          description={MOCK_DESCRIPTION}
           definition={MOCK_DEFINITION}
           resource={MOCK_RESOURCE}
+          onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
       )
@@ -111,7 +111,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
             name: 'MOCK NAME',
             message: 'MOCK MESSAGE'
           }}
-          description={MOCK_DESCRIPTION}
+          onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
       )
@@ -126,9 +126,9 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
       const component = (
         <Omega
           status={Signals.SUCCESS}
-          description={MOCK_DESCRIPTION}
           definition={MOCK_DEFINITION}
           resource={MOCK_RESOURCE}
+          onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
       )
@@ -143,9 +143,9 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
       const component = (
         <Omega
           status={Signals.IN_PROGRESS}
-          description={MOCK_DESCRIPTION}
           definition={MOCK_DEFINITION}
           resource={MOCK_RESOURCE}
+          onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
       )
@@ -160,9 +160,9 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
       const component = (
         <Omega
           status={Signals.NO_DECISION}
-          description={MOCK_DESCRIPTION}
           definition={MOCK_DEFINITION}
           resource={MOCK_RESOURCE}
+          onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
       )
@@ -177,9 +177,9 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
       const component = (
         <Omega
           status={Signals.COMPLETE}
-          description={MOCK_DESCRIPTION}
           definition={MOCK_DEFINITION}
           resource={MOCK_RESOURCE}
+          onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
       )
@@ -207,7 +207,6 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
             index: 'MOCK INDEX',
             count: 'MOCK COUNT'
           },
-          description: 'MOCK DESCRIPTION',
           definition: {},
           resource: {},
           gears: {
@@ -220,6 +219,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
               omega: 'MOCK OMEGA'
             }
           },
+          onChange: expect.any(Function),
           onSubmit: expect.any(Function)
         })
     })

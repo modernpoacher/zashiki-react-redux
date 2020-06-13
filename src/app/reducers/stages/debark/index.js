@@ -17,6 +17,18 @@ import {
   SUBMIT_REJECTED
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
 
+import {
+  MOUNT as ALPHA_MOUNT
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
+
+import {
+  MOUNT as OMEGA_MOUNT
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
+
+import {
+  MOUNT as ZASHIKI_MOUNT
+} from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
+
 const log = debug('zashiki-react-redux:app:reducers:stages:debark')
 
 log('`debark` is awake')
@@ -106,6 +118,11 @@ export default function debarkReducer (state = STATE, { type, ...action } = ACTI
     case SUBMIT_REJECTED:
 
       return submitRejected(state, action)
+    case ALPHA_MOUNT:
+    case OMEGA_MOUNT:
+    case ZASHIKI_MOUNT:
+
+      return { ...state, status: PENDING }
     default:
 
       return state

@@ -18,9 +18,9 @@ const log = debug('zashiki-react-redux:app:components:stages:alpha')
 export const getErrorProps = ({ exception }) => exception
 export const getStageProps = ({ state, resource, definitions, gears, onChange, onSubmit }) => ({ state, resource, definitions, gears, onChange, onSubmit })
 
-log('`AlphaStage` is awake')
+log('`Alpha Stage` is awake')
 
-export default class AlphaStage extends Zashiki {
+export default class Stage extends Zashiki {
   render () {
     const {
       status,
@@ -53,16 +53,18 @@ export default class AlphaStage extends Zashiki {
           <Complete
             {...getStageProps(alpha)} />
         )
-      default:
+      case Signals.PENDING:
         return (
           <Pending
             {...getStageProps(alpha)} />
         )
     }
+
+    return null
   }
 }
 
-AlphaStage.propTypes = PropTypes.oneOfType([
+Stage.propTypes = PropTypes.oneOfType([
   PropTypes.shape({
     ...Zashiki.propTypes,
     status: PropTypes.number.isRequired,

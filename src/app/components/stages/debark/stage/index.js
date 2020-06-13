@@ -1,41 +1,39 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import debug from 'debug'
 
-import { CheckAnswers } from 'shinkansen-engine/lib/components/pinion'
-
-import getDebarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-debark-route'
+import Debark from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/debark'
 
 const log = debug('zashiki-react-redux:app:components:stages:debark:stage')
 
-log('`DebarkStage` is awake')
+log('`Debark Stage` is awake')
 
-const DebarkStage = ({ definitions, token, onSubmit }) => (
-  <div className='debark'>
-    <form method='POST' action={getDebarkRoute()} onSubmit={(event) => {
-      event.preventDefault()
+export default class Stage extends Component {
+  getClassName () {
+    return 'debark'
+  }
 
-      onSubmit(token)
-    }}>
-      {definitions
-        .map(({ description, definition }, key) => (
-          <CheckAnswers
-            key={key}
-            title={description}
-            checkAnswers={definition}
-          />
-        ))}
-      <button type='submit'>
-        Continue
-      </button>
-    </form>
-  </div>
-)
+  render () {
+    const {
+      definitions,
+      token,
+      onSubmit
+    } = this.props
 
-DebarkStage.propTypes = {
+    return (
+      <div className={this.getClassName()}>
+        <Debark
+          definitions={definitions}
+          token={token}
+          onSubmit={onSubmit}
+        />
+      </div>
+    )
+  }
+}
+
+Stage.propTypes = {
   definitions: PropTypes.array.isRequired,
   token: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired
 }
-
-export default DebarkStage

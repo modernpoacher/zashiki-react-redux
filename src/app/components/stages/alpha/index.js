@@ -20,7 +20,7 @@ import {
   submit
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
 
-import AlphaStage from './component'
+import Component from './component'
 
 const log = debug('zashiki-react-redux:app:components:stages:alpha')
 
@@ -30,11 +30,21 @@ const {
   ALPHA
 } = Signals
 
-const mapStateToProps = ({ [ALPHA]: alpha = {} }) => alpha
+function mapStateToProps ({ [ALPHA]: alpha = {} }) {
+  log('mapStateToProps')
 
-const mapDispatchToProps = (dispatch) => ({ dispatch })
+  return alpha
+}
+
+function mapDispatchToProps (dispatch) {
+  log('mapDispatchToProps')
+
+  return { dispatch }
+}
 
 function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
+  log('mergeProps')
+
   return {
     ...transform(stateProps),
     onMount (resource) {
@@ -57,4 +67,4 @@ function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(AlphaStage))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(Component))

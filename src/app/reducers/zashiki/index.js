@@ -20,6 +20,14 @@ import {
   QUERY_REJECTED
 } from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
 
+import {
+  MOUNT as ALPHA_MOUNT
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
+
+import {
+  MOUNT as OMEGA_MOUNT
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
+
 const {
   PENDING,
   FAILURE
@@ -134,6 +142,10 @@ export default function zashikiReducer (state = STATE, { type, ...action } = ACT
     case QUERY_REJECTED:
 
       return queryRejected(state, action)
+    case ALPHA_MOUNT:
+    case OMEGA_MOUNT:
+
+      return STATE
     default:
 
       return state

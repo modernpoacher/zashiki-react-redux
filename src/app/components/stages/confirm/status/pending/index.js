@@ -1,17 +1,14 @@
 import React from 'react'
+import classnames from 'classnames'
 
-import ConfirmStage from '@modernpoacher/zashiki-react-redux/app/components/stages/confirm/stage'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/confirm/stage'
 
-const Pending = () => (
-  <div className='confirm pending' />
-)
+export default class Pending extends Stage {
+  getClassName () {
+    return classnames(super.getClassName(), 'pending')
+  }
 
-Pending.propTypes = {
-  ...ConfirmStage.propTypes
+  render () {
+    return <div className={this.getClassName()} />
+  }
 }
-
-Pending.defaultProps = {
-  ...ConfirmStage.defaultProps
-}
-
-export default Pending

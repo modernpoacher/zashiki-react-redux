@@ -1,18 +1,17 @@
-import React from 'react'
+import classnames from 'classnames'
 
-import AlphaStage from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/stage'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/stage'
 
-const Success = (props) => (
-  <AlphaStage
-    {...props} />
-)
+export default class Success extends Stage {
+  getClassName () {
+    return classnames(super.getClassName(), 'success')
+  }
+}
 
 Success.propTypes = {
-  ...AlphaStage.propTypes
+  ...Stage.propTypes
 }
 
 Success.defaultProps = {
-  ...AlphaStage.defaultProps
+  ...Stage.defaultProps
 }
-
-export default Success

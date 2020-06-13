@@ -1,18 +1,17 @@
-import React from 'react'
+import classnames from 'classnames'
 
-import OmegaStage from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/stage'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/stage'
 
-const NoDecision = (props) => (
-  <OmegaStage
-    {...props} />
-)
+export default class NoDecision extends Stage {
+  getClassName () {
+    return classnames(super.getClassName(), 'no-decision')
+  }
+}
 
 NoDecision.propTypes = {
-  ...OmegaStage.propTypes
+  ...Stage.propTypes
 }
 
 NoDecision.defaultProps = {
-  ...OmegaStage.defaultProps
+  ...Stage.defaultProps
 }
-
-export default NoDecision

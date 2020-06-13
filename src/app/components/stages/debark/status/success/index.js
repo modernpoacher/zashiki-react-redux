@@ -1,18 +1,17 @@
-import React from 'react'
+import classnames from 'classnames'
 
-import DebarkStage from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/stage'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/stage'
 
-const Success = (props) => (
-  <DebarkStage
-    {...props} />
-)
+export default class Success extends Stage {
+  getClassName () {
+    return classnames(super.getClassName(), 'success')
+  }
+}
 
 Success.propTypes = {
-  ...DebarkStage.propTypes
+  ...Stage.propTypes
 }
 
 Success.defaultProps = {
-  ...DebarkStage.defaultProps
+  ...Stage.defaultProps
 }
-
-export default Success

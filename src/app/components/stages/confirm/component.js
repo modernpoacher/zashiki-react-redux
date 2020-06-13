@@ -16,9 +16,9 @@ const log = debug('zashiki-react-redux:app:components:stages:confirm')
 export const getErrorProps = ({ exception }) => exception
 export const getConfirmProps = ({ definition, response, onChange, onSubmit }) => ({ definition, response, onChange, onSubmit })
 
-log('`ConfirmStage` is awake')
+log('`Confirm Stage` is awake')
 
-export default class ConfirmStage extends Component {
+export default class Stage extends Component {
   /*
    *  List routes
    */
@@ -67,16 +67,17 @@ export default class ConfirmStage extends Component {
           <Complete
             {...getConfirmProps(confirm)} />
         )
-      default:
+      case Signals.PENDING:
         return (
-          <Pending
-            {...getConfirmProps(confirm)} />
+          <Pending />
         )
     }
+
+    return null
   }
 }
 
-ConfirmStage.propTypes = PropTypes.oneOfType([
+Stage.propTypes = PropTypes.oneOfType([
   PropTypes.shape({
     status: PropTypes.number.isRequired,
     definition: PropTypes.object.isRequired,

@@ -5,13 +5,12 @@ import Pinion from 'shinkansen-engine/lib/components/pinion'
 
 import getResourceRoute from '@modernpoacher/zashiki-react-redux/app/common/get-resource-route'
 
-const Omega = ({ resource, onSubmit, response, description, definition, onChange }) => (
+const Omega = ({ resource, onSubmit, response, definition, onChange }) => (
   <form method='POST' action={getResourceRoute(resource)} onSubmit={(event) => {
     event.preventDefault()
 
     onSubmit(resource, response)
   }}>
-    <h2>{description}</h2>
     <Pinion
       pinion={definition}
       onChange={(key, value) => onChange(resource, { [key]: value })}
@@ -27,7 +26,6 @@ Omega.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   response: PropTypes.object.isRequired,
   definition: PropTypes.object.isRequired,
-  description: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired
 }
 

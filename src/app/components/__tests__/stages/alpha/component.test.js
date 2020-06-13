@@ -27,6 +27,7 @@ jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/status
 
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/component', () => {
   const MOCK_DEFINITIONS = []
+  const MOCK_ONCHANGE = jest.fn()
   const MOCK_ONSUBMIT = jest.fn()
 
   const mockProps = {
@@ -45,6 +46,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/compone
         omega: 'MOCK OMEGA'
       }
     },
+    onChange: jest.fn(),
     onSubmit: jest.fn(),
     exception: {
       name: 'MOCK NAME',
@@ -57,6 +59,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/compone
       <Alpha
         status={Signals.PENDING}
         definitions={MOCK_DEFINITIONS}
+        onChange={MOCK_ONCHANGE}
         onSubmit={MOCK_ONSUBMIT}
       />
     )
@@ -85,6 +88,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/compone
         <Alpha
           status={Signals.PENDING}
           definitions={MOCK_DEFINITIONS}
+          onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
       )
@@ -103,6 +107,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/compone
             name: 'MOCK NAME',
             message: 'MOCK MESSAGE'
           }}
+          onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
       )
@@ -118,6 +123,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/compone
         <Alpha
           status={Signals.SUCCESS}
           definitions={MOCK_DEFINITIONS}
+          onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
       )
@@ -133,6 +139,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/compone
         <Alpha
           status={Signals.IN_PROGRESS}
           definitions={MOCK_DEFINITIONS}
+          onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
       )
@@ -148,6 +155,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/compone
         <Alpha
           status={Signals.NO_DECISION}
           definitions={MOCK_DEFINITIONS}
+          onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
       )
@@ -163,6 +171,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/compone
         <Alpha
           status={Signals.COMPLETE}
           definitions={MOCK_DEFINITIONS}
+          onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
       )
@@ -201,6 +210,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/compone
               omega: 'MOCK OMEGA'
             }
           },
+          onChange: expect.any(Function),
           onSubmit: expect.any(Function)
         })
     })

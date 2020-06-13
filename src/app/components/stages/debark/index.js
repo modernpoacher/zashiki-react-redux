@@ -19,7 +19,7 @@ import {
   submit
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
 
-import DebarkStage from './component'
+import Component from './component'
 
 const log = debug('zashiki-react-redux:app:components:stages:debark')
 
@@ -29,11 +29,21 @@ const {
   DEBARK
 } = Signals
 
-const mapStateToProps = ({ [DEBARK]: debark = {} }) => debark
+function mapStateToProps ({ [DEBARK]: debark = {} }) {
+  log('mapStateToProps')
 
-const mapDispatchToProps = (dispatch) => ({ dispatch })
+  return debark
+}
+
+function mapDispatchToProps (dispatch) {
+  log('mapDispatchToProps')
+
+  return { dispatch }
+}
 
 function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
+  log('mergeProps')
+
   return {
     ...transform(stateProps),
     onDebark () {
@@ -51,4 +61,4 @@ function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(DebarkStage))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(Component))

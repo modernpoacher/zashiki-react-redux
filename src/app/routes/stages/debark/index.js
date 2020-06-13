@@ -1,15 +1,14 @@
 import React from 'react'
 
-import DebarkStage from '@modernpoacher/zashiki-react-redux/app/components/stages/debark'
+import Title from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/title'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/debark'
 
 import Navigation from '@modernpoacher/zashiki-react-redux/app/components/navigation'
 
 export default () => (
   <section>
-    <header>
-      <h1>Debark Stage</h1>
-    </header>
-    <DebarkStage />
+    <Title />
+    <Stage />
     <Navigation />
   </section>
 )

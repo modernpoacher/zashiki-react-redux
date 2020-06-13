@@ -1,17 +1,14 @@
 import React from 'react'
+import classnames from 'classnames'
 
-import EmbarkStage from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/stage'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/stage'
 
-const Pending = () => (
-  <div className='embark pending' />
-)
+export default class Pending extends Stage {
+  getClassName () {
+    return classnames(super.getClassName(), 'pending')
+  }
 
-Pending.propTypes = {
-  ...EmbarkStage.propTypes
+  render () {
+    return <div className={this.getClassName()} />
+  }
 }
-
-Pending.defaultProps = {
-  ...EmbarkStage.defaultProps
-}
-
-export default Pending

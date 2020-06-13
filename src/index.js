@@ -23,7 +23,7 @@ const App = (
 
 const app = document.getElementById('app')
 
-log('`zashik` is awake')
+log('`zashiki` is awake')
 
 ReactDOM.hydrate(
   App,

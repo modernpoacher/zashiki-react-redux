@@ -4,16 +4,20 @@ import debug from 'debug'
 
 import Signals from 'shinkansen-engine/lib/components/signals'
 
-import Gears from 'shinkansen-engine/lib/components/gears'
-
 import Count from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/count'
 import Alpha from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/alpha'
 
+import Gears from 'shinkansen-engine/lib/components/gears'
+
 const log = debug('zashiki-react-redux:app:components:stages:alpha:stage')
 
-log('`AlphaStage` is awake')
+log('`Alpha Stage` is awake')
 
-export default class AlphaStage extends Component {
+export default class Stage extends Component {
+  getClassName () {
+    return 'alpha'
+  }
+
   render () {
     log('render')
 
@@ -36,7 +40,7 @@ export default class AlphaStage extends Component {
       } = this.props
 
       return (
-        <div className='alpha'>
+        <div className={this.getClassName()}>
           <Count
             index={index}
             count={count} />
@@ -51,11 +55,12 @@ export default class AlphaStage extends Component {
         </div>
       )
     }
-    return false
+
+    return null
   }
 }
 
-AlphaStage.propTypes = {
+Stage.propTypes = {
   state: PropTypes.shape({
     index: PropTypes.number,
     count: PropTypes.number
@@ -69,7 +74,7 @@ AlphaStage.propTypes = {
   })
 }
 
-AlphaStage.defaultProps = {
+Stage.defaultProps = {
   state: {},
   gears: {}
 }

@@ -20,7 +20,7 @@ import {
   submit
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/confirm'
 
-import ConfirmStage from './component'
+import Component from './component'
 
 const log = debug('zashiki-react-redux:app:components:stages:confirm')
 
@@ -30,11 +30,21 @@ const {
   CONFIRM
 } = Signals
 
-const mapStateToProps = ({ [CONFIRM]: confirm = {} }) => confirm
+function mapStateToProps ({ [CONFIRM]: confirm = {} }) {
+  log('mapStateToProps')
 
-const mapDispatchToProps = (dispatch) => ({ dispatch })
+  return confirm
+}
+
+function mapDispatchToProps (dispatch) {
+  log('mapDispatchToProps')
+
+  return { dispatch }
+}
 
 function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
+  log('mergeProps')
+
   return {
     ...transform(stateProps),
     onConfirm () {
@@ -57,4 +67,4 @@ function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(ConfirmStage))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(Component))

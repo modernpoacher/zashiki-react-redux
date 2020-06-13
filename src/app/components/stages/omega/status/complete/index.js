@@ -1,18 +1,17 @@
-import React from 'react'
+import classnames from 'classnames'
 
-import OmegaStage from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/stage'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/stage'
 
-const Complete = (props) => (
-  <OmegaStage
-    {...props} />
-)
+export default class Complete extends Stage {
+  getClassName () {
+    return classnames(super.getClassName(), 'complete')
+  }
+}
 
 Complete.propTypes = {
-  ...OmegaStage.propTypes
+  ...Stage.propTypes
 }
 
 Complete.defaultProps = {
-  ...OmegaStage.defaultProps
+  ...Stage.defaultProps
 }
-
-export default Complete

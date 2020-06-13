@@ -1,18 +1,17 @@
-import React from 'react'
+import classnames from 'classnames'
 
-import ConfirmStage from '@modernpoacher/zashiki-react-redux/app/components/stages/confirm/stage'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/confirm/stage'
 
-const NoDecision = (props) => (
-  <ConfirmStage
-    {...props} />
-)
+export default class NoDecision extends Stage {
+  getClassName () {
+    return classnames(super.getClassName(), 'no-decision')
+  }
+}
 
 NoDecision.propTypes = {
-  ...ConfirmStage.propTypes
+  ...Stage.propTypes
 }
 
 NoDecision.defaultProps = {
-  ...ConfirmStage.defaultProps
+  ...Stage.defaultProps
 }
-
-export default NoDecision

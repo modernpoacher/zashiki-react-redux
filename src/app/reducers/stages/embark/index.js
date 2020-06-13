@@ -20,6 +20,18 @@ import {
   SUBMIT_REJECTED
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/embark'
 
+import {
+  MOUNT as ALPHA_MOUNT
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
+
+import {
+  MOUNT as OMEGA_MOUNT
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
+
+import {
+  MOUNT as ZASHIKI_MOUNT
+} from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
+
 const log = debug('zashiki-react-redux:app:reducers:stages:embark')
 
 log('`embark` is awake')
@@ -128,6 +140,11 @@ export default function embarkReducer (state = STATE, { type, ...action } = ACTI
     case SUBMIT_REJECTED:
 
       return submitRejected(state, action)
+    case ALPHA_MOUNT:
+    case OMEGA_MOUNT:
+    case ZASHIKI_MOUNT:
+
+      return { ...state, status: PENDING }
     default:
 
       return state

@@ -1,18 +1,17 @@
-import React from 'react'
+import classnames from 'classnames'
 
-import OmegaStage from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/stage'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/stage'
 
-const InProgress = (props) => (
-  <OmegaStage
-    {...props} />
-)
+export default class InProgress extends Stage {
+  getClassName () {
+    return classnames(super.getClassName(), 'in-progress')
+  }
+}
 
 InProgress.propTypes = {
-  ...OmegaStage.propTypes
+  ...Stage.propTypes
 }
 
 InProgress.defaultProps = {
-  ...OmegaStage.defaultProps
+  ...Stage.defaultProps
 }
-
-export default InProgress

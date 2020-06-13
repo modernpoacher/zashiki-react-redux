@@ -17,6 +17,18 @@ import {
   SUBMIT_REJECTED
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/confirm'
 
+import {
+  MOUNT as ALPHA_MOUNT
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
+
+import {
+  MOUNT as OMEGA_MOUNT
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
+
+import {
+  MOUNT as ZASHIKI_MOUNT
+} from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
+
 const log = debug('zashiki-react-redux:app:reducers:stages:confirm')
 
 log('`confirm` is awake')
@@ -106,6 +118,11 @@ export default function confirmReducer (state = STATE, { type, ...action } = ACT
     case SUBMIT_REJECTED:
 
       return submitRejected(state, action)
+    case ALPHA_MOUNT:
+    case OMEGA_MOUNT:
+    case ZASHIKI_MOUNT:
+
+      return STATE
     default:
 
       return state

@@ -1,38 +1,42 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import debug from 'debug'
 
-import Pinion from 'shinkansen-engine/lib/components/pinion'
-
-import getEmbarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-embark-route'
+import Embark from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/embark'
 
 const log = debug('zashiki-react-redux:app:components:stages:embark:stage')
 
-log('`EmbarkStage` is awake')
+log('`Embark Stage` is awake')
 
-const EmbarkStage = ({ onSubmit, response, onChange, definition }) => (
-  <div className='embark'>
-    <form method='POST' action={getEmbarkRoute()} onSubmit={(event) => {
-      event.preventDefault()
+export default class Stage extends Component {
+  getClassName () {
+    return 'embark'
+  }
 
-      onSubmit(response)
-    }}>
-      <Pinion
-        onChange={(key, value) => onChange({ [key]: value })}
-        pinion={definition}
-      />
-      <button type='submit'>
-        Continue
-      </button>
-    </form>
-  </div>
-)
+  render () {
+    const {
+      definition,
+      response,
+      onChange,
+      onSubmit
+    } = this.props
 
-EmbarkStage.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  response: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired,
-  definition: PropTypes.object.isRequired
+    return (
+      <div className={this.getClassName()}>
+        <Embark
+          definition={definition}
+          response={response}
+          onChange={onChange}
+          onSubmit={onSubmit}
+        />
+      </div>
+    )
+  }
 }
 
-export default EmbarkStage
+Stage.propTypes = {
+  definition: PropTypes.object.isRequired,
+  response: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired
+}

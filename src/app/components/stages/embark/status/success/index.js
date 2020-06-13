@@ -1,18 +1,17 @@
-import React from 'react'
+import classnames from 'classnames'
 
-import EmbarkStage from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/stage'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/stage'
 
-const Success = (props) => (
-  <EmbarkStage
-    {...props} />
-)
+export default class Success extends Stage {
+  getClassName () {
+    return classnames(super.getClassName(), 'success')
+  }
+}
 
 Success.propTypes = {
-  ...EmbarkStage.propTypes
+  ...Stage.propTypes
 }
 
 Success.defaultProps = {
-  ...EmbarkStage.defaultProps
+  ...Stage.defaultProps
 }
-
-export default Success

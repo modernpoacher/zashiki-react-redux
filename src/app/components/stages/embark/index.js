@@ -20,7 +20,7 @@ import {
   submit
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/embark'
 
-import EmbarkStage from './component'
+import Component from './component'
 
 const log = debug('zashiki-react-redux:app:components:stages:embark')
 
@@ -30,11 +30,21 @@ const {
   EMBARK
 } = Signals
 
-const mapStateToProps = ({ [EMBARK]: embark = {} }) => embark
+function mapStateToProps ({ [EMBARK]: embark = {} }) {
+  log('mapStateToProps')
 
-const mapDispatchToProps = (dispatch) => ({ dispatch })
+  return embark
+}
+
+function mapDispatchToProps (dispatch) {
+  log('mapDispatchToProps')
+
+  return { dispatch }
+}
 
 function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
+  log('mergeProps')
+
   return {
     ...transform(stateProps),
     onEmbark () {
@@ -57,4 +67,4 @@ function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(EmbarkStage))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(Component))

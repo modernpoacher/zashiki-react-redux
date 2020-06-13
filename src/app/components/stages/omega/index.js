@@ -20,7 +20,7 @@ import {
   submit
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
 
-import OmegaStage from './component'
+import Component from './component'
 
 const log = debug('zashiki-react-redux:app:components:stages:omega')
 
@@ -30,11 +30,21 @@ const {
   OMEGA
 } = Signals
 
-const mapStateToProps = ({ [OMEGA]: omega = {} }) => omega
+function mapStateToProps ({ [OMEGA]: omega = {} }) {
+  log('mapStateToProps')
 
-const mapDispatchToProps = (dispatch) => ({ dispatch })
+  return omega
+}
+
+function mapDispatchToProps (dispatch) {
+  log('mapDispatchToProps')
+
+  return { dispatch }
+}
 
 function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
+  log('mergeProps')
+
   return {
     ...transform(stateProps),
     onMount (resource) {
@@ -57,4 +67,4 @@ function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(OmegaStage))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(Component))
