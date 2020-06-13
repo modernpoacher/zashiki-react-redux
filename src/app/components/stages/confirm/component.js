@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import debug from 'debug'
 
-import Signals from 'shinkansen-engine/lib/components/signals'
+import {
+  RESOLVED,
+  REJECTED,
+  PENDING
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
-import Complete from './status/complete'
-import Failure from './status/failure'
-import Success from './status/success'
-import InProgress from './status/in-progress'
-import NoDecision from './status/no-decision'
+import Resolved from './status/resolved'
+import Rejected from './status/rejected'
 import Pending from './status/pending'
 
 const log = debug('zashiki-react-redux:app:components:stages:confirm')
@@ -42,32 +43,17 @@ export default class Stage extends Component {
     } = this.props
 
     switch (status) {
-      case Signals.FAILURE:
+      case RESOLVED:
         return (
-          <Failure
+          <Resolved
+            {...getConfirmProps(confirm)} />
+        )
+      case REJECTED:
+        return (
+          <Rejected
             {...getErrorProps(confirm)} />
         )
-      case Signals.SUCCESS:
-        return (
-          <Success
-            {...getConfirmProps(confirm)} />
-        )
-      case Signals.IN_PROGRESS:
-        return (
-          <InProgress
-            {...getConfirmProps(confirm)} />
-        )
-      case Signals.NO_DECISION:
-        return (
-          <NoDecision
-            {...getConfirmProps(confirm)} />
-        )
-      case Signals.COMPLETE:
-        return (
-          <Complete
-            {...getConfirmProps(confirm)} />
-        )
-      case Signals.PENDING:
+      case PENDING:
         return (
           <Pending />
         )

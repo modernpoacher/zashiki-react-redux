@@ -2,13 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import debug from 'debug'
 
-import Signals from 'shinkansen-engine/lib/components/signals'
+import {
+  RESOLVED,
+  REJECTED,
+  PENDING
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
-import Complete from './status/complete'
-import Failure from './status/failure'
-import Success from './status/success'
-import InProgress from './status/in-progress'
-import NoDecision from './status/no-decision'
+import Resolved from './status/resolved'
+import Rejected from './status/rejected'
 import Pending from './status/pending'
 
 const log = debug('zashiki-react-redux:app:components:stages:omega:title')
@@ -17,32 +18,17 @@ log('`Omega Title` is awake')
 
 export default function Title ({ status, description }) {
   switch (status) {
-    case Signals.FAILURE:
+    case RESOLVED:
       return (
-        <Failure
+        <Resolved
           title={description} />
       )
-    case Signals.SUCCESS:
+    case REJECTED:
       return (
-        <Success
+        <Rejected
           title={description} />
       )
-    case Signals.IN_PROGRESS:
-      return (
-        <InProgress
-          title={description} />
-      )
-    case Signals.NO_DECISION:
-      return (
-        <NoDecision
-          title={description} />
-      )
-    case Signals.COMPLETE:
-      return (
-        <Complete
-          title={description} />
-      )
-    case Signals.PENDING:
+    case PENDING:
       return (
         <Pending />
       )
@@ -57,6 +43,6 @@ Title.propTypes = {
 }
 
 Title.defaultProps = {
-  status: Signals.PENDING,
+  status: PENDING,
   description: 'Omega'
 }

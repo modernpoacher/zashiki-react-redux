@@ -1,4 +1,6 @@
-import Signals from 'shinkansen-engine/lib/components/signals'
+import {
+  REJECTED
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
 export const transformError = ({
   code,
@@ -14,6 +16,6 @@ export const transformError = ({
   )
 })
 
-export const transformFailure = (status = Signals.FAILURE, { exception = {} } = {}) => ({ status, exception: transformError(exception) })
+export const transformRejected = (status = REJECTED, { exception = {} } = {}) => ({ status, exception: transformError(exception) })
 
 export * as stages from './stages'

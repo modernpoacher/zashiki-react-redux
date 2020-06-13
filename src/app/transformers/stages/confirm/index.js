@@ -4,13 +4,15 @@ import {
   toZashiki
 } from 'shinkansen-engine/lib/transformers/transmission'
 
-import Signals from 'shinkansen-engine/lib/components/signals'
+import {
+  REJECTED
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
-import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'
+import { transformRejected } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
 const log = debug('zashiki-react-redux:app:transformers:stages:alpha')
 
-function transformConfirm (status, { definition, response = {} }) {
+export function transformConfirm (status, { definition, response = {} }) {
   log('transformConfirm')
 
   return {
@@ -20,4 +22,4 @@ function transformConfirm (status, { definition, response = {} }) {
   }
 }
 
-export const transform = ({ status, ...confirm } = {}) => (status === Signals.FAILURE) ? transformFailure(status, confirm) : transformConfirm(status, confirm)
+export const transform = ({ status, ...confirm } = {}) => (status === REJECTED) ? transformRejected(status, confirm) : transformConfirm(status, confirm)

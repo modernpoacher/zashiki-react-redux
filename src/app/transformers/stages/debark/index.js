@@ -5,14 +5,16 @@ import {
   fromDocumentToHash
 } from 'shinkansen-engine/lib/transformers/transmission'
 
-import Signals from 'shinkansen-engine/lib/components/signals'
+import {
+  REJECTED
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
 /*
  *  Correct this path
  */
 import toCheckAnswers from 'shinkansen-pinion/lib/transformers/check-answers'
 
-import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'
+import { transformRejected } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
 const log = debug('zashiki-react-redux:app:transformers:stages:debark')
 
@@ -64,4 +66,4 @@ export function transformRoute ({ omega = [], ...route }) {
   }
 }
 
-export const transform = ({ status, ...embark } = {}) => (status === Signals.FAILURE) ? transformFailure(status, embark) : transformDebark(status, embark)
+export const transform = ({ status, ...embark } = {}) => (status === REJECTED) ? transformRejected(status, embark) : transformDebark(status, embark)

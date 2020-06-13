@@ -2,26 +2,24 @@ import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
-import Signals from 'shinkansen-engine/lib/components/signals'
+import {
+  RESOLVED,
+  REJECTED,
+  PENDING
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
 import Debark, { getErrorProps, getDebarkProps } from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/component'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-jest.mock('shinkansen-engine/lib/components/signals', () => ({
-  PENDING: 'MOCK PENDING',
-  FAILURE: 'MOCK FAILURE',
-  SUCCESS: 'MOCK SUCCESS',
-  IN_PROGRESS: 'MOCK IN PROGRESS',
-  NO_DECISION: 'MOCK NO DECISION',
-  COMPLETE: 'MOCK COMPLETE'
+jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
+  RESOLVED: 'MOCK RESOLVED',
+  REJECTED: 'MOCK REJECTED',
+  PENDING: 'MOCK PENDING'
 }))
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/complete')
-jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/failure')
-jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/success')
-jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/in-progress')
-jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/no-decision')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/resolved')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/rejected')
 jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/pending')
 
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/component', () => {
@@ -48,7 +46,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/compon
   describe('Always', () => {
     const component = (
       <Debark
-        status={Signals.PENDING}
+        status={RESOLVED}
         definitions={MOCK_DEFINITIONS}
         token={MOCK_TOKEN}
         resource={MOCK_RESOURCE}
@@ -95,11 +93,11 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/compon
     })
   })
 
-  describe('`Signals.PENDING`', () => {
+  describe('`RESOLVED`', () => {
     it('renders', () => {
       const component = (
         <Debark
-          status={Signals.PENDING}
+          status={RESOLVED}
           definitions={MOCK_DEFINITIONS}
           token={MOCK_TOKEN}
           onSubmit={MOCK_ONSUBMIT}
@@ -112,11 +110,11 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/compon
     })
   })
 
-  describe('`Signals.FAILURE`', () => {
+  describe('`REJECTED`', () => {
     it('renders', () => {
       const component = (
         <Debark
-          status={Signals.FAILURE}
+          status={REJECTED}
           exception={{
             name: 'MOCK NAME',
             message: 'MOCK MESSAGE'
@@ -132,62 +130,11 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/compon
     })
   })
 
-  describe('`Signals.SUCCESS`', () => {
+  describe('`PENDING`', () => {
     it('renders', () => {
       const component = (
         <Debark
-          status={Signals.SUCCESS}
-          definitions={MOCK_DEFINITIONS}
-          token={MOCK_TOKEN}
-          onSubmit={MOCK_ONSUBMIT}
-          onDebark={MOCK_ONDEBARK}
-        />
-      )
-
-      expect(shallow(component))
-        .toMatchSnapshot()
-    })
-  })
-
-  describe('`Signals.IN_PROGRESS`', () => {
-    it('renders', () => {
-      const component = (
-        <Debark
-          status={Signals.IN_PROGRESS}
-          definitions={MOCK_DEFINITIONS}
-          token={MOCK_TOKEN}
-          onSubmit={MOCK_ONSUBMIT}
-          onDebark={MOCK_ONDEBARK}
-        />
-      )
-
-      expect(shallow(component))
-        .toMatchSnapshot()
-    })
-  })
-
-  describe('`Signals.NO_DECISION`', () => {
-    it('renders', () => {
-      const component = (
-        <Debark
-          status={Signals.NO_DECISION}
-          definitions={MOCK_DEFINITIONS}
-          token={MOCK_TOKEN}
-          onSubmit={MOCK_ONSUBMIT}
-          onDebark={MOCK_ONDEBARK}
-        />
-      )
-
-      expect(shallow(component))
-        .toMatchSnapshot()
-    })
-  })
-
-  describe('`Signals.COMPLETE`', () => {
-    it('renders', () => {
-      const component = (
-        <Debark
-          status={Signals.COMPLETE}
+          status={PENDING}
           definitions={MOCK_DEFINITIONS}
           token={MOCK_TOKEN}
           onSubmit={MOCK_ONSUBMIT}

@@ -8,10 +8,10 @@ import {
   transform
 } from '@modernpoacher/zashiki-react-redux/app/transformers/stages/debark'
 
-import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'
+import { transformRejected } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
-jest.mock('shinkansen-engine/lib/components/signals', () => ({
-  FAILURE: 'MOCK FAILURE'
+jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
+  REJECTED: 'MOCK REJECTED'
 }))
 
 jest.mock('shinkansen-engine/lib/transformers/transmission', () => ({
@@ -20,7 +20,7 @@ jest.mock('shinkansen-engine/lib/transformers/transmission', () => ({
 
 jest.mock('shinkansen-pinion/lib/transformers/check-answers', () => jest.fn().mockReturnValue('MOCK CHECK ANSWERS'))
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/transformers', () => ({ transformFailure: jest.fn() }))
+jest.mock('@modernpoacher/zashiki-react-redux/app/transformers', () => ({ transformRejected: jest.fn() }))
 
 describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/debark', () => {
   describe('`transform`', () => {
@@ -35,16 +35,16 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/debark', ()
         jest.clearAllMocks()
       })
 
-      describe('`status` is `Signals.FAILURE`', () => {
-        it('invokes `transformFailure`', () => {
-          transform({ status: 'MOCK FAILURE' })
+      describe('`status` is `REJECTED`', () => {
+        it('invokes `transformRejected`', () => {
+          transform({ status: 'MOCK REJECTED' })
 
-          expect(transformFailure)
-            .toBeCalledWith('MOCK FAILURE', {})
+          expect(transformRejected)
+            .toBeCalledWith('MOCK REJECTED', {})
         })
       })
 
-      describe('`status` is not `Signals.FAILURE`', () => {
+      describe('`status` is not `REJECTED`', () => {
         let returnValue
 
         beforeEach(() => {
@@ -55,8 +55,8 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/debark', ()
           })
         })
 
-        it('does not invoke `transformFailure`', () => {
-          expect(transformFailure)
+        it('does not invoke `transformRejected`', () => {
+          expect(transformRejected)
             .not.toBeCalled()
         })
 
@@ -119,11 +119,11 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/debark', ()
     })
 
     describe('Without parameters', () => {
-      it('invokes `transformFailure`', () => {
-        transform({ status: 'MOCK FAILURE' })
+      it('invokes `transformRejected`', () => {
+        transform({ status: 'MOCK REJECTED' })
 
-        expect(transformFailure)
-          .toBeCalledWith('MOCK FAILURE', {})
+        expect(transformRejected)
+          .toBeCalledWith('MOCK REJECTED', {})
       })
     })
   })

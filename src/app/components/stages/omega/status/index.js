@@ -1,5 +1,5 @@
-export Failure from './failure'
-export Success from './success'
+export Rejected from './rejected'
+export Resolved from './resolved'
 export InProgress from './in-progress'
 export NoDecision from './no-decision'
 export Complete from './complete'

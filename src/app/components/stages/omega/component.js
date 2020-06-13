@@ -2,15 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import debug from 'debug'
 
-import Signals from 'shinkansen-engine/lib/components/signals'
+import {
+  RESOLVED,
+  REJECTED,
+  PENDING
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
 import Zashiki from '@modernpoacher/zashiki-react-redux/app/components/zashiki/component'
 
-import Complete from './status/complete'
-import Failure from './status/failure'
-import Success from './status/success'
-import InProgress from './status/in-progress'
-import NoDecision from './status/no-decision'
+import Resolved from './status/resolved'
+import Rejected from './status/rejected'
 import Pending from './status/pending'
 
 const log = debug('zashiki-react-redux:app:components:stages:omega')
@@ -28,32 +29,17 @@ export default class Stage extends Zashiki {
     } = this.props
 
     switch (status) {
-      case Signals.FAILURE:
+      case RESOLVED:
         return (
-          <Failure
+          <Resolved
+            {...getStageProps(omega)} />
+        )
+      case REJECTED:
+        return (
+          <Rejected
             {...getErrorProps(omega)} />
         )
-      case Signals.SUCCESS:
-        return (
-          <Success
-            {...getStageProps(omega)} />
-        )
-      case Signals.IN_PROGRESS:
-        return (
-          <InProgress
-            {...getStageProps(omega)} />
-        )
-      case Signals.NO_DECISION:
-        return (
-          <NoDecision
-            {...getStageProps(omega)} />
-        )
-      case Signals.COMPLETE:
-        return (
-          <Complete
-            {...getStageProps(omega)} />
-        )
-      case Signals.PENDING:
+      case PENDING:
         return (
           <Pending />
         )

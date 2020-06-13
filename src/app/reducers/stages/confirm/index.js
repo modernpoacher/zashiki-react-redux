@@ -1,6 +1,10 @@
 import debug from 'debug'
 
-import Signals from 'shinkansen-engine/lib/components/signals'
+import {
+  PENDING,
+  RESOLVED,
+  REJECTED
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
 import {
   ROUTE,
@@ -33,11 +37,6 @@ const log = debug('zashiki-react-redux:app:reducers:stages:confirm')
 
 log('`confirm` is awake')
 
-const {
-  PENDING,
-  FAILURE
-} = Signals
-
 const STATE = {
   status: PENDING
 }
@@ -48,37 +47,37 @@ const ACTION = {}
  *  Get all from state
  *  Add `redirect`
  */
-export const route = ({ status = PENDING, ...state } = {}, { history, redirect = {} } = {}) => ({ status, ...state, history, redirect })
+export const route = ({ status = PENDING, ...state } = {}, { history, redirect = {} } = {}) => ({ ...state, status, history, redirect })
 
 /*
  *  Get all from state
  *  Set all from action
  */
-export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ status, ...state, ...action })
+export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ ...state, status, ...action })
 
 /*
  *  Get `resource` `response` from state
  *  Set `history` `route` from action
  */
-export const store = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
+export const store = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ ...state, status, history, ...route })
 
 /*
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const submit = ({ status = PENDING, ...state } = {}, { history, confirm = {} } = {}) => ({ status, ...state, history, ...confirm })
+export const submit = ({ status = PENDING, ...state } = {}, { history, confirm = {} } = {}) => ({ ...state, status, history, ...confirm })
 
-export const fetchFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
+export const fetchFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
 
-export const storeFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
+export const storeFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
 
-export const submitFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
+export const submitFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
 
-export const fetchRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
+export const fetchRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
 
-export const storeRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
+export const storeRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
 
-export const submitRejected = ({ history } = {}, { status = FAILURE, error = {} } = {}) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
+export const submitRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
 
 /**
  *  ConfirmStage Reducer

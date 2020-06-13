@@ -1,21 +1,19 @@
 import {
   transformError,
-  transformFailure
+  transformRejected
 } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
-jest.mock('shinkansen-engine/lib/components/signals', () => ({
-  FAILURE: 'MOCK FAILURE'
+jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
+  REJECTED: 'MOCK REJECTED'
 }))
 
 const DEFAULT_ERROR = {
   name: 'Application Error'
 }
 
-const DEFAULT_FAILURE = {
-  status: 'MOCK FAILURE',
-  exception: {
-    name: 'Application Error'
-  }
+const DEFAULT_REJECTED = {
+  status: 'MOCK REJECTED',
+  exception: DEFAULT_ERROR
 }
 
 describe('@modernpoacher/zashiki-react-redux/app/transformers', () => {
@@ -25,9 +23,9 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers', () => {
     })
   })
 
-  describe('`transformFailure`', () => {
+  describe('`transformRejected`', () => {
     it('is defined', () => {
-      expect(transformFailure).toBeDefined()
+      expect(transformRejected).toBeDefined()
     })
   })
 
@@ -51,12 +49,12 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers', () => {
     })
   })
 
-  describe('`transformFailure()`', () => {
+  describe('`transformRejected()`', () => {
     describe('With parameters', () => {
       it('returns an object', () => {
-        expect(transformFailure('MOCK FAILURE', { exception: { code: 'MOCK CODE', name: 'MOCK NAME', message: 'MOCK MESSAGE' } }))
+        expect(transformRejected('MOCK REJECTED', { exception: { code: 'MOCK CODE', name: 'MOCK NAME', message: 'MOCK MESSAGE' } }))
           .toEqual({
-            status: 'MOCK FAILURE',
+            status: 'MOCK REJECTED',
             exception: {
               code: 'MOCK CODE',
               name: 'MOCK NAME',
@@ -68,8 +66,8 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers', () => {
 
     describe('Without parameters', () => {
       it('returns an object with default values', () => {
-        expect(transformFailure())
-          .toEqual(DEFAULT_FAILURE)
+        expect(transformRejected())
+          .toEqual(DEFAULT_REJECTED)
       })
     })
   })

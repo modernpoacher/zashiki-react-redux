@@ -6,17 +6,17 @@ import {
   transform
 } from '@modernpoacher/zashiki-react-redux/app/transformers/stages/embark'
 
-import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'
+import { transformRejected } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
-jest.mock('shinkansen-engine/lib/components/signals', () => ({
-  FAILURE: 'MOCK FAILURE'
+jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
+  REJECTED: 'MOCK REJECTED'
 }))
 
 jest.mock('shinkansen-engine/lib/transformers/transmission', () => ({
   toZashiki: jest.fn().mockReturnValue('MOCK ZASHIKI')
 }))
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/transformers', () => ({ transformFailure: jest.fn() }))
+jest.mock('@modernpoacher/zashiki-react-redux/app/transformers', () => ({ transformRejected: jest.fn() }))
 
 const DEFAULT = {
   status: 'MOCK STATUS',
@@ -37,20 +37,20 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/embark', ()
         jest.clearAllMocks()
       })
 
-      describe('`status` is `Signals.FAILURE`', () => {
-        it('invokes `transformFailure`', () => {
-          transform({ status: 'MOCK FAILURE' })
+      describe('`status` is `REJECTED`', () => {
+        it('invokes `transformRejected`', () => {
+          transform({ status: 'MOCK REJECTED' })
 
-          expect(transformFailure)
-            .toBeCalledWith('MOCK FAILURE', {})
+          expect(transformRejected)
+            .toBeCalledWith('MOCK REJECTED', {})
         })
       })
 
-      describe('`status` is not `Signals.FAILURE`', () => {
-        it('does not invoke `transformFailure`', () => {
+      describe('`status` is not `REJECTED`', () => {
+        it('does not invoke `transformRejected`', () => {
           transform({ status: 'MOCK STATUS' })
 
-          expect(transformFailure)
+          expect(transformRejected)
             .not.toBeCalled()
         })
 
@@ -118,11 +118,11 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/embark', ()
     })
 
     describe('Without parameters', () => {
-      it('invokes `transformFailure`', () => {
-        transform({ status: 'MOCK FAILURE' })
+      it('invokes `transformRejected`', () => {
+        transform({ status: 'MOCK REJECTED' })
 
-        expect(transformFailure)
-          .toBeCalledWith('MOCK FAILURE', {})
+        expect(transformRejected)
+          .toBeCalledWith('MOCK REJECTED', {})
       })
     })
   })

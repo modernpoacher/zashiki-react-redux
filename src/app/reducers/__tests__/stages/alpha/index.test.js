@@ -19,10 +19,10 @@ import alphaReducer, {
   queryRejected
 } from '@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha'
 
-jest.mock('shinkansen-engine/lib/components/signals', () => ({
-  PENDING: 'MOCK PENDING',
-  FAILURE: 'MOCK FAILURE',
-  COMPLETE: 'MOCK COMPLETE'
+jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
+  RESOLVED: 'MOCK RESOLVED',
+  REJECTED: 'MOCK REJECTED',
+  PENDING: 'MOCK PENDING'
 }))
 
 jest.mock('@modernpoacher/zashiki-react-redux/app/actions/stages/alpha', () => ({
@@ -179,112 +179,112 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
       describe('The action `type` is `ROUTE`', () => {
         it('returns the state', () => {
           expect(alphaReducer(DEFAULT, { type: 'MOCK ROUTE', history: 'MOCK HISTORY', redirect: 'MOCK REDIRECT' }))
-            .toEqual({ ...DEFAULT, history: 'MOCK HISTORY', redirect: 'MOCK REDIRECT' })
+            .toEqual({ status: 'MOCK PENDING', history: 'MOCK HISTORY', redirect: 'MOCK REDIRECT' })
         })
       })
 
       describe('The action `type` is `CHANGE`', () => {
         it('returns the state', () => {
           expect(alphaReducer(DEFAULT, { type: 'MOCK CHANGE', history: 'MOCK HISTORY', route: { resource: 'MOCK RESOURCE', response: 'MOCK RESPONSE' } }))
-            .toEqual({ ...DEFAULT, history: 'MOCK HISTORY', omega: [] })
+            .toEqual({ status: 'MOCK PENDING', history: 'MOCK HISTORY', omega: [] })
         })
       })
 
       describe('The action `type` is `SUBMIT`', () => {
         it('returns the state', () => {
           expect(alphaReducer(DEFAULT, { type: 'MOCK SUBMIT', route: { mockField: 'MOCK VALUE' } }))
-            .toEqual({ ...DEFAULT, mockField: 'MOCK VALUE' })
+            .toEqual({ status: 'MOCK PENDING', mockField: 'MOCK VALUE' })
         })
       })
 
       describe('The action `type` is `FETCH`', () => {
         it('returns the state', () => {
           expect(alphaReducer(DEFAULT, { type: 'MOCK FETCH', history: 'MOCK HISTORY', redirect: 'MOCK REDIRECT' }))
-            .toEqual({ ...DEFAULT, history: 'MOCK HISTORY', redirect: 'MOCK REDIRECT' })
+            .toEqual({ status: 'MOCK PENDING', history: 'MOCK HISTORY', redirect: 'MOCK REDIRECT' })
         })
       })
 
       describe('The action `type` is `STORE`', () => {
         it('returns the state', () => {
           expect(alphaReducer(DEFAULT, { type: 'MOCK STORE', history: 'MOCK HISTORY', route: { resource: 'MOCK RESOURCE', response: 'MOCK RESPONSE' } }))
-            .toEqual({ ...DEFAULT, history: 'MOCK HISTORY', resource: 'MOCK RESOURCE' })
+            .toEqual({ status: 'MOCK PENDING', history: 'MOCK HISTORY', resource: 'MOCK RESOURCE' })
         })
       })
 
       describe('The action `type` is `QUERY`', () => {
         it('returns the state', () => {
           expect(alphaReducer(DEFAULT, { type: 'MOCK QUERY', history: 'MOCK HISTORY', redirect: 'MOCK REDIRECT' }))
-            .toEqual({ ...DEFAULT, history: 'MOCK HISTORY', redirect: 'MOCK REDIRECT' })
+            .toEqual({ status: 'MOCK PENDING', history: 'MOCK HISTORY', redirect: 'MOCK REDIRECT' })
         })
       })
 
       describe('The action `type` is `CHANGE_FULFILLED`', () => {
         it('returns the state', () => {
           expect(alphaReducer(DEFAULT, { type: 'MOCK CHANGE FULFILLED', response: { mockField: 'MOCK VALUE' } }))
-            .toEqual({ ...DEFAULT, mockField: 'MOCK VALUE' })
+            .toEqual({ status: 'MOCK RESOLVED', mockField: 'MOCK VALUE' })
         })
       })
 
       describe('The action `type` is `SUBMIT_FULFILLED`', () => {
         it('returns the state', () => {
           expect(alphaReducer(DEFAULT, { type: 'MOCK SUBMIT FULFILLED', response: { mockField: 'MOCK VALUE' } }))
-            .toEqual({ ...DEFAULT, mockField: 'MOCK VALUE' })
+            .toEqual({ status: 'MOCK RESOLVED', mockField: 'MOCK VALUE' })
         })
       })
 
       describe('The action `type` is `FETCH_FULFILLED`', () => {
         it('returns the state', () => {
           expect(alphaReducer(DEFAULT, { type: 'MOCK FETCH FULFILLED', response: { mockField: 'MOCK VALUE' } }))
-            .toEqual({ ...DEFAULT, mockField: 'MOCK VALUE' })
+            .toEqual({ status: 'MOCK RESOLVED', mockField: 'MOCK VALUE' })
         })
       })
 
       describe('The action `type` is `STORE_FULFILLED`', () => {
         it('returns the state', () => {
           expect(alphaReducer(DEFAULT, { type: 'MOCK STORE FULFILLED', response: { mockField: 'MOCK VALUE' } }))
-            .toEqual({ ...DEFAULT, mockField: 'MOCK VALUE' })
+            .toEqual({ status: 'MOCK RESOLVED', mockField: 'MOCK VALUE' })
         })
       })
 
       describe('The action `type` is `QUERY_FULFILLED`', () => {
         it('returns the state', () => {
           expect(alphaReducer(DEFAULT, { type: 'MOCK QUERY FULFILLED', response: { mockField: 'MOCK VALUE' } }))
-            .toEqual({ ...DEFAULT, mockField: 'MOCK VALUE' })
+            .toEqual({ status: 'MOCK RESOLVED', mockField: 'MOCK VALUE' })
         })
       })
 
       describe('The action `type` is `CHANGE_REJECTED`', () => {
         it('returns the state', () => {
           expect(alphaReducer(DEFAULT, { type: 'MOCK CHANGE REJECTED', error: { mockField: 'MOCK FIELD' } }))
-            .toEqual({ status: 'MOCK FAILURE', exception: { mockField: 'MOCK FIELD' } })
+            .toEqual({ status: 'MOCK REJECTED', exception: { mockField: 'MOCK FIELD' } })
         })
       })
 
       describe('The action `type` is `SUBMIT_REJECTED`', () => {
         it('returns the state', () => {
           expect(alphaReducer(DEFAULT, { type: 'MOCK SUBMIT REJECTED', error: { mockField: 'MOCK FIELD' } }))
-            .toEqual({ status: 'MOCK FAILURE', exception: { mockField: 'MOCK FIELD' } })
+            .toEqual({ status: 'MOCK REJECTED', exception: { mockField: 'MOCK FIELD' } })
         })
       })
 
       describe('The action `type` is `FETCH_REJECTED`', () => {
         it('returns the state', () => {
           expect(alphaReducer(DEFAULT, { type: 'MOCK FETCH REJECTED', error: { mockField: 'MOCK FIELD' } }))
-            .toEqual({ status: 'MOCK FAILURE', exception: { mockField: 'MOCK FIELD' } })
+            .toEqual({ status: 'MOCK REJECTED', exception: { mockField: 'MOCK FIELD' } })
         })
       })
 
       describe('The action `type` is `STORE_REJECTED`', () => {
         it('returns the state', () => {
           expect(alphaReducer(DEFAULT, { type: 'MOCK STORE REJECTED', error: { mockField: 'MOCK FIELD' } }))
-            .toEqual({ status: 'MOCK FAILURE', exception: { mockField: 'MOCK FIELD' } })
+            .toEqual({ status: 'MOCK REJECTED', exception: { mockField: 'MOCK FIELD' } })
         })
       })
 
       describe('The action `type` is `QUERY_REJECTED`', () => {
         it('returns the state', () => {
           expect(alphaReducer(DEFAULT, { type: 'MOCK QUERY REJECTED', error: { mockField: 'MOCK FIELD' } }))
-            .toEqual({ status: 'MOCK FAILURE', exception: { mockField: 'MOCK FIELD' } })
+            .toEqual({ status: 'MOCK REJECTED', exception: { mockField: 'MOCK FIELD' } })
         })
       })
 
@@ -292,13 +292,6 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
         it('returns the state', () => {
           expect(alphaReducer(DEFAULT, { type: 'MOCK EMBARK ROUTE', redirect: 'MOCK REDIRECT' }))
             .toEqual({ ...DEFAULT, resource: 'MOCK REDIRECT' })
-        })
-      })
-
-      describe('The action `type` is `DEBARK_ROUTE`', () => {
-        it('returns the state', () => {
-          expect(alphaReducer(DEFAULT, { type: 'MOCK DEBARK ROUTE' }))
-            .toEqual({ ...DEFAULT, status: 'MOCK COMPLETE' })
         })
       })
     })
@@ -385,7 +378,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
     it('returns the state', () => {
       expect(fetchFulfilled({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { response: { mockKey: 'MOCK VALUE' } }))
         .toEqual({
-          status: 'MOCK PENDING',
+          status: 'MOCK RESOLVED',
           mockStateField: 'MOCK STATE VALUE',
           mockKey: 'MOCK VALUE'
         })
@@ -396,7 +389,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
     it('returns the state', () => {
       expect(storeFulfilled({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { response: { mockKey: 'MOCK VALUE' } }))
         .toEqual({
-          status: 'MOCK PENDING',
+          status: 'MOCK RESOLVED',
           mockStateField: 'MOCK STATE VALUE',
           mockKey: 'MOCK VALUE'
         })
@@ -407,7 +400,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
     it('returns the state', () => {
       expect(queryFulfilled({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { response: { mockKey: 'MOCK VALUE' } }))
         .toEqual({
-          status: 'MOCK PENDING',
+          status: 'MOCK RESOLVED',
           mockStateField: 'MOCK STATE VALUE',
           mockKey: 'MOCK VALUE'
         })
@@ -419,7 +412,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
       it('returns the state', () => {
         expect(submitFulfilled({ ...DEFAULT, omega: 'MOCK OMEGA' }, { response: { mockKey: 'MOCK VALUE' } }))
           .toEqual({
-            status: 'MOCK PENDING',
+            status: 'MOCK RESOLVED',
             omega: 'MOCK OMEGA',
             mockKey: 'MOCK VALUE'
           })
@@ -430,7 +423,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
       it('returns the state', () => {
         expect(submitFulfilled({ ...DEFAULT, definitions: 'MOCK DEFINITIONS' }, { response: { mockKey: 'MOCK VALUE' } }))
           .toEqual({
-            status: 'MOCK PENDING',
+            status: 'MOCK RESOLVED',
             definitions: 'MOCK DEFINITIONS',
             mockKey: 'MOCK VALUE'
           })
@@ -441,7 +434,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
       it('returns the state', () => {
         expect(submitFulfilled({ ...DEFAULT, gears: 'MOCK GEARS' }, { response: { mockKey: 'MOCK VALUE' } }))
           .toEqual({
-            status: 'MOCK PENDING',
+            status: 'MOCK RESOLVED',
             gears: 'MOCK GEARS',
             mockKey: 'MOCK VALUE'
           })
@@ -452,7 +445,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
       it('returns the state', () => {
         expect(submitFulfilled({ ...DEFAULT, resource: 'MOCK RESOURCE' }, { response: { mockKey: 'MOCK VALUE' } }))
           .toEqual({
-            status: 'MOCK PENDING',
+            status: 'MOCK RESOLVED',
             resource: 'MOCK RESOURCE',
             mockKey: 'MOCK VALUE'
           })
@@ -463,7 +456,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
       it('returns the state', () => {
         expect(submitFulfilled({ ...DEFAULT, state: 'MOCK STATE' }, { response: { mockKey: 'MOCK VALUE' } }))
           .toEqual({
-            status: 'MOCK PENDING',
+            status: 'MOCK RESOLVED',
             state: 'MOCK STATE',
             mockKey: 'MOCK VALUE'
           })
@@ -475,7 +468,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
     it('returns the state', () => {
       expect(submitFulfilled({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { response: { mockKey: 'MOCK VALUE' } }))
         .toEqual({
-          status: 'MOCK PENDING',
+          status: 'MOCK RESOLVED',
           mockStateField: 'MOCK STATE VALUE',
           mockKey: 'MOCK VALUE'
         })
@@ -487,7 +480,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
       it('returns the state', () => {
         expect(fetchRejected({ ...DEFAULT, history: 'MOCK HISTORY' }, { error: { mockKey: 'MOCK VALUE' } }))
           .toEqual({
-            status: 'MOCK FAILURE',
+            status: 'MOCK REJECTED',
             history: 'MOCK HISTORY',
             exception: {
               mockKey: 'MOCK VALUE'
@@ -500,7 +493,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
       it('returns the state', () => {
         expect(fetchRejected(DEFAULT, { error: { mockKey: 'MOCK VALUE' } }))
           .toEqual({
-            status: 'MOCK FAILURE',
+            status: 'MOCK REJECTED',
             exception: {
               mockKey: 'MOCK VALUE'
             }
@@ -514,7 +507,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
       it('returns the state', () => {
         expect(storeRejected({ ...DEFAULT, history: 'MOCK HISTORY' }, { error: { mockKey: 'MOCK VALUE' } }))
           .toEqual({
-            status: 'MOCK FAILURE',
+            status: 'MOCK REJECTED',
             history: 'MOCK HISTORY',
             exception: {
               mockKey: 'MOCK VALUE'
@@ -527,7 +520,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
       it('returns the state', () => {
         expect(storeRejected(DEFAULT, { error: { mockKey: 'MOCK VALUE' } }))
           .toEqual({
-            status: 'MOCK FAILURE',
+            status: 'MOCK REJECTED',
             exception: {
               mockKey: 'MOCK VALUE'
             }
@@ -541,7 +534,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
       it('returns the state', () => {
         expect(queryRejected({ ...DEFAULT, history: 'MOCK HISTORY' }, { error: { mockKey: 'MOCK VALUE' } }))
           .toEqual({
-            status: 'MOCK FAILURE',
+            status: 'MOCK REJECTED',
             history: 'MOCK HISTORY',
             exception: {
               mockKey: 'MOCK VALUE'
@@ -554,7 +547,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
       it('returns the state', () => {
         expect(queryRejected(DEFAULT, { error: { mockKey: 'MOCK VALUE' } }))
           .toEqual({
-            status: 'MOCK FAILURE',
+            status: 'MOCK REJECTED',
             exception: {
               mockKey: 'MOCK VALUE'
             }
@@ -568,7 +561,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
       it('returns the state', () => {
         expect(changeRejected({ ...DEFAULT, history: 'MOCK HISTORY' }, { error: { mockKey: 'MOCK VALUE' } }))
           .toEqual({
-            status: 'MOCK FAILURE',
+            status: 'MOCK REJECTED',
             history: 'MOCK HISTORY',
             exception: {
               mockKey: 'MOCK VALUE'
@@ -581,7 +574,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
       it('returns the state', () => {
         expect(changeRejected(DEFAULT, { error: { mockKey: 'MOCK VALUE' } }))
           .toEqual({
-            status: 'MOCK FAILURE',
+            status: 'MOCK REJECTED',
             exception: {
               mockKey: 'MOCK VALUE'
             }
@@ -595,7 +588,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
       it('returns the state', () => {
         expect(submitRejected({ ...DEFAULT, history: 'MOCK HISTORY' }, { error: { mockKey: 'MOCK VALUE' } }))
           .toEqual({
-            status: 'MOCK FAILURE',
+            status: 'MOCK REJECTED',
             history: 'MOCK HISTORY',
             exception: {
               mockKey: 'MOCK VALUE'
@@ -608,7 +601,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
       it('returns the state', () => {
         expect(submitRejected(DEFAULT, { error: { mockKey: 'MOCK VALUE' } }))
           .toEqual({
-            status: 'MOCK FAILURE',
+            status: 'MOCK REJECTED',
             exception: {
               mockKey: 'MOCK VALUE'
             }

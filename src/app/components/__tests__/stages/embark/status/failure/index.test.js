@@ -2,15 +2,15 @@ import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
-import Failure from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/failure'
+import Rejected from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/rejected'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/failure', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/rejected', () => {
   describe('Always', () => {
     it('renders', () => {
       const component = (
-        <Failure
+        <Rejected
           name='MOCK NAME'
           response={{}}
           onSubmit={jest.fn()}
@@ -25,7 +25,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status
   describe('`code` is an integer', () => {
     it('renders', () => {
       const component = (
-        <Failure
+        <Rejected
           code={1}
           name='MOCK NAME'
           response={{}}
@@ -41,7 +41,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status
   describe('`message` is a string', () => {
     it('renders', () => {
       const component = (
-        <Failure
+        <Rejected
           name='MOCK NAME'
           message='MOCK MESSAGE'
           response={{}}
