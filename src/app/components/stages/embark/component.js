@@ -14,8 +14,8 @@ import Pending from './status/pending'
 
 const log = debug('zashiki-react-redux:app:components:stages:embark')
 
-export const getErrorProps = ({ exception }) => exception
 export const getEmbarkProps = ({ definition, response, onChange, onSubmit }) => ({ definition, response, onChange, onSubmit })
+export const getErrorProps = ({ exception }) => exception
 
 log('`Stage` is awake')
 

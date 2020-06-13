@@ -14,8 +14,8 @@ import Pending from './status/pending'
 
 const log = debug('zashiki-react-redux:app:components:stages:confirm')
 
+export const getConfirmProps = ({ definition, response, onSubmit }) => ({ definition, response, onSubmit })
 export const getErrorProps = ({ exception }) => exception
-export const getConfirmProps = ({ definition, response, onChange, onSubmit }) => ({ definition, response, onChange, onSubmit })
 
 log('`Confirm Stage` is awake')
 
@@ -68,7 +68,6 @@ Stage.propTypes = PropTypes.oneOfType([
     status: PropTypes.number.isRequired,
     definition: PropTypes.object.isRequired,
     response: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onConfirm: PropTypes.func.isRequired
   }),
@@ -76,7 +75,6 @@ Stage.propTypes = PropTypes.oneOfType([
     status: PropTypes.number.isRequired,
     exception: PropTypes.object.isRequired,
     response: PropTypes.object.isRequired,
-    onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onConfirm: PropTypes.func.isRequired
   })

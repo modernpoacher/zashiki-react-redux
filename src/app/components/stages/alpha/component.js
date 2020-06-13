@@ -16,8 +16,8 @@ import Pending from './status/pending'
 
 const log = debug('zashiki-react-redux:app:components:stages:alpha')
 
-export const getErrorProps = ({ exception }) => exception
 export const getStageProps = ({ state, resource, definitions, gears, onChange, onSubmit }) => ({ state, resource, definitions, gears, onChange, onSubmit })
+export const getErrorProps = ({ exception }) => exception
 
 log('`Alpha Stage` is awake')
 

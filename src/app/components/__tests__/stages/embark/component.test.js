@@ -8,7 +8,7 @@ import {
   PENDING
 } from '@modernpoacher/zashiki-react-redux/app/common'
 
-import Embark, { getErrorProps, getEmbarkProps } from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/component'
+import Embark, { getEmbarkProps, getErrorProps } from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/component'
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -82,16 +82,16 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/compon
     })
   })
 
-  describe('`getErrorProps`', () => {
+  describe('`getEmbarkProps`', () => {
     it('is defined', () => {
-      expect(getErrorProps)
+      expect(getEmbarkProps)
         .toBeDefined()
     })
   })
 
-  describe('`getEmbarkProps`', () => {
+  describe('`getErrorProps`', () => {
     it('is defined', () => {
-      expect(getEmbarkProps)
+      expect(getErrorProps)
         .toBeDefined()
     })
   })

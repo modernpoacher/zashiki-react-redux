@@ -8,7 +8,7 @@ import {
   PENDING
 } from '@modernpoacher/zashiki-react-redux/app/common'
 
-import Omega, { getErrorProps, getStageProps } from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/component'
+import Omega, { getStageProps, getErrorProps } from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/component'
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -69,16 +69,16 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
       .toMatchSnapshot()
   })
 
-  describe('`getErrorProps`', () => {
+  describe('`getStageProps`', () => {
     it('is defined', () => {
-      expect(getErrorProps)
+      expect(getStageProps)
         .toBeDefined()
     })
   })
 
-  describe('`getStageProps`', () => {
+  describe('`getErrorProps`', () => {
     it('is defined', () => {
-      expect(getStageProps)
+      expect(getErrorProps)
         .toBeDefined()
     })
   })

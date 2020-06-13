@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/confirm/component \`PENDING\` renders 1`] = `ShallowWrapper {}`;
+
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/confirm/component \`REJECTED\` renders 1`] = `ShallowWrapper {}`;
+
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/confirm/component \`RESOLVED\` renders 1`] = `ShallowWrapper {}`;
+
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/confirm/component Always renders 1`] = `ShallowWrapper {}`;

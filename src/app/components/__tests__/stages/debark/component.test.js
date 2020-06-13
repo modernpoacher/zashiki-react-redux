@@ -8,7 +8,7 @@ import {
   PENDING
 } from '@modernpoacher/zashiki-react-redux/app/common'
 
-import Debark, { getErrorProps, getDebarkProps } from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/component'
+import Debark, { getDebarkProps, getErrorProps } from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/component'
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -79,16 +79,16 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/compon
     })
   })
 
-  describe('`getErrorProps`', () => {
+  describe('`getDebarkProps`', () => {
     it('is defined', () => {
-      expect(getErrorProps)
+      expect(getDebarkProps)
         .toBeDefined()
     })
   })
 
-  describe('`getDebarkProps`', () => {
+  describe('`getErrorProps`', () => {
     it('is defined', () => {
-      expect(getDebarkProps)
+      expect(getErrorProps)
         .toBeDefined()
     })
   })
