@@ -10,9 +10,7 @@ import {
 
 import Signals from 'shinkansen-engine/lib/components/signals'
 
-import {
-  transform
-} from '@modernpoacher/zashiki-react-redux/app/transformers/stages/confirm'
+import transform from '@modernpoacher/zashiki-react-redux/app/transformers/stages/confirm'
 
 import {
   fetch,

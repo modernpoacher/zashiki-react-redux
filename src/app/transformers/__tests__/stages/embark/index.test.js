@@ -2,11 +2,11 @@ import {
   toZashiki
 } from 'shinkansen-engine/lib/transformers/transmission'
 
-import {
-  transform
-} from '@modernpoacher/zashiki-react-redux/app/transformers/stages/embark'
+import transform from '@modernpoacher/zashiki-react-redux/app/transformers/stages/embark'
 
-import { transformRejected } from '@modernpoacher/zashiki-react-redux/app/transformers'
+import {
+  transformRejected
+} from '@modernpoacher/zashiki-react-redux/app/transformers'
 
 jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
   REJECTED: 'MOCK REJECTED'

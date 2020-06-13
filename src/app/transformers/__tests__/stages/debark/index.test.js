@@ -4,11 +4,11 @@ import {
 
 import toCheckAnswers from 'shinkansen-pinion/lib/transformers/check-answers'
 
-import {
-  transform
-} from '@modernpoacher/zashiki-react-redux/app/transformers/stages/debark'
+import transform from '@modernpoacher/zashiki-react-redux/app/transformers/stages/debark'
 
-import { transformRejected } from '@modernpoacher/zashiki-react-redux/app/transformers'
+import {
+  transformRejected
+} from '@modernpoacher/zashiki-react-redux/app/transformers'
 
 jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
   REJECTED: 'MOCK REJECTED'

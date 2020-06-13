@@ -8,7 +8,9 @@ import {
   REJECTED
 } from '@modernpoacher/zashiki-react-redux/app/common'
 
-import { transformRejected } from '@modernpoacher/zashiki-react-redux/app/transformers'
+import {
+  transformRejected
+} from '@modernpoacher/zashiki-react-redux/app/transformers'
 
 const log = debug('zashiki-react-redux:app:transformers:stages:alpha')
 
@@ -22,4 +24,4 @@ export function transformEmbark (status, { definition, response = {} }) {
   }
 }
 
-export const transform = ({ status, ...embark } = {}) => (status === REJECTED) ? transformRejected(status, embark) : transformEmbark(status, embark)
+export default ({ status, ...embark } = {}) => (status === REJECTED) ? transformRejected(status, embark) : transformEmbark(status, embark)

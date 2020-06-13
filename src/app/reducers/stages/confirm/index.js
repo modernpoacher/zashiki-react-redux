@@ -79,6 +79,8 @@ export const storeRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(h
 
 export const submitRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
 
+export const initialise = (state = {}) => ({ ...state, status: RESOLVED })
+
 /**
  *  ConfirmStage Reducer
  *

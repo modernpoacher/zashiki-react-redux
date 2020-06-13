@@ -1,8 +1,8 @@
-import {
-  transform
-} from '@modernpoacher/zashiki-react-redux/app/transformers/stages/omega'
+import transform from '@modernpoacher/zashiki-react-redux/app/transformers/stages/omega'
 
-import { transformRejected } from '@modernpoacher/zashiki-react-redux/app/transformers'
+import {
+  transformRejected
+} from '@modernpoacher/zashiki-react-redux/app/transformers'
 
 jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
   REJECTED: 'MOCK REJECTED'

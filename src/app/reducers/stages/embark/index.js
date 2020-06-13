@@ -92,6 +92,8 @@ export const changeRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(
 
 export const submitRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
 
+export const initialise = (state = {}) => ({ ...state, status: RESOLVED })
+
 /**
  *  Zashiki/Embark Reducer
  *

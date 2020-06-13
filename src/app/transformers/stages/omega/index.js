@@ -9,7 +9,9 @@ import {
   fromDocumentToHash
 } from 'shinkansen-engine/lib/transformers/transmission'
 
-import { transformRejected } from '@modernpoacher/zashiki-react-redux/app/transformers'
+import {
+  transformRejected
+} from '@modernpoacher/zashiki-react-redux/app/transformers'
 
 const log = debug('zashiki-react-redux:app:transformers:stages:omega')
 
@@ -50,4 +52,4 @@ export function transformRoute ({ definition, response, ...route }) {
   }
 }
 
-export const transform = ({ status, ...omega }) => (status === REJECTED) ? transformRejected(status, omega) : transformOmega(status, omega)
+export default ({ status, ...omega }) => (status === REJECTED) ? transformRejected(status, omega) : transformOmega(status, omega)
