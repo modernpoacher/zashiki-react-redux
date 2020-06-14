@@ -4,6 +4,8 @@ import debug from 'debug'
 
 import { CheckAnswers } from 'shinkansen-engine/lib/components/pinion'
 
+import Token from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/token'
+
 import getDebarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-debark-route'
 
 const log = debug('zashiki-react-redux:app:components:stages:debark:stage')
@@ -24,6 +26,9 @@ const Debark = ({ definitions, token, onSubmit }) => (
           checkAnswers={definition}
         />
       ))}
+    <Token
+      token={token}
+    />
     <button type='submit'>
       Continue
     </button>

@@ -1,8 +1,8 @@
 import {
-  changeRoute,
   fetchRoute,
   storeRoute,
-  queryRoute
+  queryRoute,
+  changeRoute
 } from '@modernpoacher/zashiki-react-redux/api/zashiki'
 
 import api from '@modernpoacher/zashiki-react-redux/api'
@@ -18,13 +18,6 @@ jest.mock('@modernpoacher/zashiki-react-redux/api', () => jest.fn().mockImplemen
 describe('@modernpoacher/zashiki-react-redux/api/zashiki', () => {
   beforeEach(() => {
     jest.clearAllMocks()
-  })
-
-  describe('`changeRoute`', () => {
-    it('is defined', () => {
-      expect(changeRoute)
-        .toBeDefined()
-    })
   })
 
   describe('`fetchRoute`', () => {
@@ -48,21 +41,10 @@ describe('@modernpoacher/zashiki-react-redux/api/zashiki', () => {
     })
   })
 
-  describe('`changeRoute()`', () => {
-    const mockRoute = {}
-
-    beforeEach(() => {
-      changeRoute(mockRoute)
-    })
-
-    it('invokes `api`', () => {
-      expect(api)
-        .toBeCalled()
-    })
-
-    it('invokes `patch`', () => {
-      expect(mockTransport.patch)
-        .toBeCalledWith('zashiki/stages/change', mockRoute)
+  describe('`changeRoute`', () => {
+    it('is defined', () => {
+      expect(changeRoute)
+        .toBeDefined()
     })
   })
 
@@ -113,6 +95,24 @@ describe('@modernpoacher/zashiki-react-redux/api/zashiki', () => {
     it('invokes `get`', () => {
       expect(mockTransport.get)
         .toBeCalledWith('zashiki/stages/query')
+    })
+  })
+
+  describe('`changeRoute()`', () => {
+    const mockRoute = {}
+
+    beforeEach(() => {
+      changeRoute(mockRoute)
+    })
+
+    it('invokes `api`', () => {
+      expect(api)
+        .toBeCalled()
+    })
+
+    it('invokes `patch`', () => {
+      expect(mockTransport.patch)
+        .toBeCalledWith('zashiki/stages/change', mockRoute)
     })
   })
 })

@@ -125,13 +125,6 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/debark', () => 
         })
       })
 
-      describe('The action `type` is `SUBMIT`', () => {
-        it('returns the state', () => {
-          expect(debarkReducer(DEFAULT, { type: 'MOCK SUBMIT', debark: { mockField: 'MOCK VALUE' } }))
-            .toEqual({ status: 'MOCK PENDING', mockField: 'MOCK VALUE' })
-        })
-      })
-
       describe('The action `type` is `FETCH`', () => {
         it('returns the state', () => {
           expect(debarkReducer(DEFAULT, { type: 'MOCK FETCH', history: 'MOCK HISTORY', redirect: 'MOCK REDIRECT' }))
@@ -146,10 +139,10 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/debark', () => 
         })
       })
 
-      describe('The action `type` is `SUBMIT_FULFILLED`', () => {
+      describe('The action `type` is `SUBMIT`', () => {
         it('returns the state', () => {
-          expect(debarkReducer(DEFAULT, { type: 'MOCK SUBMIT FULFILLED', response: { mockField: 'MOCK VALUE' } }))
-            .toEqual({ status: 'MOCK RESOLVED', mockField: 'MOCK VALUE' })
+          expect(debarkReducer(DEFAULT, { type: 'MOCK SUBMIT', debark: { mockField: 'MOCK VALUE' } }))
+            .toEqual({ status: 'MOCK PENDING', mockField: 'MOCK VALUE' })
         })
       })
 
@@ -167,10 +160,10 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/debark', () => 
         })
       })
 
-      describe('The action `type` is `SUBMIT_REJECTED`', () => {
+      describe('The action `type` is `SUBMIT_FULFILLED`', () => {
         it('returns the state', () => {
-          expect(debarkReducer(DEFAULT, { type: 'MOCK SUBMIT REJECTED', error: { mockField: 'MOCK FIELD' } }))
-            .toEqual({ status: 'MOCK REJECTED', exception: { mockField: 'MOCK FIELD' } })
+          expect(debarkReducer(DEFAULT, { type: 'MOCK SUBMIT FULFILLED', response: { mockField: 'MOCK VALUE' } }))
+            .toEqual({ status: 'MOCK RESOLVED', mockField: 'MOCK VALUE' })
         })
       })
 
@@ -184,6 +177,13 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/debark', () => 
       describe('The action `type` is `STORE_REJECTED`', () => {
         it('returns the state', () => {
           expect(debarkReducer(DEFAULT, { type: 'MOCK STORE REJECTED', error: { mockField: 'MOCK FIELD' } }))
+            .toEqual({ status: 'MOCK REJECTED', exception: { mockField: 'MOCK FIELD' } })
+        })
+      })
+
+      describe('The action `type` is `SUBMIT_REJECTED`', () => {
+        it('returns the state', () => {
+          expect(debarkReducer(DEFAULT, { type: 'MOCK SUBMIT REJECTED', error: { mockField: 'MOCK FIELD' } }))
             .toEqual({ status: 'MOCK REJECTED', exception: { mockField: 'MOCK FIELD' } })
         })
       })

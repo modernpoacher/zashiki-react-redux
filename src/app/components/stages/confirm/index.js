@@ -14,7 +14,6 @@ import transform from '@modernpoacher/zashiki-react-redux/app/transformers/stage
 
 import {
   fetch,
-  change,
   submit
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/confirm'
 
@@ -49,11 +48,6 @@ function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
       log('onConfirm')
 
       dispatch(fetch(history))
-    },
-    onChange (response) {
-      log('onChange')
-
-      dispatch(change(response, history))
     },
     onSubmit (response) {
       log('onSubmit')
