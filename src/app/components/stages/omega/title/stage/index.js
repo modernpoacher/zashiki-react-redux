@@ -12,8 +12,6 @@ export default class Stage extends Component {
   }
 
   render () {
-    log('render')
-
     const {
       title
     } = this.props

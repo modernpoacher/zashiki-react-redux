@@ -17,8 +17,6 @@ export default class Stage extends Component {
   }
 
   render () {
-    log('render')
-
     const {
       state: {
         index,
@@ -31,6 +29,7 @@ export default class Stage extends Component {
         resource,
         definition,
         response,
+        errors,
         onChange,
         onSubmit,
         gears: {
@@ -45,6 +44,7 @@ export default class Stage extends Component {
             resource={resource}
             definition={definition}
             response={response}
+            errors={errors}
             onChange={onChange}
             onSubmit={onSubmit} />
           <Gears
@@ -67,6 +67,7 @@ Stage.propTypes = {
   resource: PropTypes.object,
   definition: PropTypes.object,
   response: PropTypes.object,
+  errors: PropTypes.array,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   gears: PropTypes.shape({

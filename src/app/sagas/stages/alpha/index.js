@@ -183,9 +183,10 @@ function * submitStateSaga ({ route: { resource, response }, history }) {
 
   const hasError = yield select(hasStoreError)
 
-  if (hasError) {
-    yield put(submitStateRejected())
-  } else {
+  if (!hasError) {
+    const state = yield select(getState)
+    yield put(submitStateFulfilled(state))
+
     yield put(queryRoute())
 
     yield race([
@@ -195,14 +196,13 @@ function * submitStateSaga ({ route: { resource, response }, history }) {
 
     const hasError = yield select(hasQueryError)
 
-    if (hasError) {
-      yield put(submitStateRejected())
-    } else {
+    if (!hasError) {
       const state = yield select(getState)
-      yield put(submitStateFulfilled(state))
       const { redirect, history } = state
       yield put(alphaRoute(redirect, history))
     }
+  } else {
+    yield put(submitStateRejected())
   }
 }
 

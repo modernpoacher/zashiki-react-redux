@@ -89,13 +89,16 @@ export const submit = ({ status = PENDING, ...state } = {}, { history, route = {
 /*
  *  Not `redirect` from state
  */
-export const mountFulfilled = ({ alpha, definition, gears, resource, state, history } = {}, { status = PENDING, response = {} } = {}) => {
+export function mountFulfilled ({ alpha, definition, gears, state, history } = {}, { response = {} } = {}) {
+  log('mountFulfilled')
+
   return {
     ...(alpha ? { alpha } : {}),
     ...(definition ? { definition } : {}),
     ...(gears ? { gears } : {}),
     ...(state ? { state } : {}),
-    history,
+    ...(history ? { history } : {}),
+    errors: [],
     resource: {},
     response: {},
     ...response,
@@ -103,27 +106,71 @@ export const mountFulfilled = ({ alpha, definition, gears, resource, state, hist
   }
 }
 
-export const fetchFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
+export function fetchFulfilled (state = {}, { response = {} } = {}) {
+  log('fetchFulfilled')
 
-export const storeFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
+  return { ...state, ...response, status: RESOLVED }
+}
 
-export const queryFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
+export function storeFulfilled (state = {}, { response = {} } = {}) {
+  log('storeFulfilled')
 
-export const changeFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
+  return { ...state, ...response, status: RESOLVED }
+}
 
-export const submitFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
+export function queryFulfilled (state = {}, { response = {} } = {}) { // `redirect`
+  log('queryFulfilled', { ...response, status: RESOLVED })
 
-export const mountRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+  return { ...state, ...response, status: RESOLVED }
+}
 
-export const fetchRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+export function changeFulfilled (state = {}, { response = {} } = {}) {
+  log('changeFulfilled')
 
-export const storeRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+  return { ...state, ...response, status: RESOLVED }
+}
 
-export const queryRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+export function submitFulfilled (state = {}, { response = {} } = {}) {
+  log('submitFulfilled')
 
-export const changeRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+  return { ...state, ...response, status: RESOLVED }
+}
 
-export const submitRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+export function mountRejected ({ history } = {}, { error = {} } = {}) {
+  log('mountRejected')
+
+  return { ...(history ? { history } : {}), exception: { ...error }, status: REJECTED }
+}
+
+export function fetchRejected ({ history } = {}, { error = {} } = {}) {
+  log('fetchRejected')
+
+  return { ...(history ? { history } : {}), exception: { ...error }, status: REJECTED }
+}
+
+export function storeRejected ({ history } = {}, { error = {} } = {}) {
+  log('storeRejected')
+
+  return { ...(history ? { history } : {}), exception: { ...error }, status: REJECTED }
+}
+
+export function queryRejected ({ history } = {}, { error = {} } = {}) {
+  log('queryRejected')
+
+  return { ...(history ? { history } : {}), exception: { ...error }, status: REJECTED }
+}
+
+export function changeRejected ({ history } = {}, { error = {} } = {}) {
+  log('changeRejected')
+
+  return { ...(history ? { history } : {}), exception: { ...error }, status: REJECTED }
+}
+
+export function submitRejected ({ history } = {}, { error = {} } = {}) {
+  log('submitRejected')
+
+  return { ...(history ? { history } : {}), exception: { ...error }, status: REJECTED }
+}
 
 export const initialise = (state = {}) => ({ ...state, status: RESOLVED })
 

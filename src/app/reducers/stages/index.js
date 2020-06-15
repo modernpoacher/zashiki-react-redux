@@ -1,1 +1,1 @@
-export * as alpha from './alpha'
+export default {}

@@ -12,8 +12,6 @@ export default class Title extends Component {
   }
 
   render () {
-    log('render')
-
     const {
       title
     } = this.props

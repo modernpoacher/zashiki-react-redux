@@ -34,13 +34,17 @@ export function transformAlpha (status, {
       description,
       definition,
       resource,
-      response = {} // hash
+      response = {}, // hash
+      errors = []
     }) => {
+      log('transformOmega')
+
       return {
         ...(description ? { description } : {}),
         ...(definition ? { definition: toZashiki(definition, response) } : { definition: {} }),
         ...(resource ? { resource } : {}),
-        response
+        response,
+        errors
       }
     }),
     ...(resource ? { resource } : {}),

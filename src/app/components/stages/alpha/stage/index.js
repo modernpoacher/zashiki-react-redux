@@ -19,8 +19,6 @@ export default class Stage extends Component {
   }
 
   render () {
-    log('render')
-
     const {
       state: {
         index,
