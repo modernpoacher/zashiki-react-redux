@@ -27,11 +27,22 @@ const MOCK_RESPONSE = {
   '#/': 'MOCK VALUE'
 }
 
+const MOCK_ERRORS = []
+
+const MOCK_DEFINITIONS = [
+  {
+    definition: MOCK_DEFINITION,
+    resource: MOCK_RESOURCE,
+    response: MOCK_RESPONSE,
+    errors: MOCK_ERRORS
+  }
+]
+
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/alpha', () => {
   it('renders', () => {
     const component = (
       <Alpha
-        definitions={[{ definition: MOCK_DEFINITION, resource: MOCK_RESOURCE, response: MOCK_RESPONSE }]}
+        definitions={MOCK_DEFINITIONS}
         onChange={jest.fn()}
         onSubmit={jest.fn()}
       />

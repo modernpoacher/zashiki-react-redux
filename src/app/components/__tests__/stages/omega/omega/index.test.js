@@ -29,10 +29,20 @@ const MOCK_RESPONSE = {
   '#/': 'MOCK VALUE'
 }
 
+const MOCK_ERRORS = []
+
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/omega', () => {
   it('renders', () => {
     const component = (
-      <Omega description={MOCK_DESCRIPTION} definition={MOCK_DEFINITION} resource={MOCK_RESOURCE} response={MOCK_RESPONSE} onChange={jest.fn()} onSubmit={jest.fn()} />
+      <Omega
+        description={MOCK_DESCRIPTION}
+        definition={MOCK_DEFINITION}
+        resource={MOCK_RESOURCE}
+        response={MOCK_RESPONSE}
+        errors={MOCK_ERRORS}
+        onChange={jest.fn()}
+        onSubmit={jest.fn()}
+      />
     )
 
     expect(mount(component))

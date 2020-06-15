@@ -18,6 +18,7 @@ const DEFAULT = {
   status: 'MOCK STATUS',
   definition: {},
   response: {},
+  errors: [],
   gears: {
     forward: {},
     reverse: {}

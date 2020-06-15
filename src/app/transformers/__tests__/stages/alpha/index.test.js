@@ -95,7 +95,8 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/alpha', () 
                   {
                     definition: 'MOCK ZASHIKI',
                     resource: 'MOCK RESOURCE',
-                    response: 'MOCK RESPONSE'
+                    response: 'MOCK RESPONSE',
+                    errors: []
                   }
                 ],
                 gears: {
