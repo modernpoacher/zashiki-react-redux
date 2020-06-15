@@ -1,19 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import debug from 'debug'
 
-import {
-  Signals
-} from 'shinkansen-signals'
+import Signals from 'shinkansen-engine/lib/components/signals'
 
-import {
-  Gears
-} from 'shinkansen-gears'
-
-import Count from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/count'
+import Gears from 'shinkansen-engine/lib/components/gears'
 import Omega from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/omega'
 
-export default class OmegaStage extends React.Component {
-  render () { // console.log('(OmegaStage)render()') // eslint-disable-line
+const log = debug('zashiki-react-redux:app:components:stages:omega:stage')
+
+log('`Omega Stage` is awake')
+
+export default class Stage extends Component {
+  getClassName () {
+    return 'omega'
+  }
+
+  render () {
     const {
       state: {
         index,
@@ -23,9 +26,12 @@ export default class OmegaStage extends React.Component {
 
     if (index || count) {
       const {
-        onSubmit,
         resource,
         definition,
+        response,
+        errors,
+        onChange,
+        onSubmit,
         gears: {
           reverse,
           forward
@@ -33,14 +39,14 @@ export default class OmegaStage extends React.Component {
       } = this.props
 
       return (
-        <div className='omega'>
-          <Count
-            index={index}
-            count={count} />
+        <div className={this.getClassName()}>
           <Omega
-            onSubmit={onSubmit}
             resource={resource}
-            definition={definition} />
+            definition={definition}
+            response={response}
+            errors={errors}
+            onChange={onChange}
+            onSubmit={onSubmit} />
           <Gears
             reverse={reverse}
             forward={forward}
@@ -48,25 +54,29 @@ export default class OmegaStage extends React.Component {
         </div>
       )
     }
-    return false
+
+    return null
   }
 }
 
-OmegaStage.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+Stage.propTypes = {
   state: PropTypes.shape({
     index: PropTypes.number,
     count: PropTypes.number
   }),
-  resource: PropTypes.object.isRequired,
-  definition: PropTypes.object.isRequired,
+  resource: PropTypes.object,
+  definition: PropTypes.object,
+  response: PropTypes.object,
+  errors: PropTypes.array,
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   gears: PropTypes.shape({
     forward: PropTypes.object,
     reverse: PropTypes.object
   })
 }
 
-OmegaStage.defaultProps = {
+Stage.defaultProps = {
   state: {},
   gears: {}
 }

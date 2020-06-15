@@ -1,3 +1,5 @@
+import debug from 'debug'
+
 import {
   connect
 } from 'react-redux'
@@ -6,36 +8,55 @@ import {
   withRouter
 } from 'react-router'
 
-import {
-  Signals
-} from 'shinkansen-signals'
+import Signals from 'shinkansen-engine/lib/components/signals'
+
+import transform from '@modernpoacher/zashiki-react-redux/app/transformers/stages/debark'
 
 import {
-  transform
-} from '@modernpoacher/zashiki-react-redux/app/transformers/stages/debark'
+  fetch,
+  submit
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
 
-import { fetch, submit } from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
+import Component from './component'
 
-import DebarkStage from './component'
+const log = debug('zashiki-react-redux:app:components:stages:debark')
+
+log('`debark` is awake')
 
 const {
   DEBARK
 } = Signals
 
-const mapStateToProps = ({ [DEBARK]: debark = {} }) => ({ ...transform(debark) })
+function mapStateToProps ({ [DEBARK]: debark = {} }) {
+  log('mapStateToProps')
 
-const mapDispatchToProps = (dispatch) => ({ dispatch })
+  return debark
+}
 
-const mergeProps = (stateProps, { dispatch }, { history, ...ownProps }) => ({
-  ...stateProps,
-  onSubmit: (response) => {
-    dispatch(submit(response, history))
-  },
-  onDebark: () => {
-    dispatch(fetch(history))
-  },
-  history,
-  ...ownProps
-})
+function mapDispatchToProps (dispatch) {
+  log('mapDispatchToProps')
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(DebarkStage))
+  return { dispatch }
+}
+
+function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
+  log('mergeProps')
+
+  return {
+    ...transform(stateProps),
+    onDebark () {
+      log('onDebark')
+
+      dispatch(fetch(history))
+    },
+    onSubmit (response) {
+      log('onSubmit')
+
+      dispatch(submit(response, history))
+    },
+    history,
+    ...ownProps
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(Component))

@@ -1,3 +1,5 @@
+import debug from 'debug'
+
 import {
   connect
 } from 'react-redux'
@@ -6,24 +8,47 @@ import {
   withRouter
 } from 'react-router'
 
-import { submit, change } from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
+import {
+  mount,
+  submit,
+  change
+} from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
 
-import Zashiki from './component'
+import Component from './component'
 
-const mapStateToProps = ({ zashiki = {} } = {}) => ({ zashiki })
+const log = debug('zashiki-react-redux:app:components:zashiki')
 
-const mapDispatchToProps = (dispatch) => ({ dispatch })
+log('`zashiki` is awake')
 
-const mergeProps = (stateProps, { dispatch }, { history, ...ownProps }) => ({
-  ...stateProps,
-  onSubmit: (resource, response) => {
-    dispatch(submit(resource, response, history))
-  },
-  onChange: (resource) => {
-    dispatch(change(resource, history))
-  },
-  history,
-  ...ownProps
-})
+function mapStateToProps ({ zashiki = {} } = {}) {
+  log('mapStateToProps')
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(Zashiki))
+  return { zashiki }
+}
+
+function mapDispatchToProps (dispatch) {
+  log('mapDispatchToProps')
+
+  return { dispatch }
+}
+
+function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
+  log('mergeProps')
+
+  return {
+    ...stateProps,
+    onMount: (resource) => {
+      dispatch(mount(resource, history))
+    },
+    onSubmit: (resource, response) => {
+      dispatch(submit(resource, response, history))
+    },
+    onChange: (resource) => {
+      dispatch(change(resource, history))
+    },
+    history,
+    ...ownProps
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(Component))

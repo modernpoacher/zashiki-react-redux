@@ -6,10 +6,20 @@ import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/emba
 
 Enzyme.configure({ adapter: new Adapter() })
 
+const MOCK_DEFINITION = {
+  meta: {},
+  elements: {}
+}
+
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/stage', () => {
   it('renders', () => {
     const component = (
-      <Stage definition={{}} onSubmit={jest.fn()} />
+      <Stage
+        definition={MOCK_DEFINITION}
+        response={{}}
+        onChange={jest.fn()}
+        onSubmit={jest.fn()}
+      />
     )
 
     expect(shallow(component))

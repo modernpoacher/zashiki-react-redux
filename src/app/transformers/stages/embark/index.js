@@ -1,17 +1,27 @@
+import debug from 'debug'
+
 import {
-  Signals
-} from 'shinkansen-signals'
+  toZashiki
+} from 'shinkansen-engine/lib/transformers/transmission'
 
-import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'
+import {
+  REJECTED
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
-const transformEmbark = (status, {
-  definition: schema,
-  response: formData = {}
-}) => ({
-  definition: {
-    ...(schema ? { schema, formData } : {})
-  },
-  status
-})
+import {
+  transformRejected
+} from '@modernpoacher/zashiki-react-redux/app/transformers'
 
-export const transform = ({ status, ...embark }) => (status === Signals.FAILURE) ? transformFailure(status, embark) : transformEmbark(status, embark)
+const log = debug('zashiki-react-redux:app:transformers:stages:alpha')
+
+export function transformEmbark (status, { definition, response = {} }) {
+  log('transformEmbark')
+
+  return {
+    ...(definition ? { definition: toZashiki(definition, response) } : { definition: {} }),
+    response,
+    status
+  }
+}
+
+export default ({ status, ...embark } = {}) => (status === REJECTED) ? transformRejected(status, embark) : transformEmbark(status, embark)

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Count = ({ index, count }) => (
-  <h2>{index + 1} of {count}</h2>
+  <h3>{index + 1} of {count}</h3>
 )
 
 Count.propTypes = {

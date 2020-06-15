@@ -1,13 +1,26 @@
-import { transform } from '@modernpoacher/zashiki-react-redux/app/transformers/stages/debark'
-import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'
+import {
+  toZashiki
+} from 'shinkansen-engine/lib/transformers/transmission'
 
-jest.mock('shinkansen-signals', () => ({ Signals: { FAILURE: 'MOCK FAILURE' } }))
-jest.mock('@modernpoacher/zashiki-react-redux/app/transformers', () => ({ transformFailure: jest.fn() }))
+import toCheckAnswers from 'shinkansen-pinion/lib/transformers/check-answers'
 
-const DEFAULT = {
-  status: 'MOCK STATUS',
-  definition: {}
-}
+import transform from '@modernpoacher/zashiki-react-redux/app/transformers/stages/debark'
+
+import {
+  transformRejected
+} from '@modernpoacher/zashiki-react-redux/app/transformers'
+
+jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
+  REJECTED: 'MOCK REJECTED'
+}))
+
+jest.mock('shinkansen-engine/lib/transformers/transmission', () => ({
+  toZashiki: jest.fn().mockReturnValue('MOCK ZASHIKI')
+}))
+
+jest.mock('shinkansen-pinion/lib/transformers/check-answers', () => jest.fn().mockReturnValue('MOCK CHECK ANSWERS'))
+
+jest.mock('@modernpoacher/zashiki-react-redux/app/transformers', () => ({ transformRejected: jest.fn() }))
 
 describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/debark', () => {
   describe('`transform`', () => {
@@ -22,59 +35,83 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/debark', ()
         jest.clearAllMocks()
       })
 
-      describe('`status` is `Signals.FAILURE`', () => {
-        it('invokes `transformFailure`', () => {
-          transform({ status: 'MOCK FAILURE' })
+      describe('`status` is `REJECTED`', () => {
+        it('invokes `transformRejected`', () => {
+          transform({ status: 'MOCK REJECTED' })
 
-          expect(transformFailure)
-            .toBeCalledWith('MOCK FAILURE', {})
+          expect(transformRejected)
+            .toBeCalledWith('MOCK REJECTED', {})
         })
       })
 
-      describe('`status` is not `Signals.FAILURE`', () => {
-        it('does not invoke `transformFailure`', () => {
-          transform({ status: 'MOCK STATUS' })
+      describe('`status` is not `REJECTED`', () => {
+        let returnValue
 
-          expect(transformFailure)
-            .not.toBeCalled()
-        })
+        beforeEach(() => {
+          jest.clearAllMocks()
 
-        it('returns an object with default values', () => {
-          expect(transform({ status: 'MOCK STATUS' }))
-            .toEqual(DEFAULT)
-        })
-      })
-
-      describe('`definition` is an object', () => {
-        describe('`response` is an object', () => {
-          it('returns an object with `definition` and default values', () => {
-            expect(transform({
-              status: 'MOCK STATUS',
-              definition: 'MOCK DEFINITION',
-              response: 'MOCK RESPONSE'
-            }))
-              .toEqual({
-                ...DEFAULT,
-                definition: {
-                  schema: 'MOCK DEFINITION',
-                  formData: 'MOCK RESPONSE'
-                }
-              })
+          returnValue = transform({
+            status: 'MOCK STATUS'
           })
         })
 
-        describe('`response` is not an object', () => {
-          it('returns an object with `definition` and default values', () => {
-            expect(transform({
+        it('does not invoke `transformRejected`', () => {
+          expect(transformRejected)
+            .not.toBeCalled()
+        })
+
+        it('returns an object', () => {
+          expect(returnValue)
+            .toEqual({
               status: 'MOCK STATUS',
-              definition: 'MOCK DEFINITION'
-            }))
-              .toEqual({
-                ...DEFAULT,
-                definition: {
-                  schema: 'MOCK DEFINITION',
-                  formData: {}
+              definition: {},
+              definitions: [],
+              token: {}
+            })
+        })
+
+        describe('`omega` is an array', () => {
+          let returnValue
+
+          beforeEach(() => {
+            jest.clearAllMocks()
+
+            returnValue = transform({
+              status: 'MOCK STATUS',
+              alpha: {},
+              omega: [
+                {
+                  definition: 'MOCK DEFINITION',
+                  resource: 'MOCK RESOURCE',
+                  response: 'MOCK RESPONSE'
                 }
+              ]
+            })
+          })
+
+          it('invokes `toZashiki`', () => {
+            expect(toZashiki)
+              .toBeCalledWith('MOCK DEFINITION', 'MOCK RESPONSE')
+          })
+
+          it('invokes `toCheckAnswers`', () => {
+            expect(toCheckAnswers)
+              .toBeCalledWith('MOCK ZASHIKI', 'MOCK RESOURCE')
+          })
+
+          it('returns an object', () => {
+            expect(returnValue)
+              .toEqual({
+                status: 'MOCK STATUS',
+                definition: {},
+                definitions: [
+                  {
+                    definition: 'MOCK CHECK ANSWERS',
+                    resource: 'MOCK RESOURCE',
+                    response: 'MOCK RESPONSE'
+                  }
+                ],
+                token: {}
               })
           })
         })
@@ -82,11 +119,11 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/debark', ()
     })
 
     describe('Without parameters', () => {
-      it('invokes `transformFailure`', () => {
-        transform({ status: 'MOCK FAILURE' })
+      it('invokes `transformRejected`', () => {
+        transform({ status: 'MOCK REJECTED' })
 
-        expect(transformFailure)
-          .toBeCalledWith('MOCK FAILURE', {})
+        expect(transformRejected)
+          .toBeCalledWith('MOCK REJECTED', {})
       })
     })
   })

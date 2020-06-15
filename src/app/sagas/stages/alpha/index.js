@@ -1,3 +1,7 @@
+import debug from 'debug'
+
+import equal from 'fast-deep-equal'
+
 import {
   call,
   put,
@@ -7,21 +11,19 @@ import {
   takeLatest
 } from 'redux-saga/effects'
 
+import Signals from 'shinkansen-engine/lib/components/signals'
 import {
-  Signals
-} from 'shinkansen-signals'
+  fromDocumentToHash,
+  fromHashToDocument
+} from 'shinkansen-engine/lib/transformers/transmission'
 
 import {
   ROUTE,
   alphaRoute,
 
-  CHANGE,
-  changeRouteFulfilled,
-  changeRouteRejected,
-
-  SUBMIT,
-  submitRouteFulfilled,
-  submitRouteRejected,
+  MOUNT,
+  mountRouteFulfilled,
+  mountRouteRejected,
 
   FETCH,
   fetchRouteFulfilled,
@@ -39,7 +41,11 @@ import {
   QUERY_REJECTED,
   queryRoute,
   queryRouteFulfilled,
-  queryRouteRejected
+  queryRouteRejected,
+
+  SUBMIT,
+  submitStateFulfilled,
+  submitStateRejected
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
 
 import * as api from '@modernpoacher/zashiki-react-redux/api/stages/alpha'
@@ -48,15 +54,53 @@ import { transformError } from '@modernpoacher/zashiki-react-redux/app/transform
 
 import getPathname from '@modernpoacher/zashiki-react-redux/app/common/get-pathname'
 
+const log = debug('zashiki-react-redux:app:sagas:stages:alpha')
+
 const {
   ALPHA
 } = Signals
 
 const getState = ({ [ALPHA]: alpha = {} }) => alpha
+const getDefinition = ({ [ALPHA]: { omega = [] } = {} }, RESOURCE) => {
+  const {
+    definition
+  } = omega.find(({ resource }) => equal(resource, RESOURCE))
+
+  return definition
+}
 const hasStoreError = ({ [ALPHA]: alpha = {} }) => ('error' in alpha)
 const hasQueryError = ({ [ALPHA]: alpha = {} }) => ('error' in alpha)
 
+function transformData (data) {
+  log('transformData')
+
+  if (Reflect.has(data, 'omega')) {
+    const {
+      omega = []
+    } = data
+
+    return {
+      ...data,
+      omega: omega.map((item) => {
+        const {
+          response,
+          definition
+        } = item
+
+        return {
+          ...item,
+          response: fromDocumentToHash(response, definition)
+        }
+      })
+    }
+  }
+
+  return data
+}
+
 function * alphaRouteSaga ({ redirect, history }) {
+  log('alphaRouteSaga')
+
   const pathname = getPathname(redirect)
 
   if (pathname) {
@@ -70,17 +114,67 @@ function * alphaRouteSaga ({ redirect, history }) {
   }
 }
 
-function * changeRouteSaga ({ route }) {
+function * mountRouteSaga ({ route }) {
+  log('mountRouteSaga')
+
   try {
-    const { data: response = {} } = yield call(api.changeRoute, route)
-    yield put(changeRouteFulfilled(response))
+    const { data = {} } = yield call(api.mountRoute, route)
+    yield put(mountRouteFulfilled(transformData(data)))
   } catch (e) {
-    yield put(changeRouteRejected(transformError(e)))
+    yield put(mountRouteRejected(transformError(e)))
   }
 }
 
-function * submitRouteSaga ({ route, history }) {
-  yield put(storeRoute(route, history))
+function * fetchRouteSaga () {
+  log('fetchRouteSaga')
+
+  try {
+    const { data = {} } = yield call(api.fetchRoute)
+    yield put(fetchRouteFulfilled(transformData(data)))
+  } catch (e) {
+    yield put(fetchRouteRejected(transformError(e)))
+  }
+}
+
+function * storeRouteSaga ({ route }) {
+  log('storeRouteSaga')
+
+  try {
+    const { data = {} } = yield call(api.storeRoute, route)
+    yield put(storeRouteFulfilled(transformData(data)))
+  } catch (e) {
+    yield put(storeRouteRejected(transformError(e)))
+  }
+}
+
+function * queryRouteSaga () {
+  log('queryRouteSaga')
+
+  try {
+    const { data = {} } = yield call(api.queryRoute)
+    yield put(queryRouteFulfilled(transformData(data)))
+  } catch (e) {
+    yield put(queryRouteRejected(transformError(e)))
+  }
+}
+
+function * submitStateSaga ({ route: { resource, response }, history }) {
+  log('submitStateSaga')
+
+  /*
+   *  Mount the route (via the api not the Saga)
+   */
+  yield call(api.mountRoute, { resource })
+
+  const definition = yield select(getDefinition, resource)
+
+  /*
+   *  Store the route `response`
+   */
+  yield put(storeRoute({
+    resource,
+    response: fromHashToDocument(response, definition)
+  }, history))
 
   yield race([
     take(STORE_FULFILLED),
@@ -89,9 +183,10 @@ function * submitRouteSaga ({ route, history }) {
 
   const hasError = yield select(hasStoreError)
 
-  if (hasError) {
-    yield put(submitRouteRejected())
-  } else {
+  if (!hasError) {
+    const state = yield select(getState)
+    yield put(submitStateFulfilled(state))
+
     yield put(queryRoute())
 
     yield race([
@@ -101,41 +196,13 @@ function * submitRouteSaga ({ route, history }) {
 
     const hasError = yield select(hasQueryError)
 
-    if (hasError) {
-      yield put(submitRouteRejected())
-    } else {
+    if (!hasError) {
       const state = yield select(getState)
-      yield put(submitRouteFulfilled(state))
       const { redirect, history } = state
       yield put(alphaRoute(redirect, history))
     }
-  }
-}
-
-function * fetchRouteSaga () {
-  try {
-    const { data: response = {} } = yield call(api.fetchRoute)
-    yield put(fetchRouteFulfilled(response))
-  } catch (e) {
-    yield put(fetchRouteRejected(transformError(e)))
-  }
-}
-
-function * storeRouteSaga ({ route }) {
-  try {
-    const { data: response = {} } = yield call(api.storeRoute, route)
-    yield put(storeRouteFulfilled(response))
-  } catch (e) {
-    yield put(storeRouteRejected(transformError(e)))
-  }
-}
-
-function * queryRouteSaga () {
-  try {
-    const { data: response = {} } = yield call(api.queryRoute)
-    yield put(queryRouteFulfilled(response))
-  } catch (e) {
-    yield put(queryRouteRejected(transformError(e)))
+  } else {
+    yield put(submitStateRejected())
   }
 }
 
@@ -143,12 +210,8 @@ export function * watchAlphaRoute () {
   yield takeLatest(ROUTE, alphaRouteSaga)
 }
 
-export function * watchAlphaChange () {
-  yield takeLatest(CHANGE, changeRouteSaga)
-}
-
-export function * watchAlphaSubmit () {
-  yield takeLatest(SUBMIT, submitRouteSaga)
+export function * watchAlphaMount () {
+  yield takeLatest(MOUNT, mountRouteSaga)
 }
 
 export function * watchAlphaFetch () {
@@ -161,4 +224,8 @@ export function * watchAlphaStore () {
 
 export function * watchAlphaQuery () {
   yield takeLatest(QUERY, queryRouteSaga)
+}
+
+export function * watchAlphaSubmit () {
+  yield takeLatest(SUBMIT, submitStateSaga)
 }

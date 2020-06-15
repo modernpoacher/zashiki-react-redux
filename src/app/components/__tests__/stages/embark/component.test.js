@@ -3,39 +3,38 @@ import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
 import {
-  Signals
-} from 'shinkansen-signals'
+  RESOLVED,
+  REJECTED,
+  PENDING
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
-import Embark, { getErrorProps, getEmbarkProps } from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/component'
+import Embark, { getEmbarkProps, getErrorProps } from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/component'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-jest.mock('shinkansen-signals', () => ({
-  Signals: {
-    PENDING: 'MOCK PENDING',
-    FAILURE: 'MOCK FAILURE',
-    SUCCESS: 'MOCK SUCCESS',
-    IN_PROGRESS: 'MOCK IN PROGRESS',
-    NO_DECISION: 'MOCK NO DECISION',
-    COMPLETE: 'MOCK COMPLETE'
-  }
+jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
+  RESOLVED: 'MOCK RESOLVED',
+  REJECTED: 'MOCK REJECTED',
+  PENDING: 'MOCK PENDING'
 }))
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/complete')
-jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/failure')
-jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/success')
-jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/in-progress')
-jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/no-decision')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/resolved')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/rejected')
 jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/pending')
 
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/component', () => {
-  const MOCK_DEFINITION = {}
+  const MOCK_DEFINITION = {
+    meta: {},
+    elements: {}
+  }
   const MOCK_RESOURCE = {}
+  const MOCK_ONCHANGE = jest.fn()
   const MOCK_ONSUBMIT = jest.fn()
   const MOCK_ONEMBARK = jest.fn()
 
   const mockProps = {
     definition: {},
+    onChange: jest.fn(),
     onSubmit: jest.fn(),
     exception: {
       name: 'MOCK NAME',
@@ -50,9 +49,10 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/compon
   describe('Always', () => {
     const component = (
       <Embark
-        status={Signals.PENDING}
+        status={RESOLVED}
         definition={MOCK_DEFINITION}
         resource={MOCK_RESOURCE}
+        onChange={MOCK_ONCHANGE}
         onSubmit={MOCK_ONSUBMIT}
         onEmbark={MOCK_ONEMBARK}
       />
@@ -82,13 +82,6 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/compon
     })
   })
 
-  describe('`getErrorProps`', () => {
-    it('is defined', () => {
-      expect(getErrorProps)
-        .toBeDefined()
-    })
-  })
-
   describe('`getEmbarkProps`', () => {
     it('is defined', () => {
       expect(getEmbarkProps)
@@ -96,12 +89,20 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/compon
     })
   })
 
-  describe('`Signals.PENDING`', () => {
+  describe('`getErrorProps`', () => {
+    it('is defined', () => {
+      expect(getErrorProps)
+        .toBeDefined()
+    })
+  })
+
+  describe('`RESOLVED`', () => {
     it('renders', () => {
       const component = (
         <Embark
-          status={Signals.PENDING}
+          status={RESOLVED}
           definition={MOCK_DEFINITION}
+          onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
           onEmbark={MOCK_ONEMBARK}
         />
@@ -112,15 +113,16 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/compon
     })
   })
 
-  describe('`Signals.FAILURE`', () => {
+  describe('`REJECTED`', () => {
     it('renders', () => {
       const component = (
         <Embark
-          status={Signals.FAILURE}
+          status={REJECTED}
           exception={{
             name: 'MOCK NAME',
             message: 'MOCK MESSAGE'
           }}
+          onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
           onEmbark={MOCK_ONEMBARK}
         />
@@ -131,60 +133,13 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/compon
     })
   })
 
-  describe('`Signals.SUCCESS`', () => {
+  describe('`PENDING`', () => {
     it('renders', () => {
       const component = (
         <Embark
-          status={Signals.SUCCESS}
+          status={PENDING}
           definition={MOCK_DEFINITION}
-          onSubmit={MOCK_ONSUBMIT}
-          onEmbark={MOCK_ONEMBARK}
-        />
-      )
-
-      expect(shallow(component))
-        .toMatchSnapshot()
-    })
-  })
-
-  describe('`Signals.IN_PROGRESS`', () => {
-    it('renders', () => {
-      const component = (
-        <Embark
-          status={Signals.IN_PROGRESS}
-          definition={MOCK_DEFINITION}
-          onSubmit={MOCK_ONSUBMIT}
-          onEmbark={MOCK_ONEMBARK}
-        />
-      )
-
-      expect(shallow(component))
-        .toMatchSnapshot()
-    })
-  })
-
-  describe('`Signals.NO_DECISION`', () => {
-    it('renders', () => {
-      const component = (
-        <Embark
-          status={Signals.NO_DECISION}
-          definition={MOCK_DEFINITION}
-          onSubmit={MOCK_ONSUBMIT}
-          onEmbark={MOCK_ONEMBARK}
-        />
-      )
-
-      expect(shallow(component))
-        .toMatchSnapshot()
-    })
-  })
-
-  describe('`Signals.COMPLETE`', () => {
-    it('renders', () => {
-      const component = (
-        <Embark
-          status={Signals.COMPLETE}
-          definition={MOCK_DEFINITION}
+          onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
           onEmbark={MOCK_ONEMBARK}
         />
@@ -210,6 +165,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/compon
       expect(getEmbarkProps(mockProps))
         .toEqual({
           definition: {},
+          onChange: expect.any(Function),
           onSubmit: expect.any(Function)
         })
     })

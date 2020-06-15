@@ -1,17 +1,39 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import debug from 'debug'
 
-const DebarkStage = ({ definition, onSubmit }) => (
-  <div className='debark'>
-    <h2>
-      Complete
-    </h2>
-  </div>
-)
+import Debark from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/debark'
 
-DebarkStage.propTypes = {
-  definition: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired
+const log = debug('zashiki-react-redux:app:components:stages:debark:stage')
+
+log('`Debark Stage` is awake')
+
+export default class Stage extends Component {
+  getClassName () {
+    return 'debark'
+  }
+
+  render () {
+    const {
+      definitions,
+      token,
+      onSubmit
+    } = this.props
+
+    return (
+      <div className={this.getClassName()}>
+        <Debark
+          definitions={definitions}
+          token={token}
+          onSubmit={onSubmit}
+        />
+      </div>
+    )
+  }
 }
 
-export default DebarkStage
+Stage.propTypes = {
+  definitions: PropTypes.array.isRequired,
+  token: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired
+}

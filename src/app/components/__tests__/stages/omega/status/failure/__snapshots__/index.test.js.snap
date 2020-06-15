@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/status/failure \`code\` is an integer renders 1`] = `ShallowWrapper {}`;
-
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/status/failure \`message\` is a string renders 1`] = `ShallowWrapper {}`;
-
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/status/failure Always renders 1`] = `ShallowWrapper {}`;

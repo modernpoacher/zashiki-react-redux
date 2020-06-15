@@ -1,19 +1,24 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import debug from 'debug'
 
-import {
-  Signals
-} from 'shinkansen-signals'
-
-import {
-  Gears
-} from 'shinkansen-gears'
+import Signals from 'shinkansen-engine/lib/components/signals'
 
 import Count from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/count'
 import Alpha from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/alpha'
 
-export default class AlphaStage extends Component {
-  render () { // console.log('(AlphaStage)render()') // eslint-disable-line
+import Gears from 'shinkansen-engine/lib/components/gears'
+
+const log = debug('zashiki-react-redux:app:components:stages:alpha:stage')
+
+log('`Alpha Stage` is awake')
+
+export default class Stage extends Component {
+  getClassName () {
+    return 'alpha'
+  }
+
+  render () {
     const {
       state: {
         index,
@@ -23,8 +28,9 @@ export default class AlphaStage extends Component {
 
     if (count || index) {
       const {
-        onSubmit,
         definitions,
+        onChange,
+        onSubmit,
         gears: {
           reverse,
           forward
@@ -32,13 +38,14 @@ export default class AlphaStage extends Component {
       } = this.props
 
       return (
-        <div className='alpha'>
+        <div className={this.getClassName()}>
           <Count
             index={index}
             count={count} />
           <Alpha
-            onSubmit={onSubmit}
-            definitions={definitions} />
+            definitions={definitions}
+            onChange={onChange}
+            onSubmit={onSubmit} />
           <Gears
             reverse={reverse}
             forward={forward}
@@ -46,24 +53,26 @@ export default class AlphaStage extends Component {
         </div>
       )
     }
-    return false
+
+    return null
   }
 }
 
-AlphaStage.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+Stage.propTypes = {
   state: PropTypes.shape({
     index: PropTypes.number,
     count: PropTypes.number
   }),
   definitions: PropTypes.array.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   gears: PropTypes.shape({
     forward: PropTypes.object,
     reverse: PropTypes.object
   })
 }
 
-AlphaStage.defaultProps = {
+Stage.defaultProps = {
   state: {},
   gears: {}
 }

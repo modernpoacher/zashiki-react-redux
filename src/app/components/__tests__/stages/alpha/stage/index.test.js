@@ -6,13 +6,19 @@ import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/alph
 
 Enzyme.configure({ adapter: new Adapter() })
 
-jest.mock('shinkansen-signals', () => ({ Signals: { ALPHA_PATTERN: 'MOCK ALPHA PATTERN' } }))
+jest.mock('shinkansen-engine/lib/components/signals', () => ({
+  ALPHA_PATTERN: 'MOCK ALPHA PATTERN'
+}))
 
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/stage', () => {
   describe('Always', () => {
     it('renders', () => {
       const component = (
-        <Stage definitions={[]} onSubmit={jest.fn()} />
+        <Stage
+          definitions={[]}
+          onChange={jest.fn()}
+          onSubmit={jest.fn()}
+        />
       )
 
       expect(shallow(component))
@@ -24,7 +30,12 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/stage',
     describe('`count` is an integer', () => {
       it('renders', () => {
         const component = (
-          <Stage definitions={[]} onSubmit={jest.fn()} state={{ count: 1, index: 0 }} />
+          <Stage
+            definitions={[]}
+            onChange={jest.fn()}
+            onSubmit={jest.fn()}
+            state={{ count: 1, index: 0 }}
+          />
         )
 
         expect(shallow(component))
@@ -35,7 +46,12 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/stage',
     describe('`index` is an integer', () => {
       it('renders', () => {
         const component = (
-          <Stage definitions={[]} onSubmit={jest.fn()} state={{ count: 0, index: 1 }} />
+          <Stage
+            definitions={[]}
+            onChange={jest.fn()}
+            onSubmit={jest.fn()}
+            state={{ count: 0, index: 1 }}
+          />
         )
 
         expect(shallow(component))
@@ -46,7 +62,12 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/stage',
     describe('`count` is an integer and `index` is an integer', () => {
       it('renders', () => {
         const component = (
-          <Stage definitions={[]} onSubmit={jest.fn()} state={{ count: 1, index: 1 }} />
+          <Stage
+            definitions={[]}
+            onChange={jest.fn()}
+            onSubmit={jest.fn()}
+            state={{ count: 1, index: 1 }}
+          />
         )
 
         expect(shallow(component))

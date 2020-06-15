@@ -1,59 +1,50 @@
 import {
   ROUTE,
-  CHANGE,
-  SUBMIT,
   FETCH,
   STORE,
-  QUERY,
+  CHANGE,
+  SUBMIT,
 
-  CHANGE_FULFILLED,
-  SUBMIT_FULFILLED,
   FETCH_FULFILLED,
   STORE_FULFILLED,
-  QUERY_FULFILLED,
+  CHANGE_FULFILLED,
+  SUBMIT_FULFILLED,
 
-  CHANGE_REJECTED,
-  SUBMIT_REJECTED,
   FETCH_REJECTED,
   STORE_REJECTED,
-  QUERY_REJECTED,
+  CHANGE_REJECTED,
+  SUBMIT_REJECTED,
 
   alphaRoute,
 
-  changeRoute,
-  submitRoute,
   fetchRoute,
   storeRoute,
-  queryRoute,
+  changeState,
+  submitState,
 
-  changeRouteFulfilled,
-  submitRouteFulfilled,
   fetchRouteFulfilled,
   storeRouteFulfilled,
-  queryRouteFulfilled,
+  changeStateFulfilled,
+  submitStateFulfilled,
 
-  changeRouteRejected,
-  submitRouteRejected,
   fetchRouteRejected,
   storeRouteRejected,
-  queryRouteRejected,
+  changeStateRejected,
+  submitStateRejected,
 
-  change,
-  submit,
   fetch,
-  store
+  store,
+  change,
+  submit
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
 
-jest.mock('shinkansen-pantograph', () => ({
-  Pantograph: {
-    ALPHA: {
-      ROUTE: 'MOCK ROUTE',
-      CHANGE: 'MOCK CHANGE',
-      SUBMIT: 'MOCK SUBMIT',
-      FETCH: 'MOCK FETCH',
-      STORE: 'MOCK STORE',
-      QUERY: 'MOCK QUERY'
-    }
+jest.mock('shinkansen-engine/lib/components/pantograph', () => ({
+  ALPHA: {
+    ROUTE: 'MOCK ROUTE',
+    FETCH: 'MOCK FETCH',
+    STORE: 'MOCK STORE',
+    CHANGE: 'MOCK CHANGE',
+    SUBMIT: 'MOCK SUBMIT'
   }
 }))
 
@@ -72,20 +63,6 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/alpha', () => {
     })
   })
 
-  describe('`CHANGE`', () => {
-    it('is defined', () => {
-      expect(CHANGE)
-        .toBe('MOCK CHANGE')
-    })
-  })
-
-  describe('`SUBMIT`', () => {
-    it('is defined', () => {
-      expect(SUBMIT)
-        .toBe('MOCK SUBMIT')
-    })
-  })
-
   describe('`FETCH`', () => {
     it('is defined', () => {
       expect(FETCH)
@@ -100,24 +77,17 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/alpha', () => {
     })
   })
 
-  describe('`QUERY`', () => {
+  describe('`SUBMIT`', () => {
     it('is defined', () => {
-      expect(QUERY)
-        .toBe('MOCK QUERY')
+      expect(SUBMIT)
+        .toBe('MOCK SUBMIT')
     })
   })
 
-  describe('`CHANGE_FULFILLED`', () => {
+  describe('`CHANGE`', () => {
     it('is defined', () => {
-      expect(CHANGE_FULFILLED)
-        .toBe('MOCK CHANGE_FULFILLED')
-    })
-  })
-
-  describe('`SUBMIT_FULFILLED`', () => {
-    it('is defined', () => {
-      expect(SUBMIT_FULFILLED)
-        .toBe('MOCK SUBMIT_FULFILLED')
+      expect(CHANGE)
+        .toBe('MOCK CHANGE')
     })
   })
 
@@ -135,24 +105,17 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/alpha', () => {
     })
   })
 
-  describe('`QUERY_FULFILLED`', () => {
+  describe('`CHANGE_FULFILLED`', () => {
     it('is defined', () => {
-      expect(QUERY_FULFILLED)
-        .toBe('MOCK QUERY_FULFILLED')
+      expect(CHANGE_FULFILLED)
+        .toBe('MOCK CHANGE_FULFILLED')
     })
   })
 
-  describe('`CHANGE_REJECTED`', () => {
+  describe('`SUBMIT_FULFILLED`', () => {
     it('is defined', () => {
-      expect(CHANGE_REJECTED)
-        .toBe('MOCK CHANGE_REJECTED')
-    })
-  })
-
-  describe('`SUBMIT_REJECTED`', () => {
-    it('is defined', () => {
-      expect(SUBMIT_REJECTED)
-        .toBe('MOCK SUBMIT_REJECTED')
+      expect(SUBMIT_FULFILLED)
+        .toBe('MOCK SUBMIT_FULFILLED')
     })
   })
 
@@ -170,30 +133,23 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/alpha', () => {
     })
   })
 
-  describe('`QUERY_REJECTED`', () => {
+  describe('`CHANGE_REJECTED`', () => {
     it('is defined', () => {
-      expect(QUERY_REJECTED)
-        .toBe('MOCK QUERY_REJECTED')
+      expect(CHANGE_REJECTED)
+        .toBe('MOCK CHANGE_REJECTED')
+    })
+  })
+
+  describe('`SUBMIT_REJECTED`', () => {
+    it('is defined', () => {
+      expect(SUBMIT_REJECTED)
+        .toBe('MOCK SUBMIT_REJECTED')
     })
   })
 
   describe('`alphaRoute`', () => {
     it('is defined', () => {
       expect(alphaRoute)
-        .toBeDefined()
-    })
-  })
-
-  describe('`change`', () => {
-    it('is defined', () => {
-      expect(change)
-        .toBeDefined()
-    })
-  })
-
-  describe('`submit`', () => {
-    it('is defined', () => {
-      expect(submit)
         .toBeDefined()
     })
   })
@@ -212,16 +168,16 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/alpha', () => {
     })
   })
 
-  describe('`changeRoute`', () => {
+  describe('`change`', () => {
     it('is defined', () => {
-      expect(changeRoute)
+      expect(change)
         .toBeDefined()
     })
   })
 
-  describe('`submitRoute`', () => {
+  describe('`submit`', () => {
     it('is defined', () => {
-      expect(submitRoute)
+      expect(submit)
         .toBeDefined()
     })
   })
@@ -240,23 +196,16 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/alpha', () => {
     })
   })
 
-  describe('`queryRoute`', () => {
+  describe('`changeState`', () => {
     it('is defined', () => {
-      expect(queryRoute)
+      expect(changeState)
         .toBeDefined()
     })
   })
 
-  describe('`changeRouteFulfilled`', () => {
+  describe('`submitState`', () => {
     it('is defined', () => {
-      expect(changeRouteFulfilled)
-        .toBeDefined()
-    })
-  })
-
-  describe('`submitRouteFulfilled`', () => {
-    it('is defined', () => {
-      expect(submitRouteFulfilled)
+      expect(submitState)
         .toBeDefined()
     })
   })
@@ -275,23 +224,16 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/alpha', () => {
     })
   })
 
-  describe('`queryRouteFulfilled`', () => {
+  describe('`changeStateFulfilled`', () => {
     it('is defined', () => {
-      expect(queryRouteFulfilled)
+      expect(changeStateFulfilled)
         .toBeDefined()
     })
   })
 
-  describe('`changeRouteRejected`', () => {
+  describe('`submitStateFulfilled`', () => {
     it('is defined', () => {
-      expect(changeRouteRejected)
-        .toBeDefined()
-    })
-  })
-
-  describe('`submitRouteRejected`', () => {
-    it('is defined', () => {
-      expect(submitRouteRejected)
+      expect(submitStateFulfilled)
         .toBeDefined()
     })
   })
@@ -310,9 +252,16 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/alpha', () => {
     })
   })
 
-  describe('`queryRouteRejected`', () => {
+  describe('`changeStateRejected`', () => {
     it('is defined', () => {
-      expect(queryRouteRejected)
+      expect(changeStateRejected)
+        .toBeDefined()
+    })
+  })
+
+  describe('`submitStateRejected`', () => {
+    it('is defined', () => {
+      expect(submitStateRejected)
         .toBeDefined()
     })
   })
@@ -323,28 +272,6 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/alpha', () => {
         .toEqual({
           type: 'MOCK ROUTE',
           redirect: MOCK_REDIRECT,
-          history: MOCK_HISTORY
-        })
-    })
-  })
-
-  describe('`changeRoute()`', () => {
-    it('returns the action', () => {
-      expect(changeRoute(MOCK_ROUTE, MOCK_HISTORY))
-        .toEqual({
-          type: 'MOCK CHANGE',
-          route: MOCK_ROUTE,
-          history: MOCK_HISTORY
-        })
-    })
-  })
-
-  describe('`submitRoute()`', () => {
-    it('returns the action', () => {
-      expect(submitRoute(MOCK_ROUTE, MOCK_HISTORY))
-        .toEqual({
-          type: 'MOCK SUBMIT',
-          route: MOCK_ROUTE,
           history: MOCK_HISTORY
         })
     })
@@ -370,31 +297,24 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/alpha', () => {
     })
   })
 
-  describe('`queryRoute()`', () => {
+  describe('`changeState()`', () => {
     it('returns the action', () => {
-      expect(queryRoute())
+      expect(changeState(MOCK_ROUTE, MOCK_HISTORY))
         .toEqual({
-          type: 'MOCK QUERY'
+          type: 'MOCK CHANGE',
+          route: MOCK_ROUTE,
+          history: MOCK_HISTORY
         })
     })
   })
 
-  describe('`changeRouteFulfilled()`', () => {
+  describe('`submitState()`', () => {
     it('returns the action', () => {
-      expect(changeRouteFulfilled(MOCK_RESPONSE))
+      expect(submitState(MOCK_ROUTE, MOCK_HISTORY))
         .toEqual({
-          type: 'MOCK CHANGE_FULFILLED',
-          response: MOCK_RESPONSE
-        })
-    })
-  })
-
-  describe('`submitRouteFulfilled()`', () => {
-    it('returns the action', () => {
-      expect(submitRouteFulfilled(MOCK_RESPONSE))
-        .toEqual({
-          type: 'MOCK SUBMIT_FULFILLED',
-          response: MOCK_RESPONSE
+          type: 'MOCK SUBMIT',
+          route: MOCK_ROUTE,
+          history: MOCK_HISTORY
         })
     })
   })
@@ -419,32 +339,22 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/alpha', () => {
     })
   })
 
-  describe('`queryRouteFulfilled()`', () => {
+  describe('`changeStateFulfilled()`', () => {
     it('returns the action', () => {
-      expect(queryRouteFulfilled(MOCK_RESPONSE))
+      expect(changeStateFulfilled(MOCK_RESPONSE))
         .toEqual({
-          type: 'MOCK QUERY_FULFILLED',
+          type: 'MOCK CHANGE_FULFILLED',
           response: MOCK_RESPONSE
         })
     })
   })
 
-  describe('`changeRouteRejected()`', () => {
+  describe('`submitStateFulfilled()`', () => {
     it('returns the action', () => {
-      expect(changeRouteRejected(MOCK_ERROR))
+      expect(submitStateFulfilled(MOCK_RESPONSE))
         .toEqual({
-          type: 'MOCK CHANGE_REJECTED',
-          error: MOCK_ERROR
-        })
-    })
-  })
-
-  describe('`submitRouteRejected()`', () => {
-    it('returns the action', () => {
-      expect(submitRouteRejected(MOCK_ERROR))
-        .toEqual({
-          type: 'MOCK SUBMIT_REJECTED',
-          error: MOCK_ERROR
+          type: 'MOCK SUBMIT_FULFILLED',
+          response: MOCK_RESPONSE
         })
     })
   })
@@ -469,39 +379,22 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/alpha', () => {
     })
   })
 
-  describe('`queryRouteRejected()`', () => {
+  describe('`changeStateRejected()`', () => {
     it('returns the action', () => {
-      expect(queryRouteRejected(MOCK_ERROR))
+      expect(changeStateRejected(MOCK_ERROR))
         .toEqual({
-          type: 'MOCK QUERY_REJECTED',
+          type: 'MOCK CHANGE_REJECTED',
           error: MOCK_ERROR
         })
     })
   })
 
-  describe('`change()`', () => {
-    it('returns the `changeRoute` action', () => {
-      expect(change(MOCK_RESOURCE, MOCK_HISTORY))
+  describe('`submitStateRejected()`', () => {
+    it('returns the action', () => {
+      expect(submitStateRejected(MOCK_ERROR))
         .toEqual({
-          type: 'MOCK CHANGE',
-          route: {
-            resource: MOCK_RESOURCE
-          },
-          history: MOCK_HISTORY
-        })
-    })
-  })
-
-  describe('`submit()`', () => {
-    it('returns the `submitRoute` action', () => {
-      expect(submit(MOCK_RESOURCE, MOCK_RESPONSE, MOCK_HISTORY))
-        .toEqual({
-          type: 'MOCK SUBMIT',
-          route: {
-            resource: MOCK_RESOURCE,
-            response: MOCK_RESPONSE
-          },
-          history: MOCK_HISTORY
+          type: 'MOCK SUBMIT_REJECTED',
+          error: MOCK_ERROR
         })
     })
   })
@@ -520,6 +413,34 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/alpha', () => {
       expect(store(MOCK_RESOURCE, MOCK_RESPONSE, MOCK_HISTORY))
         .toEqual({
           type: 'MOCK STORE',
+          route: {
+            resource: MOCK_RESOURCE,
+            response: MOCK_RESPONSE
+          },
+          history: MOCK_HISTORY
+        })
+    })
+  })
+
+  describe('`change()`', () => {
+    it('returns the `changeState` action', () => {
+      expect(change(MOCK_RESOURCE, MOCK_RESPONSE, MOCK_HISTORY))
+        .toEqual({
+          type: 'MOCK CHANGE',
+          route: {
+            resource: MOCK_RESOURCE,
+            response: MOCK_RESPONSE
+          },
+          history: MOCK_HISTORY
+        })
+    })
+  })
+
+  describe('`submit()`', () => {
+    it('returns the `submitState` action', () => {
+      expect(submit(MOCK_RESOURCE, MOCK_RESPONSE, MOCK_HISTORY))
+        .toEqual({
+          type: 'MOCK SUBMIT',
           route: {
             resource: MOCK_RESOURCE,
             response: MOCK_RESPONSE

@@ -1,18 +1,14 @@
 import React from 'react'
+import classnames from 'classnames'
 
-import AlphaStage from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/stage'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/stage'
 
-const Pending = (props) => (
-  <AlphaStage
-    {...props} />
-)
+export default class Pending extends Stage {
+  getClassName () {
+    return classnames(super.getClassName(), 'pending')
+  }
 
-Pending.propTypes = {
-  ...AlphaStage.propTypes
+  render () {
+    return <div className={this.getClassName()} />
+  }
 }
-
-Pending.defaultProps = {
-  ...AlphaStage.defaultProps
-}
-
-export default Pending

@@ -1,18 +1,14 @@
 import React from 'react'
+import classnames from 'classnames'
 
-import DebarkStage from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/stage'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/stage'
 
-const Pending = (props) => (
-  <DebarkStage
-    {...props} />
-)
+export default class Pending extends Stage {
+  getClassName () {
+    return classnames(super.getClassName(), 'pending')
+  }
 
-Pending.propTypes = {
-  ...DebarkStage.propTypes
+  render () {
+    return <div className={this.getClassName()} />
+  }
 }
-
-Pending.defaultProps = {
-  ...DebarkStage.defaultProps
-}
-
-export default Pending

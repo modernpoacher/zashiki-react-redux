@@ -1,20 +1,22 @@
+import debug from 'debug'
+
 import {
   call,
   put,
+  select,
   takeLatest
 } from 'redux-saga/effects'
 
+import Signals from 'shinkansen-engine/lib/components/signals'
+import Rails from 'shinkansen-engine/lib/components/rails'
 import {
-  Rails
-} from 'shinkansen-rails'
+  fromDocumentToHash,
+  fromHashToDocument
+} from 'shinkansen-engine/lib/transformers/transmission'
 
 import {
   ROUTE,
   embarkRoute,
-
-  SUBMIT,
-  submitRouteFulfilled,
-  submitRouteRejected,
 
   FETCH,
   fetchRouteFulfilled,
@@ -22,7 +24,11 @@ import {
 
   STORE,
   storeRouteFulfilled,
-  storeRouteRejected
+  storeRouteRejected,
+
+  SUBMIT,
+  submitStateFulfilled,
+  submitStateRejected
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/embark'
 
 import * as api from '@modernpoacher/zashiki-react-redux/api/stages/embark'
@@ -31,7 +37,33 @@ import { transformError } from '@modernpoacher/zashiki-react-redux/app/transform
 
 import getPathname from '@modernpoacher/zashiki-react-redux/app/common/get-pathname'
 
+const log = debug('zashiki-react-redux:app:sagas:stages:embark')
+
+const {
+  EMBARK
+} = Signals
+
+const getDefinition = ({ [EMBARK]: { definition } = {} }) => definition
+
+function transformData (data) {
+  if (Reflect.has(data, 'response')) {
+    const {
+      response,
+      definition
+    } = data
+
+    return {
+      ...data,
+      response: fromDocumentToHash(response, definition)
+    }
+  }
+
+  return data
+}
+
 function * embarkRouteSaga ({ redirect, history }) {
+  log('embarkRouteSaga')
+
   const pathname = getPathname(redirect)
 
   if (pathname) {
@@ -45,42 +77,49 @@ function * embarkRouteSaga ({ redirect, history }) {
   }
 }
 
-function * submitRouteSaga ({ embark: { statement }, history }) {
-  try {
-    yield storeRouteSaga({ response: { statement } })
-    const { data: response = {} } = yield call(api.submitRoute, { response: { embark: Rails.rail(statement) } })
-    yield put(submitRouteFulfilled(response))
-    const { redirect } = response
-    yield put(embarkRoute(redirect, history))
-  } catch (e) {
-    yield put(submitRouteRejected(transformError(e)))
-  }
-}
-
 function * fetchRouteSaga () {
+  log('fetchRouteSaga')
+
   try {
-    const { data: response = {} } = yield call(api.fetchRoute)
-    yield put(fetchRouteFulfilled(response))
+    const { data = {} } = yield call(api.fetchRoute)
+    yield put(fetchRouteFulfilled(transformData(data)))
   } catch (e) {
     yield put(fetchRouteRejected(transformError(e)))
   }
 }
 
 function * storeRouteSaga (route) {
+  log('storeRouteSaga')
+
   try {
-    const { data: response = {} } = yield call(api.storeRoute, route)
-    yield put(storeRouteFulfilled(response))
+    const { data = {} } = yield call(api.storeRoute, route)
+    yield put(storeRouteFulfilled(transformData(data)))
   } catch (e) {
     yield put(storeRouteRejected(transformError(e)))
   }
 }
 
-export function * watchEmbarkRoute () {
-  yield takeLatest(ROUTE, embarkRouteSaga)
+function * submitStateSaga ({ embark, history }) {
+  log('submitStateSaga')
+
+  try {
+    const definition = yield select(getDefinition)
+    const {
+      statement
+    } = fromHashToDocument(embark, definition)
+
+    yield storeRouteSaga({ response: { statement } })
+    const { data = {} } = yield call(api.submitState, { response: { embark: Rails.rail(statement) } })
+    yield put(submitStateFulfilled(transformData(data)))
+    const { redirect } = data
+    yield put(embarkRoute(redirect, history))
+  } catch (e) {
+    yield put(submitStateRejected(transformError(e)))
+  }
 }
 
-export function * watchEmbarkSubmit () {
-  yield takeLatest(SUBMIT, submitRouteSaga)
+export function * watchEmbarkRoute () {
+  yield takeLatest(ROUTE, embarkRouteSaga)
 }
 
 export function * watchEmbarkFetch () {
@@ -89,4 +128,8 @@ export function * watchEmbarkFetch () {
 
 export function * watchEmbarkStore () {
   yield takeLatest(STORE, storeRouteSaga)
+}
+
+export function * watchEmbarkSubmit () {
+  yield takeLatest(SUBMIT, submitStateSaga)
 }

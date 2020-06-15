@@ -1,6 +1,8 @@
 import {
-  Signals
-} from 'shinkansen-signals'
+  PENDING,
+  RESOLVED,
+  REJECTED
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
 import {
   CHANGE,
@@ -22,10 +24,13 @@ import {
   QUERY_REJECTED
 } from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
 
-const {
-  PENDING,
-  FAILURE
-} = Signals
+import {
+  MOUNT as ALPHA_MOUNT
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
+
+import {
+  MOUNT as OMEGA_MOUNT
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
 
 const STATE = {
   status: PENDING
@@ -37,51 +42,51 @@ const ACTION = {}
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const change = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
+export const change = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ ...state, status, history, ...route })
 
 /*
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const submit = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
+export const submit = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ ...state, status, history, ...route })
 
 /*
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ status, ...state, ...action })
+export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ ...state, status, ...action })
 
 /*
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const store = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ status, ...state, history, ...route })
+export const store = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ ...state, status, history, ...route })
 
 /*
  *  Get all from state
  *  Add all from action
  */
-export const query = ({ status = PENDING, ...state } = {}, action = {}) => ({ status, ...state, ...action })
+export const query = ({ status = PENDING, ...state } = {}, action = {}) => ({ ...state, status, ...action })
 
-export const changeFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
+export const changeFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
 
-export const submitFulfilled = ({ status = PENDING, ...state } = {}, { response = {} } = {}) => ({ status, ...state, ...response })
+export const submitFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
 
-export const fetchFulfilled = ({ status = PENDING, ...state } = {}, { response = {} }) => ({ status, ...state, ...response })
+export const fetchFulfilled = (state = {}, { response = {} }) => ({ ...state, ...response, status: RESOLVED })
 
-export const storeFulfilled = ({ status = PENDING, ...state } = {}, { response = {} }) => ({ status, ...state, ...response })
+export const storeFulfilled = (state = {}, { response = {} }) => ({ ...state, ...response, status: RESOLVED })
 
-export const queryFulfilled = ({ status = PENDING, ...state } = {}, { response = {} }) => ({ status, ...state, ...response })
+export const queryFulfilled = (state = {}, { response = {} }) => ({ ...state, ...response, status: RESOLVED })
 
-export const changeRejected = ({ history }, { status = FAILURE, error = {} }) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
+export const changeRejected = ({ history }, { error = {} }) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
 
-export const submitRejected = ({ history }, { status = FAILURE, error = {} }) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
+export const submitRejected = ({ history }, { error = {} }) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
 
-export const fetchRejected = ({ history }, { status = FAILURE, error = {} }) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
+export const fetchRejected = ({ history }, { error = {} }) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
 
-export const storeRejected = ({ history }, { status = FAILURE, error = {} }) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
+export const storeRejected = ({ history }, { error = {} }) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
 
-export const queryRejected = ({ history }, { status = FAILURE, error = {} }) => ({ status, ...(history ? { history } : {}), exception: { ...error } })
+export const queryRejected = ({ history }, { error = {} }) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
 
 /**
  *  Zashiki Reducer
@@ -136,6 +141,10 @@ export default function zashikiReducer (state = STATE, { type, ...action } = ACT
     case QUERY_REJECTED:
 
       return queryRejected(state, action)
+    case ALPHA_MOUNT:
+    case OMEGA_MOUNT:
+
+      return STATE
     default:
 
       return state

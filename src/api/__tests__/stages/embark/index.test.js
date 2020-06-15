@@ -1,7 +1,7 @@
 import {
-  submitRoute,
   fetchRoute,
-  storeRoute
+  storeRoute,
+  submitState
 } from '@modernpoacher/zashiki-react-redux/api/stages/embark'
 
 import api from '@modernpoacher/zashiki-react-redux/api'
@@ -19,13 +19,6 @@ describe('@modernpoacher/zashiki-react-redux/api/stages/embark', () => {
     jest.clearAllMocks()
   })
 
-  describe('`submitRoute`', () => {
-    it('is defined', () => {
-      expect(submitRoute)
-        .toBeDefined()
-    })
-  })
-
   describe('`fetchRoute`', () => {
     it('is defined', () => {
       expect(fetchRoute)
@@ -40,21 +33,10 @@ describe('@modernpoacher/zashiki-react-redux/api/stages/embark', () => {
     })
   })
 
-  describe('`submitRoute()`', () => {
-    const mockRoute = {}
-
-    beforeEach(() => {
-      submitRoute(mockRoute)
-    })
-
-    it('invokes `api`', () => {
-      expect(api)
-        .toBeCalled()
-    })
-
-    it('invokes `post`', () => {
-      expect(mockTransport.post)
-        .toBeCalledWith('zashiki/embark', mockRoute)
+  describe('`submitState`', () => {
+    it('is defined', () => {
+      expect(submitState)
+        .toBeDefined()
     })
   })
 
@@ -89,6 +71,24 @@ describe('@modernpoacher/zashiki-react-redux/api/stages/embark', () => {
     it('invokes `put`', () => {
       expect(mockTransport.put)
         .toBeCalledWith('zashiki/embark/store', mockRoute)
+    })
+  })
+
+  describe('`submitState()`', () => {
+    const mockRoute = {}
+
+    beforeEach(() => {
+      submitState(mockRoute)
+    })
+
+    it('invokes `api`', () => {
+      expect(api)
+        .toBeCalled()
+    })
+
+    it('invokes `post`', () => {
+      expect(mockTransport.post)
+        .toBeCalledWith('zashiki/embark', mockRoute)
     })
   })
 })

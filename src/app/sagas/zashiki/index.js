@@ -1,3 +1,5 @@
+import debug from 'debug'
+
 import {
   call,
   put,
@@ -5,13 +7,9 @@ import {
 } from 'redux-saga/effects'
 
 import {
-  CHANGE,
-  changeRouteFulfilled,
-  changeRouteRejected,
-
-  SUBMIT,
-  submitRouteFulfilled,
-  submitRouteRejected,
+  MOUNT,
+  mountRouteFulfilled,
+  mountRouteRejected,
 
   FETCH,
   fetchRouteFulfilled,
@@ -23,32 +21,33 @@ import {
 
   QUERY,
   queryRouteFulfilled,
-  queryRouteRejected
+  queryRouteRejected,
+
+  SUBMIT,
+  submitRouteFulfilled,
+  submitRouteRejected
 } from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
 
 import * as api from '@modernpoacher/zashiki-react-redux/api/zashiki'
 
 import { transformError } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
-function * changeRouteSaga ({ route }) {
+const log = debug('zashiki-react-redux:app:sagas:zashiki')
+
+function * mountRouteSaga ({ route }) {
+  log('mountRouteSaga')
+
   try {
     const { data: response = {} } = yield call(api.changeRoute, route)
-    yield put(changeRouteFulfilled(response))
+    yield put(mountRouteFulfilled(response))
   } catch (e) {
-    yield put(changeRouteRejected(transformError(e)))
-  }
-}
-
-function * submitRouteSaga ({ route }) {
-  try {
-    const { data: response = {} } = yield call(api.submitRoute, route)
-    yield put(submitRouteFulfilled(response))
-  } catch (e) {
-    yield put(submitRouteRejected(transformError(e)))
+    yield put(mountRouteRejected(transformError(e)))
   }
 }
 
 function * fetchRouteSaga () {
+  log('fetchRouteSaga')
+
   try {
     const { data: response = {} } = yield call(api.fetchRoute)
     yield put(fetchRouteFulfilled(response))
@@ -58,6 +57,8 @@ function * fetchRouteSaga () {
 }
 
 function * storeRouteSaga ({ route }) {
+  log('storeRouteSaga')
+
   try {
     const { data: response = {} } = yield call(api.storeRoute, route)
     yield put(storeRouteFulfilled(response))
@@ -67,6 +68,8 @@ function * storeRouteSaga ({ route }) {
 }
 
 function * queryRouteSaga () {
+  log('queryRouteSaga')
+
   try {
     const { data: response = {} } = yield call(api.queryRoute)
     yield put(queryRouteFulfilled(response))
@@ -75,12 +78,19 @@ function * queryRouteSaga () {
   }
 }
 
-export function * watchZashikiChange () {
-  yield takeLatest(CHANGE, changeRouteSaga)
+function * submitRouteSaga ({ route }) {
+  log('submitRouteSaga')
+
+  try {
+    const { data: response = {} } = yield call(api.submitRoute, route)
+    yield put(submitRouteFulfilled(response))
+  } catch (e) {
+    yield put(submitRouteRejected(transformError(e)))
+  }
 }
 
-export function * watchZashikiSubmit () {
-  yield takeLatest(SUBMIT, submitRouteSaga)
+export function * watchZashikiMount () {
+  yield takeLatest(MOUNT, mountRouteSaga)
 }
 
 export function * watchZashikiFetch () {
@@ -93,4 +103,8 @@ export function * watchZashikiStore () {
 
 export function * watchZashikiQuery () {
   yield takeLatest(QUERY, queryRouteSaga)
+}
+
+export function * watchZashikiSubmit () {
+  yield takeLatest(SUBMIT, submitRouteSaga)
 }

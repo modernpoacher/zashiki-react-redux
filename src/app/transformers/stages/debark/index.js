@@ -1,17 +1,68 @@
+import debug from 'debug'
+
 import {
-  Signals
-} from 'shinkansen-signals'
+  toZashiki,
+  fromDocumentToHash
+} from 'shinkansen-engine/lib/transformers/transmission'
 
-import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'
+import toCheckAnswers from 'shinkansen-engine/lib/transformers/pinion/check-answers'
 
-const transformDebark = (status, {
-  definition: schema,
-  response: formData = {}
-}) => ({
-  definition: {
-    ...(schema ? { schema, formData } : {})
-  },
-  status
-})
+import {
+  REJECTED
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
-export const transform = ({ status, ...debark }) => (status === Signals.FAILURE) ? transformFailure(status, debark) : transformDebark(status, debark)
+import {
+  transformRejected
+} from '@modernpoacher/zashiki-react-redux/app/transformers'
+
+const log = debug('zashiki-react-redux:app:transformers:stages:debark')
+
+export function transformDebark (status, {
+  alpha: definition = {},
+  omega: definitions = [],
+  token = {},
+  resource
+}) {
+  log('transformDebark')
+
+  return {
+    definition,
+    definitions: definitions.map(({
+      description,
+      definition,
+      resource,
+      response = {} // hash
+    }) => {
+      return {
+        ...(description ? { description } : {}),
+        ...(definition ? { definition: toCheckAnswers(toZashiki(definition, response), resource) } : { definition: {} }),
+        ...(resource ? { resource } : {}),
+        response
+      }
+    }),
+    ...(resource ? { resource } : {}),
+    token,
+    status
+  }
+}
+
+export function transformOmega ({ definition, response, ...route }) {
+  log('transformOmega')
+
+  return {
+    ...route,
+    definition,
+    response: fromDocumentToHash(response, definition)
+  }
+}
+
+export function transformRoute ({ omega = [], ...route }) {
+  log('transformRoute')
+
+  return {
+    ...route,
+    omega: omega.map(transformOmega)
+  }
+}
+
+export default ({ status, ...embark } = {}) => (status === REJECTED) ? transformRejected(status, embark) : transformDebark(status, embark)

@@ -1,46 +1,42 @@
 import {
   ROUTE,
-  SUBMIT,
   FETCH,
   STORE,
+  SUBMIT,
 
-  SUBMIT_FULFILLED,
   FETCH_FULFILLED,
   STORE_FULFILLED,
+  SUBMIT_FULFILLED,
 
-  SUBMIT_REJECTED,
   FETCH_REJECTED,
   STORE_REJECTED,
+  SUBMIT_REJECTED,
 
   debarkRoute,
 
-  submitRoute,
   fetchRoute,
   storeRoute,
+  submitState,
 
-  submitRouteFulfilled,
   fetchRouteFulfilled,
   storeRouteFulfilled,
+  submitStateFulfilled,
 
-  submitRouteRejected,
   fetchRouteRejected,
   storeRouteRejected,
+  submitStateRejected,
 
-  submit,
   fetch,
-  store
+  store,
+  submit
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
 
-jest.mock('shinkansen-pantograph', () => ({
-  Pantograph: {
-    DEBARK: {
-      ROUTE: 'MOCK ROUTE',
-      CHANGE: 'MOCK CHANGE',
-      SUBMIT: 'MOCK SUBMIT',
-      FETCH: 'MOCK FETCH',
-      STORE: 'MOCK STORE',
-      QUERY: 'MOCK QUERY'
-    }
+jest.mock('shinkansen-engine/lib/components/pantograph', () => ({
+  DEBARK: {
+    ROUTE: 'MOCK ROUTE',
+    FETCH: 'MOCK FETCH',
+    STORE: 'MOCK STORE',
+    SUBMIT: 'MOCK SUBMIT'
   }
 }))
 
@@ -58,13 +54,6 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     })
   })
 
-  describe('`SUBMIT`', () => {
-    it('is defined', () => {
-      expect(SUBMIT)
-        .toBe('MOCK SUBMIT')
-    })
-  })
-
   describe('`FETCH`', () => {
     it('is defined', () => {
       expect(FETCH)
@@ -79,10 +68,10 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     })
   })
 
-  describe('`SUBMIT_FULFILLED`', () => {
+  describe('`SUBMIT`', () => {
     it('is defined', () => {
-      expect(SUBMIT_FULFILLED)
-        .toBe('MOCK SUBMIT_FULFILLED')
+      expect(SUBMIT)
+        .toBe('MOCK SUBMIT')
     })
   })
 
@@ -100,10 +89,10 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     })
   })
 
-  describe('`SUBMIT_REJECTED`', () => {
+  describe('`SUBMIT_FULFILLED`', () => {
     it('is defined', () => {
-      expect(SUBMIT_REJECTED)
-        .toBe('MOCK SUBMIT_REJECTED')
+      expect(SUBMIT_FULFILLED)
+        .toBe('MOCK SUBMIT_FULFILLED')
     })
   })
 
@@ -121,16 +110,16 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     })
   })
 
-  describe('`debarkRoute`', () => {
+  describe('`SUBMIT_REJECTED`', () => {
     it('is defined', () => {
-      expect(debarkRoute)
-        .toBeDefined()
+      expect(SUBMIT_REJECTED)
+        .toBe('MOCK SUBMIT_REJECTED')
     })
   })
 
-  describe('`submit`', () => {
+  describe('`debarkRoute`', () => {
     it('is defined', () => {
-      expect(submit)
+      expect(debarkRoute)
         .toBeDefined()
     })
   })
@@ -149,9 +138,9 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     })
   })
 
-  describe('`submitRoute`', () => {
+  describe('`submit`', () => {
     it('is defined', () => {
-      expect(submitRoute)
+      expect(submit)
         .toBeDefined()
     })
   })
@@ -170,9 +159,9 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     })
   })
 
-  describe('`submitRouteFulfilled`', () => {
+  describe('`submitState`', () => {
     it('is defined', () => {
-      expect(submitRouteFulfilled)
+      expect(submitState)
         .toBeDefined()
     })
   })
@@ -191,9 +180,9 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     })
   })
 
-  describe('`submitRouteRejected`', () => {
+  describe('`submitStateFulfilled`', () => {
     it('is defined', () => {
-      expect(submitRouteRejected)
+      expect(submitStateFulfilled)
         .toBeDefined()
     })
   })
@@ -212,23 +201,19 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     })
   })
 
+  describe('`submitStateRejected`', () => {
+    it('is defined', () => {
+      expect(submitStateRejected)
+        .toBeDefined()
+    })
+  })
+
   describe('`debarkRoute()`', () => {
     it('returns the action', () => {
       expect(debarkRoute(MOCK_REDIRECT, MOCK_HISTORY))
         .toEqual({
           type: 'MOCK ROUTE',
           redirect: MOCK_REDIRECT,
-          history: MOCK_HISTORY
-        })
-    })
-  })
-
-  describe('`submitRoute()`', () => {
-    it('returns the action', () => {
-      expect(submitRoute(MOCK_ROUTE, MOCK_HISTORY))
-        .toEqual({
-          type: 'MOCK SUBMIT',
-          debark: MOCK_ROUTE,
           history: MOCK_HISTORY
         })
     })
@@ -254,12 +239,13 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     })
   })
 
-  describe('`submitRouteFulfilled()`', () => {
+  describe('`submitState()`', () => {
     it('returns the action', () => {
-      expect(submitRouteFulfilled(MOCK_RESPONSE))
+      expect(submitState(MOCK_ROUTE, MOCK_HISTORY))
         .toEqual({
-          type: 'MOCK SUBMIT_FULFILLED',
-          response: MOCK_RESPONSE
+          type: 'MOCK SUBMIT',
+          debark: MOCK_ROUTE,
+          history: MOCK_HISTORY
         })
     })
   })
@@ -284,12 +270,12 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     })
   })
 
-  describe('`submitRouteRejected()`', () => {
+  describe('`submitStateFulfilled()`', () => {
     it('returns the action', () => {
-      expect(submitRouteRejected(MOCK_ERROR))
+      expect(submitStateFulfilled(MOCK_RESPONSE))
         .toEqual({
-          type: 'MOCK SUBMIT_REJECTED',
-          error: MOCK_ERROR
+          type: 'MOCK SUBMIT_FULFILLED',
+          response: MOCK_RESPONSE
         })
     })
   })
@@ -314,13 +300,12 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
     })
   })
 
-  describe('`submit()`', () => {
-    it('returns the `submitRoute` action', () => {
-      expect(submit(MOCK_RESPONSE, MOCK_HISTORY))
+  describe('`submitStateRejected()`', () => {
+    it('returns the action', () => {
+      expect(submitStateRejected(MOCK_ERROR))
         .toEqual({
-          type: 'MOCK SUBMIT',
-          debark: MOCK_RESPONSE,
-          history: MOCK_HISTORY
+          type: 'MOCK SUBMIT_REJECTED',
+          error: MOCK_ERROR
         })
     })
   })
@@ -342,6 +327,17 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
           route: {
             response: MOCK_RESPONSE
           },
+          history: MOCK_HISTORY
+        })
+    })
+  })
+
+  describe('`submit()`', () => {
+    it('returns the `submitState` action', () => {
+      expect(submit(MOCK_RESPONSE, MOCK_HISTORY))
+        .toEqual({
+          type: 'MOCK SUBMIT',
+          debark: MOCK_RESPONSE,
           history: MOCK_HISTORY
         })
     })

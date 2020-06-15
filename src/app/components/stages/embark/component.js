@@ -1,25 +1,31 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import debug from 'debug'
 
 import {
-  Signals
-} from 'shinkansen-signals'
+  RESOLVED,
+  REJECTED,
+  PENDING
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
-import Complete from './status/complete'
-import Failure from './status/failure'
-import Success from './status/success'
-import InProgress from './status/in-progress'
-import NoDecision from './status/no-decision'
+import Resolved from './status/resolved'
+import Rejected from './status/rejected'
 import Pending from './status/pending'
 
-export const getErrorProps = ({ exception }) => exception
-export const getEmbarkProps = ({ definition, onSubmit }) => ({ definition, onSubmit })
+const log = debug('zashiki-react-redux:app:components:stages:embark')
 
-export default class Embark extends Component {
+export const getEmbarkProps = ({ definition, response, onChange, onSubmit }) => ({ definition, response, onChange, onSubmit })
+export const getErrorProps = ({ exception }) => exception
+
+log('`Stage` is awake')
+
+export default class Stage extends Component {
   /*
    *  List routes
    */
-  componentDidMount () { // console.log('(EmbarkStage)componentDidMount()') // eslint-disable-line
+  componentDidMount () {
+    log('componentDidMount')
+
     const {
       onEmbark
     } = this.props
@@ -27,7 +33,7 @@ export default class Embark extends Component {
     /*
      *  Dispatch and notify the Node app
      */
-    onEmbark()
+    return onEmbark()
   }
 
   render () {
@@ -37,44 +43,40 @@ export default class Embark extends Component {
     } = this.props
 
     switch (status) {
-      case Signals.FAILURE: return (
-        <Failure
-          {...getErrorProps(embark)} />
-      )
-      case Signals.SUCCESS: return (
-        <Success
-          {...getEmbarkProps(embark)} />
-      )
-      case Signals.IN_PROGRESS: return (
-        <InProgress
-          {...getEmbarkProps(embark)} />
-      )
-      case Signals.NO_DECISION: return (
-        <NoDecision
-          {...getEmbarkProps(embark)} />
-      )
-      case Signals.COMPLETE: return (
-        <Complete
-          {...getEmbarkProps(embark)} />
-      )
-      default:return (
-        <Pending
-          {...getEmbarkProps(embark)} />
-      )
+      case RESOLVED:
+        return (
+          <Resolved
+            {...getEmbarkProps(embark)} />
+        )
+      case REJECTED:
+        return (
+          <Rejected
+            {...getErrorProps(embark)} />
+        )
+      case PENDING:
+        return (
+          <Pending />
+        )
     }
+
+    return null
   }
 }
 
-Embark.propTypes = PropTypes.oneOfType([
+Stage.propTypes = PropTypes.oneOfType([
   PropTypes.shape({
     status: PropTypes.number.isRequired,
     definition: PropTypes.object.isRequired,
+    response: PropTypes.object.isRequired,
+    onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onEmbark: PropTypes.func.isRequired
   }),
   PropTypes.shape({
     status: PropTypes.number.isRequired,
     exception: PropTypes.object.isRequired,
+    response: PropTypes.object.isRequired,
+    onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onEmbark: PropTypes.func.isRequired
   })

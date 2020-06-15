@@ -1,6 +1,9 @@
 import { Component } from 'react'
 import PropTypes from 'prop-types'
 import Immutable from 'immutable'
+import debug from 'debug'
+
+const log = debug('zashiki-react-redux:app:components:zashiki')
 
 export const resource = (alpha, omega) => ({ ...(alpha ? { alpha, ...(omega ? { omega } : {}) } : {}) })
 
@@ -26,11 +29,13 @@ export default class Zashiki extends Component {
   }
 
   /*
-   *  Interrogate initial props for current Route 'params' (if the component has mounted, the route has changed)
+   *  Interrogate initial props for current Route 'params' (if the component has mounted then the route has changed)
    */
-  componentDidMount () { // console.log('(Zashiki)componentDidMount()')
+  componentDidMount () {
+    log('componentDidMount')
+
     const {
-      onChange,
+      onMount,
       match: {
         params: {
           alpha,
@@ -42,16 +47,18 @@ export default class Zashiki extends Component {
     /*
      *  Dispatch and notify the Node app
      */
-    onChange(resource(alpha, omega))
+    return onMount(resource(alpha, omega))
   }
 
   /**
-   *  Interrogate latest props for changes to Route params (the route may have changed, or other props)
+   *  Interrogate latest props for changes to Route params (the route may have changed)
    *
    *  @param {Object} props   Latest props
    *  @param {Object} state   Current state
    */
-  static getDerivedStateFromProps (props, state) { // console.log('[Zashiki]getDerivedStateFromProps()', props, state)
+  static getDerivedStateFromProps (props, state) {
+    log('getDerivedStateFromProps')
+
     const {
       match: {
         params: {
@@ -75,13 +82,13 @@ export default class Zashiki extends Component {
 
     if (!Immutable.is(was, now)) {
       const {
-        onChange
+        onMount
       } = props
 
       /*
        *  Dispatch and notify the Node app
        */
-      onChange(resource(alpha, omega))
+      onMount(resource(alpha, omega))
 
       /*
        *  Changed state
@@ -104,7 +111,7 @@ export default class Zashiki extends Component {
 }
 
 Zashiki.propTypes = {
-  onChange: PropTypes.func.isRequired,
+  onMount: PropTypes.func.isRequired,
   match: PropTypes.object.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),

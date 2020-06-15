@@ -1,3 +1,5 @@
+import debug from 'debug'
+
 import {
   connect
 } from 'react-redux'
@@ -6,36 +8,61 @@ import {
   withRouter
 } from 'react-router'
 
-import {
-  Signals
-} from 'shinkansen-signals'
+import Signals from 'shinkansen-engine/lib/components/signals'
+
+import transform from '@modernpoacher/zashiki-react-redux/app/transformers/stages/omega'
 
 import {
-  transform
-} from '@modernpoacher/zashiki-react-redux/app/transformers/stages/omega'
+  mount,
+  change,
+  submit
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
 
-import { submit, change } from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
+import Component from './component'
 
-import OmegaStage from './component'
+const log = debug('zashiki-react-redux:app:components:stages:omega')
+
+log('`omega` is awake')
 
 const {
   OMEGA
 } = Signals
 
-const mapStateToProps = ({ [OMEGA]: omega = {} }) => ({ ...transform(omega) })
+function mapStateToProps ({ [OMEGA]: omega = {} }) {
+  log('mapStateToProps')
 
-const mapDispatchToProps = (dispatch) => ({ dispatch })
+  return omega
+}
 
-const mergeProps = (stateProps, { dispatch }, { history, ...ownProps }) => ({
-  ...stateProps,
-  onSubmit: (resource, response) => {
-    dispatch(submit(resource, response, history))
-  },
-  onChange: (resource) => {
-    dispatch(change(resource, history))
-  },
-  history,
-  ...ownProps
-})
+function mapDispatchToProps (dispatch) {
+  log('mapDispatchToProps')
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(OmegaStage))
+  return { dispatch }
+}
+
+function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
+  log('mergeProps')
+
+  return {
+    ...transform(stateProps),
+    onMount (resource) {
+      log('onMount')
+
+      dispatch(mount(resource, history))
+    },
+    onChange (resource, response) {
+      log('onChange')
+
+      dispatch(change(resource, response, history))
+    },
+    onSubmit (resource, response) {
+      log('onSubmit')
+
+      dispatch(submit(resource, response, history))
+    },
+    history,
+    ...ownProps
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(Component))

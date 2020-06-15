@@ -4,74 +4,86 @@ import {
 
 import {
   watchAlphaRoute,
-  watchAlphaChange,
-  watchAlphaSubmit,
+  watchAlphaMount,
   watchAlphaFetch,
   watchAlphaStore,
-  watchAlphaQuery
+  watchAlphaQuery,
+  watchAlphaSubmit
 } from './stages/alpha'
 
 import {
   watchOmegaRoute,
-  watchOmegaChange,
-  watchOmegaSubmit,
+  watchOmegaMount,
   watchOmegaFetch,
   watchOmegaStore,
-  watchOmegaQuery
+  watchOmegaQuery,
+  watchOmegaSubmit
 } from './stages/omega'
 
 import {
   watchEmbarkRoute,
-  watchEmbarkSubmit,
   watchEmbarkFetch,
-  watchEmbarkStore
+  watchEmbarkStore,
+  watchEmbarkSubmit
 } from './stages/embark'
 
 import {
   watchDebarkRoute,
-  watchDebarkSubmit,
   watchDebarkFetch,
-  watchDebarkStore
+  watchDebarkStore,
+  watchDebarkSubmit
 } from './stages/debark'
 
 import {
-  watchZashikiChange,
-  watchZashikiSubmit,
+  watchConfirmRoute,
+  watchConfirmFetch,
+  watchConfirmStore,
+  watchConfirmSubmit
+} from './stages/confirm'
+
+import {
+  watchZashikiMount,
   watchZashikiFetch,
   watchZashikiStore,
-  watchZashikiQuery
+  watchZashikiQuery,
+  watchZashikiSubmit
 } from './zashiki'
 
 export default function * rootSaga () {
   yield all([
     watchAlphaRoute(),
-    watchAlphaChange(),
-    watchAlphaSubmit(),
+    watchAlphaMount(),
     watchAlphaFetch(),
     watchAlphaStore(),
     watchAlphaQuery(),
+    watchAlphaSubmit(),
 
     watchOmegaRoute(),
-    watchOmegaChange(),
-    watchOmegaSubmit(),
+    watchOmegaMount(),
     watchOmegaFetch(),
     watchOmegaStore(),
     watchOmegaQuery(),
+    watchOmegaSubmit(),
 
     watchEmbarkRoute(),
-    watchEmbarkSubmit(),
     watchEmbarkFetch(),
     watchEmbarkStore(),
+    watchEmbarkSubmit(),
 
     watchDebarkRoute(),
     watchDebarkFetch(),
     watchDebarkStore(),
     watchDebarkSubmit(),
 
-    watchZashikiChange(),
-    watchZashikiSubmit(),
+    watchConfirmRoute(),
+    watchConfirmFetch(),
+    watchConfirmStore(),
+    watchConfirmSubmit(),
+
+    watchZashikiMount(),
     watchZashikiFetch(),
     watchZashikiStore(),
-    watchZashikiQuery()
+    watchZashikiQuery(),
+    watchZashikiSubmit()
   ])
 }

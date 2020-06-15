@@ -1,6 +1,7 @@
 import React from 'react'
 
-import OmegaStage from '@modernpoacher/zashiki-react-redux/app/components/stages/omega'
+import Title from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/title'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/omega'
 
 import {
   Navigation
@@ -8,10 +9,8 @@ import {
 
 export default () => (
   <section>
-    <header>
-      <h1>Omega Stage</h1>
-    </header>
-    <OmegaStage />
+    <Title />
+    <Stage />
     <Navigation />
   </section>
 )

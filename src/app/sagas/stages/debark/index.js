@@ -1,3 +1,5 @@
+import debug from 'debug'
+
 import {
   call,
   put,
@@ -5,16 +7,12 @@ import {
 } from 'redux-saga/effects'
 
 import {
-  Rails
-} from 'shinkansen-rails'
+  fromDocumentToHash
+} from 'shinkansen-engine/lib/transformers/transmission'
 
 import {
   ROUTE,
   debarkRoute,
-
-  SUBMIT,
-  submitRouteFulfilled,
-  submitRouteRejected,
 
   FETCH,
   fetchRouteFulfilled,
@@ -22,7 +20,11 @@ import {
 
   STORE,
   storeRouteFulfilled,
-  storeRouteRejected
+  storeRouteRejected,
+
+  SUBMIT,
+  submitStateFulfilled,
+  submitStateRejected
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
 
 import * as api from '@modernpoacher/zashiki-react-redux/api/stages/debark'
@@ -31,7 +33,38 @@ import { transformError } from '@modernpoacher/zashiki-react-redux/app/transform
 
 import getPathname from '@modernpoacher/zashiki-react-redux/app/common/get-pathname'
 
+const log = debug('zashiki-react-redux:app:sagas:stages:embark')
+
+function transformData (data) {
+  log('transformData')
+
+  if (Reflect.has(data, 'omega')) {
+    const {
+      omega = []
+    } = data
+
+    return {
+      ...data,
+      omega: omega.map((item) => {
+        const {
+          response,
+          definition
+        } = item
+
+        return {
+          ...item,
+          response: fromDocumentToHash(response, definition)
+        }
+      })
+    }
+  }
+
+  return data
+}
+
 function * debarkRouteSaga ({ redirect, history }) {
+  log('debarkRouteSaga')
+
   const pathname = getPathname(redirect)
 
   if (pathname) {
@@ -45,42 +78,44 @@ function * debarkRouteSaga ({ redirect, history }) {
   }
 }
 
-function * submitRouteSaga ({ debark: { statement }, history }) {
-  try {
-    yield storeRouteSaga({ response: { statement } })
-    const { data: response = {} } = yield call(api.submitRoute, { response: { debark: Rails.rail(statement) } })
-    yield put(submitRouteFulfilled(response))
-    const { redirect } = response
-    yield put(debarkRoute(redirect, history))
-  } catch (e) {
-    yield put(submitRouteRejected(transformError(e)))
-  }
-}
-
 function * fetchRouteSaga () {
+  log('fetchRouteSaga')
+
   try {
-    const { data: response = {} } = yield call(api.fetchRoute)
-    yield put(fetchRouteFulfilled(response))
+    const { data = {} } = yield call(api.fetchRoute)
+    yield put(fetchRouteFulfilled(transformData(data)))
   } catch (e) {
     yield put(fetchRouteRejected(transformError(e)))
   }
 }
 
 function * storeRouteSaga (route) {
+  log('storeRouteSaga')
+
   try {
-    const { data: response = {} } = yield call(api.storeRoute, route)
-    yield put(storeRouteFulfilled(response))
+    const { data = {} } = yield call(api.storeRoute, route)
+    yield put(storeRouteFulfilled(transformData(data)))
   } catch (e) {
     yield put(storeRouteRejected(transformError(e)))
   }
 }
 
-export function * watchDebarkRoute () {
-  yield takeLatest(ROUTE, debarkRouteSaga)
+function * submitStateSaga ({ debark, history }) {
+  log('submitStateSaga')
+
+  try {
+    yield storeRouteSaga({ response: debark })
+    const { data = {} } = yield call(api.submitState, { response: debark })
+    yield put(submitStateFulfilled(transformData(data)))
+    const { redirect } = data
+    yield put(debarkRoute(redirect, history))
+  } catch (e) {
+    yield put(submitStateRejected(transformError(e)))
+  }
 }
 
-export function * watchDebarkSubmit () {
-  yield takeLatest(SUBMIT, submitRouteSaga)
+export function * watchDebarkRoute () {
+  yield takeLatest(ROUTE, debarkRouteSaga)
 }
 
 export function * watchDebarkFetch () {
@@ -89,4 +124,8 @@ export function * watchDebarkFetch () {
 
 export function * watchDebarkStore () {
   yield takeLatest(STORE, storeRouteSaga)
+}
+
+export function * watchDebarkSubmit () {
+  yield takeLatest(SUBMIT, submitStateSaga)
 }

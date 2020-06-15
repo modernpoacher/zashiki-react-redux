@@ -3,7 +3,7 @@
  */
 import api from '@modernpoacher/zashiki-react-redux/api'
 
-export const changeRoute = (route) => api().patch('zashiki/stages/change', route)
+export const mountRoute = (route) => api().patch('zashiki/stages/change', route)
 
 export const fetchRoute = () => api().get('zashiki/stages/fetch')
 

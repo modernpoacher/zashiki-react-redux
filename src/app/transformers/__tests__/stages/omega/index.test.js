@@ -1,12 +1,24 @@
-import { transform } from '@modernpoacher/zashiki-react-redux/app/transformers/stages/omega'
-import { transformFailure } from '@modernpoacher/zashiki-react-redux/app/transformers'
+import transform from '@modernpoacher/zashiki-react-redux/app/transformers/stages/omega'
 
-jest.mock('shinkansen-signals', () => ({ Signals: { FAILURE: 'MOCK FAILURE' } }))
-jest.mock('@modernpoacher/zashiki-react-redux/app/transformers', () => ({ transformFailure: jest.fn() }))
+import {
+  transformRejected
+} from '@modernpoacher/zashiki-react-redux/app/transformers'
+
+jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
+  REJECTED: 'MOCK REJECTED'
+}))
+
+jest.mock('shinkansen-engine/lib/transformers/transmission', () => ({
+  toZashiki: jest.fn().mockReturnValue('MOCK ZASHIKI')
+}))
+
+jest.mock('@modernpoacher/zashiki-react-redux/app/transformers', () => ({ transformRejected: jest.fn() }))
 
 const DEFAULT = {
   status: 'MOCK STATUS',
   definition: {},
+  response: {},
+  errors: [],
   gears: {
     forward: {},
     reverse: {}
@@ -30,20 +42,20 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/omega', () 
         jest.clearAllMocks()
       })
 
-      describe('`status` is `Signals.FAILURE`', () => {
-        it('invokes `transformFailure`', () => {
-          transform({ status: 'MOCK FAILURE' })
+      describe('`status` is `REJECTED`', () => {
+        it('invokes `transformRejected`', () => {
+          transform({ status: 'MOCK REJECTED' })
 
-          expect(transformFailure)
-            .toBeCalledWith('MOCK FAILURE', {})
+          expect(transformRejected)
+            .toBeCalledWith('MOCK REJECTED', {})
         })
       })
 
-      describe('`status` is not `Signals.FAILURE`', () => {
-        it('does not invoke `transformFailure`', () => {
+      describe('`status` is not `REJECTED`', () => {
+        it('does not invoke `transformRejected`', () => {
           transform({ status: 'MOCK STATUS' })
 
-          expect(transformFailure)
+          expect(transformRejected)
             .not.toBeCalled()
         })
 
@@ -63,10 +75,8 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/omega', () 
             }))
               .toEqual({
                 ...DEFAULT,
-                definition: {
-                  schema: 'MOCK DEFINITION',
-                  formData: 'MOCK RESPONSE'
-                }
+                definition: 'MOCK ZASHIKI',
+                response: 'MOCK RESPONSE'
               })
           })
         })
@@ -79,10 +89,7 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/omega', () 
             }))
               .toEqual({
                 ...DEFAULT,
-                definition: {
-                  schema: 'MOCK DEFINITION',
-                  formData: {}
-                }
+                definition: 'MOCK ZASHIKI'
               })
           })
         })
@@ -120,11 +127,11 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/omega', () 
     })
 
     describe('Without parameters', () => {
-      it('invokes `transformFailure`', () => {
-        transform({ status: 'MOCK FAILURE' })
+      it('invokes `transformRejected`', () => {
+        transform({ status: 'MOCK REJECTED' })
 
-        expect(transformFailure)
-          .toBeCalledWith('MOCK FAILURE', {})
+        expect(transformRejected)
+          .toBeCalledWith('MOCK REJECTED', {})
       })
     })
   })
