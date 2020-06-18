@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import Title from '@modernpoacher/zashiki-react-redux/app/components/stages/confirm/title'
 import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/confirm'
@@ -6,9 +6,9 @@ import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/conf
 import Navigation from '@modernpoacher/zashiki-react-redux/app/components/navigation'
 
 export default () => (
-  <section>
+  <Fragment>
     <Title />
     <Stage />
     <Navigation />
-  </section>
+  </Fragment>
 )

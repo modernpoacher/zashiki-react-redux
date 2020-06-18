@@ -31,8 +31,22 @@ import {
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
 
 import {
-  ROUTE as EMBARK_ROUTE
+  ROUTE as EMBARK_ROUTE,
+  FETCH as EMBARK_FETCH
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/embark'
+
+import {
+  ROUTE as DEBARK_ROUTE,
+  FETCH as DEBARK_FETCH
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
+
+import {
+  MOUNT as ALPHA_MOUNT
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
+
+import {
+  MOUNT as ZASHIKI_MOUNT
+} from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
 
 const log = debug('zashiki-react-redux:app:reducers:stages:omega')
 
@@ -118,10 +132,10 @@ export function storeFulfilled (state = {}, { response = {} } = {}) {
   return { ...state, ...response, status: RESOLVED }
 }
 
-export function queryFulfilled (state = {}, { response = {} } = {}) { // `redirect`
-  log('queryFulfilled', { ...response, status: RESOLVED })
+export function queryFulfilled (state = {}, { response: { redirect } = {} } = {}) { // `redirect`
+  log('queryFulfilled')
 
-  return { ...state, ...response, status: RESOLVED }
+  return { ...state, redirect, status: RESOLVED }
 }
 
 export function changeFulfilled (state = {}, { response = {} } = {}) {
@@ -247,6 +261,15 @@ export default function omegaReducer (state = STATE, { type, ...action } = ACTIO
 
       return { ...STATE, resource }
     }
+    case DEBARK_ROUTE:
+    case EMBARK_FETCH:
+    case DEBARK_FETCH:
+    case ALPHA_MOUNT:
+    case ZASHIKI_MOUNT:
+    {
+      return STATE
+    }
+
     default:
 
       return state

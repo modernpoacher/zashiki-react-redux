@@ -33,8 +33,22 @@ import {
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
 
 import {
-  ROUTE as EMBARK_ROUTE
+  ROUTE as EMBARK_ROUTE,
+  FETCH as EMBARK_FETCH
 } from '@modernpoacher/zashiki-react-redux/app/actions/stages/embark'
+
+import {
+  ROUTE as DEBARK_ROUTE,
+  FETCH as DEBARK_FETCH
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
+
+import {
+  MOUNT as OMEGA_MOUNT
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
+
+import {
+  MOUNT as ZASHIKI_MOUNT
+} from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
 
 const log = debug('zashiki-react-redux:app:reducers:stages:alpha')
 
@@ -281,6 +295,14 @@ export default function alphaReducer (state = STATE, { type, ...action } = ACTIO
       } = action
 
       return { ...STATE, resource }
+    }
+    case DEBARK_ROUTE:
+    case EMBARK_FETCH:
+    case DEBARK_FETCH:
+    case OMEGA_MOUNT:
+    case ZASHIKI_MOUNT:
+    {
+      return STATE
     }
     default:
 

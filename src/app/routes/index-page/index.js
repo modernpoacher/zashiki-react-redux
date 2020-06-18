@@ -6,11 +6,9 @@ import Navigation from '@modernpoacher/zashiki-react-redux/app/components/naviga
 
 export default () => (
   <Zashiki>
-    <section>
-      <header>
-        <h1>Index Page</h1>
-      </header>
-      <Navigation />
-    </section>
+    <header>
+      <h1>Index Page</h1>
+    </header>
+    <Navigation />
   </Zashiki>
 )
