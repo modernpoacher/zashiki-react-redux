@@ -87,7 +87,7 @@ export const initialise = (state = {}) => ({ ...state, status: RESOLVED })
  *  @param {Object} state Initial state
  *  @param {Object} action
  */
-export default function debarkReducer (state = STATE, { type, ...action } = ACTION) {
+export default function debarkReducer (state = { ...STATE }, { type, ...action } = { ...ACTION }) {
   switch (type) {
     case ROUTE:
 
@@ -123,7 +123,7 @@ export default function debarkReducer (state = STATE, { type, ...action } = ACTI
     case OMEGA_MOUNT:
     case ZASHIKI_MOUNT:
 
-      return { ...state, status: PENDING }
+      return { ...STATE }
     default:
 
       return state

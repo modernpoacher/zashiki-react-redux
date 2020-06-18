@@ -229,7 +229,7 @@ export const initialise = (state = {}) => ({ ...state, status: RESOLVED })
  *  @param {Object} state Initial state
  *  @param {Object} action
  */
-export default function alphaReducer (state = STATE, { type, ...action } = ACTION) {
+export default function alphaReducer (state = { ...STATE }, { type, ...action } = { ...ACTION }) {
   switch (type) {
     case ROUTE:
 
@@ -301,9 +301,8 @@ export default function alphaReducer (state = STATE, { type, ...action } = ACTIO
     case DEBARK_FETCH:
     case OMEGA_MOUNT:
     case ZASHIKI_MOUNT:
-    {
-      return STATE
-    }
+
+      return { ...STATE }
     default:
 
       return state
