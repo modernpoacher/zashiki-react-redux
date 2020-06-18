@@ -22,6 +22,7 @@ export default function Alpha ({ definitions, onSubmit, onChange }) {
               onSubmit(resource, response)
             }}>
               <ErrorSummary
+                title='There is a problem'
                 errorSummary={errors}
               />
               <h2>{description}</h2>

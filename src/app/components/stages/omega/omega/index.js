@@ -18,6 +18,7 @@ export default function Omega ({ resource, onSubmit, response, errors, definitio
       onSubmit(resource, response)
     }}>
       <ErrorSummary
+        title='There is a problem'
         errorSummary={errors}
       />
       <Pinion
