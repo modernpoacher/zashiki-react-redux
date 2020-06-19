@@ -1,2 +1,7 @@
 export Zashiki from './zashiki'
+export Alpha from './stages/alpha'
+export Omega from './stages/omega'
+export Embark from './stages/embark'
+export Debark from './stages/debark'
+export Confirm from './stages/confirm'
 export Navigation from './navigation'

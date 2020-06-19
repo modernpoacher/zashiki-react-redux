@@ -1,24 +1,24 @@
 import React from 'react'
 
-import IndexPage from './index-page'
-import EmbarkStagePage from './stages/embark'
-import DebarkStagePage from './stages/debark'
-import ConfirmStagePage from './stages/confirm'
+import IndexLink from './index-page'
+import EmbarkStageLink from './stages/embark'
+import DebarkStageLink from './stages/debark'
+import ConfirmStageLink from './stages/confirm'
 
 export default () => (
   <nav>
     <ul>
       <li>
-        <IndexPage />
+        <IndexLink />
       </li>
       <li>
-        <EmbarkStagePage />
+        <EmbarkStageLink />
       </li>
       <li>
-        <DebarkStagePage />
+        <DebarkStageLink />
       </li>
       <li>
-        <ConfirmStagePage />
+        <ConfirmStageLink />
       </li>
     </ul>
   </nav>

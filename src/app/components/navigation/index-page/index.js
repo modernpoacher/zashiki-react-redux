@@ -4,20 +4,20 @@ import {
   Link
 } from 'react-router-dom'
 
-const IndexPage = ({ href, text }) => (
+const IndexLink = ({ href, text }) => (
   <Link to={href}>
     {text}
   </Link>
 )
 
-IndexPage.propTypes = {
+IndexLink.propTypes = {
   href: PropTypes.string,
   text: PropTypes.string
 }
 
-IndexPage.defaultProps = {
+IndexLink.defaultProps = {
   href: '/',
   text: 'Index Page'
 }
 
-export default IndexPage
+export default IndexLink

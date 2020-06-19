@@ -4,25 +4,25 @@ import {
 
 import Signals from 'shinkansen-engine/lib/components/signals'
 
-import embark from './stages/embark'
 import alpha from './stages/alpha'
 import omega from './stages/omega'
+import embark from './stages/embark'
 import debark from './stages/debark'
 import confirm from './stages/confirm'
 import zashiki from './zashiki'
 
 const {
-  EMBARK,
   ALPHA,
   OMEGA,
+  EMBARK,
   DEBARK,
   CONFIRM
 } = Signals
 
 export default combineReducers({
-  [EMBARK]: embark,
   [ALPHA]: alpha,
   [OMEGA]: omega,
+  [EMBARK]: embark,
   [DEBARK]: debark,
   [CONFIRM]: confirm,
   zashiki

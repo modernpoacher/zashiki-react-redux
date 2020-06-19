@@ -12,11 +12,9 @@ import getDebarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-de
 import getConfirmRoute from '@modernpoacher/zashiki-react-redux/app/common/get-confirm-route'
 
 import IndexPage from './index-page'
-
 import EmbarkStagePage from './stages/embark'
 import DebarkStagePage from './stages/debark'
 import ConfirmStagePage from './stages/confirm'
-
 import AlphaStagePage from './stages/alpha'
 import OmegaStagePage from './stages/omega'
 
