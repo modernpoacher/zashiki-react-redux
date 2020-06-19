@@ -30,22 +30,8 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
   const MOCK_ONSUBMIT = jest.fn()
 
   const mockProps = {
-    state: {
-      index: 'MOCK INDEX',
-      count: 'MOCK COUNT'
-    },
     definition: {},
     resource: {},
-    gears: {
-      forward: {
-        alpha: 'MOCK ALPHA',
-        omega: 'MOCK OMEGA'
-      },
-      reverse: {
-        alpha: 'MOCK ALPHA',
-        omega: 'MOCK OMEGA'
-      }
-    },
     onChange: jest.fn(),
     onSubmit: jest.fn(),
     exception: {
@@ -150,22 +136,8 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
     it('returns an object', () => {
       expect(getStageProps(mockProps))
         .toEqual({
-          state: {
-            index: 'MOCK INDEX',
-            count: 'MOCK COUNT'
-          },
           definition: {},
           resource: {},
-          gears: {
-            forward: {
-              alpha: 'MOCK ALPHA',
-              omega: 'MOCK OMEGA'
-            },
-            reverse: {
-              alpha: 'MOCK ALPHA',
-              omega: 'MOCK OMEGA'
-            }
-          },
           onChange: expect.any(Function),
           onSubmit: expect.any(Function)
         })

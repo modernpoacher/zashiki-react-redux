@@ -52,15 +52,7 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/alpha', () 
           expect(transform({ status: 'MOCK STATUS' }))
             .toEqual({
               status: 'MOCK STATUS',
-              definitions: [],
-              gears: {
-                forward: {},
-                reverse: {}
-              },
-              state: {
-                count: 0,
-                index: 0
-              }
+              definitions: []
             })
         })
 
@@ -98,47 +90,9 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/alpha', () 
                     response: 'MOCK RESPONSE',
                     errors: []
                   }
-                ],
-                gears: {
-                  forward: {},
-                  reverse: {}
-                },
-                state: {
-                  count: 0,
-                  index: 0
-                }
+                ]
               })
           })
-        })
-      })
-
-      describe('`gears` is an object', () => {
-        it('returns an object with `gears` and default values', () => {
-          expect(transform({ status: 'MOCK STATUS', gears: { forward: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }, reverse: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' } } }))
-            .toEqual({
-              status: 'MOCK STATUS',
-              definitions: [],
-              state: {
-                count: 0,
-                index: 0
-              },
-              gears: { forward: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }, reverse: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' } }
-            })
-        })
-      })
-
-      describe('`state` is an object', () => {
-        it('returns an object with `state` and default values', () => {
-          expect(transform({ status: 'MOCK STATUS', state: { index: 'MOCK INDEX', count: 'MOCK COUNT' } }))
-            .toEqual({
-              status: 'MOCK STATUS',
-              definitions: [],
-              gears: {
-                forward: {},
-                reverse: {}
-              },
-              state: { index: 'MOCK INDEX', count: 'MOCK COUNT' }
-            })
         })
       })
     })

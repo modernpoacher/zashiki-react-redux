@@ -14,6 +14,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/status/
         definition={{}}
         resource={{}}
         response={{}}
+        errors={[]}
         onChange={jest.fn()}
         onSubmit={jest.fn()}
       />

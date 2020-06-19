@@ -18,15 +18,7 @@ const DEFAULT = {
   status: 'MOCK STATUS',
   definition: {},
   response: {},
-  errors: [],
-  gears: {
-    forward: {},
-    reverse: {}
-  },
-  state: {
-    count: 0,
-    index: 0
-  }
+  errors: []
 }
 
 describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/omega', () => {
@@ -101,26 +93,6 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/omega', () 
             .toEqual({
               ...DEFAULT,
               resource: {}
-            })
-        })
-      })
-
-      describe('`gears` is an object', () => {
-        it('returns an object with `gears` and default values', () => {
-          expect(transform({ status: 'MOCK STATUS', gears: { forward: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }, reverse: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' } } }))
-            .toEqual({
-              ...DEFAULT,
-              gears: { forward: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }, reverse: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' } }
-            })
-        })
-      })
-
-      describe('`state` is an object', () => {
-        it('returns an object with `state` and default values', () => {
-          expect(transform({ status: 'MOCK STATUS', state: { index: 'MOCK INDEX', count: 'MOCK COUNT' } }))
-            .toEqual({
-              ...DEFAULT,
-              state: { index: 'MOCK INDEX', count: 'MOCK COUNT' }
             })
         })
       })

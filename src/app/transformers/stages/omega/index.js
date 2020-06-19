@@ -20,27 +20,17 @@ export function transformOmega (status, {
   definition,
   resource,
   response = {}, // hash
-  errors = [],
-  gears = {
-    reverse: {},
-    forward: {}
-  },
-  state = {
-    index: 0,
-    count: 0
-  }
+  errors = []
 }) {
   log('transformOmega')
 
   return {
+    status,
     ...(description ? { description } : {}),
     ...(definition ? { definition: toZashiki(definition, response) } : { definition: {} }),
     ...(resource ? { resource } : {}),
     response,
-    errors,
-    gears,
-    state,
-    status
+    errors
   }
 }
 

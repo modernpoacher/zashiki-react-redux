@@ -1,13 +1,29 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import debug from 'debug'
 
-const Count = ({ index, count }) => (
-  <h3>{index + 1} of {count}</h3>
-)
+import {
+  connect
+} from 'react-redux'
 
-Count.propTypes = {
-  index: PropTypes.number.isRequired,
-  count: PropTypes.number.isRequired
+import {
+  withRouter
+} from 'react-router'
+
+import Signals from 'shinkansen-engine/lib/components/signals'
+
+import Component from './component'
+
+const log = debug('zashiki-react-redux:app:components:stages:omega:state')
+
+log('`omega` is awake')
+
+const {
+  OMEGA
+} = Signals
+
+function mapStateToProps ({ [OMEGA]: { state = {} } = {} }) {
+  log('mapStateToProps')
+
+  return state
 }
 
-export default Count
+export default withRouter(connect(mapStateToProps)(Component))

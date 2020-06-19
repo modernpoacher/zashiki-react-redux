@@ -17,19 +17,12 @@ const log = debug('zashiki-react-redux:app:transformers:stages:alpha')
 
 export function transformAlpha (status, {
   omega = [],
-  resource,
-  gears = {
-    reverse: {},
-    forward: {}
-  },
-  state = {
-    index: 0,
-    count: 0
-  }
+  resource
 }) {
   log('transformAlpha')
 
   return {
+    status,
     definitions: omega.map(({
       description,
       definition,
@@ -47,10 +40,7 @@ export function transformAlpha (status, {
         errors
       }
     }),
-    ...(resource ? { resource } : {}),
-    gears,
-    state,
-    status
+    ...(resource ? { resource } : {})
   }
 }
 
