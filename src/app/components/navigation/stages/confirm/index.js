@@ -6,20 +6,20 @@ import {
 
 import getConfirmRoute from '@modernpoacher/zashiki-react-redux/app/common/get-confirm-route'
 
-const ConfirmStage = ({ href, text }) => (
+const ConfirmStagePage = ({ href, text }) => (
   <Link to={href}>
     {text}
   </Link>
 )
 
-ConfirmStage.propTypes = {
+ConfirmStagePage.propTypes = {
   href: PropTypes.string,
   text: PropTypes.string
 }
 
-ConfirmStage.defaultProps = {
+ConfirmStagePage.defaultProps = {
   href: getConfirmRoute(),
   text: 'Confirm Stage'
 }
 
-export default ConfirmStage
+export default ConfirmStagePage

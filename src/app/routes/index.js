@@ -8,14 +8,14 @@ import {
 import Signals from 'shinkansen-engine/lib/components/signals'
 
 import getEmbarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-embark-route'
-import getConfirmRoute from '@modernpoacher/zashiki-react-redux/app/common/get-confirm-route'
 import getDebarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-debark-route'
+import getConfirmRoute from '@modernpoacher/zashiki-react-redux/app/common/get-confirm-route'
 
 import IndexPage from './index-page'
 
 import EmbarkStagePage from './stages/embark'
-import ConfirmStagePage from './stages/confirm'
 import DebarkStagePage from './stages/debark'
+import ConfirmStagePage from './stages/confirm'
 
 import AlphaStagePage from './stages/alpha'
 import OmegaStagePage from './stages/omega'
