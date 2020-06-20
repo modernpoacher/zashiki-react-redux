@@ -17,8 +17,8 @@ export default class Title extends Component {
     } = this.props
 
     return (
-      <header>
-        <h1 className={this.getClassName()}>
+      <header className={this.getClassName()}>
+        <h1>
           {title}
         </h1>
       </header>
