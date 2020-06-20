@@ -3,12 +3,22 @@
   "version": "2.5.12",
   "description": "React + Redux for Zashiki",
   "main": "./index.js",
+  "keywords": [
+    "React",
+    "Redux",
+    "React Redux",
+    "Zashiki Karakuri",
+    "Zashiki",
+    "Karakuri"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com/modernpoacher/zashiki-react-redux.git"
   },
+  "author": "Jonathan Perry for Modern Poacher Limited",
+  "license": "UNLICENSED",
   "scripts": {
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run lint:fix && npm run build",
     "prebuild": "npm run clean",
     "build": "cross-env NODE_ENV=production npm run babel",
     "build:clean": "npm run clean && cross-env NODE_ENV=production npm run build",
@@ -18,11 +28,9 @@
     "babel:watch": "npm run babel -- -w",
     "lint": "eslint *.js src config",
     "lint:fix": "npm run lint -- --fix",
-    "test": "jest --verbose false --collect-coverage false",
+    "test": "cross-env NODE_ENV=test jest --collect-coverage false --verbose",
     "pre-commit": "npm run lint && npm run test && npm run build && git add lib"
   },
-  "author": "Jonathan Perry for Modern Poacher Limited",
-  "license": "UNLICENSED",
   "dependencies": {
     "@modernpoacher/isomorphic": "0.0.10",
     "axios": "^0.19.2",
