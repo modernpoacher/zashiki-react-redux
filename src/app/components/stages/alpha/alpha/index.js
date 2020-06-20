@@ -20,6 +20,8 @@ export default function Alpha ({ definitions, onSubmit, onChange }) {
               event.preventDefault()
 
               onSubmit(resource, response)
+
+              document.activeElement.blur()
             }}>
               <ErrorSummary
                 title='There is a problem'

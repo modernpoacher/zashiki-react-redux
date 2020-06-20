@@ -16,6 +16,8 @@ export default function Omega ({ resource, onSubmit, response, errors, definitio
       event.preventDefault()
 
       onSubmit(resource, response)
+
+      document.activeElement.blur()
     }}>
       <ErrorSummary
         title='There is a problem'

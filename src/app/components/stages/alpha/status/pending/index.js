@@ -1,5 +1,5 @@
 import React from 'react'
 
-const Pending = () => <div className='alpha pending' />
-
-export default Pending
+export default () => (
+  <div className='alpha pending' />
+)

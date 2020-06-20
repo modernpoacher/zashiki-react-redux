@@ -17,6 +17,8 @@ const Debark = ({ definitions, token, onSubmit }) => (
     event.preventDefault()
 
     onSubmit(token)
+
+    document.activeElement.blur()
   }}>
     {definitions
       .map(({ description, definition }, key) => (

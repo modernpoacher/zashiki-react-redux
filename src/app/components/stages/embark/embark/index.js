@@ -15,6 +15,8 @@ const Stage = ({ onSubmit, response, onChange, definition }) => (
     event.preventDefault()
 
     onSubmit(response)
+
+    document.activeElement.blur()
   }}>
     <Pinion
       onChange={(key, value) => onChange({ [key]: value })}
