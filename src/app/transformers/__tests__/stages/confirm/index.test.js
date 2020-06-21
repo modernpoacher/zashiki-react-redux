@@ -21,7 +21,8 @@ jest.mock('@modernpoacher/zashiki-react-redux/app/transformers', () => ({ transf
 const DEFAULT = {
   status: 'MOCK STATUS',
   definition: {},
-  response: {}
+  response: {},
+  errors: []
 }
 
 describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/confirm', () => {

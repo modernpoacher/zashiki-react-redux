@@ -30,6 +30,7 @@ export default function Alpha ({ definitions, onSubmit, onChange }) {
               <h2>{description}</h2>
               <Pinion
                 pinion={definition}
+                params={{ errors }}
                 onChange={(key, value) => onChange(resource, { [key]: value })}
               />
               <button type='submit'>

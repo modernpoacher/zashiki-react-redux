@@ -25,6 +25,7 @@ export default function Omega ({ resource, onSubmit, response, errors, definitio
       />
       <Pinion
         pinion={definition}
+        params={{ errors }}
         onChange={(key, value) => onChange(resource, { [key]: value })}
       />
       <button type='submit'>

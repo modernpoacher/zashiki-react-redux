@@ -14,12 +14,13 @@ import {
 
 const log = debug('zashiki-react-redux:app:transformers:stages:alpha')
 
-export function transformConfirm (status, { definition, response = {} }) {
+export function transformConfirm (status, { definition, response = {}, errors = [] }) {
   log('transformConfirm')
 
   return {
     ...(definition ? { definition: toZashiki(definition, response) } : { definition: {} }),
     response,
+    errors,
     status
   }
 }

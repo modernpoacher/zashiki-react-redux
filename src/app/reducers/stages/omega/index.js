@@ -132,10 +132,10 @@ export function storeFulfilled (state = {}, { response = {} } = {}) {
   return { ...state, ...response, status: RESOLVED }
 }
 
-export function queryFulfilled (state = {}, { response: { redirect } = {} } = {}) { // `redirect`
+export function queryFulfilled (state = {}, { response: { errors = [], redirect = {} } = {} } = {}) { // `redirect`
   log('queryFulfilled')
 
-  return { ...state, redirect, status: RESOLVED }
+  return { ...state, errors, redirect, status: RESOLVED }
 }
 
 export function changeFulfilled (state = {}, { response = {} } = {}) {

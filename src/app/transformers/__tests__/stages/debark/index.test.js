@@ -83,7 +83,8 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/debark', ()
                 {
                   definition: 'MOCK DEFINITION',
                   resource: 'MOCK RESOURCE',
-                  response: 'MOCK RESPONSE'
+                  response: 'MOCK RESPONSE',
+                  errors: 'MOCK ERRORS'
                 }
               ]
             })
@@ -108,7 +109,8 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/debark', ()
                   {
                     definition: 'MOCK CHECK ANSWERS',
                     resource: 'MOCK RESOURCE',
-                    response: 'MOCK RESPONSE'
+                    response: 'MOCK RESPONSE',
+                    errors: 'MOCK ERRORS'
                   }
                 ],
                 token: {}

@@ -14,12 +14,13 @@ import {
 
 const log = debug('zashiki-react-redux:app:transformers:stages:alpha')
 
-export function transformEmbark (status, { definition, response = {} }) {
+export function transformEmbark (status, { definition, response = {}, errors = [] }) {
   log('transformEmbark')
 
   return {
     ...(definition ? { definition: toZashiki(definition, response) } : { definition: {} }),
     response,
+    errors,
     status
   }
 }

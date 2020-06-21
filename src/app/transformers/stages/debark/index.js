@@ -31,13 +31,15 @@ export function transformDebark (status, {
       description,
       definition,
       resource,
-      response = {} // hash
+      response = {}, // hash
+      errors = []
     }) => {
       return {
         ...(description ? { description } : {}),
         ...(definition ? { definition: toCheckAnswers(toZashiki(definition, response), resource) } : { definition: {} }),
         ...(resource ? { resource } : {}),
-        response
+        response,
+        errors
       }
     }),
     ...(resource ? { resource } : {}),

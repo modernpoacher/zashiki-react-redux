@@ -10,7 +10,7 @@ const log = debug('zashiki-react-redux:app:components:stages:embark:stage')
 
 log('`Embark Stage` is awake')
 
-const Stage = ({ onSubmit, response, onChange, definition }) => (
+const Stage = ({ onSubmit, response, definition, errors, onChange }) => (
   <form method='POST' action={getEmbarkRoute()} onSubmit={(event) => {
     event.preventDefault()
 
@@ -19,8 +19,9 @@ const Stage = ({ onSubmit, response, onChange, definition }) => (
     document.activeElement.blur()
   }}>
     <Pinion
-      onChange={(key, value) => onChange({ [key]: value })}
       pinion={definition}
+      params={{ errors }}
+      onChange={(key, value) => onChange({ [key]: value })}
     />
     <button type='submit'>
       Continue
@@ -31,8 +32,9 @@ const Stage = ({ onSubmit, response, onChange, definition }) => (
 Stage.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   response: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired,
-  definition: PropTypes.object.isRequired
+  definition: PropTypes.object.isRequired,
+  errors: PropTypes.array.isRequired,
+  onChange: PropTypes.func.isRequired
 }
 
 export default Stage

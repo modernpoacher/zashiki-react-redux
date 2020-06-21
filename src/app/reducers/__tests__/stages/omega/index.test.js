@@ -234,8 +234,8 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/omega', () => {
 
       describe('The action `type` is `QUERY_FULFILLED`', () => {
         it('returns the state', () => {
-          expect(omegaReducer(DEFAULT, { type: 'MOCK QUERY FULFILLED', response: { redirect: 'MOCK VALUE' } }))
-            .toEqual({ status: 'MOCK RESOLVED', redirect: 'MOCK VALUE' })
+          expect(omegaReducer(DEFAULT, { type: 'MOCK QUERY FULFILLED', response: { errors: 'MOCK ERRORS', redirect: 'MOCK REDIRECT' } }))
+            .toEqual({ status: 'MOCK RESOLVED', errors: 'MOCK ERRORS', redirect: 'MOCK REDIRECT' })
         })
       })
 
@@ -403,11 +403,12 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/omega', () => {
 
   describe('`queryFulfilled()`', () => {
     it('returns the state', () => {
-      expect(queryFulfilled({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { response: { redirect: 'MOCK VALUE' } }))
+      expect(queryFulfilled({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { response: { errors: 'MOCK ERRORS', redirect: 'MOCK REDIRECT' } }))
         .toEqual({
           status: 'MOCK RESOLVED',
           mockStateField: 'MOCK STATE VALUE',
-          redirect: 'MOCK VALUE'
+          errors: 'MOCK ERRORS',
+          redirect: 'MOCK REDIRECT'
         })
     })
   })
