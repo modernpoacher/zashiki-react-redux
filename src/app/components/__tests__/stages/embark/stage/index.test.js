@@ -17,6 +17,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/stage'
       <Stage
         definition={MOCK_DEFINITION}
         response={{}}
+        errors={[]}
         onChange={jest.fn()}
         onSubmit={jest.fn()}
       />

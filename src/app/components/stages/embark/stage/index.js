@@ -17,6 +17,7 @@ export default class Stage extends Component {
     const {
       definition,
       response,
+      errors,
       onChange,
       onSubmit
     } = this.props
@@ -26,6 +27,7 @@ export default class Stage extends Component {
         <Embark
           definition={definition}
           response={response}
+          errors={errors}
           onChange={onChange}
           onSubmit={onSubmit}
         />
@@ -37,6 +39,7 @@ export default class Stage extends Component {
 Stage.propTypes = {
   definition: PropTypes.object.isRequired,
   response: PropTypes.object.isRequired,
+  errors: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
 }

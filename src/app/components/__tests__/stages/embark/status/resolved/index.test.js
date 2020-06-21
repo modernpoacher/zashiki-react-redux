@@ -12,6 +12,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status
       <Resolved
         definition={{}}
         response={{}}
+        errors={[]}
         onChange={jest.fn()}
         onSubmit={jest.fn()}
       />

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import debug from 'debug'
 
-import Pinion from 'shinkansen-engine/lib/components/pinion'
+import Pinion, { ErrorSummary } from 'shinkansen-engine/lib/components/pinion'
 
 import getEmbarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-embark-route'
 
@@ -10,7 +10,7 @@ const log = debug('zashiki-react-redux:app:components:stages:embark:stage')
 
 log('`Embark Stage` is awake')
 
-const Stage = ({ onSubmit, response, definition, errors, onChange }) => (
+const Stage = ({ onSubmit, response, errors, definition, onChange }) => (
   <form method='POST' action={getEmbarkRoute()} onSubmit={(event) => {
     event.preventDefault()
 
@@ -18,6 +18,10 @@ const Stage = ({ onSubmit, response, definition, errors, onChange }) => (
 
     document.activeElement.blur()
   }}>
+    <ErrorSummary
+      title='There is a problem'
+      errorSummary={errors}
+    />
     <Pinion
       pinion={definition}
       params={{ errors }}
