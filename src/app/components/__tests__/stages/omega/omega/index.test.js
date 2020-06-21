@@ -1,5 +1,6 @@
 import React from 'react'
 import Enzyme, { mount } from 'enzyme'
+import toJson from 'enzyme-to-json'
 import Adapter from 'enzyme-adapter-react-16'
 
 import Omega from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/omega'
@@ -45,7 +46,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/omega',
       />
     )
 
-    expect(mount(component))
+    expect(toJson(mount(component)))
       .toMatchSnapshot()
   })
 })

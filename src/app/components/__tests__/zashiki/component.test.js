@@ -33,15 +33,8 @@ describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', 
 
     const spy = jest.spyOn(Zashiki.prototype, 'componentDidMount')
 
-    let wrapper
-
     beforeEach(() => {
-      wrapper = shallow(component)
-    })
-
-    it('mounts', () => {
-      expect(wrapper)
-        .toBeDefined()
+      shallow(component)
     })
 
     it('invokes `componentDidMount`', () => {

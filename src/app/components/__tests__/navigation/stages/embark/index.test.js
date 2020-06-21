@@ -1,5 +1,6 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
 import Adapter from 'enzyme-adapter-react-16'
 
 import Embark from '@modernpoacher/zashiki-react-redux/app/components/navigation/stages/embark'
@@ -20,7 +21,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/navigation/stages/em
   })
 
   it('renders', () => {
-    expect(wrapper)
+    expect(toJson(wrapper))
       .toMatchSnapshot()
   })
 

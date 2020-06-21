@@ -1,3 +1,154 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/omega renders 1`] = `ReactWrapper {}`;
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/omega renders 1`] = `
+<Omega
+  definition={
+    Object {
+      "elements": Object {
+        "field": Object {
+          "id": "MOCK ID",
+        },
+        "title": "MOCK TITLE",
+      },
+      "meta": Object {
+        "uri": "#/",
+      },
+    }
+  }
+  description="MOCK DESCRIPTION"
+  errors={Array []}
+  onChange={[MockFunction]}
+  onSubmit={[MockFunction]}
+  resource={
+    Object {
+      "alpha": "MOCK ALPHA",
+      "omega": "MOCK OMEGA",
+    }
+  }
+  response={
+    Object {
+      "#/": "MOCK VALUE",
+    }
+  }
+>
+  <form
+    action="/MOCK ALPHA/MOCK OMEGA"
+    method="POST"
+    onSubmit={[Function]}
+  >
+    <ErrorSummarySprocket
+      errorSummary={Array []}
+      onChange={[Function]}
+      title="There is a problem"
+    />
+    <Pinion
+      onChange={[Function]}
+      params={
+        Object {
+          "errors": Array [],
+        }
+      }
+      pinion={
+        Object {
+          "elements": Object {
+            "field": Object {
+              "id": "MOCK ID",
+            },
+            "title": "MOCK TITLE",
+          },
+          "meta": Object {
+            "uri": "#/",
+          },
+        }
+      }
+    >
+      <Field
+        elements={
+          Object {
+            "field": Object {
+              "id": "MOCK ID",
+            },
+            "title": "MOCK TITLE",
+          }
+        }
+        meta={
+          Object {
+            "uri": "#/",
+          }
+        }
+        onChange={[Function]}
+        params={
+          Object {
+            "errors": Array [],
+          }
+        }
+      >
+        <TextCog
+          disabled={false}
+          name="MOCK ID"
+          onChange={[Function]}
+          readOnly={false}
+          required={false}
+          title="MOCK TITLE"
+          value=""
+        >
+          <div
+            className="cog text"
+          >
+            <TextTitle
+              disabled={false}
+              id="MOCK ID"
+              readOnly={false}
+              required={false}
+              title="MOCK TITLE"
+            >
+              <label
+                className="title text"
+                htmlFor="MOCK ID"
+              >
+                <TextContent
+                  textContent="MOCK TITLE"
+                >
+                  <span
+                    className="text-content"
+                  >
+                    MOCK TITLE
+                  </span>
+                </TextContent>
+              </label>
+            </TextTitle>
+            <TextDescription />
+            <TextErrorMessage />
+            <TextField
+              disabled={false}
+              id="MOCK ID"
+              name="MOCK ID"
+              onChange={[Function]}
+              readOnly={false}
+              required={false}
+              value=""
+            >
+              <input
+                className="input text"
+                disabled={false}
+                id="MOCK ID"
+                name="MOCK ID"
+                onChange={[Function]}
+                readOnly={false}
+                required={false}
+                type="text"
+                value=""
+              />
+            </TextField>
+          </div>
+        </TextCog>
+      </Field>
+    </Pinion>
+    <button
+      type="submit"
+    >
+      Continue
+    </button>
+  </form>
+</Omega>
+`;

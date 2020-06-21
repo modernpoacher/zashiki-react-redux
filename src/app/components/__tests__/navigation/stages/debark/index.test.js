@@ -1,5 +1,6 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
 import Adapter from 'enzyme-adapter-react-16'
 
 import Debark from '@modernpoacher/zashiki-react-redux/app/components/navigation/stages/debark'
@@ -20,7 +21,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/navigation/stages/de
   })
 
   it('renders', () => {
-    expect(wrapper)
+    expect(toJson(wrapper))
       .toMatchSnapshot()
   })
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import Enzyme, { mount } from 'enzyme'
+import toJson from 'enzyme-to-json'
 import Adapter from 'enzyme-adapter-react-16'
 
 import Count from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/count/component'
@@ -12,7 +13,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/count/c
       <Count index={1} count={2} />
     )
 
-    expect(mount(component))
+    expect(toJson(mount(component)))
       .toMatchSnapshot()
   })
 })

@@ -1,5 +1,6 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
 import Adapter from 'enzyme-adapter-react-16'
 
 import Rejected from '@modernpoacher/zashiki-react-redux/app/components/stages/confirm/title/status/rejected'
@@ -15,7 +16,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/confirm/statu
         />
       )
 
-      expect(shallow(component))
+      expect(toJson(shallow(component)))
         .toMatchSnapshot()
     })
   })

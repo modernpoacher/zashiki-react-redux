@@ -1,5 +1,6 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
 import Adapter from 'enzyme-adapter-react-16'
 
 import Gears from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/component'
@@ -16,7 +17,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/c
       <Gears />
     )
 
-    expect(shallow(component))
+    expect(toJson(shallow(component)))
       .toMatchSnapshot()
   })
 
@@ -25,7 +26,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/c
       <Gears reverse={{ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }} />
     )
 
-    expect(shallow(component))
+    expect(toJson(shallow(component)))
       .toMatchSnapshot()
   })
 
@@ -34,7 +35,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/c
       <Gears forward={{ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }} />
     )
 
-    expect(shallow(component))
+    expect(toJson(shallow(component)))
       .toMatchSnapshot()
   })
 
@@ -46,7 +47,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/c
       />
     )
 
-    expect(shallow(component))
+    expect(toJson(shallow(component)))
       .toMatchSnapshot()
   })
 })

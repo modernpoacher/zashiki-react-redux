@@ -1,9 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/component \`PENDING\` renders 1`] = `ShallowWrapper {}`;
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/component \`PENDING\` renders 1`] = `<$default />`;
 
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/component \`REJECTED\` renders 1`] = `ShallowWrapper {}`;
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/component \`REJECTED\` renders 1`] = `
+<Rejected
+  message="MOCK MESSAGE"
+  name="MOCK NAME"
+/>
+`;
 
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/component \`RESOLVED\` renders 1`] = `ShallowWrapper {}`;
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/component \`RESOLVED\` renders 1`] = `
+<Resolved
+  definitions={Array []}
+  onSubmit={[MockFunction]}
+  token={Object {}}
+/>
+`;
 
 exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/component Always renders 1`] = `ShallowWrapper {}`;

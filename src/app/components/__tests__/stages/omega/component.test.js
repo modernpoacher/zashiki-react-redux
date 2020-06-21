@@ -1,5 +1,6 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
 import Adapter from 'enzyme-adapter-react-16'
 
 import {
@@ -51,7 +52,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
       />
     )
 
-    expect(shallow(component))
+    expect(toJson(shallow(component)))
       .toMatchSnapshot()
   })
 
@@ -81,7 +82,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
         />
       )
 
-      expect(shallow(component))
+      expect(toJson(shallow(component)))
         .toMatchSnapshot()
     })
   })
@@ -100,7 +101,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
         />
       )
 
-      expect(shallow(component))
+      expect(toJson(shallow(component)))
         .toMatchSnapshot()
     })
   })
@@ -117,7 +118,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/compone
         />
       )
 
-      expect(shallow(component))
+      expect(toJson(shallow(component)))
         .toMatchSnapshot()
     })
   })

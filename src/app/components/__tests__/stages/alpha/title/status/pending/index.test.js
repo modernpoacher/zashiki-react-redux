@@ -1,5 +1,6 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
 import Adapter from 'enzyme-adapter-react-16'
 
 import Pending from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/title/status/pending'
@@ -12,7 +13,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/title/s
       <Pending />
     )
 
-    expect(shallow(component))
+    expect(toJson(shallow(component)))
       .toMatchSnapshot()
   })
 })
