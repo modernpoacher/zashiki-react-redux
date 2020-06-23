@@ -32,7 +32,7 @@
     "pre-commit": "npm run lint && npm run test && npm run build && git add lib"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "0.0.11",
+    "@modernpoacher/isomorphic": "0.0.13",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
     "cross-env": "^7.0.2",
@@ -48,7 +48,7 @@
     "redux": "^4.0.5",
     "redux-saga": "^1.1.3",
     "regenerator-runtime": "^0.13.5",
-    "shinkansen-engine": "1.0.1"
+    "shinkansen-engine": "1.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.3",
@@ -67,7 +67,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "enzyme-to-json": "^3.5.0",
-    "eslint": "^7.3.0",
+    "eslint": "^7.3.1",
     "eslint-config-standard": "^14.1.1",
     "eslint-import-resolver-babel-module": "^5.1.2",
     "eslint-plugin-import": "^2.21.2",
