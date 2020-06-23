@@ -32,7 +32,7 @@
     "pre-commit": "npm run lint && npm run test && npm run clean && npm run build && git add lib"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "0.0.13",
+    "@modernpoacher/isomorphic": "0.0.15",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
     "cross-env": "^7.0.2",
