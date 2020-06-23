@@ -18,10 +18,10 @@
   "author": "Jonathan Perry for Modern Poacher Limited",
   "license": "UNLICENSED",
   "scripts": {
-    "prepublishOnly": "npm run lint:fix && npm run build",
+    "prepare": "cross-env DEBUG=@modernpoacher/zashiki-react-redux* NODE_ENV=production npm run build",
+    "install": "cross-env DEBUG=@modernpoacher/zashiki-react-redux* NODE_ENV=production npm run build",
     "prebuild": "npm run clean",
-    "build": "cross-env NODE_ENV=production npm run babel",
-    "build:clean": "npm run clean && cross-env NODE_ENV=production npm run build",
+    "build": "npm run babel",
     "build:watch": "npm run babel:watch",
     "clean": "rimraf lib",
     "babel": "babel src -d lib",
