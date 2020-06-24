@@ -4,12 +4,9 @@ const log = debug('zashiki-react-redux')
 
 const {
   env: {
-    DEBUG = 'zashiki-react-redux',
     NODE_ENV = 'development'
   }
 } = process
-
-debug.enable(DEBUG)
 
 log('`zashiki-react-redux` is awake')
 
