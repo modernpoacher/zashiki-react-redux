@@ -62,7 +62,7 @@
     "@babel/preset-react": "^7.10.1",
     "@babel/register": "^7.10.3",
     "babel-eslint": "^10.1.0",
-    "babel-jest": "^26.0.1",
+    "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "core-js": "^3.6.5",
@@ -78,7 +78,7 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-standard": "^4.0.1",
     "husky": "^4.2.5",
-    "jest": "^26.0.1",
+    "jest": "^26.1.0",
     "mock-browser": "^0.92.14",
     "rimraf": "^3.0.2"
   },
