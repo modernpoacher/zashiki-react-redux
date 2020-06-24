@@ -1,25 +1,37 @@
 const debug = require('debug')
 
-const log = debug('@modernpoacher/zashiki-react-redux')
+const log = debug('zashiki-react-redux')
 
 const {
   env: {
-    DEBUG = '@modernpoacher/zashiki-react-redux',
+    DEBUG = 'zashiki-react-redux',
     NODE_ENV = 'development'
   }
 } = process
 
 debug.enable(DEBUG)
 
-log('`@modernpoacher/zashiki-react-redux` is awake')
+log('`zashiki-react-redux` is awake')
+
+function env () {
+  log({ NODE_ENV })
+
+  return (
+    NODE_ENV === 'production'
+  )
+}
 
 const presets = [
   [
     '@babel/env', {
       targets: {
-        node: 'current',
+        node: '12.18.1',
         browsers: [
-          'last 2 versions'
+          'last 4 versions',
+          'safari >= 9',
+          'ios >= 8',
+          'ie >= 9',
+          '> 2%'
         ]
       },
       useBuiltIns: 'entry',
@@ -42,14 +54,8 @@ const plugins = [
   ]
 ]
 
-function using () {
-  log({ NODE_ENV })
-
-  return NODE_ENV === 'production'
-}
-
 module.exports = (api) => {
-  if (api) api.cache.using(using)
+  if (api) api.cache.using(env)
 
   return {
     compact: true,

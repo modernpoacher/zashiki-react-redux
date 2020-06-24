@@ -17,19 +17,21 @@
   },
   "author": "Jonathan Perry for Modern Poacher Limited",
   "license": "UNLICENSED",
+  "engines": {
+    "node": ">=12.18.1"
+  },
   "scripts": {
-    "prepare": "cross-env DEBUG=@modernpoacher/zashiki-react-redux* NODE_ENV=production npm run build",
-    "install": "cross-env DEBUG=@modernpoacher/zashiki-react-redux* NODE_ENV=production npm run build",
+    "prepublishOnly": "cross-env NODE_ENV=production npm run build",
     "prebuild": "npm run clean",
     "build": "npm run babel",
     "build:watch": "npm run babel:watch",
     "clean": "rimraf lib",
     "babel": "babel src -d lib",
     "babel:watch": "npm run babel -- -w",
-    "lint": "eslint *.js src config",
+    "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "test": "cross-env NODE_ENV=test jest --collect-coverage false --verbose",
-    "pre-commit": "npm run lint && npm run test && npm run clean && npm run build && git add lib"
+    "pre-commit": "npm run lint && npm run test && npm run build && git add lib"
   },
   "dependencies": {
     "@modernpoacher/isomorphic": "0.0.15",
