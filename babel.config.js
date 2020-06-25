@@ -24,14 +24,17 @@ const presets = [
       targets: {
         node: '12.18.1',
         browsers: [
-          'last 4 versions',
+          'last 2 versions',
           'safari >= 9',
           'ios >= 8',
           'ie >= 9',
           '> 2%'
         ]
       },
-      useBuiltIns: 'entry',
+      /*
+       *  Required! For `browsers`
+       */
+      useBuiltIns: 'usage',
       corejs: 3
     }
   ],

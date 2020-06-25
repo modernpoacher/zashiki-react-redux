@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import {
   Provider, ReactReduxContext
 } from 'react-redux'
-import 'regenerator-runtime/runtime'
 import debug from 'debug'
 
 import configureStore from '@modernpoacher/zashiki-react-redux/app/store'
