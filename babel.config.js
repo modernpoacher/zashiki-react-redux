@@ -47,6 +47,8 @@ const plugins = [
   '@babel/proposal-class-properties',
   [
     'module-resolver', {
+      root: ['./src'],
+      cwd: 'babelrc',
       alias: {
         '@modernpoacher/zashiki-react-redux': './src'
       }
