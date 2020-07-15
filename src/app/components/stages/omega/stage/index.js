@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import debug from 'debug'
 
-import Count from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/count'
-import Gears from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/gears'
 import Omega from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/omega'
+import Gears from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/gears'
 
 const log = debug('zashiki-react-redux:app:components:stages:omega:stage')
 
@@ -27,7 +26,6 @@ export default class Stage extends Component {
 
     return (
       <div className={this.getClassName()}>
-        <Count />
         <Omega
           resource={resource}
           definition={definition}

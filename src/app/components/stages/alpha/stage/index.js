@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import debug from 'debug'
 
-import Count from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/count'
 import Alpha from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/alpha'
 import Gears from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears'
 
@@ -24,7 +23,6 @@ export default class Stage extends Component {
 
     return (
       <div className={this.getClassName()}>
-        <Count />
         <Alpha
           definitions={definitions}
           onChange={onChange}

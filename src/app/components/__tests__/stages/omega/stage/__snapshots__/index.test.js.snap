@@ -4,7 +4,6 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/stage Al
 <div
   className="omega"
 >
-  <withRouter(Connect(Count)) />
   <Omega
     definition={Object {}}
     errors={Array []}
