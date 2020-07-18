@@ -1,4 +1,4 @@
-## @modernpoacher/zashiki-react-redux
+## `@modernpoacher/zashiki-react-redux`
 
 # Zashiki React Redux
 
