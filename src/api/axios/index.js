@@ -61,7 +61,7 @@ function configure (request) {
     if (utils.isStandardBrowserEnv()) {
       delete defaults.headers.Cookie
     } else {
-      defaults.headers.Cookie = `jid=${session}`
+      defaults.headers.Cookie = `zid=${session}`
     }
 
     defaults.withCredentials = true
