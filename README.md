@@ -4,6 +4,8 @@
 
 Implements *React* + *Redux* + *React Router* + *Sagas* for *Zashiki Karakuri*.
 
+*Zashiki Karakuri* encourages composition and inheritance.
+
 ## Installation
 
 ```bash
