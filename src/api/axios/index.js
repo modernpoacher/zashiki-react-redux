@@ -18,7 +18,7 @@ function configure (request) {
     path,
     version,
     bearerToken,
-    session
+    zid
   } = request
 
   /*
@@ -31,7 +31,7 @@ function configure (request) {
     path,
     version,
     bearerToken,
-    session
+    zid
   })
 
   /*
@@ -61,7 +61,7 @@ function configure (request) {
     if (utils.isStandardBrowserEnv()) {
       delete defaults.headers.Cookie
     } else {
-      defaults.headers.Cookie = `zid=${session}`
+      defaults.headers.Cookie = `zid=${zid}`
     }
 
     defaults.withCredentials = true
