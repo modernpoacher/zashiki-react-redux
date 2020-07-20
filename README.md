@@ -14,8 +14,8 @@ npm i -P @modernpoacher/zashiki-react-redux
 
 ## Usage
 
-- Build from `src`
-- Import (or require) built from `lib`
+- Optionally, build JS in `src` to `lib`
+- Import built JS from `lib`
 
 ## Structure
 
