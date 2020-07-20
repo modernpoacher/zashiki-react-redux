@@ -22,7 +22,9 @@
   },
   "overrides": [
     {
-      "files": ["src/app/transformers/stages/index.js"],
+      "files": [
+        "src/app/transformers/stages/index.js"
+      ],
       "rules": {
         "import/export": "off"
       }

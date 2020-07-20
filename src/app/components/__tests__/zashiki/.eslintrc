@@ -1,7 +1,9 @@
 {
   "overrides": [
     {
-      "files": ["component.test.js"],
+      "files": [
+        "component.test.js"
+      ],
       "rules": {
         "react/no-children-prop": "off"
       }
