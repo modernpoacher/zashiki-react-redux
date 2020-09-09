@@ -76,7 +76,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-standard": "^4.0.1",
-    "husky": "^4.2.5",
+    "husky": "^4.3.0",
     "jest": "^26.4.2",
     "mock-browser": "^0.92.14",
     "rimraf": "^3.0.2"
