@@ -30,7 +30,7 @@
     "babel:watch": "npm run babel -- -w",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
-    "test": "cross-env NODE_ENV=test jest --collect-coverage false --verbose",
+    "test": "cross-env NODE_ENV=test jest --collect-coverage false --verbose --run-in-band",
     "pre-commit": "npm run lint && npm run test && npm run build && git add lib"
   },
   "dependencies": {
@@ -61,7 +61,7 @@
     "@babel/preset-react": "^7.10.4",
     "@babel/register": "^7.11.5",
     "babel-eslint": "^10.1.0",
-    "babel-jest": "^26.5.0",
+    "babel-jest": "^26.5.2",
     "babel-loader": "^8.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
     "core-js": "^3.6.5",
@@ -77,7 +77,7 @@
     "eslint-plugin-react": "^7.21.3",
     "eslint-plugin-standard": "^4.0.1",
     "husky": "^4.3.0",
-    "jest": "^26.5.0",
+    "jest": "^26.5.2",
     "mock-browser": "^0.92.14",
     "rimraf": "^3.0.2"
   },
