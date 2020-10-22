@@ -7,6 +7,9 @@
 .eslintignore
 .eslintrc
 
+.depsrc
+.browserslistrc
+
 # NPM
 .npmignore
 .npmrc
