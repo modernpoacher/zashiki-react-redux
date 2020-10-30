@@ -72,21 +72,21 @@ export const changeFulfilled = (state = {}, { response = {} } = {}) => ({ ...sta
 
 export const submitFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
 
-export const fetchFulfilled = (state = {}, { response = {} }) => ({ ...state, ...response, status: RESOLVED })
+export const fetchFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
 
-export const storeFulfilled = (state = {}, { response = {} }) => ({ ...state, ...response, status: RESOLVED })
+export const storeFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
 
-export const queryFulfilled = (state = {}, { response = {} }) => ({ ...state, ...response, status: RESOLVED })
+export const queryFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
 
-export const changeRejected = ({ history }, { error = {} }) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+export const changeRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
 
-export const submitRejected = ({ history }, { error = {} }) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+export const submitRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
 
-export const fetchRejected = ({ history }, { error = {} }) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+export const fetchRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
 
-export const storeRejected = ({ history }, { error = {} }) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+export const storeRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
 
-export const queryRejected = ({ history }, { error = {} }) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+export const queryRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
 
 /**
  *  Zashiki Reducer
