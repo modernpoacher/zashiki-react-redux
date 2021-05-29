@@ -1,3 +1,5 @@
+import 'jsdom-global/register'
+
 import React from 'react'
 import Enzyme, { mount } from 'enzyme'
 import toJson from 'enzyme-to-json'
