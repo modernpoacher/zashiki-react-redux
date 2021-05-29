@@ -70,8 +70,6 @@
     "eslint-import-resolver-babel-module": "^5.3.1",
     "husky": "^6.0.0",
     "jest": "^27.0.2",
-    "jsdom": "^16.6.0",
-    "jsdom-global": "^3.0.2",
     "mock-browser": "^0.92.14",
     "rimraf": "^3.0.2",
     "standard": "^16.0.3"
