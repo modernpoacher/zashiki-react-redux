@@ -79,20 +79,18 @@ function transformData (data) {
       omega = []
     } = data
 
-    return {
-      ...data,
+    return Object.assign(data, {
       omega: omega.map((item) => {
         const {
           response,
           definition
         } = item
 
-        return {
-          ...item,
+        return Object.assign(item, {
           response: fromDocumentToHash(response, definition)
-        }
+        })
       })
-    }
+    })
   }
 
   return data

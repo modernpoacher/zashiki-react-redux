@@ -52,10 +52,9 @@ function transformData (data) {
       definition
     } = data
 
-    return {
-      ...data,
+    return Object.assign(data, {
       response: fromDocumentToHash(response, definition)
-    }
+    })
   }
 
   return data
