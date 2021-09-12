@@ -50,49 +50,49 @@ const ACTION = {}
  *  Get all from state
  *  Add `redirect`
  */
-export const route = ({ status = PENDING, ...state } = {}, { history, redirect = {} } = {}) => ({ ...state, status, history, redirect })
+export const route = ({ status = PENDING, ...state } = {}, { history, redirect = {} } = {}) => Object.assign(state, { status, history, redirect })
 
 /*
  *  Get all from state
  *  Set all from action
  */
-export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ ...state, status, ...action })
+export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => Object.assign(state, { status }, action)
 
 /*
  *  Get `resource` `response` from state
  *  Set `history` `route` from action
  */
-export const store = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ ...state, status, history, ...route })
+export const store = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => Object.assign(state, { status, history }, route)
 
 /*
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const change = ({ status = PENDING, response: RESPONSE, ...state } = {}, { history, embark = {} } = {}) => ({ ...state, status, history, response: { ...RESPONSE, ...embark } })
+export const change = ({ status = PENDING, response: RESPONSE = {}, ...state } = {}, { history, embark = {} } = {}) => Object.assign(state, { status, history, response: Object.assign(RESPONSE, embark) })
 
 /*
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const submit = ({ status = PENDING, ...state } = {}, { history, embark = {} } = {}) => ({ ...state, status, history, ...embark })
+export const submit = ({ status = PENDING, ...state } = {}, { history, embark = {} } = {}) => Object.assign(state, { status, history }, embark)
 
-export const fetchFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
+export const fetchFulfilled = (state = {}, { response = {} } = {}) => Object.assign(state, response, { status: RESOLVED })
 
-export const storeFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
+export const storeFulfilled = (state = {}, { response = {} } = {}) => Object.assign(state, response, { status: RESOLVED })
 
-export const changeFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
+export const changeFulfilled = (state = {}, { response = {} } = {}) => Object.assign(state, response, { status: RESOLVED })
 
-export const submitFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
+export const submitFulfilled = (state = {}, { response = {} } = {}) => Object.assign(state, response, { status: RESOLVED })
 
-export const fetchRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+export const fetchRejected = ({ history } = {}, { error = {} } = {}) => Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
 
-export const storeRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+export const storeRejected = ({ history } = {}, { error = {} } = {}) => Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
 
-export const changeRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+export const changeRejected = ({ history } = {}, { error = {} } = {}) => Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
 
-export const submitRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+export const submitRejected = ({ history } = {}, { error = {} } = {}) => Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
 
-export const initialise = (state = {}) => ({ ...state, status: RESOLVED })
+export const initialise = (state = {}) => Object.assign(state, { status: RESOLVED })
 
 /**
  *  Zashiki/Embark Reducer

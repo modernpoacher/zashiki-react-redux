@@ -42,51 +42,51 @@ const ACTION = {}
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const change = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ ...state, status, history, ...route })
+export const change = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => Object.assign(state, { status, history }, route)
 
 /*
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const submit = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ ...state, status, history, ...route })
+export const submit = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => Object.assign(state, { status, history }, route)
 
 /*
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => ({ ...state, status, ...action })
+export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => Object.assign(state, { status }, action)
 
 /*
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const store = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => ({ ...state, status, history, ...route })
+export const store = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => Object.assign(state, { status, history }, route)
 
 /*
  *  Get all from state
  *  Add all from action
  */
-export const query = ({ status = PENDING, ...state } = {}, action = {}) => ({ ...state, status, ...action })
+export const query = ({ status = PENDING, ...state } = {}, action = {}) => Object.assign(state, { status }, action)
 
-export const changeFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
+export const changeFulfilled = (state = {}, { response = {} } = {}) => Object.assign(state, response, { status: RESOLVED })
 
-export const submitFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
+export const submitFulfilled = (state = {}, { response = {} } = {}) => Object.assign(state, response, { status: RESOLVED })
 
-export const fetchFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
+export const fetchFulfilled = (state = {}, { response = {} } = {}) => Object.assign(state, response, { status: RESOLVED })
 
-export const storeFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
+export const storeFulfilled = (state = {}, { response = {} } = {}) => Object.assign(state, response, { status: RESOLVED })
 
-export const queryFulfilled = (state = {}, { response = {} } = {}) => ({ ...state, ...response, status: RESOLVED })
+export const queryFulfilled = (state = {}, { response = {} } = {}) => Object.assign(state, response, { status: RESOLVED })
 
-export const changeRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+export const changeRejected = ({ history } = {}, { error = {} } = {}) => Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
 
-export const submitRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+export const submitRejected = ({ history } = {}, { error = {} } = {}) => Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
 
-export const fetchRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+export const fetchRejected = ({ history } = {}, { error = {} } = {}) => Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
 
-export const storeRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+export const storeRejected = ({ history } = {}, { error = {} } = {}) => Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
 
-export const queryRejected = ({ history } = {}, { error = {} } = {}) => ({ ...(history ? { history } : {}), exception: { ...error }, status: REJECTED })
+export const queryRejected = ({ history } = {}, { error = {} } = {}) => Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
 
 /**
  *  Zashiki Reducer
