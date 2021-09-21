@@ -12,7 +12,7 @@ import Resolved from './status/resolved'
 import Rejected from './status/rejected'
 import Pending from './status/pending'
 
-const log = debug('zashiki-react-redux:app:components:stages:embark')
+const log = debug('zashiki-react-redux:app:components:stages:embark:component')
 
 export const getEmbarkProps = ({ definition, response, errors, onChange, onSubmit }) => ({ definition, response, errors, onChange, onSubmit })
 export const getErrorProps = ({ exception }) => exception

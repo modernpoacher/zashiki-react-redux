@@ -12,7 +12,7 @@ import Resolved from './status/resolved'
 import Rejected from './status/rejected'
 import Pending from './status/pending'
 
-const log = debug('zashiki-react-redux:app:components:stages:debark:title')
+const log = debug('zashiki-react-redux:app:components:stages:debark:title:component')
 
 log('`Debark Title` is awake')
 

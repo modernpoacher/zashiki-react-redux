@@ -5,7 +5,7 @@ import debug from 'debug'
 import Signals from 'shinkansen-engine/lib/components/signals'
 import Gears from 'shinkansen-engine/lib/components/gears'
 
-const log = debug('zashiki-react-redux:app:components:stages:alpha:gears')
+const log = debug('zashiki-react-redux:app:components:stages:alpha:gears:component')
 
 log('`Alpha Stage` is awake')
 

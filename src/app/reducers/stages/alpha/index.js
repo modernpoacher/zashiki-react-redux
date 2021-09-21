@@ -64,31 +64,51 @@ const ACTION = {}
  *  Get all from state
  *  Add `redirect`
  */
-export const route = ({ status = PENDING, ...state } = {}, { history, redirect = {} } = {}) => Object.assign(state, { status, history, redirect })
+export function route ({ status = PENDING, ...state } = {}, { history, redirect = {} } = {}) {
+  log('route')
+
+  return Object.assign(state, { status, history, redirect })
+}
 
 /*
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const mount = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => Object.assign(state, { status, history }, route)
+export function mount ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) {
+  log('mount')
+
+  return Object.assign(state, { status, history }, route)
+}
 
 /*
  *  Get all from state
  *  Set all from action
  */
-export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => Object.assign(state, { status }, action)
+export function fetch ({ status = PENDING, ...state } = {}, action = {}) {
+  log('fetch')
+
+  return Object.assign(state, { status }, action)
+}
 
 /*
  *  Get `resource` from state
  *  Set `history` `route` from action
  */
-export const store = ({ status = PENDING, ...state } = {}, { history, route: { resource } = {} } = {}) => Object.assign(state, { status, history, resource })
+export function store ({ status = PENDING, ...state } = {}, { history, route: { resource } = {} } = {}) {
+  log('store')
+
+  return Object.assign(state, { status, history, resource })
+}
 
 /*
  *  Get all from state
  *  Add `redirect`
  */
-export const query = ({ status = PENDING, ...state } = {}, action = {}) => Object.assign(state, { status }, action)
+export function query ({ status = PENDING, ...state } = {}, action = {}) {
+  log('query')
+
+  return Object.assign(state, { status }, action)
+}
 
 /*
  *  Get all from state
@@ -128,7 +148,11 @@ export function change ({ status = PENDING, omega = [], ...state } = {}, { histo
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const submit = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => Object.assign(state, { status, history }, route)
+export function submit ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) {
+  log('submit')
+
+  return Object.assign(state, { status, history }, route)
+}
 
 /*
  *  Not `redirect` from state
@@ -216,7 +240,11 @@ export function submitRejected ({ history } = {}, { error = {} } = {}) {
   return Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
 }
 
-export const initialise = (state = {}) => Object.assign(state, { status: RESOLVED })
+export function initialise (state = {}) {
+  log('initialise')
+
+  return Object.assign(state, { status: RESOLVED })
+}
 
 /**
  *  Zashiki/Alpha Reducer
@@ -225,6 +253,8 @@ export const initialise = (state = {}) => Object.assign(state, { status: RESOLVE
  *  @param {Object} action
  */
 export default function alphaReducer (state = { ...STATE }, { type, ...action } = { ...ACTION }) {
+  log('alphaReducer')
+
   switch (type) {
     case ROUTE:
 

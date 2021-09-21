@@ -101,6 +101,8 @@ export const initialise = (state = {}) => Object.assign(state, { status: RESOLVE
  *  @param {Object} action
  */
 export default function embarkReducer (state = { ...STATE }, { type, ...action } = { ...ACTION }) {
+  log('embarkReducer')
+
   switch (type) {
     case ROUTE:
 

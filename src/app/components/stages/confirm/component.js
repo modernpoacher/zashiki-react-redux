@@ -12,7 +12,7 @@ import Resolved from './status/resolved'
 import Rejected from './status/rejected'
 import Pending from './status/pending'
 
-const log = debug('zashiki-react-redux:app:components:stages:confirm')
+const log = debug('zashiki-react-redux:app:components:stages:confirm:component')
 
 export const getConfirmProps = ({ definition, response, onSubmit }) => ({ definition, response, onSubmit })
 export const getErrorProps = ({ exception }) => exception

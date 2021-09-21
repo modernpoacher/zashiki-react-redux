@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Immutable from 'immutable'
 import debug from 'debug'
 
-const log = debug('zashiki-react-redux:app:components:zashiki')
+const log = debug('zashiki-react-redux:app:components:zashiki:component')
 
 export const resource = (alpha, omega) => ({ ...(alpha ? { alpha, ...(omega ? { omega } : {}) } : {}) })
 

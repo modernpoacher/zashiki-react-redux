@@ -88,6 +88,8 @@ export const initialise = (state = {}) => Object.assign(state, { status: RESOLVE
  *  @param {Object} action
  */
 export default function debarkReducer (state = { ...STATE }, { type, ...action } = { ...ACTION }) {
+  log('debarkReducer')
+
   switch (type) {
     case ROUTE:
 

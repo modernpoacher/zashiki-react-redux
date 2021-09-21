@@ -14,7 +14,7 @@ import Resolved from './status/resolved'
 import Rejected from './status/rejected'
 import Pending from './status/pending'
 
-const log = debug('zashiki-react-redux:app:components:stages:alpha')
+const log = debug('zashiki-react-redux:app:components:stages:alpha:component')
 
 export const getStageProps = ({ state, resource, definitions, gears, onChange, onSubmit }) => ({ state, resource, definitions, gears, onChange, onSubmit })
 export const getErrorProps = ({ exception }) => exception
