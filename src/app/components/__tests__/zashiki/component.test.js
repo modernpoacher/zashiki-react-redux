@@ -1,17 +1,12 @@
 import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-
-import Immutable from 'immutable'
-
 import Zashiki, { resource } from '@modernpoacher/zashiki-react-redux/app/components/zashiki/component'
+import equal from 'fast-deep-equal'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-jest.mock('immutable', () => ({
-  is: jest.fn(),
-  Map: jest.fn().mockImplementation((map) => map)
-}))
+jest.mock('fast-deep-equal', () => jest.fn())
 
 describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', () => {
   const MOCK_ONMOUNT = jest.fn()
@@ -82,12 +77,12 @@ describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', 
       let state
 
       beforeEach(() => {
-        Immutable.is.mockReturnValue(false)
+        equal.mockReturnValue(false)
         state = Zashiki.getDerivedStateFromProps(mockProps, mockState)
       })
 
-      it('invokes `Immutable.is`', () => {
-        expect(Immutable.is)
+      it('invokes `equal`', () => {
+        expect(equal)
           .toBeCalledWith({ alpha: 'MOCK ALPHA' }, { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' })
       })
 
@@ -112,12 +107,12 @@ describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', 
       let state
 
       beforeEach(() => {
-        Immutable.is.mockReturnValue(true)
+        equal.mockReturnValue(true)
         state = Zashiki.getDerivedStateFromProps(mockProps, mockState)
       })
 
-      it('invokes `Immutable.is`', () => {
-        expect(Immutable.is)
+      it('invokes `equal`', () => {
+        expect(equal)
           .toBeCalledWith({ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }, { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' })
       })
 

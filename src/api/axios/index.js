@@ -1,15 +1,12 @@
 import axios from 'axios'
 import utils from 'axios/lib/utils'
-import Immutable from 'immutable'
+import equal from 'fast-deep-equal'
 
-/*
- *  Create an Immutable Map
- */
-let SETTINGS = Immutable.Map()
+let SETTINGS
 
 function configure (request) {
   /*
-   *  Destructure only the necessary fields
+   *  Destructure the necessary fields
    */
   const {
     protocol,
@@ -22,9 +19,9 @@ function configure (request) {
   } = request
 
   /*
-   *  Restructure the fields and create an Immutable Map
+   *  Restructure the necessary fields
    */
-  const settings = Immutable.Map({
+  const settings = {
     protocol,
     host,
     port,
@@ -32,14 +29,14 @@ function configure (request) {
     version,
     bearerToken,
     zid
-  })
+  }
 
   /*
-   *  Compare the Map instances
+   *  Compare these settings with the current settings
    */
-  if (!Immutable.is(SETTINGS, settings)) {
+  if (!equal(SETTINGS, settings)) {
     /*
-     *  Set the defaults
+     *  Destructure the defaults and common from axios
      */
     const {
       defaults,
@@ -68,7 +65,7 @@ function configure (request) {
     defaults.baseURL = `${protocol}://${host}:${port}/${path}/${version}`
 
     /*
-     *  Set this Immutable Map as the current settings
+     *  Assign these settings as the current settings
      */
     SETTINGS = settings
   }

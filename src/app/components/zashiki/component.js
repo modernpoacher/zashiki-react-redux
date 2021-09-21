@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import PropTypes from 'prop-types'
-import Immutable from 'immutable'
+import equal from 'fast-deep-equal'
 import debug from 'debug'
 
 const log = debug('zashiki-react-redux:app:components:zashiki:component')
@@ -23,8 +23,16 @@ export default class Zashiki extends Component {
       }
     } = props
 
+    /*
+     *  Create const 'now' from params 'alpha' and 'omega'
+     */
+    const now = resource(alpha, omega)
+
+    /*
+     *  Assign 'now' to state
+     */
     this.state = {
-      now: Immutable.Map(resource(alpha, omega))
+      now
     }
   }
 
@@ -44,10 +52,12 @@ export default class Zashiki extends Component {
       }
     } = this.props
 
+    const now = resource(alpha, omega)
+
     /*
-     *  Dispatch and notify the Node app
+     *  Dispatch
      */
-    return onMount(resource(alpha, omega))
+    return onMount(now)
   }
 
   /**
@@ -69,26 +79,26 @@ export default class Zashiki extends Component {
     } = props
 
     /*
-     *  Create const 'now' from params 'alpha' and 'omega' (as an Immutable 'Map')
+     *  Create const 'now' from params 'alpha' and 'omega'
      */
-    const now = Immutable.Map(resource(alpha, omega))
+    const now = resource(alpha, omega)
 
     /*
-     *  Assign state 'now' to const 'was' (it's an Immutable 'Map')
+     *  Assign state 'now' to const 'was'
      */
     const {
       now: was
     } = state
 
-    if (!Immutable.is(was, now)) {
+    if (!equal(was, now)) {
       const {
         onMount
       } = props
 
       /*
-       *  Dispatch and notify the Node app
+       *  Dispatch
        */
-      onMount(resource(alpha, omega))
+      onMount(now)
 
       /*
        *  Changed state
