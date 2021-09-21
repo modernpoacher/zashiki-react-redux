@@ -50,7 +50,7 @@ const ACTION = {}
 export function route ({ status = PENDING, ...state } = {}, { history, redirect = {} } = {}) {
   log('route')
 
-  return Object.assign(state, { status, history, redirect })
+  return Object.assign(state, { status }, (history ? { history } : {}), { redirect })
 }
 
 /*
@@ -70,7 +70,7 @@ export function fetch ({ status = PENDING, ...state } = {}, action = {}) {
 export function store ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) {
   log('store')
 
-  return Object.assign(state, { status, history }, route)
+  return Object.assign(state, { status }, (history ? { history } : {}), route)
 }
 
 /*
@@ -80,22 +80,22 @@ export function store ({ status = PENDING, ...state } = {}, { history, route = {
 export function submit ({ status = PENDING, ...state } = {}, { history, confirm = {} } = {}) {
   log('submit')
 
-  return Object.assign(state, { status, history }, confirm)
+  return Object.assign(state, { status }, (history ? { history } : {}), confirm)
 }
 
-export function fetchFulfilled (state = {}, { response = {} } = {}) {
+export function fetchFulfilled ({ ...state } = {}, { response = {} } = {}) {
   log('fetchFulfilled')
 
   return Object.assign(state, response, { status: RESOLVED })
 }
 
-export function storeFulfilled (state = {}, { response = {} } = {}) {
+export function storeFulfilled ({ ...state } = {}, { response = {} } = {}) {
   log('storeFulfilled')
 
   return Object.assign(state, response, { status: RESOLVED })
 }
 
-export function submitFulfilled (state = {}, { response = {} } = {}) {
+export function submitFulfilled ({ ...state } = {}, { response = {} } = {}) {
   log('submitFulfilled')
 
   return Object.assign(state, response, { status: RESOLVED })

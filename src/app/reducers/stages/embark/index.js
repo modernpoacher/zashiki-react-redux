@@ -50,49 +50,105 @@ const ACTION = {}
  *  Get all from state
  *  Add `redirect`
  */
-export const route = ({ status = PENDING, ...state } = {}, { history, redirect = {} } = {}) => Object.assign(state, { status, history, redirect })
+export function route ({ status = PENDING, ...state } = {}, { history, redirect = {} } = {}) {
+  log('route')
+
+  return Object.assign(state, { status }, (history ? { history } : {}), { redirect })
+}
 
 /*
  *  Get all from state
  *  Set all from action
  */
-export const fetch = ({ status = PENDING, ...state } = {}, action = {}) => Object.assign(state, { status }, action)
+export function fetch ({ status = PENDING, ...state } = {}, action = {}) {
+  log('fetch')
+
+  return Object.assign(state, { status }, action)
+}
 
 /*
  *  Get `resource` `response` from state
  *  Set `history` `route` from action
  */
-export const store = ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) => Object.assign(state, { status, history }, route)
+export function store ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) {
+  log('store')
+
+  return Object.assign(state, { status }, (history ? { history } : {}), route)
+}
 
 /*
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const change = ({ status = PENDING, response: RESPONSE = {}, ...state } = {}, { history, embark = {} } = {}) => Object.assign(state, { status, history, response: Object.assign(RESPONSE, embark) })
+export function change ({ status = PENDING, ...state } = {}, { history, embark: response = {} } = {}) {
+  log('change')
+
+  return Object.assign(state, { status }, (history ? { history } : {}), { response })
+}
 
 /*
  *  Get all from state
  *  Set `history` `route` from action
  */
-export const submit = ({ status = PENDING, ...state } = {}, { history, embark = {} } = {}) => Object.assign(state, { status, history }, embark)
+export function submit ({ status = PENDING, ...state } = {}, { history, embark: response = {} } = {}) {
+  log('submit')
 
-export const fetchFulfilled = (state = {}, { response = {} } = {}) => Object.assign(state, response, { status: RESOLVED })
+  return Object.assign(state, { status }, (history ? { history } : {}), { response })
+}
 
-export const storeFulfilled = (state = {}, { response = {} } = {}) => Object.assign(state, response, { status: RESOLVED })
+export function fetchFulfilled ({ ...state } = {}, { response = {} } = {}) {
+  log('fetchFulfilled')
 
-export const changeFulfilled = (state = {}, { response = {} } = {}) => Object.assign(state, response, { status: RESOLVED })
+  return Object.assign(state, response, { status: RESOLVED })
+}
 
-export const submitFulfilled = (state = {}, { response = {} } = {}) => Object.assign(state, response, { status: RESOLVED })
+export function storeFulfilled ({ ...state } = {}, { response = {} } = {}) {
+  log('storeFulfilled')
 
-export const fetchRejected = ({ history } = {}, { error = {} } = {}) => Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
+  return Object.assign(state, response, { status: RESOLVED })
+}
 
-export const storeRejected = ({ history } = {}, { error = {} } = {}) => Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
+export function changeFulfilled ({ ...state } = {}, { response = {} } = {}) {
+  log('changeFulfilled')
 
-export const changeRejected = ({ history } = {}, { error = {} } = {}) => Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
+  return Object.assign(state, response, { status: RESOLVED })
+}
 
-export const submitRejected = ({ history } = {}, { error = {} } = {}) => Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
+export function submitFulfilled ({ ...state } = {}, { response = {} } = {}) {
+  log('submitFulfilled')
 
-export const initialise = (state = {}) => Object.assign(state, { status: RESOLVED })
+  return Object.assign(state, response, { status: RESOLVED })
+}
+
+export function fetchRejected ({ history } = {}, { error = {} } = {}) {
+  log('fetchRejected')
+
+  return Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
+}
+
+export function storeRejected ({ history } = {}, { error = {} } = {}) {
+  log('storeRejected')
+
+  return Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
+}
+
+export function changeRejected ({ history } = {}, { error = {} } = {}) {
+  log('changeRejected')
+
+  return Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
+}
+
+export function submitRejected ({ history } = {}, { error = {} } = {}) {
+  log('submitRejected')
+
+  return Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
+}
+
+export function initialise (state = {}) {
+  log('initialise')
+
+  return Object.assign(state, { status: RESOLVED })
+}
 
 /**
  *  Zashiki/Embark Reducer

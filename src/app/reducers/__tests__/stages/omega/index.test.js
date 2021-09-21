@@ -360,7 +360,6 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/omega', () => {
           history: 'MOCK HISTORY',
           resource: 'MOCK RESOURCE',
           response: {
-            mockStateKey: 'MOCK STATE VALUE',
             mockKey: 'MOCK VALUE'
           }
         })

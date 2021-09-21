@@ -65,7 +65,7 @@ const ACTION = {}
 export function route ({ status = PENDING, ...state } = {}, { history, redirect = {} } = {}) {
   log('route')
 
-  return Object.assign(state, { status, history, redirect })
+  return Object.assign(state, { status }, (history ? { history } : {}), { redirect })
 }
 
 /*
@@ -75,7 +75,7 @@ export function route ({ status = PENDING, ...state } = {}, { history, redirect 
 export function mount ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) {
   log('mount')
 
-  return Object.assign(state, { status, history }, route)
+  return Object.assign(state, { status }, (history ? { history } : {}), route)
 }
 
 /*
@@ -95,7 +95,7 @@ export function fetch ({ status = PENDING, ...state } = {}, action = {}) {
 export function store ({ status = PENDING, ...state } = {}, { history, route: { resource = {} } = {} } = {}) {
   log('store')
 
-  return Object.assign(state, { status, history, resource })
+  return Object.assign(state, { status }, (history ? { history } : {}), { resource })
 }
 
 /*
@@ -112,10 +112,10 @@ export function query ({ status = PENDING, ...state } = {}, action = {}) {
  *  Get all from state
  *  Set `history` `route` from action
  */
-export function change ({ status = PENDING, response = {}, ...state } = {}, { history, route: { resource = {}, response: RESPONSE = {} } = {} } = {}) {
+export function change ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) {
   log('change')
 
-  return Object.assign(state, { status, history, resource, response: Object.assign(response, RESPONSE) })
+  return Object.assign(state, { status }, (history ? { history } : {}), route)
 }
 
 /*
@@ -125,7 +125,7 @@ export function change ({ status = PENDING, response = {}, ...state } = {}, { hi
 export function submit ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) {
   log('submit')
 
-  return Object.assign(state, { status, history }, route)
+  return Object.assign(state, { status }, (history ? { history } : {}), route)
 }
 
 /*
@@ -134,46 +134,47 @@ export function submit ({ status = PENDING, ...state } = {}, { history, route = 
 export function mountFulfilled ({ alpha, definition, gears, state, history } = {}, { response = {} } = {}) {
   log('mountFulfilled')
 
-  return Object.assign({},
-    (alpha ? { alpha } : {}),
-    (definition ? { definition } : {}),
-    (gears ? { gears } : {}),
-    (state ? { state } : {}),
-    (history ? { history } : {}),
-    {
-      errors: [],
-      resource: {},
-      response
-    },
-    { status: RESOLVED }
-  )
+  return Object.assign({
+    ...(alpha ? { alpha } : {}),
+    ...(definition ? { definition } : {}),
+    ...(gears ? { gears } : {}),
+    ...(state ? { state } : {}),
+    ...(history ? { history } : {})
+  },
+  {
+    errors: []
+  },
+  response,
+  {
+    status: RESOLVED
+  })
 }
 
-export function fetchFulfilled (state = {}, { response = {} } = {}) {
+export function fetchFulfilled ({ ...state } = {}, { response = {} } = {}) {
   log('fetchFulfilled')
 
   return Object.assign(state, response, { status: RESOLVED })
 }
 
-export function storeFulfilled (state = {}, { response = {} } = {}) {
+export function storeFulfilled ({ ...state } = {}, { response = {} } = {}) {
   log('storeFulfilled')
 
   return Object.assign(state, response, { status: RESOLVED })
 }
 
-export function queryFulfilled (state = {}, { response: { errors = [], redirect = {} } = {} } = {}) { // `redirect`
+export function queryFulfilled ({ ...state } = {}, { response: { errors = [], redirect = {} } = {} } = {}) { // `redirect`
   log('queryFulfilled')
 
   return Object.assign(state, { errors, redirect, status: RESOLVED })
 }
 
-export function changeFulfilled (state = {}, { response = {} } = {}) {
+export function changeFulfilled ({ ...state } = {}, { response = {} } = {}) {
   log('changeFulfilled')
 
   return Object.assign(state, response, { status: RESOLVED })
 }
 
-export function submitFulfilled (state = {}, { response = {} } = {}) {
+export function submitFulfilled ({ ...state } = {}, { response = {} } = {}) {
   log('submitFulfilled')
 
   return Object.assign(state, response, { status: RESOLVED })

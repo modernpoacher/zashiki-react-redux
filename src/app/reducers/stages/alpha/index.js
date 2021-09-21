@@ -67,7 +67,7 @@ const ACTION = {}
 export function route ({ status = PENDING, ...state } = {}, { history, redirect = {} } = {}) {
   log('route')
 
-  return Object.assign(state, { status, history, redirect })
+  return Object.assign(state, { status }, (history ? { history } : {}), { redirect })
 }
 
 /*
@@ -77,7 +77,7 @@ export function route ({ status = PENDING, ...state } = {}, { history, redirect 
 export function mount ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) {
   log('mount')
 
-  return Object.assign(state, { status, history }, route)
+  return Object.assign(state, { status }, (history ? { history } : {}), route)
 }
 
 /*
@@ -94,10 +94,10 @@ export function fetch ({ status = PENDING, ...state } = {}, action = {}) {
  *  Get `resource` from state
  *  Set `history` `route` from action
  */
-export function store ({ status = PENDING, ...state } = {}, { history, route: { resource } = {} } = {}) {
+export function store ({ status = PENDING, ...state } = {}, { history, route: { resource = {} } = {} } = {}) {
   log('store')
 
-  return Object.assign(state, { status, history, resource })
+  return Object.assign(state, { status }, (history ? { history } : {}), { resource })
 }
 
 /*
@@ -115,31 +115,29 @@ export function query ({ status = PENDING, ...state } = {}, action = {}) {
  *  Set `history` `route` from action
  */
 export function change ({ status = PENDING, omega = [], ...state } = {}, { history, route: { resource: RESOURCE = {}, response: RESPONSE = {} } = {} } = {}) {
+  log('change')
+
   /*
-   *  While it's cheaper and faster to change just one item, Redux doesn't see it
+   *  It's cheaper and faster to change just one item but Redux won't see it
    *
    *  Instead, we change the whole array (as simply as possible)
    *
-   *  Redux prefers a flat data structure. We could make one but we don't need it yet
+   *  Redux prefers an observable flat data structure
    */
 
   return Object.assign(state, {
     status,
-    history,
+    ...(history ? { history } : {}),
     omega: omega.map((item) => {
       const {
         resource = {}
       } = item
 
-      if (equal(resource, RESOURCE)) {
-        const {
-          response = {}
-        } = item
-
-        return Object.assign(item, { response: Object.assign(response, RESPONSE) })
-      }
-
-      return item
+      return (
+        equal(RESOURCE, resource)
+          ? Object.assign(item, { response: RESPONSE })
+          : item
+      )
     })
   })
 }
@@ -151,7 +149,7 @@ export function change ({ status = PENDING, omega = [], ...state } = {}, { histo
 export function submit ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) {
   log('submit')
 
-  return Object.assign(state, { status, history }, route)
+  return Object.assign(state, { status }, (history ? { history } : {}), route)
 }
 
 /*
@@ -160,45 +158,46 @@ export function submit ({ status = PENDING, ...state } = {}, { history, route = 
 export function mountFulfilled ({ omega, gears, state, history } = {}, { response = {} } = {}) {
   log('mountFulfilled')
 
-  return Object.assign({},
-    (omega ? { omega } : {}),
-    (gears ? { gears } : {}),
-    (state ? { state } : {}),
-    (history ? { history } : {}),
-    {
-      errors: [],
-      resource: {},
-      response
-    },
-    { status: RESOLVED }
-  )
+  return Object.assign({
+    ...(omega ? { omega } : {}),
+    ...(gears ? { gears } : {}),
+    ...(state ? { state } : {}),
+    ...(history ? { history } : {})
+  },
+  {
+    errors: []
+  },
+  response,
+  {
+    status: RESOLVED
+  })
 }
 
-export function fetchFulfilled (state = {}, { response = {} } = {}) {
+export function fetchFulfilled ({ ...state } = {}, { response = {} } = {}) {
   log('fetchFulfilled')
 
   return Object.assign(state, response, { status: RESOLVED })
 }
 
-export function storeFulfilled (state = {}, { response = {} } = {}) {
+export function storeFulfilled ({ ...state } = {}, { response = {} } = {}) {
   log('storeFulfilled')
 
   return Object.assign(state, response, { status: RESOLVED })
 }
 
-export function queryFulfilled (state = {}, { response: { errors = [], redirect = {} } = {} } = {}) {
+export function queryFulfilled ({ ...state } = {}, { response: { errors = [], redirect = {} } = {} } = {}) {
   log('queryFulfilled')
 
   return Object.assign(state, { errors, redirect, status: RESOLVED })
 }
 
-export function changeFulfilled (state = {}, { response = {} } = {}) {
+export function changeFulfilled ({ ...state } = {}, { response = {} } = {}) {
   log('changeFulfilled')
 
   return Object.assign(state, response, { status: RESOLVED })
 }
 
-export function submitFulfilled (state = {}, { response = {} } = {}) {
+export function submitFulfilled ({ ...state } = {}, { response = {} } = {}) {
   log('submitFulfilled')
 
   return Object.assign(state, response, { status: RESOLVED })

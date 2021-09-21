@@ -176,7 +176,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/embark', () => 
       describe('The action `type` is `SUBMIT`', () => {
         it('returns the state', () => {
           expect(embarkReducer({ ...DEFAULT }, { type: 'MOCK SUBMIT', embark: { mockField: 'MOCK VALUE' } }))
-            .toEqual({ status: 'MOCK PENDING', mockField: 'MOCK VALUE' })
+            .toEqual({ status: 'MOCK PENDING', response: { mockField: 'MOCK VALUE' } })
         })
       })
 
@@ -301,7 +301,9 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/embark', () => 
           status: 'MOCK PENDING',
           mockStateField: 'MOCK STATE VALUE',
           history: 'MOCK HISTORY',
-          mockActionField: 'MOCK ACTION VALUE'
+          response: {
+            mockActionField: 'MOCK ACTION VALUE'
+          }
         })
     })
   })
