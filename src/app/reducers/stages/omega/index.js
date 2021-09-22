@@ -112,10 +112,10 @@ export function query ({ status = PENDING, ...state } = {}, action = {}) {
  *  Get all from state
  *  Set `history` `route` from action
  */
-export function change ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) {
+export function change ({ status = PENDING, response = {}, ...state } = {}, { history, route: { resource, response: RESPONSE = {} } = {} } = {}) {
   log('change')
 
-  return Object.assign(state, { status }, (history ? { history } : {}), route)
+  return Object.assign(state, { status }, (history ? { history } : {}), { resource, response: { ...response, ...RESPONSE } })
 }
 
 /*

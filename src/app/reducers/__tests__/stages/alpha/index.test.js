@@ -352,24 +352,24 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
 
   describe('`change()`', () => {
     it('returns the state', () => {
-      expect(change({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { history: 'MOCK HISTORY', route: { resource: 'MOCK RESOURCE', response: 'MOCK RESPONSE' } }))
+      expect(change({ ...DEFAULT, omega: [{ resource: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' } }] }, { history: 'MOCK HISTORY', route: { resource: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }, response: { mockKey: 'MOCK VALUE' } } }))
         .toEqual({
           status: 'MOCK PENDING',
-          mockStateField: 'MOCK STATE VALUE',
           history: 'MOCK HISTORY',
-          omega: []
+          omega: [{ resource: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }, response: { mockKey: 'MOCK VALUE' } }]
         })
     })
   })
 
   describe('`submit()`', () => {
     it('returns the state', () => {
-      expect(submit({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { history: 'MOCK HISTORY', route: { mockKey: 'MOCK VALUE' } }))
+      expect(submit({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { history: 'MOCK HISTORY', route: { resource: 'MOCK RESOURCE', response: 'MOCK RESPONSE' } }))
         .toEqual({
           status: 'MOCK PENDING',
           mockStateField: 'MOCK STATE VALUE',
           history: 'MOCK HISTORY',
-          mockKey: 'MOCK VALUE'
+          resource: 'MOCK RESOURCE',
+          response: 'MOCK RESPONSE'
         })
     })
   })

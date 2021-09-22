@@ -126,18 +126,24 @@ export function change ({ status = PENDING, omega = [], ...state } = {}, { histo
    */
 
   return Object.assign(state, {
-    status,
-    ...(history ? { history } : {}),
+    status
+  },
+  (history ? { history } : {}),
+  {
     omega: omega.map((item) => {
       const {
         resource = {}
       } = item
 
-      return (
-        equal(RESOURCE, resource)
-          ? Object.assign(item, { response: RESPONSE })
-          : item
-      )
+      if (equal(resource, RESOURCE)) {
+        const {
+          response = {}
+        } = item
+
+        return Object.assign(item, { response: { ...response, ...RESPONSE } })
+      }
+
+      return item
     })
   })
 }

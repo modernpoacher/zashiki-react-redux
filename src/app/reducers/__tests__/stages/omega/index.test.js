@@ -360,6 +360,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/omega', () => {
           history: 'MOCK HISTORY',
           resource: 'MOCK RESOURCE',
           response: {
+            mockStateKey: 'MOCK STATE VALUE',
             mockKey: 'MOCK VALUE'
           }
         })
@@ -368,12 +369,12 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/omega', () => {
 
   describe('`submit()`', () => {
     it('returns the state', () => {
-      expect(submit({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { history: 'MOCK HISTORY', route: { mockKey: 'MOCK VALUE' } }))
+      expect(submit({ ...DEFAULT }, { history: 'MOCK HISTORY', route: { resource: 'MOCK RESOURCE', response: 'MOCK RESPONSE' } }))
         .toEqual({
           status: 'MOCK PENDING',
-          mockStateField: 'MOCK STATE VALUE',
           history: 'MOCK HISTORY',
-          mockKey: 'MOCK VALUE'
+          resource: 'MOCK RESOURCE',
+          response: 'MOCK RESPONSE'
         })
     })
   })
