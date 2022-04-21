@@ -34,7 +34,7 @@
     "pre-commit": "npm run lint && npm run test && npm run build && git add lib"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "0.0.172",
+    "@modernpoacher/isomorphic": "0.0.173",
     "axios": "^0.26.1",
     "classnames": "^2.3.1",
     "cross-env": "^7.0.3",
@@ -43,7 +43,7 @@
     "prop-types": "^15.8.1",
     "react": "16.14.0",
     "react-dom": "16.14.0",
-    "react-redux": "^8.0.0",
+    "react-redux": "^8.0.1",
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
     "redux": "^4.2.0",
@@ -66,7 +66,7 @@
     "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.2",
     "eslint": "7.32.0",
-    "eslint-config-standard": "^16.0.3",
+    "eslint-config-standard": "^17.0.0",
     "eslint-import-resolver-babel-module": "^5.3.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
