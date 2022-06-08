@@ -34,7 +34,7 @@
     "pre-commit": "npm run lint && npm run test && npm run build && git add lib"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "0.0.202",
+    "@modernpoacher/isomorphic": "0.0.203",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "cross-env": "^7.0.3",
@@ -58,7 +58,7 @@
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
     "@babel/register": "^7.17.7",
-    "babel-jest": "^28.1.0",
+    "babel-jest": "^28.1.1",
     "babel-loader": "^8.2.5",
     "babel-plugin-module-resolver": "^4.1.0",
     "cheerio": "1.0.0-rc.3",
@@ -74,8 +74,8 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.30.0",
     "husky": "^8.0.1",
-    "jest": "^28.1.0",
-    "jest-environment-jsdom": "^28.1.0",
+    "jest": "^28.1.1",
+    "jest-environment-jsdom": "^28.1.1",
     "rimraf": "^3.0.2"
   }
 }
