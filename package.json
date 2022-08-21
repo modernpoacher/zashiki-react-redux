@@ -34,7 +34,7 @@
     "pre-commit": "npm run lint && npm run test && npm run build && git add lib"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "0.0.278",
+    "@modernpoacher/isomorphic": "0.0.279",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "cross-env": "^7.0.3",
@@ -47,7 +47,7 @@
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
     "redux": "^4.2.0",
-    "redux-saga": "^1.2.0",
+    "redux-saga": "^1.2.1",
     "shinkansen-engine": "1.0.20"
   },
   "devDependencies": {
