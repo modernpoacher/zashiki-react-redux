@@ -3,22 +3,22 @@
 exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/component renders \`forward\` 1`] = `
 <Gears
   forward={
-    Object {
+    {
       "alpha": "MOCK ALPHA",
       "omega": "MOCK OMEGA",
     }
   }
   pattern="/:alpha/:omega"
-  reverse={Object {}}
+  reverse={{}}
 />
 `;
 
 exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/component renders \`reverse\` 1`] = `
 <Gears
-  forward={Object {}}
+  forward={{}}
   pattern="/:alpha/:omega"
   reverse={
-    Object {
+    {
       "alpha": "MOCK ALPHA",
       "omega": "MOCK OMEGA",
     }
@@ -29,14 +29,14 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/co
 exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/component renders \`reverse\` and \`forward\` 1`] = `
 <Gears
   forward={
-    Object {
+    {
       "alpha": "MOCK ALPHA",
       "omega": "MOCK OMEGA",
     }
   }
   pattern="/:alpha/:omega"
   reverse={
-    Object {
+    {
       "alpha": "MOCK ALPHA",
       "omega": "MOCK OMEGA",
     }
@@ -46,8 +46,8 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/co
 
 exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/component renders 1`] = `
 <Gears
-  forward={Object {}}
+  forward={{}}
   pattern="/:alpha/:omega"
-  reverse={Object {}}
+  reverse={{}}
 />
 `;

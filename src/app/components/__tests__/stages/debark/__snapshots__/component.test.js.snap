@@ -11,9 +11,9 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/compone
 
 exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/component \`RESOLVED\` renders 1`] = `
 <Resolved
-  definitions={Array []}
+  definitions={[]}
   onSubmit={[MockFunction]}
-  token={Object {}}
+  token={{}}
 />
 `;
 

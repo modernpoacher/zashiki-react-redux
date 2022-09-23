@@ -3,30 +3,30 @@
 exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/omega renders 1`] = `
 <Omega
   definition={
-    Object {
-      "elements": Object {
-        "field": Object {
+    {
+      "elements": {
+        "field": {
           "id": "MOCK ID",
         },
         "title": "MOCK TITLE",
       },
-      "meta": Object {
+      "meta": {
         "uri": "#/",
       },
     }
   }
   description="MOCK DESCRIPTION"
-  errors={Array []}
+  errors={[]}
   onChange={[MockFunction]}
   onSubmit={[MockFunction]}
   resource={
-    Object {
+    {
       "alpha": "MOCK ALPHA",
       "omega": "MOCK OMEGA",
     }
   }
   response={
-    Object {
+    {
       "#/": "MOCK VALUE",
     }
   }
@@ -37,26 +37,26 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/omega re
     onSubmit={[Function]}
   >
     <ErrorSummarySprocket
-      errorSummary={Array []}
+      errorSummary={[]}
       onChange={[Function]}
       title="There is a problem"
     />
     <Pinion
       onChange={[Function]}
       params={
-        Object {
-          "errors": Array [],
+        {
+          "errors": [],
         }
       }
       pinion={
-        Object {
-          "elements": Object {
-            "field": Object {
+        {
+          "elements": {
+            "field": {
               "id": "MOCK ID",
             },
             "title": "MOCK TITLE",
           },
-          "meta": Object {
+          "meta": {
             "uri": "#/",
           },
         }
@@ -64,22 +64,22 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/omega re
     >
       <Field
         elements={
-          Object {
-            "field": Object {
+          {
+            "field": {
               "id": "MOCK ID",
             },
             "title": "MOCK TITLE",
           }
         }
         meta={
-          Object {
+          {
             "uri": "#/",
           }
         }
         onChange={[Function]}
         params={
-          Object {
-            "errors": Array [],
+          {
+            "errors": [],
           }
         }
       >

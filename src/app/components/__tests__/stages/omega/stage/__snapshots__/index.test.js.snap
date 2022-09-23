@@ -5,12 +5,12 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/stage Al
   className="omega"
 >
   <Omega
-    definition={Object {}}
-    errors={Array []}
+    definition={{}}
+    errors={[]}
     onChange={[MockFunction]}
     onSubmit={[MockFunction]}
-    resource={Object {}}
-    response={Object {}}
+    resource={{}}
+    response={{}}
   />
   <withRouter(Connect(Component)) />
 </div>

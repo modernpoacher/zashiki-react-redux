@@ -12,9 +12,9 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/embark/compone
 exports[`@modernpoacher/zashiki-react-redux/app/components/stages/embark/component \`RESOLVED\` renders 1`] = `
 <Resolved
   definition={
-    Object {
-      "elements": Object {},
-      "meta": Object {},
+    {
+      "elements": {},
+      "meta": {},
     }
   }
   onChange={[MockFunction]}

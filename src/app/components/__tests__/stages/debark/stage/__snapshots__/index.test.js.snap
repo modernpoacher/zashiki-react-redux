@@ -5,9 +5,9 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/stage r
   className="debark"
 >
   <Debark
-    definitions={Array []}
+    definitions={[]}
     onSubmit={[MockFunction]}
-    token={Object {}}
+    token={{}}
   />
 </div>
 `;

@@ -2,7 +2,7 @@
 
 exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/component \`PENDING\` renders 1`] = `
 <$default
-  definitions={Array []}
+  definitions={[]}
   onChange={[MockFunction]}
   onSubmit={[MockFunction]}
 />
@@ -17,7 +17,7 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/componen
 
 exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/component \`RESOLVED\` renders 1`] = `
 <Resolved
-  definitions={Array []}
+  definitions={[]}
   onChange={[MockFunction]}
   onSubmit={[MockFunction]}
 />
@@ -25,7 +25,7 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/componen
 
 exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/component renders 1`] = `
 <Resolved
-  definitions={Array []}
+  definitions={[]}
   onChange={[MockFunction]}
   onSubmit={[MockFunction]}
 />

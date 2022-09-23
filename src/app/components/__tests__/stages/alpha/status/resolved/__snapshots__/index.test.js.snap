@@ -5,7 +5,7 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/status/r
   className="alpha resolved"
 >
   <Alpha
-    definitions={Array []}
+    definitions={[]}
     onChange={[MockFunction]}
     onSubmit={[MockFunction]}
   />

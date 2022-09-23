@@ -6,15 +6,15 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/embark/stage r
 >
   <Stage
     definition={
-      Object {
-        "elements": Object {},
-        "meta": Object {},
+      {
+        "elements": {},
+        "meta": {},
       }
     }
-    errors={Array []}
+    errors={[]}
     onChange={[MockFunction]}
     onSubmit={[MockFunction]}
-    response={Object {}}
+    response={{}}
   />
 </div>
 `;

@@ -11,18 +11,18 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/componen
 
 exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/component \`RESOLVED\` renders 1`] = `
 <Resolved
-  definition={Object {}}
+  definition={{}}
   onChange={[MockFunction]}
   onSubmit={[MockFunction]}
-  resource={Object {}}
+  resource={{}}
 />
 `;
 
 exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/component renders 1`] = `
 <Resolved
-  definition={Object {}}
+  definition={{}}
   onChange={[MockFunction]}
   onSubmit={[MockFunction]}
-  resource={Object {}}
+  resource={{}}
 />
 `;

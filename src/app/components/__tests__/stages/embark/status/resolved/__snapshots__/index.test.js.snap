@@ -5,11 +5,11 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/
   className="embark resolved"
 >
   <Stage
-    definition={Object {}}
-    errors={Array []}
+    definition={{}}
+    errors={[]}
     onChange={[MockFunction]}
     onSubmit={[MockFunction]}
-    response={Object {}}
+    response={{}}
   />
 </div>
 `;

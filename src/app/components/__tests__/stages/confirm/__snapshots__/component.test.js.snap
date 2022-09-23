@@ -12,13 +12,13 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/confirm/compon
 exports[`@modernpoacher/zashiki-react-redux/app/components/stages/confirm/component \`RESOLVED\` renders 1`] = `
 <Resolved
   definition={
-    Object {
-      "elements": Object {},
-      "meta": Object {},
+    {
+      "elements": {},
+      "meta": {},
     }
   }
   onSubmit={[MockFunction]}
-  response={Object {}}
+  response={{}}
 />
 `;
 
