@@ -34,7 +34,7 @@
     "pre-commit": "npm run lint && npm run test && npm run build && git add lib"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "0.0.377",
+    "@modernpoacher/isomorphic": "0.0.379",
     "axios": "^1.2.1",
     "classnames": "^2.3.2",
     "cross-env": "^7.0.3",
@@ -51,8 +51,8 @@
     "shinkansen-engine": "1.0.20"
   },
   "devDependencies": {
-    "@babel/cli": "^7.19.3",
-    "@babel/core": "^7.20.5",
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.7",
     "@babel/eslint-parser": "^7.19.1",
     "@babel/plugin-proposal-export-default-from": "^7.18.10",
     "@babel/preset-env": "^7.20.2",
