@@ -34,7 +34,7 @@
     "pre-commit": "npm run lint && npm run test && npm run build && git add lib"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "0.0.394",
+    "@modernpoacher/isomorphic": "0.0.395",
     "axios": "^1.2.2",
     "classnames": "^2.3.2",
     "cross-env": "^7.0.3",
@@ -68,7 +68,7 @@
     "eslint": "^8.31.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-import-resolver-babel-module": "^5.3.1",
-    "eslint-plugin-import": "^2.27.2",
+    "eslint-plugin-import": "^2.27.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.32.0",
