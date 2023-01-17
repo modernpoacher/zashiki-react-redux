@@ -34,7 +34,7 @@
     "pre-commit": "npm run lint && npm run test && npm run build && git add lib"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "0.0.400",
+    "@modernpoacher/isomorphic": "0.0.401",
     "axios": "^1.2.2",
     "classnames": "^2.3.2",
     "cross-env": "^7.0.3",
@@ -60,7 +60,7 @@
     "@babel/register": "^7.18.9",
     "babel-jest": "^29.3.1",
     "babel-loader": "^9.1.2",
-    "babel-plugin-module-resolver": "4.1.0",
+    "babel-plugin-module-resolver": "^5.0.0",
     "core-js": "^3.27.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.7",
