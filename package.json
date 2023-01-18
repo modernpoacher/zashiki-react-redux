@@ -34,8 +34,8 @@
     "pre-commit": "npm run lint && npm run test && npm run build && git add lib"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "0.0.401",
-    "axios": "^1.2.2",
+    "@modernpoacher/isomorphic": "0.0.402",
+    "axios": "^1.2.3",
     "classnames": "^2.3.2",
     "cross-env": "^7.0.3",
     "debug": "^4.3.4",
@@ -75,6 +75,6 @@
     "husky": "^8.0.3",
     "jest": "^29.3.1",
     "jest-environment-jsdom": "^29.3.1",
-    "rimraf": "^4.1.0"
+    "rimraf": "^4.1.1"
   }
 }
