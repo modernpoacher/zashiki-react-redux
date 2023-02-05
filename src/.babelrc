@@ -1,6 +1,4 @@
 {
-  "compact": true,
-  "comments": false,
   "presets": [
     [
       "@babel/env",
@@ -43,5 +41,7 @@
         }
       }
     ]
-  ]
+  ],
+  "compact": true,
+  "comments": false
 }
