@@ -1,3 +1,3 @@
-export Resolved from './resolved'
-export Rejected from './rejected'
-export Pending from './pending'
+export { default as Resolved } from './resolved'
+export { default as Rejected } from './rejected'
+export { default as Pending } from './pending'
