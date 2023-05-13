@@ -24,7 +24,7 @@
   "scripts": {
     "lint": "eslint . --ext .mjs --ext .cjs --ext .jsx",
     "lint:fix": "npm run lint -- --fix",
-    "test": "cross-env NODE_ENV=test jest",
+    "test": "cross-env NODE_ENV=test jest --runInBand --collectCoverage false",
     "prepare": "npx husky install"
   },
   "dependencies": {
