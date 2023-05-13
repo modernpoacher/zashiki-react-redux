@@ -3,6 +3,8 @@ import renderer from 'react-test-renderer'
 
 import Stage from '#app/components/stages/omega/stage'
 
+import MockGears from './gears.mock.jsx'
+
 jest.mock('shinkansen-engine/components/signals', () => ({
   OMEGA_PATTERN: 'MOCK OMEGA PATTERN'
 }))
@@ -31,6 +33,9 @@ const MOCK_RESPONSE = {
 }
 
 const MOCK_ERRORS = []
+
+// jest.mock('#app/components/stages/omega/omega')
+jest.mock('#app/components/stages/omega/gears', () => (props) => <MockGears {...props} />)
 
 describe('#app/components/stages/omega/stage', () => {
   describe('Always', () => {

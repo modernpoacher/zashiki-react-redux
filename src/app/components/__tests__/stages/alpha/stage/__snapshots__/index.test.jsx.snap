@@ -45,5 +45,15 @@ exports[`#app/components/stages/alpha/stage Always renders 1`] = `
       </form>
     </li>
   </ol>
+  <ol
+    className="mock-gears"
+  >
+    <li>
+      MOCK DEFAULT PATTERN
+    </li>
+    <li>
+      MOCK DEFAULT PATTERN
+    </li>
+  </ol>
 </div>
 `;

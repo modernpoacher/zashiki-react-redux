@@ -3,6 +3,8 @@ import renderer from 'react-test-renderer'
 
 import Stage from '#app/components/stages/alpha/stage'
 
+import MockGears from './gears.mock.jsx'
+
 jest.mock('shinkansen-engine/components/signals', () => ({
   ALPHA_PATTERN: 'MOCK ALPHA PATTERN'
 }))
@@ -39,9 +41,9 @@ const MOCK_DEFINITIONS = [
   }
 ]
 
-/**
- *  Constituent component should be connected
- */
+// jest.mock('#app/components/stages/alpha/alpha')
+jest.mock('#app/components/stages/alpha/gears', () => (props) => <MockGears {...props} />)
+
 describe('#app/components/stages/alpha/stage', () => {
   describe('Always', () => {
     it('renders', () => {

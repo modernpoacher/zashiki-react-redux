@@ -1,13 +1,13 @@
-/*
 import debug from 'debug'
 
 import {
   connect
 } from 'react-redux'
 
+/*
 import {
   withRouter
-} from 'react-router'
+} from 'react-router' */
 
 import Signals from 'shinkansen-engine/components/signals'
 
@@ -27,7 +27,4 @@ function mapStateToProps ({ [ALPHA]: { status, description } = {} }) {
   return { status, description }
 }
 
-export default Component // connect(mapStateToProps)(Component) // withRouter(connect(mapStateToProps)(Component))
-*/
-
-export { default } from './component'
+export default connect(mapStateToProps)(Component) // withRouter(connect(mapStateToProps)(Component))

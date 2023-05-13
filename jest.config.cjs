@@ -5,8 +5,8 @@ module.exports = {
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: './coverage',
-  testEnvironment: 'jsdom',
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(mjs?|mts?|jsx?|js?|tsx?|ts?)$',
+  testPathIgnorePatterns: ['.*\\.mock\\.jsx$'],
   transform: {
     '^.+\\.jsx$': 'babel-jest',
     '^.+\\.mjs$': 'babel-jest'
