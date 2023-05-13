@@ -17,4 +17,4 @@
 config
 coverage
 __tests__
-jest.config.js
+jest.config.cjs

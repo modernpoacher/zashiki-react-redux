@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#app/components/stages/embark/stage Always renders 1`] = `
+<div
+  className="embark"
+>
+  <form
+    action="/embark-stage"
+    method="POST"
+    onSubmit={[Function]}
+  >
+    <div
+      className="cog text"
+    >
+      <input
+        className="input text"
+        disabled={false}
+        id="#/"
+        name="#/"
+        onChange={[Function]}
+        readOnly={false}
+        required={false}
+        type="text"
+        value=""
+      />
+    </div>
+    <button
+      type="submit"
+    >
+      Continue
+    </button>
+  </form>
+</div>
+`;

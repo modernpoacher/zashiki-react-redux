@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`@modernpoacher/zashiki-react-redux/app/components/navigation/stages/confirm renders 1`] = `
-<Link>
-  Confirm Stage
-</Link>
-`;

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#app/components/stages/confirm/title/stage Always renders 1`] = `
+<header
+  className="confirm"
+>
+  <h1>
+    MOCK TITLE
+  </h1>
+</header>
+`;

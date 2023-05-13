@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#app/components/stages/omega/title/stage Always renders 1`] = `
+<header
+  className="omega"
+>
+  <h1>
+    MOCK TITLE
+  </h1>
+</header>
+`;

@@ -7,12 +7,11 @@
   "env": {
     "node": true,
     "browser": true,
-    "es2020": true,
     "jest": true
   },
   "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "ecmaVersion": 2020,
+    "ecmaVersion": "latest",
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
@@ -24,16 +23,6 @@
   "rules": {
     "react/display-name": 0
   },
-  "overrides": [
-    {
-      "files": [
-        "src/app/transformers/stages/index.js"
-      ],
-      "rules": {
-        "import/export": "off"
-      }
-    }
-  ],
   "settings": {
     "react": {
       "version": "detect"

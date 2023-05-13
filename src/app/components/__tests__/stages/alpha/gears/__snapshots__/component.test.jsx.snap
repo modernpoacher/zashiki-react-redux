@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#app/components/stages/alpha/gears/component Always renders 1`] = `null`;
+
+exports[`#app/components/stages/alpha/gears/component renders \`forward\` 1`] = `
+<ul
+  className="shinkansen-gears"
+>
+  <li
+    className="shinkansen-gears-forward"
+  >
+    <a
+      className="mock-link"
+      href={
+        {
+          "pathname": "/MOCK ALPHA/MOCK OMEGA",
+        }
+      }
+    >
+      Forward
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`#app/components/stages/alpha/gears/component renders \`reverse\` 1`] = `
+<ul
+  className="shinkansen-gears"
+>
+  <li
+    className="shinkansen-gears-reverse"
+  >
+    <a
+      className="mock-link"
+      href={
+        {
+          "pathname": "/MOCK ALPHA/MOCK OMEGA",
+        }
+      }
+    >
+      Reverse
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`#app/components/stages/alpha/gears/component renders \`reverse\` and \`forward\` 1`] = `
+<ul
+  className="shinkansen-gears"
+>
+  <li
+    className="shinkansen-gears-reverse"
+  >
+    <a
+      className="mock-link"
+      href={
+        {
+          "pathname": "/MOCK ALPHA/MOCK OMEGA",
+        }
+      }
+    >
+      Reverse
+    </a>
+  </li>
+  <li
+    className="shinkansen-gears-forward"
+  >
+    <a
+      className="mock-link"
+      href={
+        {
+          "pathname": "/MOCK ALPHA/MOCK OMEGA",
+        }
+      }
+    >
+      Forward
+    </a>
+  </li>
+</ul>
+`;

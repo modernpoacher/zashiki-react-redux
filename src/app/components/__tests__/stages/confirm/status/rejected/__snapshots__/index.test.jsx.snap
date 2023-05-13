@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#app/components/stages/confirm/status/rejected \`code\` is an integer renders 1`] = `
+<div
+  className="confirm rejected"
+>
+  <h2>
+    1
+    : 
+    MOCK NAME
+  </h2>
+</div>
+`;
+
+exports[`#app/components/stages/confirm/status/rejected \`message\` is a string renders 1`] = `
+<div
+  className="confirm rejected"
+>
+  <h2>
+    MOCK NAME
+  </h2>
+  <p>
+    MOCK MESSAGE
+  </p>
+</div>
+`;
+
+exports[`#app/components/stages/confirm/status/rejected Always renders 1`] = `
+<div
+  className="confirm rejected"
+>
+  <h2>
+    MOCK NAME
+  </h2>
+</div>
+`;

@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#app/components/stages/omega/status/resolved Always renders 1`] = `
+<div
+  className="omega resolved"
+>
+  <form
+    action="/MOCK ALPHA/MOCK OMEGA"
+    method="POST"
+    onSubmit={[Function]}
+  >
+    <div
+      className="cog text"
+    >
+      <label
+        className="title text"
+        htmlFor="MOCK ID"
+      >
+        <span
+          className="text-content"
+        >
+          MOCK TITLE
+        </span>
+      </label>
+      <input
+        className="input text"
+        disabled={false}
+        id="MOCK ID"
+        name="MOCK ID"
+        onChange={[Function]}
+        readOnly={false}
+        required={false}
+        type="text"
+        value=""
+      />
+    </div>
+    <button
+      type="submit"
+    >
+      Continue
+    </button>
+  </form>
+</div>
+`;

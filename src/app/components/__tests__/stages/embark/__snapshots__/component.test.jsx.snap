@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#app/components/stages/embark/component \`PENDING\` renders 1`] = `"MOCK PENDING"`;
+
+exports[`#app/components/stages/embark/component \`REJECTED\` renders 1`] = `"MOCK REJECTED"`;
+
+exports[`#app/components/stages/embark/component \`RESOLVED\` renders 1`] = `"MOCK RESOLVED"`;
+
+exports[`#app/components/stages/embark/component Always Always renders 1`] = `"MOCK RESOLVED"`;

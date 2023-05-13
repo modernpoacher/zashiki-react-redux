@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#app/components/stages/omega/count/component Always renders 1`] = `
+<h3>
+  2
+   of 
+  2
+</h3>
+`;

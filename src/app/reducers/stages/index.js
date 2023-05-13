@@ -1,5 +1,0 @@
-export { default as alpha } from './alpha'
-export { default as omega } from './omega'
-export { default as embark } from './embark'
-export { default as debark } from './debark'
-export { default as confirm } from './confirm'

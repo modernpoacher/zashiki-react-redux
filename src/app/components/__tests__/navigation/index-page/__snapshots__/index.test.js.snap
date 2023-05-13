@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`@modernpoacher/zashiki-react-redux/app/components/navigation/index-page renders 1`] = `
-<Link
-  to="/"
->
-  Index Page
-</Link>
-`;

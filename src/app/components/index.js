@@ -1,7 +1,0 @@
-export { default as Zashiki } from './zashiki'
-export { default as Alpha } from './stages/alpha'
-export { default as Omega } from './stages/omega'
-export { default as Embark } from './stages/embark'
-export { default as Debark } from './stages/debark'
-export { default as Confirm } from './stages/confirm'
-export { default as Navigation } from './navigation'

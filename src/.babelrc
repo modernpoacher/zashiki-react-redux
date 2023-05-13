@@ -1,6 +1,4 @@
 {
-  "compact": true,
-  "comments": false,
   "presets": [
     [
       "@babel/env",
@@ -29,18 +27,6 @@
       "@babel/proposal-class-properties",
       {
         "loose": false
-      }
-    ],
-    [
-      "module-resolver",
-      {
-        "root": [
-          "."
-        ],
-        "cwd": "babelrc",
-        "alias": {
-          "@modernpoacher/zashiki-react-redux": "."
-        }
       }
     ]
   ]

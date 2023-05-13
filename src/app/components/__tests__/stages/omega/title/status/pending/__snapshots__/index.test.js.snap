@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/title/status/pending renders 1`] = `
-<header
-  className="omega pending"
-/>
-`;

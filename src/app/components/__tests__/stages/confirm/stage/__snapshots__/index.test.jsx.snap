@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#app/components/stages/confirm/stage Always renders 1`] = `
+<div
+  className="confirm"
+>
+  <h2>
+    Confirmation
+  </h2>
+</div>
+`;
