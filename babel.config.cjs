@@ -218,7 +218,11 @@ const plugins = [
         'shinkansen-engine/components/pinion/fieldset': './node_modules/shinkansen-engine/src/components/pinion/fieldset/index.cjs',
         'shinkansen-engine/components/pinion': './node_modules/shinkansen-engine/src/components/pinion/index.cjs',
         'shinkansen-engine/engine': './node_modules/shinkansen-engine/src/engine/index.cjs',
-        'shinkansen-engine': './node_modules/shinkansen-engine/src/index.cjs'
+        'shinkansen-engine': './node_modules/shinkansen-engine/src/index.cjs',
+        /**
+         *  Jest
+         */
+        'zashiki-react-redux/mocks/shinkansen-engine/components/gears': './src/app/components/__mocks__/shinkansen-engine/components/gears.mock.jsx'
       }
     }
   ]

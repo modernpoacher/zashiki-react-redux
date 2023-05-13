@@ -40,15 +40,5 @@ exports[`#app/components/stages/omega/stage Always renders 1`] = `
       Continue
     </button>
   </form>
-  <ol
-    className="mock-gears"
-  >
-    <li>
-      MOCK DEFAULT PATTERN
-    </li>
-    <li>
-      MOCK DEFAULT PATTERN
-    </li>
-  </ol>
 </div>
 `;

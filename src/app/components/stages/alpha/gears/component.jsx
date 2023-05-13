@@ -17,12 +17,13 @@ const Component = ({ reverse, forward }) => (
   <Gears
     reverse={reverse}
     forward={forward}
-    pattern={ALPHA_PATTERN} />
+    pattern={ALPHA_PATTERN}
+  />
 )
 
 Component.propTypes = {
-  reverse: PropTypes.object,
-  forward: PropTypes.object
+  reverse: PropTypes.shape(),
+  forward: PropTypes.shape()
 }
 
 export default Component

@@ -1,6 +1,8 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
+import MockGears from 'zashiki-react-redux/mocks/shinkansen-engine/components/gears'
+
 import Resolved from '#app/components/stages/alpha/status/resolved'
 
 const MOCK_DEFINITION = {
@@ -34,6 +36,8 @@ const MOCK_DEFINITIONS = [
     errors: MOCK_ERRORS
   }
 ]
+
+jest.mock('#app/components/stages/alpha/gears', () => (props) => <MockGears {...props} />)
 
 describe('#app/components/stages/alpha/status/resolved', () => {
   describe('Always', () => {

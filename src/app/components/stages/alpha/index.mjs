@@ -1,15 +1,12 @@
-/*
 import debug from 'debug'
 
 import {
   connect
 } from 'react-redux'
 
-import {
-  withRouter
-} from 'react-router'
-
 import Signals from 'shinkansen-engine/components/signals'
+
+import withRouter from '#app/router/with-router'
 
 import transform from '#app/transformers/stages/alpha'
 
@@ -66,7 +63,4 @@ function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(Component) // withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(Component))
-*/
-
-export { default } from './component.jsx'
+export default withRouter(connect(mapStateToProps, mapDispatchToProps, mergeProps)(Component))

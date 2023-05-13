@@ -1,40 +1,57 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
 export function renderMockGear ({ alpha, omega } = {}, pattern = 'MOCK DEFAULT PATTERN') {
   if (alpha && omega) {
     return (
-      <li>{alpha} - {omega} - {pattern}</li>
+      <Fragment>
+        <dt>Alpha</dt>
+        <dd>{alpha}</dd>
+        <dt>Omega</dt>
+        <dd>{omega}</dd>
+        <dt>Pattern</dt>
+        <dd>{pattern}</dd>
+      </Fragment>
     )
   }
 
   if (alpha) {
     return (
-      <li>{alpha} - {pattern}</li>
+      <Fragment>
+        <dt>Alpha</dt>
+        <dd>{alpha}</dd>
+        <dt>Pattern</dt>
+        <dd>{pattern}</dd>
+      </Fragment>
     )
   }
 
   if (omega) {
     return (
-      <li>{omega} - {pattern}</li>
+      <Fragment>
+        <dt>Omega</dt>
+        <dd>{omega}</dd>
+        <dt>Pattern</dt>
+        <dd>{pattern}</dd>
+      </Fragment>
     )
   }
-
-  return (
-    <li>{pattern}</li>
-  )
 }
 
 export default function MockGears ({ reverse, forward, pattern }) {
   const reverseGear = renderMockGear(reverse, pattern)
   const forwardGear = renderMockGear(forward, pattern)
 
-  return (
-    <ol className='mock-gears'>
-      {reverseGear}
-      {forwardGear}
-    </ol>
-  )
+  if (reverseGear || forwardGear) {
+    return (
+      <dl className='mock-gears'>
+        {reverseGear}
+        {forwardGear}
+      </dl>
+    )
+  }
+
+  return null
 }
 
 MockGears.propTypes = {

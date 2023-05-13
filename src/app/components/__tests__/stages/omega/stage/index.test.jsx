@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 
 import Stage from '#app/components/stages/omega/stage'
 
-import MockGears from './gears.mock.jsx'
+import MockGears from 'zashiki-react-redux/mocks/shinkansen-engine/components/gears'
 
 jest.mock('shinkansen-engine/components/signals', () => ({
   OMEGA_PATTERN: 'MOCK OMEGA PATTERN'
