@@ -11,10 +11,6 @@ describe('#app/components/zashiki/component', () => {
   const MOCK_MATCH = { params: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' } }
   const MOCK_CHILDREN = []
 
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   describe('Always', () => {
     const component = (
       <Zashiki

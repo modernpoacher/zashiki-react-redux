@@ -26,10 +26,6 @@ describe('#app/common/get-debark-route', () => {
       returnValue = getDebarkRoute()
     })
 
-    afterEach(() => {
-      jest.clearAllMocks()
-    })
-
     it('invokes `Rails.to`', () => {
       expect(Rails.to)
         .toBeCalledWith({ 'MOCK DEBARK': 'MOCK DEBARK STAGE' }, 'MOCK DEBARK PATTERN')

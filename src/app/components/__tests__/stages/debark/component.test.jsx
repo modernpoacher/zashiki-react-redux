@@ -36,10 +36,6 @@ describe('#app/components/stages/debark/component', () => {
     }
   }
 
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   describe('Always', () => {
     const component = (
       <Debark

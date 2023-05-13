@@ -51,10 +51,6 @@ describe('#app/components/stages/alpha/component', () => {
     }
   }
 
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   describe('Always', () => {
     it('renders', () => {
       const component = (

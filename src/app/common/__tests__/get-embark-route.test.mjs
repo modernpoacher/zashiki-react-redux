@@ -26,10 +26,6 @@ describe('#app/common/get-embark-route', () => {
       returnValue = getEmbarkRoute()
     })
 
-    afterEach(() => {
-      jest.clearAllMocks()
-    })
-
     it('invokes `Rails.to`', () => {
       expect(Rails.to)
         .toBeCalledWith({ 'MOCK EMBARK': 'MOCK EMBARK STAGE' }, 'MOCK EMBARK PATTERN')

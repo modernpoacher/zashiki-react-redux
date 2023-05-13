@@ -52,10 +52,6 @@ describe('#app/common/get-resource-route', () => {
       })
     })
 
-    afterEach(() => {
-      jest.clearAllMocks()
-    })
-
     describe('With parameters', () => {
       describe('`alpha` is an object', () => {
         let returnValue

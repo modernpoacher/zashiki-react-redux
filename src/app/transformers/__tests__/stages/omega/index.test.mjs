@@ -30,10 +30,6 @@ describe('#app/transformers/stages/omega', () => {
 
   describe('`transform()`', () => {
     describe('With parameters', () => {
-      afterEach(() => {
-        jest.clearAllMocks()
-      })
-
       describe('`status` is `REJECTED`', () => {
         it('invokes `transformRejected`', () => {
           transform({ status: 'MOCK REJECTED' })

@@ -34,10 +34,6 @@ describe('#app/transformers/stages/embark', () => {
 
   describe('`transform()`', () => {
     describe('With parameters', () => {
-      afterEach(() => {
-        jest.clearAllMocks()
-      })
-
       describe('`status` is `REJECTED`', () => {
         it('invokes `transformRejected`', () => {
           transform({ status: 'MOCK REJECTED' })
@@ -65,8 +61,6 @@ describe('#app/transformers/stages/embark', () => {
         let returnValue
 
         beforeEach(() => {
-          jest.clearAllMocks()
-
           returnValue = transform({
             status: 'MOCK STATUS',
             definition: 'MOCK DEFINITION',
@@ -94,8 +88,6 @@ describe('#app/transformers/stages/embark', () => {
           let returnValue
 
           beforeEach(() => {
-            jest.clearAllMocks()
-
             returnValue = transform({
               status: 'MOCK STATUS',
               definition: 'MOCK DEFINITION'

@@ -31,10 +31,6 @@ describe('#app/transformers/stages/debark', () => {
 
   describe('`transform()`', () => {
     describe('With parameters', () => {
-      afterEach(() => {
-        jest.clearAllMocks()
-      })
-
       describe('`status` is `REJECTED`', () => {
         it('invokes `transformRejected`', () => {
           transform({ status: 'MOCK REJECTED' })
@@ -48,8 +44,6 @@ describe('#app/transformers/stages/debark', () => {
         let returnValue
 
         beforeEach(() => {
-          jest.clearAllMocks()
-
           returnValue = transform({
             status: 'MOCK STATUS'
           })
@@ -74,8 +68,6 @@ describe('#app/transformers/stages/debark', () => {
           let returnValue
 
           beforeEach(() => {
-            jest.clearAllMocks()
-
             returnValue = transform({
               status: 'MOCK STATUS',
               alpha: {},

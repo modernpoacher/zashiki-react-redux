@@ -39,10 +39,6 @@ describe('#app/components/stages/confirm/component', () => {
     }
   }
 
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   describe('Always', () => {
     const component = (
       <Confirm

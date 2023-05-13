@@ -39,10 +39,6 @@ describe('#app/components/stages/embark/component', () => {
     }
   }
 
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   describe('Always', () => {
     const component = (
       <Embark

@@ -26,10 +26,6 @@ describe('#app/common/get-confirm-route', () => {
       returnValue = getConfirmRoute()
     })
 
-    afterEach(() => {
-      jest.clearAllMocks()
-    })
-
     it('invokes `Rails.to`', () => {
       expect(Rails.to)
         .toBeCalledWith({ 'MOCK CONFIRM': 'MOCK CONFIRM STAGE' }, 'MOCK CONFIRM PATTERN')

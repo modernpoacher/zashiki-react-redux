@@ -53,10 +53,6 @@ describe('#app/components/stages/omega/component', () => {
     }
   }
 
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   describe('Always', () => {
     it('renders', () => {
       const component = (
