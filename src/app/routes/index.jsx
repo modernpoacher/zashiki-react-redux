@@ -11,12 +11,12 @@ import getEmbarkRoute from '#app/common/get-embark-route'
 import getDebarkRoute from '#app/common/get-debark-route'
 import getConfirmRoute from '#app/common/get-confirm-route'
 
-import IndexPage from './index-page'
-import EmbarkStagePage from './stages/embark'
-import DebarkStagePage from './stages/debark'
-import ConfirmStagePage from './stages/confirm'
-import AlphaStagePage from './stages/alpha'
-import OmegaStagePage from './stages/omega'
+import IndexPage from './index-page/index.jsx'
+import EmbarkStagePage from './stages/embark/index.jsx'
+import DebarkStagePage from './stages/debark/index.jsx'
+import ConfirmStagePage from './stages/confirm/index.jsx'
+import AlphaStagePage from './stages/alpha/index.jsx'
+import OmegaStagePage from './stages/omega/index.jsx'
 
 const {
   ALPHA_PATTERN,
