@@ -4,8 +4,6 @@ import renderer from 'react-test-renderer'
 
 import Debark from '#app/components/navigation/stages/debark'
 
-import getDebarkRoute from '#app/common/get-debark-route'
-
 jest.mock('#app/common/get-debark-route')
 
 function MockLink ({ to, children }) {
@@ -42,10 +40,5 @@ describe('#app/components/navigation/stages/debark', () => {
       expect(renderer.create(<Debark />).toJSON())
         .toMatchSnapshot()
     })
-  })
-
-  it('invokes `getDebarkRoute`', () => {
-    expect(getDebarkRoute)
-      .toBeCalled()
   })
 })

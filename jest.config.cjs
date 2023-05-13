@@ -2,6 +2,7 @@ module.exports = {
   bail: true,
   verbose: true,
   rootDir: '.',
+  clearMocks: true,
   collectCoverage: true,
   coverageDirectory: './coverage',
   testEnvironment: 'jsdom',
@@ -12,7 +13,6 @@ module.exports = {
   },
   moduleFileExtensions: ['js', 'jsx', 'mjs', 'cjs'],
   transformIgnorePatterns: [
-    '\\/(?!src)\\/',
     '/node_modules\\/(?!shinkansen-cogs)\\/',
     '/node_modules\\/(?!shinkansen-sprockets)\\/',
     '/node_modules\\/(?!shinkansen-gears)\\/',

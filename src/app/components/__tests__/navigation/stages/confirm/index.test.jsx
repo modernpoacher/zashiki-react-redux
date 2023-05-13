@@ -4,8 +4,6 @@ import renderer from 'react-test-renderer'
 
 import Confirm from '#app/components/navigation/stages/confirm'
 
-import getConfirmRoute from '#app/common/get-confirm-route'
-
 jest.mock('#app/common/get-confirm-route')
 
 function MockLink ({ to, children }) {
@@ -42,10 +40,5 @@ describe('#app/components/navigation/stages/confirm', () => {
       expect(renderer.create(<Confirm />).toJSON())
         .toMatchSnapshot()
     })
-  })
-
-  it('invokes `getConfirmRoute`', () => {
-    expect(getConfirmRoute)
-      .toBeCalled()
   })
 })

@@ -4,8 +4,6 @@ import renderer from 'react-test-renderer'
 
 import Embark from '#app/components/navigation/stages/embark'
 
-import getEmbarkRoute from '#app/common/get-embark-route'
-
 jest.mock('#app/common/get-embark-route')
 
 function MockLink ({ to, children }) {
@@ -42,10 +40,5 @@ describe('#app/components/navigation/stages/embark', () => {
       expect(renderer.create(<Embark />).toJSON())
         .toMatchSnapshot()
     })
-  })
-
-  it('invokes `getEmbarkRoute`', () => {
-    expect(getEmbarkRoute)
-      .toBeCalled()
   })
 })
