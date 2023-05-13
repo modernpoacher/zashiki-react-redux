@@ -74,8 +74,6 @@ describe('#app/components/stages/omega/gears/component', () => {
       />
     )
 
-    console.log(renderer.create(component).toJSON())
-
     expect(renderer.create(component).toJSON())
       .toMatchSnapshot()
   })
