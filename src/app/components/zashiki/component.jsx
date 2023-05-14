@@ -122,7 +122,7 @@ export default class Zashiki extends Component {
 
 Zashiki.propTypes = {
   onMount: PropTypes.func.isRequired,
-  match: PropTypes.object.isRequired,
+  match: PropTypes.shape().isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element

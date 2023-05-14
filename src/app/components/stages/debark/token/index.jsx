@@ -14,7 +14,7 @@ const Token = ({ token }) => (
 )
 
 Token.propTypes = {
-  token: PropTypes.object.isRequired
+  token: PropTypes.shape().isRequired
 }
 
 export default Token

@@ -39,9 +39,9 @@ export default class Stage extends Component {
 }
 
 Stage.propTypes = {
-  definition: PropTypes.object.isRequired,
-  response: PropTypes.object.isRequired,
-  errors: PropTypes.array.isRequired,
+  definition: PropTypes.shape().isRequired,
+  response: PropTypes.shape().isRequired,
+  errors: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
 }
