@@ -132,10 +132,13 @@ const plugins = [
         /**
          *  Jest - Pinion
          */
-        'shinkansen-pinion/components/check-answers': './node_modules/shinkansen-pinion/src/components/check-answers/index.cjs',
-        'shinkansen-pinion/components/common/text-content': './node_modules/shinkansen-pinion/src/components/common/text-content/index.cjs',
-        'shinkansen-pinion/components/common': './node_modules/shinkansen-pinion/src/components/common/index.mjs',
-        'shinkansen-pinion/components/error-summary': './node_modules/shinkansen-pinion/src/components/error-summary/index.cjs',
+        'shinkansen-pinion/components/sprockets/check-answers': './node_modules/shinkansen-pinion/src/components/sprockets/check-answers/index.cjs',
+        'shinkansen-pinion/components/sprockets/error-summary': './node_modules/shinkansen-pinion/src/components/sprockets/error-summary/index.cjs',
+        'shinkansen-pinion/components/sprockets/fieldset': './node_modules/shinkansen-pinion/src/components/sprockets/fieldset/index.cjs',
+        'shinkansen-pinion/components/cogs/radio': './node_modules/shinkansen-pinion/src/components/cogs/radio/index.cjs',
+        'shinkansen-pinion/components/cogs/select': './node_modules/shinkansen-pinion/src/components/cogs/select/index.cjs',
+        'shinkansen-pinion/components/cogs/text': './node_modules/shinkansen-pinion/src/components/cogs/text/index.cjs',
+        'shinkansen-pinion/components/cogs': './node_modules/shinkansen-pinion/src/components/cogs/index.mjs',
         'shinkansen-pinion/components': './node_modules/shinkansen-pinion/src/components/index.mjs',
         'shinkansen-pinion/transformers/check-answers/get-answer-title': './node_modules/shinkansen-pinion/src/transformers/check-answers.mjs',
         'shinkansen-pinion/transformers/check-answers/get-answer-value-for-type-array': './node_modules/shinkansen-pinion/src/transformers/check-answers.mjs',
