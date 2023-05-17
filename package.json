@@ -28,7 +28,7 @@
     "prepare": "npx husky install"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "1.0.19",
+    "@modernpoacher/isomorphic": "1.0.20",
     "axios": "^1.4.0",
     "classnames": "^2.3.2",
     "cross-env": "^7.0.3",
