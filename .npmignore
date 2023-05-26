@@ -21,7 +21,6 @@
 # NVM
 .nvmrc
 
-README.md
 coverage
 __tests__
 __mocks__
