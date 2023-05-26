@@ -2,10 +2,14 @@
 
 .circleci
 .github
+.husky
 
 .editorconfig
 .eslintignore
 .eslintrc
+
+.gitattributes
+.gitignore
 
 .depsrc
 .browserslistrc
@@ -14,7 +18,12 @@
 .npmignore
 .npmrc
 
-config
+# NVM
+.nvmrc
+
+README.md
 coverage
 __tests__
+__mocks__
 jest.config.cjs
+test
