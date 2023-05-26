@@ -52,7 +52,6 @@ describe('#app/actions/stages/embark', () => {
   const MOCK_REDIRECT = {}
   const MOCK_ROUTE = {}
   const MOCK_HISTORY = {}
-  const MOCK_RESOURCE = {}
   const MOCK_RESPONSE = {}
   const MOCK_ERROR = {}
 

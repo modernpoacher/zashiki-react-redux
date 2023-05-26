@@ -238,7 +238,7 @@ module.exports = (api) => {
     presets,
     plugins,
     ignore: [
-      /node_modules\/(?!shinkansen|@sequencemedia\/react-render|@sequencemedia\/react-redux-render|@sequencemedia\/react-router-render|@sequencemedia\/react-router-redux-render|@modernpoacher\/isomorphic)/,
+      /node_modules\/(?!shinkansen|@sequencemedia\/react-render|@sequencemedia\/react-redux-render|@sequencemedia\/react-router-render|@sequencemedia\/react-router-redux-render|@modernpoacher\/isomorphic)/
     ]
   }
 }
