@@ -19,7 +19,7 @@ jobs:
           name: Test
           command: |
             npm run test:mocha
-            npm run test -- --runInBand --collectCoverage false # --maxWorkers 2
+            npm run test:jest -- --runInBand --collectCoverage false # --maxWorkers 2
   publish:
     docker:
       - image: cimg/node:lts
