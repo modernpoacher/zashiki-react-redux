@@ -48,9 +48,9 @@ import {
   MOUNT as ZASHIKI_MOUNT
 } from '#app/actions/zashiki'
 
-const log = debug('zashiki-react-redux:app:reducers:stages:omega')
+const log = debug('zashiki-react-redux/app/reducers/stages/omega')
 
-log('`omega` is awake')
+log('`zashiki` is awake')
 
 const STATE = {
   status: PENDING

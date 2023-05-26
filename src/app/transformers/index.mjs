@@ -2,20 +2,23 @@ import {
   REJECTED
 } from '#app/common'
 
-export const transformError = ({
+export function transformError ({
   code,
   name = 'Application Error',
   message
-} = {}) => ({
-  ...(
-    code ? { code } : {}
-  ),
-  name,
-  ...(
-    message ? { message } : {}
-  )
-})
+} = {}) {
+  return {
+    ...(code ? { code } : {}),
+    name,
+    ...(message ? { message } : {})
+  }
+}
 
-export const transformRejected = (status = REJECTED, { exception = {} } = {}) => ({ status, exception: transformError(exception) })
+export function transformRejected (status = REJECTED, { exception = {} } = {}) {
+  return {
+    status,
+    exception: transformError(exception)
+  }
+}
 
-export * as stages from './stages'
+export * as stages from './stages/index.mjs'

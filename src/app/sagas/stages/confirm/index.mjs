@@ -37,7 +37,9 @@ import { transformError } from '#app/transformers'
 
 import getPathname from '#app/common/get-pathname'
 
-const log = debug('zashiki-react-redux:app:sagas:stages:confirm')
+const log = debug('zashiki-react-redux/app/sagas/stages/confirm')
+
+log('`zashiki` is awake')
 
 const {
   CONFIRM

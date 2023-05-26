@@ -4,9 +4,9 @@ import debug from 'debug'
 
 import Embark from '#app/components/stages/embark/embark'
 
-const log = debug('zashiki-react-redux:app:components:stages:embark:stage')
+const log = debug('zashiki-react-redux/app/components/stages/embark/stage')
 
-log('`Embark Stage` is awake')
+log('`zashiki` is awake')
 
 export default class Stage extends Component {
   state = {}

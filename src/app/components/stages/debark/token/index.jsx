@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import debug from 'debug'
 
-const log = debug('zashiki-react-redux:app:components:stages:debark:token')
+const log = debug('zashiki-react-redux/app/components/stages/debark/token')
 
-log('`Debark Token` is awake')
+log('`zashiki` is awake')
 
 const Token = ({ token }) => (
   Object.entries(token)

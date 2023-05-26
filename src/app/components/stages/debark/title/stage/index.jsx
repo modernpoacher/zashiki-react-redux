@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import debug from 'debug'
 
-const log = debug('zashiki-react-redux:app:components:stages:debark:title:stage')
+const log = debug('zashiki-react-redux/app/components/stages/debark/title/stage')
 
-log('`Debark Title` is awake')
+log('`zashiki` is awake')
 
 export default class Title extends Component {
   getClassName () {

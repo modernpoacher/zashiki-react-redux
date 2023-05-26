@@ -8,9 +8,9 @@ import Token from '#app/components/stages/debark/token'
 
 import getDebarkRoute from '#app/common/get-debark-route'
 
-const log = debug('zashiki-react-redux:app:components:stages:debark:stage')
+const log = debug('zashiki-react-redux/app/components/stages/debark/stage')
 
-log('`Debark Stage` is awake')
+log('`zashiki` is awake')
 
 const Debark = ({ definitions, token, onSubmit }) => (
   <form method='POST' action={getDebarkRoute()} onSubmit={(event) => {

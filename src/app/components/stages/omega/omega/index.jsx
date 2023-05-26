@@ -7,9 +7,9 @@ import ErrorSummary from 'shinkansen-engine/components/pinion/error-summary'
 
 import getResourceRoute from '#app/common/get-resource-route'
 
-const log = debug('zashiki-react-redux:app:components:stages:omega:omega')
+const log = debug('zashiki-react-redux/app/components/stages/omega/omega')
 
-log('`Omega Stage` is awake')
+log('`zashiki` is awake')
 
 export default function Omega ({ resource, onSubmit, response, errors, definition, onChange }) {
   return (

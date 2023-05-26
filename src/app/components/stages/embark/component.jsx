@@ -12,12 +12,12 @@ import Resolved from './status/resolved/index.jsx'
 import Rejected from './status/rejected/index.jsx'
 import Pending from './status/pending/index.jsx'
 
-const log = debug('zashiki-react-redux:app:components:stages:embark:component')
+const log = debug('zashiki-react-redux/app/components/stages/embark/component')
+
+log('`zashiki` is awake')
 
 export const getEmbarkProps = ({ definition, response, errors, onChange, onSubmit }) => ({ definition, response, errors, onChange, onSubmit })
 export const getErrorProps = ({ exception }) => exception
-
-log('`Stage` is awake')
 
 export default class Stage extends Component {
   state = {}

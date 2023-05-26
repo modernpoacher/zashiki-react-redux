@@ -8,7 +8,7 @@ const {
   }
 } = process
 
-log('`zashiki-react-redux` is awake')
+log('`zashiki` is awake')
 
 function env () {
   log({ NODE_ENV })

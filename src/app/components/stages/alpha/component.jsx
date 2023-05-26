@@ -14,12 +14,12 @@ import Resolved from './status/resolved/index.jsx'
 import Rejected from './status/rejected/index.jsx'
 import Pending from './status/pending/index.jsx'
 
-const log = debug('zashiki-react-redux:app:components:stages:alpha:component')
+const log = debug('zashiki-react-redux/app/components/stages/alpha/component')
+
+log('`zashiki` is awake')
 
 export const getStageProps = ({ state, resource, definitions, gears, onChange, onSubmit }) => ({ state, resource, definitions, gears, onChange, onSubmit })
 export const getErrorProps = ({ exception }) => exception
-
-log('`Alpha Stage` is awake')
 
 export default class Stage extends Zashiki {
   render () {

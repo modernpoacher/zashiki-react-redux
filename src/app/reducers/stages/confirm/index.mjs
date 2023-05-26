@@ -33,9 +33,9 @@ import {
   MOUNT as ZASHIKI_MOUNT
 } from '#app/actions/zashiki'
 
-const log = debug('zashiki-react-redux:app:reducers:stages:confirm')
+const log = debug('zashiki-react-redux/app/reducers/stages/confirm')
 
-log('`confirm` is awake')
+log('`zashiki` is awake')
 
 const STATE = {
   status: PENDING

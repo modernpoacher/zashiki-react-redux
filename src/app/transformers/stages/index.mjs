@@ -1,4 +1,4 @@
-export * as alpha from './alpha'
-export * as embark from './embark'
-export * as debark from './debark'
-export * as omega from './omega'
+export * as embark from './embark/index.mjs'
+export * as alpha from './alpha/index.mjs'
+export * as omega from './omega/index.mjs'
+export * as debark from './debark/index.mjs'

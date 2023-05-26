@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import equal from 'fast-deep-equal'
 import debug from 'debug'
 
-const log = debug('zashiki-react-redux:app:components:zashiki:component')
+const log = debug('zashiki-react-redux/app/components/zashiki/component')
+
+log('`zashiki` is awake')
 
 export const resource = (alpha, omega) => ({ ...(alpha ? { alpha, ...(omega ? { omega } : {}) } : {}) })
 

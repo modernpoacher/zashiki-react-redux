@@ -12,9 +12,9 @@ import {
   change
 } from '#app/actions/zashiki'
 
-import Component from './component.jsx'
+import Component from './component.cjs'
 
-const log = debug('zashiki-react-redux:app:components:zashiki')
+const log = debug('zashiki-react-redux/app/components/zashiki')
 
 log('`zashiki` is awake')
 

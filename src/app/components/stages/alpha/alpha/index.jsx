@@ -7,9 +7,9 @@ import ErrorSummary from 'shinkansen-engine/components/pinion/error-summary'
 
 import getResourceRoute from '#app/common/get-resource-route'
 
-const log = debug('zashiki-react-redux:app:components:stages:alpha:alpha')
+const log = debug('zashiki-react-redux/app/components/stages/alpha/alpha')
 
-log('`Alpha Stage` is awake')
+log('`zashiki` is awake')
 
 export default function Alpha ({ definitions, onSubmit, onChange }) {
   return (

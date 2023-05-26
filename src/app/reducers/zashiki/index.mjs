@@ -150,7 +150,7 @@ export function queryRejected ({ history } = {}, { error = {} } = {}) {
   return Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
 }
 
-const log = debug('zashiki-react-redux:app:reducers:zashiki')
+const log = debug('zashiki-react-redux/app/reducers/zashiki')
 
 log('`zashiki` is awake')
 

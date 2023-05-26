@@ -8,11 +8,11 @@ import Signals from 'shinkansen-engine/components/signals'
 
 import withRouter from '#app/router/with-router'
 
-import Component from './component.jsx'
+import Component from './component.cjs'
 
-const log = debug('zashiki-react-redux:app:components:stages:confirm:title')
+const log = debug('zashiki-react-redux/app/components/stages/confirm/title')
 
-log('`confirm` is awake')
+log('`zashiki` is awake')
 
 const {
   CONFIRM

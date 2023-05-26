@@ -11,6 +11,8 @@ import Router from '#app/router'
 
 const log = debug('zashiki-react-redux')
 
+log('`zashiki` is awake')
+
 const state = JSON.parse(document.getElementById('initial-state').textContent || '{}')
 const store = configureStore(state)
 
@@ -21,8 +23,6 @@ const App = (
 )
 
 const app = document.getElementById('app')
-
-log('`zashiki` is awake')
 
 ReactDOM.hydrate(
   App,

@@ -12,12 +12,12 @@ import Resolved from './status/resolved/index.jsx'
 import Rejected from './status/rejected/index.jsx'
 import Pending from './status/pending/index.jsx'
 
-const log = debug('zashiki-react-redux:app:components:stages:confirm:component')
+const log = debug('zashiki-react-redux/app/components/stages/confirm/component')
+
+log('`zashiki` is awake')
 
 export const getConfirmProps = ({ definition, response, onSubmit }) => ({ definition, response, onSubmit })
 export const getErrorProps = ({ exception }) => exception
-
-log('`Confirm Stage` is awake')
 
 export default class Stage extends Component {
   state = {}

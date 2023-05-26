@@ -5,9 +5,9 @@ import debug from 'debug'
 import Signals from 'shinkansen-engine/components/signals'
 import Gears from 'shinkansen-engine/components/gears'
 
-const log = debug('zashiki-react-redux:app:components:stages:omega:gears:component')
+const log = debug('zashiki-react-redux/app/components/stages/omega/gears/component')
 
-log('`Omega Stage` is awake')
+log('`zashiki` is awake')
 
 const {
   OMEGA_PATTERN

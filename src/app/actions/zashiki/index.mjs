@@ -1,6 +1,8 @@
 import debug from 'debug'
 
-const log = debug('zashiki-react-redux:app:actions:zashiki')
+const log = debug('zashiki-react-redux/app/actions/zashiki')
+
+log('`zashiki` is awake')
 
 /*
  *  Zashiki Actions

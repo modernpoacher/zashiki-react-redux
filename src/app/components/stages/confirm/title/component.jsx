@@ -12,9 +12,9 @@ import Resolved from './status/resolved/index.jsx'
 import Rejected from './status/rejected/index.jsx'
 import Pending from './status/pending/index.jsx'
 
-const log = debug('zashiki-react-redux:app:components:stages:confirm:title:component')
+const log = debug('zashiki-react-redux/app/components/stages/confirm/title/component')
 
-log('`Confirm Title` is awake')
+log('`zashiki` is awake')
 
 export default function Title ({ status, description }) {
   switch (status) {

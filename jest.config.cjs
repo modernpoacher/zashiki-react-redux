@@ -2,6 +2,9 @@ module.exports = {
   bail: true,
   verbose: true,
   rootDir: '.',
+  roots: [
+    './src'
+  ],
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: './coverage',

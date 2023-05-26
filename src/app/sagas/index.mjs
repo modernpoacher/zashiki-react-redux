@@ -9,7 +9,7 @@ import {
   watchAlphaStore,
   watchAlphaQuery,
   watchAlphaSubmit
-} from './stages/alpha'
+} from './stages/alpha/index.mjs'
 
 import {
   watchOmegaRoute,
@@ -18,28 +18,28 @@ import {
   watchOmegaStore,
   watchOmegaQuery,
   watchOmegaSubmit
-} from './stages/omega'
+} from './stages/omega/index.mjs'
 
 import {
   watchEmbarkRoute,
   watchEmbarkFetch,
   watchEmbarkStore,
   watchEmbarkSubmit
-} from './stages/embark'
+} from './stages/embark/index.mjs'
 
 import {
   watchDebarkRoute,
   watchDebarkFetch,
   watchDebarkStore,
   watchDebarkSubmit
-} from './stages/debark'
+} from './stages/debark/index.mjs'
 
 import {
   watchConfirmRoute,
   watchConfirmFetch,
   watchConfirmStore,
   watchConfirmSubmit
-} from './stages/confirm'
+} from './stages/confirm/index.mjs'
 
 import {
   watchZashikiMount,
@@ -47,7 +47,7 @@ import {
   watchZashikiStore,
   watchZashikiQuery,
   watchZashikiSubmit
-} from './zashiki'
+} from './zashiki/index.mjs'
 
 export default function * rootSaga () {
   yield all([

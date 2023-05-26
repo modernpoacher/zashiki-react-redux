@@ -33,7 +33,9 @@ import { transformError } from '#app/transformers'
 
 import getPathname from '#app/common/get-pathname'
 
-const log = debug('zashiki-react-redux:app:sagas:stages:embark')
+const log = debug('zashiki-react-redux/app/sagas/stages/embark')
+
+log('`zashiki` is awake')
 
 function transformData (data) {
   log('transformData')

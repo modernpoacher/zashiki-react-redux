@@ -15,7 +15,9 @@ import {
   transformRejected
 } from '#app/transformers'
 
-const log = debug('zashiki-react-redux:app:transformers:stages:debark')
+const log = debug('zashiki-react-redux/app/transformers/stages/debark')
+
+log('`zashiki` is awake')
 
 export function transformDebark (status, {
   alpha: definition = {},

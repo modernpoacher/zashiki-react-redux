@@ -54,7 +54,9 @@ import { transformError } from '#app/transformers'
 
 import getPathname from '#app/common/get-pathname'
 
-const log = debug('zashiki-react-redux:app:sagas:stages:alpha')
+const log = debug('zashiki-react-redux/app/sagas/stages/alpha')
+
+log('`zashiki` is awake')
 
 const {
   ALPHA

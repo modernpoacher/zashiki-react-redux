@@ -5,7 +5,9 @@ import debug from 'debug'
  */
 import Pantograph from 'shinkansen-engine/components/pantograph'
 
-const log = debug('zashiki-react-redux:app:actions:stages:confirm')
+const log = debug('zashiki-react-redux/app/actions/stages/confirm')
+
+log('`zashiki` is awake')
 
 const {
   ROUTE = 'CONFIRM_ROUTE',

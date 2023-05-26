@@ -15,11 +15,11 @@ import {
   submit
 } from '#app/actions/stages/debark'
 
-import Component from './component.jsx'
+import Component from './component.cjs'
 
-const log = debug('zashiki-react-redux:app:components:stages:debark')
+const log = debug('zashiki-react-redux/app/components/stages/debark')
 
-log('`debark` is awake')
+log('`zashiki` is awake')
 
 const {
   DEBARK

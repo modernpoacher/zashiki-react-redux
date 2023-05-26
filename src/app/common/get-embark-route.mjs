@@ -4,7 +4,9 @@ import Signals from 'shinkansen-engine/components/signals'
 
 import Rails from 'shinkansen-engine/components/rails'
 
-const log = debug('zashiki-react-redux:app:common:get-embark-route')
+const log = debug('zashiki-react-redux/app/common/get-embark-route')
+
+log('`zashiki` is awake')
 
 const {
   EMBARK,

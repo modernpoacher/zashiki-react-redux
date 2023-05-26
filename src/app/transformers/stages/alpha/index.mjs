@@ -13,7 +13,9 @@ import {
   transformRejected
 } from '#app/transformers'
 
-const log = debug('zashiki-react-redux:app:transformers:stages:alpha')
+const log = debug('zashiki-react-redux/app/transformers/stages/alpha')
+
+log('`zashiki` is awake')
 
 export function transformAlpha (status, {
   omega = [],

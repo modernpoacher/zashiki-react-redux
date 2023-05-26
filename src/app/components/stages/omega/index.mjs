@@ -16,11 +16,11 @@ import {
   submit
 } from '#app/actions/stages/omega'
 
-import Component from './component.jsx'
+import Component from './component.cjs'
 
-const log = debug('zashiki-react-redux:app:components:stages:omega')
+const log = debug('zashiki-react-redux/app/components/stages/omega')
 
-log('`omega` is awake')
+log('`zashiki` is awake')
 
 const {
   OMEGA

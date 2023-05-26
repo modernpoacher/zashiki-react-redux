@@ -16,11 +16,11 @@ import {
   submit
 } from '#app/actions/stages/alpha'
 
-import Component from './component.jsx'
+import Component from './component.cjs'
 
-const log = debug('zashiki-react-redux:app:components:stages:alpha')
+const log = debug('zashiki-react-redux/app/components/stages/alpha')
 
-log('`alpha` is awake')
+log('`zashiki` is awake')
 
 const {
   ALPHA

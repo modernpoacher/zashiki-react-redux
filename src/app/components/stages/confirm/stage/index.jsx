@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import debug from 'debug'
 
-const log = debug('zashiki-react-redux:app:components:stages:confirm:stage')
+const log = debug('zashiki-react-redux/app/components/stages/confirm/stage')
 
-log('`Confirm Stage` is awake')
+log('`zashiki` is awake')
 
 export default class Stage extends Component {
   state = {}

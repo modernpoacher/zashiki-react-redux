@@ -32,7 +32,9 @@ import * as api from '#api/zashiki'
 
 import { transformError } from '#app/transformers'
 
-const log = debug('zashiki-react-redux:app:sagas:zashiki')
+const log = debug('zashiki-react-redux/app/sagas/zashiki')
+
+log('`zashiki` is awake')
 
 function * mountRouteSaga ({ route }) {
   log('mountRouteSaga')

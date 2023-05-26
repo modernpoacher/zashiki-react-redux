@@ -4,9 +4,9 @@ import debug from 'debug'
 
 import Debark from '#app/components/stages/debark/debark'
 
-const log = debug('zashiki-react-redux:app:components:stages:debark:stage')
+const log = debug('zashiki-react-redux/app/components/stages/debark/stage')
 
-log('`Debark Stage` is awake')
+log('`zashiki` is awake')
 
 export default class Stage extends Component {
   state = {}

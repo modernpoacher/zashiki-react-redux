@@ -7,9 +7,9 @@ import ErrorSummary from 'shinkansen-engine/components/pinion/error-summary'
 
 import getEmbarkRoute from '#app/common/get-embark-route'
 
-const log = debug('zashiki-react-redux:app:components:stages:embark:stage')
+const log = debug('zashiki-react-redux/app/components/stages/embark/stage')
 
-log('`Embark Stage` is awake')
+log('`zashiki` is awake')
 
 const Stage = ({ onSubmit, response, errors, definition, onChange }) => (
   <form method='POST' action={getEmbarkRoute()} onSubmit={(event) => {

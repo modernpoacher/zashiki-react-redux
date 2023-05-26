@@ -16,11 +16,11 @@ import {
   submit
 } from '#app/actions/stages/embark'
 
-import Component from './component.jsx'
+import Component from './component.cjs'
 
-const log = debug('zashiki-react-redux:app:components:stages:embark')
+const log = debug('zashiki-react-redux/app/components/stages/embark')
 
-log('`embark` is awake')
+log('`zashiki` is awake')
 
 const {
   EMBARK

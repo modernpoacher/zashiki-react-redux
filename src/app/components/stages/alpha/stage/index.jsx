@@ -5,9 +5,9 @@ import debug from 'debug'
 import Alpha from '#app/components/stages/alpha/alpha'
 import Gears from '#app/components/stages/alpha/gears'
 
-const log = debug('zashiki-react-redux:app:components:stages:alpha:stage')
+const log = debug('zashiki-react-redux/app/components/stages/alpha/stage')
 
-log('`Alpha Stage` is awake')
+log('`zashiki` is awake')
 
 export default class Stage extends Component {
   getClassName () {

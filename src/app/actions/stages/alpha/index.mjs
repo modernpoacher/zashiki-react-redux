@@ -5,7 +5,9 @@ import debug from 'debug'
  */
 import Pantograph from 'shinkansen-engine/components/pantograph'
 
-const log = debug('zashiki-react-redux:app:actions:stages:alpha')
+const log = debug('zashiki-react-redux/app/actions/stages/alpha')
+
+log('`zashiki` is awake')
 
 const {
   ROUTE = 'ALPHA_ROUTE',

@@ -8,11 +8,11 @@ import Signals from 'shinkansen-engine/components/signals'
 
 import withRouter from '#app/router/with-router'
 
-import Component from './component.jsx'
+import Component from './component.cjs'
 
-const log = debug('zashiki-react-redux:app:components:stages:debark:title')
+const log = debug('zashiki-react-redux/app/components/stages/debark/title')
 
-log('`debark` is awake')
+log('`zashiki` is awake')
 
 const {
   DEBARK
