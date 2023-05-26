@@ -19,7 +19,9 @@ const {
 } = Signals
 
 function mapStateToProps ({ [OMEGA]: { state = {} } = {} }) {
-  log('mapStateToProps')
+  /*
+   *  log('mapStateToProps')
+   */
 
   return state
 }

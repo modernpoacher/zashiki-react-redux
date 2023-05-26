@@ -38,7 +38,9 @@ const log = debug('zashiki-react-redux/app/sagas/stages/embark')
 log('`zashiki` is awake')
 
 function transformData (data) {
-  log('transformData')
+  /*
+   *  log('transformData')
+   */
 
   if (Reflect.has(data, 'omega')) {
     const {
@@ -63,7 +65,9 @@ function transformData (data) {
 }
 
 function * debarkRouteSaga ({ redirect, history }) {
-  log('debarkRouteSaga')
+  /*
+   *  log('debarkRouteSaga')
+   */
 
   const pathname = getPathname(redirect)
 
@@ -79,7 +83,9 @@ function * debarkRouteSaga ({ redirect, history }) {
 }
 
 function * fetchRouteSaga () {
-  log('fetchRouteSaga')
+  /*
+   *  log('fetchRouteSaga')
+   */
 
   try {
     const { data = {} } = yield call(api.fetchRoute)
@@ -90,7 +96,9 @@ function * fetchRouteSaga () {
 }
 
 function * storeRouteSaga (route) {
-  log('storeRouteSaga')
+  /*
+   *  log('storeRouteSaga')
+   */
 
   try {
     const { data = {} } = yield call(api.storeRoute, route)
@@ -101,7 +109,9 @@ function * storeRouteSaga (route) {
 }
 
 function * submitStateSaga ({ debark, history }) {
-  log('submitStateSaga')
+  /*
+   *  log('submitStateSaga')
+   */
 
   try {
     yield storeRouteSaga({ response: debark })

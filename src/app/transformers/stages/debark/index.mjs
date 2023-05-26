@@ -25,7 +25,9 @@ export function transformDebark (status, {
   token = {},
   resource
 }) {
-  log('transformDebark')
+  /*
+   *  log('transformDebark')
+   */
 
   return {
     definition,
@@ -51,7 +53,9 @@ export function transformDebark (status, {
 }
 
 export function transformOmega ({ definition, response, ...route }) {
-  log('transformOmega')
+  /*
+   *  log('transformOmega')
+   */
 
   return {
     ...route,
@@ -61,7 +65,9 @@ export function transformOmega ({ definition, response, ...route }) {
 }
 
 export function transformRoute ({ omega = [], ...route }) {
-  log('transformRoute')
+  /*
+   *  log('transformRoute')
+   */
 
   return {
     ...route,

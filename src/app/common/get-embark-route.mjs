@@ -15,7 +15,9 @@ const {
 } = Signals
 
 export default function getEmbarkRoute () {
-  log('getEmbarkRoute')
+  /*
+   *  log('getEmbarkRoute')
+   */
 
   return Rails.to({ [EMBARK]: EMBARK_STAGE }, EMBARK_PATTERN)
 }

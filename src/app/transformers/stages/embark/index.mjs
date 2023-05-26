@@ -17,7 +17,9 @@ const log = debug('zashiki-react-redux/app/transformers/stages/alpha')
 log('`zashiki` is awake')
 
 export function transformEmbark (status, { definition, response = {}, errors = [] }) {
-  log('transformEmbark')
+  /*
+   *  log('transformEmbark')
+   */
 
   return {
     ...(definition ? { definition: toZashiki(definition, response) } : { definition: {} }),

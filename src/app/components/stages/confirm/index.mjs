@@ -26,29 +26,39 @@ const {
 } = Signals
 
 function mapStateToProps ({ [CONFIRM]: confirm = {} }) {
-  log('mapStateToProps')
+  /*
+   *  log('mapStateToProps')
+   */
 
   return confirm
 }
 
 function mapDispatchToProps (dispatch) {
-  log('mapDispatchToProps')
+  /*
+   *  log('mapDispatchToProps')
+   */
 
   return { dispatch }
 }
 
 function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
-  log('mergeProps')
+  /*
+   *  log('mergeProps')
+   */
 
   return {
     ...transform(stateProps),
     onConfirm () {
-      log('onConfirm')
+      /*
+       *  log('onConfirm')
+       */
 
       dispatch(fetch(history))
     },
     onSubmit (response) {
-      log('onSubmit')
+      /*
+       *  log('onSubmit')
+       */
 
       dispatch(submit(response, history))
     },

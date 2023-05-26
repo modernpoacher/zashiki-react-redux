@@ -50,7 +50,9 @@ export const SUBMIT_REJECTED = SUBMIT.concat('_REJECTED')
  *  Action Creators
  */
 export function alphaRoute (redirect, history) {
-  log('alphaRoute')
+  /*
+   *  log('alphaRoute')
+   */
 
   return {
     type: ROUTE,
@@ -60,7 +62,9 @@ export function alphaRoute (redirect, history) {
 }
 
 export function mountRoute (route, history) {
-  log('mountRoute')
+  /*
+   *  log('mountRoute')
+   */
 
   return {
     type: MOUNT,
@@ -70,7 +74,9 @@ export function mountRoute (route, history) {
 }
 
 export function mountRouteFulfilled (response) {
-  log('mountRouteFulfilled')
+  /*
+   *  log('mountRouteFulfilled')
+   */
 
   return {
     type: MOUNT_FULFILLED,
@@ -79,7 +85,9 @@ export function mountRouteFulfilled (response) {
 }
 
 export function mountRouteRejected (error) {
-  log('mountRouteRejected')
+  /*
+   *  log('mountRouteRejected')
+   */
 
   return {
     type: MOUNT_REJECTED,
@@ -88,7 +96,9 @@ export function mountRouteRejected (error) {
 }
 
 export function fetchRoute () {
-  log('fetchRoute')
+  /*
+   *  log('fetchRoute')
+   */
 
   return {
     type: FETCH
@@ -96,7 +106,9 @@ export function fetchRoute () {
 }
 
 export function fetchRouteFulfilled (response) {
-  log('fetchRouteFulfilled')
+  /*
+   *  log('fetchRouteFulfilled')
+   */
 
   return {
     type: FETCH_FULFILLED,
@@ -105,7 +117,9 @@ export function fetchRouteFulfilled (response) {
 }
 
 export function fetchRouteRejected (error) {
-  log('fetchRouteRejected')
+  /*
+   *  log('fetchRouteRejected')
+   */
 
   return {
     type: FETCH_REJECTED,
@@ -114,7 +128,9 @@ export function fetchRouteRejected (error) {
 }
 
 export function storeRoute (route, history) {
-  log('storeRoute')
+  /*
+   *  log('storeRoute')
+   */
 
   return {
     type: STORE,
@@ -124,7 +140,9 @@ export function storeRoute (route, history) {
 }
 
 export function storeRouteFulfilled (response) {
-  log('storeRouteFulfilled')
+  /*
+   *  log('storeRouteFulfilled')
+   */
 
   return {
     type: STORE_FULFILLED,
@@ -133,7 +151,9 @@ export function storeRouteFulfilled (response) {
 }
 
 export function storeRouteRejected (error) {
-  log('storeRouteRejected')
+  /*
+   *  log('storeRouteRejected')
+   */
 
   return {
     type: STORE_REJECTED,
@@ -142,7 +162,9 @@ export function storeRouteRejected (error) {
 }
 
 export function queryRoute () {
-  log('queryRoute')
+  /*
+   *  log('queryRoute')
+   */
 
   return {
     type: QUERY
@@ -150,7 +172,9 @@ export function queryRoute () {
 }
 
 export function queryRouteFulfilled (response) {
-  log('queryRouteFulfilled')
+  /*
+   *  log('queryRouteFulfilled')
+   */
 
   return {
     type: QUERY_FULFILLED,
@@ -159,7 +183,9 @@ export function queryRouteFulfilled (response) {
 }
 
 export function queryRouteRejected (error) {
-  log('queryRouteRejected')
+  /*
+   *  log('queryRouteRejected')
+   */
 
   return {
     type: QUERY_REJECTED,
@@ -168,7 +194,9 @@ export function queryRouteRejected (error) {
 }
 
 export function changeState (route, history) {
-  log('changeState')
+  /*
+   *  log('changeState')
+   */
 
   return {
     type: CHANGE,
@@ -178,7 +206,9 @@ export function changeState (route, history) {
 }
 
 export function changeStateFulfilled (response) {
-  log('changeStateFulfilled')
+  /*
+   *  log('changeStateFulfilled')
+   */
 
   return {
     type: CHANGE_FULFILLED,
@@ -187,7 +217,9 @@ export function changeStateFulfilled (response) {
 }
 
 export function changeStateRejected (error) {
-  log('changeStateRejected')
+  /*
+   *  log('changeStateRejected')
+   */
 
   return {
     type: CHANGE_REJECTED,
@@ -196,7 +228,9 @@ export function changeStateRejected (error) {
 }
 
 export function submitState (route, history) {
-  log('submitState')
+  /*
+   *  log('submitState')
+   */
 
   return {
     type: SUBMIT,
@@ -206,7 +240,9 @@ export function submitState (route, history) {
 }
 
 export function submitStateFulfilled (response) {
-  log('submitStateFulfilled')
+  /*
+   *  log('submitStateFulfilled')
+   */
 
   return {
     type: SUBMIT_FULFILLED,
@@ -215,7 +251,9 @@ export function submitStateFulfilled (response) {
 }
 
 export function submitStateRejected (error) {
-  log('submitStateRejected')
+  /*
+   *  log('submitStateRejected')
+   */
 
   return {
     type: SUBMIT_REJECTED,

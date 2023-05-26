@@ -27,34 +27,46 @@ const {
 } = Signals
 
 function mapStateToProps ({ [EMBARK]: embark = {} }) {
-  log('mapStateToProps')
+  /*
+   *  log('mapStateToProps')
+   */
 
   return embark
 }
 
 function mapDispatchToProps (dispatch) {
-  log('mapDispatchToProps')
+  /*
+   *  log('mapDispatchToProps')
+   */
 
   return { dispatch }
 }
 
 function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
-  log('mergeProps')
+  /*
+   *  log('mergeProps')
+   */
 
   return {
     ...transform(stateProps),
     onEmbark () {
-      log('onEmbark')
+      /*
+       *  log('onEmbark')
+       */
 
       dispatch(fetch(history))
     },
     onChange (response) {
-      log('onChange')
+      /*
+       *  log('onChange')
+       */
 
       dispatch(change(response, history))
     },
     onSubmit (response) {
-      log('onSubmit')
+      /*
+       *  log('onSubmit')
+       */
 
       dispatch(submit(response, history))
     },

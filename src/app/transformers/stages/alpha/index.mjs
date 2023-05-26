@@ -21,7 +21,9 @@ export function transformAlpha (status, {
   omega = [],
   resource
 }) {
-  log('transformAlpha')
+  /*
+   *  log('transformAlpha')
+   */
 
   return {
     status,
@@ -32,7 +34,9 @@ export function transformAlpha (status, {
       response = {}, // hash
       errors = []
     }) => {
-      log('transformOmega')
+      /*
+   *  log('transformOmega')
+   */
 
       return {
         ...(description ? { description } : {}),
@@ -47,7 +51,9 @@ export function transformAlpha (status, {
 }
 
 export function transformOmega ({ definition, response, ...route }) {
-  log('transformOmega')
+  /*
+   *  log('transformOmega')
+   */
 
   return {
     ...route,
@@ -57,7 +63,9 @@ export function transformOmega ({ definition, response, ...route }) {
 }
 
 export function transformRoute ({ omega = [], ...route }) {
-  log('transformRoute')
+  /*
+   *  log('transformRoute')
+   */
 
   return {
     ...route,

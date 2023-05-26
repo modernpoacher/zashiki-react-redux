@@ -24,7 +24,9 @@ export function transformOmega (status, {
   response = {}, // hash
   errors = []
 }) {
-  log('transformOmega')
+  /*
+   *  log('transformOmega')
+   */
 
   return {
     status,
@@ -37,7 +39,9 @@ export function transformOmega (status, {
 }
 
 export function transformRoute ({ definition, response, ...route }) {
-  log('transformRoute')
+  /*
+   *  log('transformRoute')
+   */
 
   return {
     ...route,

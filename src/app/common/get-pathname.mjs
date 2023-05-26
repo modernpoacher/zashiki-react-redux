@@ -16,7 +16,9 @@ const {
 } = Signals
 
 export default function getPathname (resource = {}) {
-  log('getPathname')
+  /*
+   *  log('getPathname')
+   */
 
   if (Rails.go(resource, OMEGA_PATTERN)) { // omega cannot appear on its own
     return Rails.to(resource, OMEGA_PATTERN)

@@ -15,7 +15,9 @@ const {
 } = Signals
 
 export default function getDebarkRoute () {
-  log('getDebarkRoute')
+  /*
+   *  log('getDebarkRoute')
+   */
 
   return Rails.to({ [DEBARK]: DEBARK_STAGE }, DEBARK_PATTERN)
 }

@@ -74,7 +74,9 @@ const hasStoreError = ({ [ALPHA]: alpha = {} }) => ('error' in alpha)
 const hasQueryError = ({ [ALPHA]: alpha = {} }) => ('error' in alpha)
 
 function transformData (data) {
-  log('transformData')
+  /*
+   *  log('transformData')
+   */
 
   if (Reflect.has(data, 'omega')) {
     const {
@@ -99,7 +101,9 @@ function transformData (data) {
 }
 
 function * alphaRouteSaga ({ redirect, history }) {
-  log('alphaRouteSaga')
+  /*
+   *  log('alphaRouteSaga')
+   */
 
   const pathname = getPathname(redirect)
 
@@ -115,7 +119,9 @@ function * alphaRouteSaga ({ redirect, history }) {
 }
 
 function * mountRouteSaga ({ route }) {
-  log('mountRouteSaga')
+  /*
+   *  log('mountRouteSaga')
+   */
 
   try {
     const { data = {} } = yield call(api.mountRoute, route)
@@ -126,7 +132,9 @@ function * mountRouteSaga ({ route }) {
 }
 
 function * fetchRouteSaga () {
-  log('fetchRouteSaga')
+  /*
+   *  log('fetchRouteSaga')
+   */
 
   try {
     const { data = {} } = yield call(api.fetchRoute)
@@ -137,7 +145,9 @@ function * fetchRouteSaga () {
 }
 
 function * storeRouteSaga ({ route }) {
-  log('storeRouteSaga')
+  /*
+   *  log('storeRouteSaga')
+   */
 
   try {
     const { data = {} } = yield call(api.storeRoute, route)
@@ -148,7 +158,9 @@ function * storeRouteSaga ({ route }) {
 }
 
 function * queryRouteSaga () {
-  log('queryRouteSaga')
+  /*
+   *  log('queryRouteSaga')
+   */
 
   try {
     const { data = {} } = yield call(api.queryRoute)
@@ -159,7 +171,9 @@ function * queryRouteSaga () {
 }
 
 function * submitStateSaga ({ route: { resource, response }, history }) {
-  log('submitStateSaga')
+  /*
+   *  log('submitStateSaga')
+   */
 
   /*
    *  Mount the route (via the api not the Saga)

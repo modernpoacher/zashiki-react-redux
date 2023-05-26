@@ -19,7 +19,9 @@ const {
 } = Signals
 
 function mapStateToProps ({ [ALPHA]: { state = {} } = {} }) {
-  log('mapStateToProps')
+  /*
+   *  log('mapStateToProps')
+   */
 
   return state
 }

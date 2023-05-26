@@ -37,7 +37,9 @@ const log = debug('zashiki-react-redux/app/sagas/zashiki')
 log('`zashiki` is awake')
 
 function * mountRouteSaga ({ route }) {
-  log('mountRouteSaga')
+  /*
+   *  log('mountRouteSaga')
+   */
 
   try {
     const { data: response = {} } = yield call(api.changeRoute, route)
@@ -48,7 +50,9 @@ function * mountRouteSaga ({ route }) {
 }
 
 function * fetchRouteSaga () {
-  log('fetchRouteSaga')
+  /*
+   *  log('fetchRouteSaga')
+   */
 
   try {
     const { data: response = {} } = yield call(api.fetchRoute)
@@ -59,7 +63,9 @@ function * fetchRouteSaga () {
 }
 
 function * storeRouteSaga ({ route }) {
-  log('storeRouteSaga')
+  /*
+   *  log('storeRouteSaga')
+   */
 
   try {
     const { data: response = {} } = yield call(api.storeRoute, route)
@@ -70,7 +76,9 @@ function * storeRouteSaga ({ route }) {
 }
 
 function * queryRouteSaga () {
-  log('queryRouteSaga')
+  /*
+   *  log('queryRouteSaga')
+   */
 
   try {
     const { data: response = {} } = yield call(api.queryRoute)
@@ -81,7 +89,9 @@ function * queryRouteSaga () {
 }
 
 function * submitRouteSaga ({ route }) {
-  log('submitRouteSaga')
+  /*
+   *  log('submitRouteSaga')
+   */
 
   try {
     const { data: response = {} } = yield call(api.submitRoute, route)

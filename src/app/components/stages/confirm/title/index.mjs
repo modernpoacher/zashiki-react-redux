@@ -19,7 +19,9 @@ const {
 } = Signals
 
 const mapStateToProps = ({ [CONFIRM]: { status, description } = {} }) => {
-  log('mapStateToProps')
+  /*
+   *  log('mapStateToProps')
+   */
 
   return { status, description }
 }

@@ -26,29 +26,39 @@ const {
 } = Signals
 
 function mapStateToProps ({ [DEBARK]: debark = {} }) {
-  log('mapStateToProps')
+  /*
+   *  log('mapStateToProps')
+   */
 
   return debark
 }
 
 function mapDispatchToProps (dispatch) {
-  log('mapDispatchToProps')
+  /*
+   *  log('mapDispatchToProps')
+   */
 
   return { dispatch }
 }
 
 function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
-  log('mergeProps')
+  /*
+   *  log('mergeProps')
+   */
 
   return {
     ...transform(stateProps),
     onDebark () {
-      log('onDebark')
+      /*
+       *  log('onDebark')
+       */
 
       dispatch(fetch(history))
     },
     onSubmit (response) {
-      log('onSubmit')
+      /*
+       *  log('onSubmit')
+       */
 
       dispatch(submit(response, history))
     },

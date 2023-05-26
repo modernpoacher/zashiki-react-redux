@@ -26,7 +26,9 @@ export default class Stage extends Component {
    *  List routes
    */
   componentDidMount () {
-    log('componentDidMount')
+    /*
+     *  log('componentDidMount')
+     */
 
     const {
       onConfirm

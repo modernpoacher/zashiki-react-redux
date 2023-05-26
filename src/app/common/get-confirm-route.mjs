@@ -15,7 +15,9 @@ const {
 } = Signals
 
 export default function getConfirmRoute () {
-  log('getConfirmRoute')
+  /*
+   *  log('getConfirmRoute')
+   */
 
   return Rails.to({ [CONFIRM]: CONFIRM_STAGE }, CONFIRM_PATTERN)
 }

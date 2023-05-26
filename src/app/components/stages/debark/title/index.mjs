@@ -19,7 +19,9 @@ const {
 } = Signals
 
 function mapStateToProps ({ [DEBARK]: { status, description } = {} }) {
-  log('mapStateToProps')
+  /*
+   *  log('mapStateToProps')
+   */
 
   return { status, description }
 }

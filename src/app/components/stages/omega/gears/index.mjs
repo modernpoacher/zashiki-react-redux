@@ -19,7 +19,9 @@ const {
 } = Signals
 
 function mapStateToProps ({ [OMEGA]: { gears } = {} }) {
-  log('mapStateToProps')
+  /*
+   *  log('mapStateToProps')
+   */
 
   return gears
 }

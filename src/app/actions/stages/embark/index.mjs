@@ -42,7 +42,9 @@ export const SUBMIT_REJECTED = SUBMIT.concat('_REJECTED')
  *  Action Creators
  */
 export function embarkRoute (redirect, history) {
-  log('embarkRoute')
+  /*
+   *  log('embarkRoute')
+   */
 
   return {
     type: ROUTE,
@@ -52,7 +54,9 @@ export function embarkRoute (redirect, history) {
 }
 
 export function fetchRoute (history) {
-  log('fetchRoute')
+  /*
+   *  log('fetchRoute')
+   */
 
   return {
     type: FETCH,
@@ -61,7 +65,9 @@ export function fetchRoute (history) {
 }
 
 export function fetchRouteFulfilled (response) {
-  log('fetchRouteFulfilled')
+  /*
+   *  log('fetchRouteFulfilled')
+   */
 
   return {
     type: FETCH_FULFILLED,
@@ -70,7 +76,9 @@ export function fetchRouteFulfilled (response) {
 }
 
 export function fetchRouteRejected (error) {
-  log('fetchRouteRejected')
+  /*
+   *  log('fetchRouteRejected')
+   */
 
   return {
     type: FETCH_REJECTED,
@@ -79,7 +87,9 @@ export function fetchRouteRejected (error) {
 }
 
 export function storeRoute (route, history) {
-  log('storeRoute')
+  /*
+   *  log('storeRoute')
+   */
 
   return {
     type: STORE,
@@ -89,7 +99,9 @@ export function storeRoute (route, history) {
 }
 
 export function storeRouteFulfilled (response) {
-  log('storeRouteFulfilled')
+  /*
+   *  log('storeRouteFulfilled')
+   */
 
   return {
     type: STORE_FULFILLED,
@@ -98,7 +110,9 @@ export function storeRouteFulfilled (response) {
 }
 
 export function storeRouteRejected (error) {
-  log('storeRouteRejected')
+  /*
+   *  log('storeRouteRejected')
+   */
 
   return {
     type: STORE_REJECTED,
@@ -107,7 +121,9 @@ export function storeRouteRejected (error) {
 }
 
 export function changeState (embark, history) {
-  log('changeState')
+  /*
+   *  log('changeState')
+   */
 
   return {
     type: CHANGE,
@@ -117,7 +133,9 @@ export function changeState (embark, history) {
 }
 
 export function changeStateFulfilled (response) {
-  log('changeStateFulfilled')
+  /*
+   *  log('changeStateFulfilled')
+   */
 
   return {
     type: CHANGE_FULFILLED,
@@ -126,7 +144,9 @@ export function changeStateFulfilled (response) {
 }
 
 export function changeStateRejected (error) {
-  log('changeStateRejected')
+  /*
+   *  log('changeStateRejected')
+   */
 
   return {
     type: CHANGE_REJECTED,
@@ -135,7 +155,9 @@ export function changeStateRejected (error) {
 }
 
 export function submitState (embark, history) {
-  log('submitState')
+  /*
+   *  log('submitState')
+   */
 
   return {
     type: SUBMIT,
@@ -145,7 +167,9 @@ export function submitState (embark, history) {
 }
 
 export function submitStateFulfilled (response) {
-  log('submitStateFulfilled')
+  /*
+   *  log('submitStateFulfilled')
+   */
 
   return {
     type: SUBMIT_FULFILLED,
@@ -154,7 +178,9 @@ export function submitStateFulfilled (response) {
 }
 
 export function submitStateRejected (error) {
-  log('submitStateRejected')
+  /*
+   *  log('submitStateRejected')
+   */
 
   return {
     type: SUBMIT_REJECTED,

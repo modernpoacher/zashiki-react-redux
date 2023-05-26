@@ -17,7 +17,9 @@ const log = debug('zashiki-react-redux/app/transformers/stages/alpha')
 log('`zashiki` is awake')
 
 export function transformConfirm (status, { definition, response = {}, errors = [] }) {
-  log('transformConfirm')
+  /*
+   *  log('transformConfirm')
+   */
 
   return {
     ...(definition ? { definition: toZashiki(definition, response) } : { definition: {} }),

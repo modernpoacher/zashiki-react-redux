@@ -27,34 +27,46 @@ const {
 } = Signals
 
 function mapStateToProps ({ [OMEGA]: omega = {} }) {
-  log('mapStateToProps')
+  /*
+   *  log('mapStateToProps')
+   */
 
   return omega
 }
 
 function mapDispatchToProps (dispatch) {
-  log('mapDispatchToProps')
+  /*
+   *  log('mapDispatchToProps')
+   */
 
   return { dispatch }
 }
 
 function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
-  log('mergeProps')
+  /*
+   *  log('mergeProps')
+   */
 
   return {
     ...transform(stateProps),
     onMount (resource) {
-      log('onMount')
+      /*
+       *  log('onMount')
+       */
 
       dispatch(mount(resource, history))
     },
     onChange (resource, response) {
-      log('onChange')
+      /*
+       *  log('onChange')
+       */
 
       dispatch(change(resource, response, history))
     },
     onSubmit (resource, response) {
-      log('onSubmit')
+      /*
+       *  log('onSubmit')
+       */
 
       dispatch(submit(resource, response, history))
     },

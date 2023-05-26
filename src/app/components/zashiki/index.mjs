@@ -19,19 +19,25 @@ const log = debug('zashiki-react-redux/app/components/zashiki')
 log('`zashiki` is awake')
 
 function mapStateToProps ({ zashiki = {} } = {}) {
-  log('mapStateToProps')
+  /*
+   *  log('mapStateToProps')
+   */
 
   return { zashiki }
 }
 
 function mapDispatchToProps (dispatch) {
-  log('mapDispatchToProps')
+  /*
+   *  log('mapDispatchToProps')
+   */
 
   return { dispatch }
 }
 
 function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
-  log('mergeProps')
+  /*
+   *  log('mergeProps')
+   */
 
   return {
     ...stateProps,

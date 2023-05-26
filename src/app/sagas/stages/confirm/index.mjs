@@ -63,7 +63,9 @@ function transformData (data) {
 }
 
 function * confirmRouteSaga ({ redirect, history }) {
-  log('confirmRouteSaga')
+  /*
+   *  log('confirmRouteSaga')
+   */
 
   const pathname = getPathname(redirect)
 
@@ -79,7 +81,9 @@ function * confirmRouteSaga ({ redirect, history }) {
 }
 
 function * fetchRouteSaga () {
-  log('fetchRouteSaga')
+  /*
+   *  log('fetchRouteSaga')
+   */
 
   try {
     const { data = {} } = yield call(api.fetchRoute)
@@ -90,7 +94,9 @@ function * fetchRouteSaga () {
 }
 
 function * storeRouteSaga (route) {
-  log('storeRouteSaga')
+  /*
+   *  log('storeRouteSaga')
+   */
 
   try {
     const { data = {} } = yield call(api.storeRoute, route)
@@ -101,7 +107,9 @@ function * storeRouteSaga (route) {
 }
 
 function * submitStateSaga ({ confirm, history }) {
-  log('submitStateSaga')
+  /*
+   *  log('submitStateSaga')
+   */
 
   try {
     const definition = yield select(getDefinition)

@@ -16,7 +16,9 @@ const {
 } = Signals
 
 export default function getResourceRoute (resource = {}) {
-  log('getResourceRoute')
+  /*
+   *  log('getResourceRoute')
+   */
 
   if (Rails.go(resource, OMEGA_PATTERN)) {
     return Rails.to(resource, OMEGA_PATTERN)
