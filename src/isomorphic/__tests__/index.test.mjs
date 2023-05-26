@@ -11,7 +11,7 @@ jest.mock('@modernpoacher/isomorphic/react-router/redux', () => ({ renderToStrin
 jest.mock('#app/store', () => jest.fn().mockReturnValue('MOCK STORE'))
 jest.mock('#app/routes', () => 'MOCK ROUTES')
 
-describe('@modernpoacher/isomorphic', () => {
+describe('#isomorphic', () => {
   describe('`render`', () => {
     it('is defined', () => {
       expect(render)

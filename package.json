@@ -27,10 +27,10 @@
     "test": "npm run test:mocha && npm run test:jest",
     "test:mocha": "cross-env NODE_ENV=test mocha test --recursive",
     "test:jest": "cross-env NODE_ENV=test jest",
-    "prepare": "npx husky install"
+    "prepare": "husky install"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "1.0.29",
+    "@modernpoacher/isomorphic": "1.2.1",
     "axios": "^1.4.0",
     "classnames": "^2.3.2",
     "cross-env": "^7.0.3",

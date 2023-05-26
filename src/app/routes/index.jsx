@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {
-  Switch,
+  Routes,
   Route
 } from 'react-router-dom'
 
@@ -24,12 +24,12 @@ const {
 } = Signals
 
 export default (
-  <Switch>
-    <Route exact path='/' component={IndexPage} />
-    <Route exact path={getEmbarkRoute()} component={EmbarkStagePage} />
-    <Route exact path={getDebarkRoute()} component={DebarkStagePage} />
-    <Route exact path={getConfirmRoute()} component={ConfirmStagePage} />
-    <Route exact path={ALPHA_PATTERN} component={AlphaStagePage} />
-    <Route exact path={OMEGA_PATTERN} component={OmegaStagePage} />
-  </Switch>
+  <Routes>
+    <Route exact path='/' element={<IndexPage />} />
+    <Route exact path={getEmbarkRoute()} element={<EmbarkStagePage />} />
+    <Route exact path={getDebarkRoute()} element={<DebarkStagePage />} />
+    <Route exact path={getConfirmRoute()} element={<ConfirmStagePage />} />
+    <Route exact path={ALPHA_PATTERN} element={<AlphaStagePage />} />
+    <Route exact path={OMEGA_PATTERN} element={<OmegaStagePage />} />
+  </Routes>
 )

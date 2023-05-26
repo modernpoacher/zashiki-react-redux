@@ -1,11 +1,11 @@
 require('@babel/register')({
   ignore: [
-    /node_modules\/(?!shinkansen-)/
+    /node_modules\/(?!shinkansen)/
   ]
 })
 
 const {
-  default: component
+  default: routes
 } = require('./index.jsx')
 
-module.exports = component
+module.exports = routes

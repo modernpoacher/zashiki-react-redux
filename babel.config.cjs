@@ -237,6 +237,8 @@ module.exports = (api) => {
   return {
     presets,
     plugins,
-    ignore: [/node_modules\/(?!shinkansen-)/]
+    ignore: [
+      /node_modules\/(?!shinkansen|@sequencemedia\/react-render|@sequencemedia\/react-redux-render|@sequencemedia\/react-router-render|@sequencemedia\/react-router-redux-render|@modernpoacher\/isomorphic)/,
+    ]
   }
 }
