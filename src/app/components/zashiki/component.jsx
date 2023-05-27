@@ -80,8 +80,8 @@ export default class Zashiki extends Component {
         params: {
           alpha,
           omega
-        }
-      }
+        } = {}
+      } = {}
     } = props
 
     /*
