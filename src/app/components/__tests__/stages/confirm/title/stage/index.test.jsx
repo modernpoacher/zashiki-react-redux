@@ -1,9 +1,9 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Stage from '#app/components/stages/confirm/title/stage'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/confirm/title/stage'
 
-describe('#app/components/stages/confirm/title/stage', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/confirm/title/stage', () => {
   describe('Always', () => {
     it('renders', () => {
       const component = (

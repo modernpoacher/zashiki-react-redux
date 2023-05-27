@@ -9,7 +9,7 @@ import {
 
 chai.use(sinonChai)
 
-describe('#app/components/stages/debark/status', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status', () => {
   describe('`Resolved`', () => {
     it('is a function', () => {
       expect(Resolved)

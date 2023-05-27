@@ -2,7 +2,7 @@ import debug from 'debug'
 
 import {
   REJECTED
-} from '#app/common'
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
 import {
   toZashiki,
@@ -11,7 +11,7 @@ import {
 
 import {
   transformRejected
-} from '#app/transformers'
+} from '@modernpoacher/zashiki-react-redux/app/transformers'
 
 const log = debug('zashiki-react-redux/app/transformers/stages/omega')
 

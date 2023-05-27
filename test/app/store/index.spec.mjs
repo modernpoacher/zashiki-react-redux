@@ -5,7 +5,7 @@ import Store from '@modernpoacher/zashiki-react-redux/app/store'
 
 chai.use(sinonChai)
 
-describe('#app/store', () => {
+describe('@modernpoacher/zashiki-react-redux/app/store', () => {
   describe('`Store`', () => {
     it('is a function', () => {
       expect(Store)

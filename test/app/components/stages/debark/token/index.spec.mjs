@@ -5,7 +5,7 @@ import Token from '@modernpoacher/zashiki-react-redux/app/components/stages/deba
 
 chai.use(sinonChai)
 
-describe('#app/components/stages/debark/token', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/token', () => {
   describe('`Token`', () => {
     it('is a function', () => {
       expect(Token)

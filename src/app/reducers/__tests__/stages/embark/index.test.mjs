@@ -14,15 +14,15 @@ import embarkReducer, {
   storeRejected,
   changeRejected,
   submitRejected
-} from '#app/reducers/stages/embark'
+} from '@modernpoacher/zashiki-react-redux/app/reducers/stages/embark'
 
-jest.mock('#app/common', () => ({
+jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
   RESOLVED: 'MOCK RESOLVED',
   REJECTED: 'MOCK REJECTED',
   PENDING: 'MOCK PENDING'
 }))
 
-jest.mock('#app/actions/stages/embark', () => ({
+jest.mock('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => ({
   ROUTE: 'MOCK ROUTE',
   FETCH: 'MOCK FETCH',
   STORE: 'MOCK STORE',
@@ -44,7 +44,7 @@ const DEFAULT = {
   status: 'MOCK PENDING'
 }
 
-describe('#app/reducers/stages/embark', () => {
+describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/embark', () => {
   describe('`embarkReducer`', () => {
     it('is defined', () => {
       expect(embarkReducer)

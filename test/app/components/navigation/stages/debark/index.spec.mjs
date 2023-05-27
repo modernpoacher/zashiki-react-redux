@@ -5,7 +5,7 @@ import Debark from '@modernpoacher/zashiki-react-redux/app/components/navigation
 
 chai.use(sinonChai)
 
-describe('#app/components/navigation/stages/debark', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/navigation/stages/debark', () => {
   describe('`Debark`', () => {
     it('is a function', () => {
       expect(Debark)

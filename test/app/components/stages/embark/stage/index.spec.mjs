@@ -5,7 +5,7 @@ import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/emba
 
 chai.use(sinonChai)
 
-describe('#app/components/stages/embark/stage', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/stage', () => {
   describe('`Stage`', () => {
     it('is a function', () => {
       expect(Stage)

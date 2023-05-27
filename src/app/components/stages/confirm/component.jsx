@@ -6,18 +6,18 @@ import {
   RESOLVED,
   REJECTED,
   PENDING
-} from '#app/common'
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
 import Resolved from './status/resolved/index.jsx'
 import Rejected from './status/rejected/index.jsx'
 import Pending from './status/pending/index.jsx'
 
+import getConfirmProps from './get-confirm-props.mjs'
+import getErrorProps from './get-error-props.mjs'
+
 const log = debug('zashiki-react-redux/app/components/stages/confirm/component')
 
 log('`zashiki` is awake')
-
-export const getConfirmProps = ({ definition, response, onSubmit }) => ({ definition, response, onSubmit })
-export const getErrorProps = ({ exception }) => exception
 
 export default class Stage extends Component {
   state = {}

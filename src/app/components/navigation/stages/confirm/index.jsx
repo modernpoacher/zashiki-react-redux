@@ -4,7 +4,7 @@ import {
   Link
 } from 'react-router-dom'
 
-import getConfirmRoute from '#app/common/get-confirm-route'
+import getConfirmRoute from '@modernpoacher/zashiki-react-redux/app/common/get-confirm-route'
 
 const ConfirmStageLink = ({ href, text }) => (
   <Link to={href}>

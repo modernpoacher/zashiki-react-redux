@@ -5,7 +5,7 @@ import Alpha from '@modernpoacher/zashiki-react-redux/app/components/stages/alph
 
 chai.use(sinonChai)
 
-describe('#app/components/stages/alpha', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha', () => {
   describe('`Alpha`', () => {
     it('is a function', () => {
       expect(Alpha)

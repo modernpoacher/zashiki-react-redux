@@ -6,7 +6,7 @@ import {
 
 import Signals from 'shinkansen-engine/components/signals'
 
-import withRouter from '#app/router/with-router'
+import withRouter from '@modernpoacher/zashiki-react-redux/app/router/with-router'
 
 import Component from './component.cjs'
 

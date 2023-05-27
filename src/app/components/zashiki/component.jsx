@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import equal from 'fast-deep-equal'
 import debug from 'debug'
 
+import resource from './resource.mjs'
+
 const log = debug('zashiki-react-redux/app/components/zashiki/component')
 
 log('`zashiki` is awake')
-
-export const resource = (alpha, omega) => ({ ...(alpha ? { alpha, ...(omega ? { omega } : {}) } : {}) })
 
 export default class Zashiki extends Component {
   /*

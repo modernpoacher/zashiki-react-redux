@@ -1,9 +1,106 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`#app/components/stages/omega/component \`PENDING\` renders 1`] = `"MOCK PENDING"`;
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/component \`PENDING\` renders 1`] = `
+<div
+  className="omega pending"
+/>
+`;
 
-exports[`#app/components/stages/omega/component \`REJECTED\` renders 1`] = `"MOCK REJECTED"`;
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/component \`REJECTED\` renders 1`] = `
+<div
+  className="omega rejected"
+>
+  <h2>
+    MOCK NAME
+  </h2>
+  <p>
+    MOCK MESSAGE
+  </p>
+</div>
+`;
 
-exports[`#app/components/stages/omega/component \`RESOLVED\` renders 1`] = `"MOCK RESOLVED"`;
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/component \`RESOLVED\` renders 1`] = `
+<div
+  className="omega resolved"
+>
+  <form
+    action="MOCK RESOURCE ROUTE"
+    method="POST"
+    onSubmit={[Function]}
+  >
+    <div
+      className="cog text"
+    >
+      <label
+        className="title text"
+        htmlFor="MOCK ID"
+      >
+        <span
+          className="text-content"
+        >
+          MOCK TITLE
+        </span>
+      </label>
+      <input
+        className="input text"
+        disabled={false}
+        id="MOCK ID"
+        name="MOCK ID"
+        onChange={[Function]}
+        readOnly={false}
+        required={false}
+        type="text"
+        value=""
+      />
+    </div>
+    <button
+      type="submit"
+    >
+      Continue
+    </button>
+  </form>
+</div>
+`;
 
-exports[`#app/components/stages/omega/component Always renders 1`] = `"MOCK RESOLVED"`;
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/component Always renders 1`] = `
+<div
+  className="omega resolved"
+>
+  <form
+    action="MOCK RESOURCE ROUTE"
+    method="POST"
+    onSubmit={[Function]}
+  >
+    <div
+      className="cog text"
+    >
+      <label
+        className="title text"
+        htmlFor="MOCK ID"
+      >
+        <span
+          className="text-content"
+        >
+          MOCK TITLE
+        </span>
+      </label>
+      <input
+        className="input text"
+        disabled={false}
+        id="MOCK ID"
+        name="MOCK ID"
+        onChange={[Function]}
+        readOnly={false}
+        required={false}
+        type="text"
+        value=""
+      />
+    </div>
+    <button
+      type="submit"
+    >
+      Continue
+    </button>
+  </form>
+</div>
+`;

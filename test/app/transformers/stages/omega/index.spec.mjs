@@ -8,7 +8,7 @@ import transformer, {
 
 chai.use(sinonChai)
 
-describe('#app/transformers/stages/omega', () => {
+describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/omega', () => {
   describe('`transformer`', () => {
     it('is a function', () => {
       expect(transformer)

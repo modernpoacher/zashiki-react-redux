@@ -2,27 +2,27 @@ import {
   renderToString
 } from '@modernpoacher/isomorphic/react-router/redux'
 
-import configureStore from '#app/store'
-import routes from '#app/routes'
+import configureStore from '@modernpoacher/zashiki-react-redux/app/store'
+import routes from '@modernpoacher/zashiki-react-redux/app/routes'
 
 export {
   initialise as initialiseEmbark
-} from '#app/reducers/stages/embark'
+} from '@modernpoacher/zashiki-react-redux/app/reducers/stages/embark'
 
 export {
   initialise as initialiseAlpha
-} from '#app/reducers/stages/alpha'
+} from '@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha'
 
 export {
   initialise as initialiseOmega
-} from '#app/reducers/stages/omega'
+} from '@modernpoacher/zashiki-react-redux/app/reducers/stages/omega'
 
 export {
   initialise as initialiseDebark
-} from '#app/reducers/stages/debark'
+} from '@modernpoacher/zashiki-react-redux/app/reducers/stages/debark'
 
 export {
   initialise as initialiseConfirm
-} from '#app/reducers/stages/confirm'
+} from '@modernpoacher/zashiki-react-redux/app/reducers/stages/confirm'
 
 export default (state, location) => renderToString(configureStore(state), { location }, routes)

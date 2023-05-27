@@ -1,7 +1,7 @@
 /*
  *  Zashiki/Debark API
  */
-import api from '#api'
+import api from '@modernpoacher/zashiki-react-redux/api'
 
 export const fetchRoute = () => api().get('zashiki/debark/fetch')
 

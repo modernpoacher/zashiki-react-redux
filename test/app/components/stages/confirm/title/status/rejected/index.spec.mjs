@@ -5,7 +5,7 @@ import Rejected from '@modernpoacher/zashiki-react-redux/app/components/stages/c
 
 chai.use(sinonChai)
 
-describe('#app/components/stages/confirm/title/status/rejected', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/confirm/title/status/rejected', () => {
   describe('`Rejected`', () => {
     it('is a function', () => {
       expect(Rejected)

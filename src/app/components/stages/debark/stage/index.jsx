@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import debug from 'debug'
 
-import Debark from '#app/components/stages/debark/debark'
+import Debark from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/debark'
 
 const log = debug('zashiki-react-redux/app/components/stages/debark/stage')
 

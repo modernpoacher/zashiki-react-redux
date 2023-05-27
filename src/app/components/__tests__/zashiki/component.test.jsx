@@ -1,12 +1,12 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Zashiki, { resource } from '#app/components/zashiki/component'
+import Zashiki from '@modernpoacher/zashiki-react-redux/app/components/zashiki/component'
 import equal from 'fast-deep-equal'
 
 jest.mock('fast-deep-equal', () => jest.fn())
 
-describe('#app/components/zashiki/component', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', () => {
   const MOCK_ONMOUNT = jest.fn()
   const MOCK_MATCH = { params: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' } }
   const MOCK_CHILDREN = []
@@ -28,11 +28,9 @@ describe('#app/components/zashiki/component', () => {
       rendered = renderer.create(component)
     })
 
-    describe('Always', () => {
-      it('renders', () => {
-        expect(rendered.toJSON())
-          .toMatchSnapshot()
-      })
+    it('renders', () => {
+      expect(rendered.toJSON())
+        .toMatchSnapshot()
     })
 
     it('invokes `componentDidMount`', () => {
@@ -46,29 +44,10 @@ describe('#app/components/zashiki/component', () => {
     })
   })
 
-  describe('`resource`', () => {
-    it('is defined', () => {
-      expect(resource)
-        .toBeDefined()
-    })
-  })
-
   describe('`Zashiki.getDerivedStateFromProps`', () => {
     it('is defined', () => {
       expect(Zashiki.getDerivedStateFromProps)
         .toBeDefined()
-    })
-  })
-
-  describe('`resource()`', () => {
-    describe('`alpha` is a string', () => {
-      expect(resource('MOCK ALPHA'))
-        .toEqual({ alpha: 'MOCK ALPHA' })
-    })
-
-    describe('`alpha` is a string and `omega` is a string', () => {
-      expect(resource('MOCK ALPHA', 'MOCK OMEGA'))
-        .toEqual({ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' })
     })
   })
 

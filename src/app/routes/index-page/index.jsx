@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Zashiki from '#app/components/zashiki'
+import Zashiki from '@modernpoacher/zashiki-react-redux/app/components/zashiki'
 
 export default () => (
   <Zashiki>

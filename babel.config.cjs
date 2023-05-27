@@ -205,12 +205,6 @@ const plugins = [
         /**
          *  Jest - Engine
          */
-        'shinkansen-engine/transformers/pinion/check-answers': './node_modules/shinkansen-engine/src/transformers/pinion/check-answers/index.mjs',
-        'shinkansen-engine/transformers/transmission': './node_modules/shinkansen-engine/src/transformers/transmission/index.mjs',
-        'shinkansen-engine/components/rails': './node_modules/shinkansen-engine/src/components/rails/index.cjs',
-        'shinkansen-engine/components/relay': './node_modules/shinkansen-engine/src/components/relay/index.cjs',
-        'shinkansen-engine/components/signals': './node_modules/shinkansen-engine/src/components/signals/index.cjs',
-        'shinkansen-engine/components/pantograph': './node_modules/shinkansen-engine/src/components/pantograph/index.cjs',
         'shinkansen-engine/components/cogs': './node_modules/shinkansen-engine/src/components/cogs/index.cjs',
         'shinkansen-engine/components/sprockets': './node_modules/shinkansen-engine/src/components/sprockets/index.cjs',
         'shinkansen-engine/components/gears': './node_modules/shinkansen-engine/src/components/gears/index.cjs',
@@ -218,6 +212,13 @@ const plugins = [
         'shinkansen-engine/components/pinion/error-summary': './node_modules/shinkansen-engine/src/components/pinion/error-summary/index.cjs',
         'shinkansen-engine/components/pinion/fieldset': './node_modules/shinkansen-engine/src/components/pinion/fieldset/index.cjs',
         'shinkansen-engine/components/pinion': './node_modules/shinkansen-engine/src/components/pinion/index.cjs',
+        'shinkansen-engine/components/pantograph': './node_modules/shinkansen-engine/src/components/pantograph/index.cjs',
+        'shinkansen-engine/components/rails': './node_modules/shinkansen-engine/src/components/rails/index.cjs',
+        'shinkansen-engine/components/relay': './node_modules/shinkansen-engine/src/components/relay/index.cjs',
+        'shinkansen-engine/components/signals': './node_modules/shinkansen-engine/src/components/signals/index.cjs',
+        'shinkansen-engine/transformers/pinion/check-answers': './node_modules/shinkansen-engine/src/transformers/pinion/check-answers/index.mjs',
+        'shinkansen-engine/transformers/pinion/error-summary': './node_modules/shinkansen-engine/src/transformers/pinion/error-summary/index.mjs',
+        'shinkansen-engine/transformers/transmission': './node_modules/shinkansen-engine/src/transformers/transmission/index.mjs',
         'shinkansen-engine/engine': './node_modules/shinkansen-engine/src/engine/index.cjs',
         'shinkansen-engine': './node_modules/shinkansen-engine/src/index.cjs',
         /**

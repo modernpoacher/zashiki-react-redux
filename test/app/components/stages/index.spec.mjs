@@ -11,7 +11,7 @@ import {
 
 chai.use(sinonChai)
 
-describe('#app/components/stages', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages', () => {
   describe('`Alpha`', () => {
     it('is a function', () => {
       expect(Alpha)

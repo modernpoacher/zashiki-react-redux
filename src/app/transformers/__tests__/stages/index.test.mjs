@@ -3,9 +3,9 @@ import {
   omega,
   embark,
   debark
-} from '#app/transformers/stages'
+} from '@modernpoacher/zashiki-react-redux/app/transformers/stages'
 
-describe('#app/transformers/stages', () => {
+describe('@modernpoacher/zashiki-react-redux/app/transformers/stages', () => {
   describe('`alpha`', () => {
     it('is defined', () => {
       expect(alpha)

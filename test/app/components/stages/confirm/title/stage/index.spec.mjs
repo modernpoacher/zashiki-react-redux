@@ -5,7 +5,7 @@ import Title from '@modernpoacher/zashiki-react-redux/app/components/stages/conf
 
 chai.use(sinonChai)
 
-describe('#app/components/stages/confirm/title/stage', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/confirm/title/stage', () => {
   describe('`Title`', () => {
     it('is a function', () => {
       expect(Title)

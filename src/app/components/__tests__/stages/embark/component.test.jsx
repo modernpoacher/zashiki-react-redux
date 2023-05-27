@@ -5,39 +5,48 @@ import {
   RESOLVED,
   REJECTED,
   PENDING
-} from '#app/common'
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
-import Embark, { getEmbarkProps, getErrorProps } from '#app/components/stages/embark/component'
+import Embark from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/component'
 
-jest.mock('#app/common', () => ({
+jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
   RESOLVED: 'MOCK RESOLVED',
   REJECTED: 'MOCK REJECTED',
   PENDING: 'MOCK PENDING'
 }))
 
-jest.mock('#app/components/stages/embark/status/resolved', () => () => 'MOCK RESOLVED')
-jest.mock('#app/components/stages/embark/status/rejected', () => () => 'MOCK REJECTED')
-jest.mock('#app/components/stages/embark/status/pending', () => () => 'MOCK PENDING')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/resolved', () => () => 'MOCK RESOLVED')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/rejected', () => () => 'MOCK REJECTED')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/pending', () => () => 'MOCK PENDING')
 
-describe('#app/components/stages/embark/component', () => {
+jest.mock('@modernpoacher/zashiki-react-redux/app/router/with-router', () => (Component) => Component)
+
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/component', () => {
   const MOCK_DEFINITION = {
-    meta: {},
-    elements: {}
+    meta: {
+      uri: '#/'
+    },
+    elements: {
+      title: 'MOCK TITLE',
+      field: {
+        id: 'MOCK ID'
+      }
+    }
   }
-  const MOCK_RESOURCE = {}
+
+  const MOCK_RESOURCE = {
+    alpha: 'MOCK ALPHA',
+    omega: 'MOCK OMEGA'
+  }
+
+  const MOCK_RESPONSE = {
+    '#/': 'MOCK VALUE'
+  }
+
+  const MOCK_ERRORS = []
   const MOCK_ONCHANGE = jest.fn()
   const MOCK_ONSUBMIT = jest.fn()
   const MOCK_ONEMBARK = jest.fn()
-
-  const mockProps = {
-    definition: {},
-    onChange: jest.fn(),
-    onSubmit: jest.fn(),
-    exception: {
-      name: 'MOCK NAME',
-      message: 'MOCK MESSAGE'
-    }
-  }
 
   describe('Always', () => {
     const component = (
@@ -45,6 +54,8 @@ describe('#app/components/stages/embark/component', () => {
         status={RESOLVED}
         definition={MOCK_DEFINITION}
         resource={MOCK_RESOURCE}
+        response={MOCK_RESPONSE}
+        errors={MOCK_ERRORS}
         onChange={MOCK_ONCHANGE}
         onSubmit={MOCK_ONSUBMIT}
         onEmbark={MOCK_ONEMBARK}
@@ -77,26 +88,15 @@ describe('#app/components/stages/embark/component', () => {
     })
   })
 
-  describe('`getEmbarkProps`', () => {
-    it('is defined', () => {
-      expect(getEmbarkProps)
-        .toBeDefined()
-    })
-  })
-
-  describe('`getErrorProps`', () => {
-    it('is defined', () => {
-      expect(getErrorProps)
-        .toBeDefined()
-    })
-  })
-
   describe('`RESOLVED`', () => {
     it('renders', () => {
       const component = (
         <Embark
           status={RESOLVED}
           definition={MOCK_DEFINITION}
+          resource={MOCK_RESOURCE}
+          response={MOCK_RESPONSE}
+          errors={MOCK_ERRORS}
           onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
           onEmbark={MOCK_ONEMBARK}
@@ -113,6 +113,10 @@ describe('#app/components/stages/embark/component', () => {
       const component = (
         <Embark
           status={REJECTED}
+          definition={MOCK_DEFINITION}
+          resource={MOCK_RESOURCE}
+          response={MOCK_RESPONSE}
+          errors={MOCK_ERRORS}
           exception={{
             name: 'MOCK NAME',
             message: 'MOCK MESSAGE'
@@ -142,27 +146,6 @@ describe('#app/components/stages/embark/component', () => {
 
       expect(renderer.create(component).toJSON())
         .toMatchSnapshot()
-    })
-  })
-
-  describe('`getErrorProps()`', () => {
-    it('returns an object', () => {
-      expect(getErrorProps(mockProps))
-        .toEqual({
-          name: 'MOCK NAME',
-          message: 'MOCK MESSAGE'
-        })
-    })
-  })
-
-  describe('`getEmbarkProps()`', () => {
-    it('returns an object', () => {
-      expect(getEmbarkProps(mockProps))
-        .toEqual({
-          definition: {},
-          onChange: expect.any(Function),
-          onSubmit: expect.any(Function)
-        })
     })
   })
 })

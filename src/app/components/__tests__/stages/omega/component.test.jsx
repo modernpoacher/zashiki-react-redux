@@ -5,17 +5,19 @@ import {
   RESOLVED,
   REJECTED,
   PENDING
-} from '#app/common'
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
-import Omega, { getStageProps, getErrorProps } from '#app/components/stages/omega/component'
+import Omega from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/component'
 
-jest.mock('#app/common', () => ({
+jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
   RESOLVED: 'MOCK RESOLVED',
   REJECTED: 'MOCK REJECTED',
   PENDING: 'MOCK PENDING'
 }))
 
-jest.mock('#app/components/zashiki/component', () => {
+jest.mock('@modernpoacher/zashiki-react-redux/app/common/get-resource-route', () => () => 'MOCK RESOURCE ROUTE')
+
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', () => {
   class MockZashiki extends mockComponent {
     state = {}
 
@@ -32,26 +34,39 @@ jest.mock('#app/components/zashiki/component', () => {
   }
 })
 
-jest.mock('#app/components/stages/omega/status/resolved', () => () => 'MOCK RESOLVED')
-jest.mock('#app/components/stages/omega/status/rejected', () => () => 'MOCK REJECTED')
-jest.mock('#app/components/stages/omega/status/pending', () => () => 'MOCK PENDING')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/omega/status/resolved', () => () => 'MOCK RESOLVED')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/omega/status/rejected', () => () => 'MOCK REJECTED')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/omega/status/pending', () => () => 'MOCK PENDING')
 
-describe('#app/components/stages/omega/component', () => {
-  const MOCK_DEFINITION = {}
-  const MOCK_RESOURCE = {}
-  const MOCK_ONCHANGE = jest.fn()
-  const MOCK_ONSUBMIT = jest.fn()
+jest.mock('react-redux', () => ({ connect () { return (Component) => Component } }))
 
-  const mockProps = {
-    definition: {},
-    resource: {},
-    onChange: jest.fn(),
-    onSubmit: jest.fn(),
-    exception: {
-      name: 'MOCK NAME',
-      message: 'MOCK MESSAGE'
+jest.mock('@modernpoacher/zashiki-react-redux/app/router/with-router', () => (Component) => Component)
+
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/component', () => {
+  const MOCK_DEFINITION = {
+    meta: {
+      uri: '#/'
+    },
+    elements: {
+      title: 'MOCK TITLE',
+      field: {
+        id: 'MOCK ID'
+      }
     }
   }
+
+  const MOCK_RESOURCE = {
+    alpha: 'MOCK ALPHA',
+    omega: 'MOCK OMEGA'
+  }
+
+  const MOCK_RESPONSE = {
+    '#/': 'MOCK VALUE'
+  }
+
+  const MOCK_ERRORS = []
+  const MOCK_ONCHANGE = jest.fn()
+  const MOCK_ONSUBMIT = jest.fn()
 
   describe('Always', () => {
     it('renders', () => {
@@ -60,6 +75,8 @@ describe('#app/components/stages/omega/component', () => {
           status={RESOLVED}
           definition={MOCK_DEFINITION}
           resource={MOCK_RESOURCE}
+          response={MOCK_RESPONSE}
+          errors={MOCK_ERRORS}
           onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
@@ -70,20 +87,6 @@ describe('#app/components/stages/omega/component', () => {
     })
   })
 
-  describe('`getStageProps`', () => {
-    it('is defined', () => {
-      expect(getStageProps)
-        .toBeDefined()
-    })
-  })
-
-  describe('`getErrorProps`', () => {
-    it('is defined', () => {
-      expect(getErrorProps)
-        .toBeDefined()
-    })
-  })
-
   describe('`RESOLVED`', () => {
     it('renders', () => {
       const component = (
@@ -91,6 +94,8 @@ describe('#app/components/stages/omega/component', () => {
           status={RESOLVED}
           definition={MOCK_DEFINITION}
           resource={MOCK_RESOURCE}
+          response={MOCK_RESPONSE}
+          errors={MOCK_ERRORS}
           onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
@@ -134,28 +139,6 @@ describe('#app/components/stages/omega/component', () => {
 
       expect(renderer.create(component).toJSON())
         .toMatchSnapshot()
-    })
-  })
-
-  describe('`getErrorProps()`', () => {
-    it('returns an object', () => {
-      expect(getErrorProps(mockProps))
-        .toEqual({
-          name: 'MOCK NAME',
-          message: 'MOCK MESSAGE'
-        })
-    })
-  })
-
-  describe('`getStageProps()`', () => {
-    it('returns an object', () => {
-      expect(getStageProps(mockProps))
-        .toEqual({
-          definition: {},
-          resource: {},
-          onChange: expect.any(Function),
-          onSubmit: expect.any(Function)
-        })
     })
   })
 })

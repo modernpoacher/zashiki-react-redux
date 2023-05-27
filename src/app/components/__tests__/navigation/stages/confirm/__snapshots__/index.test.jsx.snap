@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`#app/components/navigation/stages/confirm Always renders 1`] = `
+exports[`@modernpoacher/zashiki-react-redux/app/components/navigation/stages/confirm Always renders 1`] = `
 <a
   className="mock-link"
 >

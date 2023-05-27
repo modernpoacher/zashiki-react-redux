@@ -44,13 +44,13 @@ import {
   SUBMIT,
   submitStateFulfilled,
   submitStateRejected
-} from '#app/actions/stages/omega'
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
 
-import * as api from '#api/stages/omega'
+import * as api from '@modernpoacher/zashiki-react-redux/api/stages/omega'
 
-import { transformError } from '#app/transformers'
+import { transformError } from '@modernpoacher/zashiki-react-redux/app/transformers'
 
-import getPathname from '#app/common/get-pathname'
+import getPathname from '@modernpoacher/zashiki-react-redux/app/common/get-pathname'
 
 const log = debug('zashiki-react-redux/app/sagas/stages/omega')
 

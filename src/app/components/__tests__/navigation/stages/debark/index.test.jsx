@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import renderer from 'react-test-renderer'
 
-import Debark from '#app/components/navigation/stages/debark'
+import Debark from '@modernpoacher/zashiki-react-redux/app/components/navigation/stages/debark'
 
-jest.mock('#app/common/get-debark-route')
+jest.mock('@modernpoacher/zashiki-react-redux/app/common/get-debark-route')
 
 function MockLink ({ to, children }) {
   return (
@@ -34,7 +34,7 @@ jest.mock('react-router-dom', () => {
   }
 })
 
-describe('#app/components/navigation/stages/debark', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/navigation/stages/debark', () => {
   describe('Always', () => {
     it('renders', () => {
       expect(renderer.create(<Debark />).toJSON())

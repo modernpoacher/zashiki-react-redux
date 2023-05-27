@@ -6,14 +6,14 @@ import {
 
 import Signals from 'shinkansen-engine/components/signals'
 
-import withRouter from '#app/router/with-router'
+import withRouter from '@modernpoacher/zashiki-react-redux/app/router/with-router'
 
-import transform from '#app/transformers/stages/debark'
+import transform from '@modernpoacher/zashiki-react-redux/app/transformers/stages/debark'
 
 import {
   fetch,
   submit
-} from '#app/actions/stages/debark'
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
 
 import Component from './component.cjs'
 

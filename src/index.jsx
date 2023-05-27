@@ -5,9 +5,9 @@ import {
 } from 'react-redux'
 import debug from 'debug'
 
-import configureStore from '#app/store'
+import configureStore from '@modernpoacher/zashiki-react-redux/app/store'
 
-import Router from '#app/router'
+import Router from '@modernpoacher/zashiki-react-redux/app/router'
 
 const log = debug('zashiki-react-redux')
 

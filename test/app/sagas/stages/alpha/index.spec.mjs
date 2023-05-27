@@ -12,7 +12,7 @@ import {
 
 chai.use(sinonChai)
 
-describe('#app/sagas/stages/alpha', () => {
+describe('@modernpoacher/zashiki-react-redux/app/sagas/stages/alpha', () => {
   describe('`watchAlphaFetch`', () => {
     it('is a function', () => {
       expect(watchAlphaFetch)

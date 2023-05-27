@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 
 import MockGears from 'zashiki-react-redux/mocks/shinkansen-engine/components/gears'
 
-import Resolved from '#app/components/stages/alpha/status/resolved'
+import Resolved from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/status/resolved'
 
 const MOCK_DEFINITION = {
   meta: {
@@ -37,9 +37,9 @@ const MOCK_DEFINITIONS = [
   }
 ]
 
-jest.mock('#app/components/stages/alpha/gears', () => (props) => <MockGears {...props} />)
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears', () => (props) => <MockGears {...props} />)
 
-describe('#app/components/stages/alpha/status/resolved', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/status/resolved', () => {
   describe('Always', () => {
     it('renders', () => {
       const component = (

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`#app/components/stages/embark/status/rejected \`code\` is an integer renders 1`] = `
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/rejected \`code\` is an integer renders 1`] = `
 <div
   className="embark rejected"
 >
@@ -12,7 +12,7 @@ exports[`#app/components/stages/embark/status/rejected \`code\` is an integer re
 </div>
 `;
 
-exports[`#app/components/stages/embark/status/rejected \`message\` is a string renders 1`] = `
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/rejected \`message\` is a string renders 1`] = `
 <div
   className="embark rejected"
 >
@@ -25,7 +25,7 @@ exports[`#app/components/stages/embark/status/rejected \`message\` is a string r
 </div>
 `;
 
-exports[`#app/components/stages/embark/status/rejected Always renders 1`] = `
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/rejected Always renders 1`] = `
 <div
   className="embark rejected"
 >

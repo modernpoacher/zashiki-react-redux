@@ -1,13 +1,13 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Rejected from '#app/components/stages/confirm/status/rejected'
+import Rejected from '@modernpoacher/zashiki-react-redux/app/components/stages/confirm/status/rejected'
 
 const MOCK_RESPONSE = {
   '#/': 'MOCK VALUE'
 }
 
-describe('#app/components/stages/confirm/status/rejected', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/confirm/status/rejected', () => {
   describe('Always', () => {
     it('renders', () => {
       const component = (

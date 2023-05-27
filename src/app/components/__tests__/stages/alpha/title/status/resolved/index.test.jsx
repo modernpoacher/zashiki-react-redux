@@ -1,9 +1,9 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Resolved from '#app/components/stages/alpha/title/status/resolved'
+import Resolved from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/title/status/resolved'
 
-describe('#app/components/stages/alpha/status/title/resolved', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/status/title/resolved', () => {
   describe('Always', () => {
     it('renders', () => {
       const component = (

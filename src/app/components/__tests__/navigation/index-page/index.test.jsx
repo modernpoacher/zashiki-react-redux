@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import renderer from 'react-test-renderer'
 
-import IndexPage from '#app/components/navigation/index-page'
+import IndexPage from '@modernpoacher/zashiki-react-redux/app/components/navigation/index-page'
 
 function MockLink ({ to, children }) {
   return (
@@ -32,7 +32,7 @@ jest.mock('react-router-dom', () => {
   }
 })
 
-describe('#app/components/navigation/index-page', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/navigation/index-page', () => {
   describe('Always', () => {
     it('renders', () => {
       expect(renderer.create(<IndexPage />).toJSON())

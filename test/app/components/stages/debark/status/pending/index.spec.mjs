@@ -5,7 +5,7 @@ import Pending from '@modernpoacher/zashiki-react-redux/app/components/stages/de
 
 chai.use(sinonChai)
 
-describe('#app/components/stages/debark/status/pending', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/pending', () => {
   describe('`Pending`', () => {
     it('is a function', () => {
       expect(Pending)

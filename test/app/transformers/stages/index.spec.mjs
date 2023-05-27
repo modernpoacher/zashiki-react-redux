@@ -10,7 +10,7 @@ import {
 
 chai.use(sinonChai)
 
-describe('#app/transformers/stages', () => {
+describe('@modernpoacher/zashiki-react-redux/app/transformers/stages', () => {
   describe('`embark`', () => {
     it('is a module', () => {
       expect(embark)

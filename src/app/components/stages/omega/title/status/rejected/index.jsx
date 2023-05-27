@@ -1,6 +1,6 @@
 import classnames from 'classnames'
 
-import Title from '#app/components/stages/omega/title/stage'
+import Title from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/title/stage'
 
 export default class Rejected extends Title {
   getClassName () {

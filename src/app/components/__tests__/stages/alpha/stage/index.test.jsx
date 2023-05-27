@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Stage from '#app/components/stages/alpha/stage'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/stage'
 
 import MockGears from 'zashiki-react-redux/mocks/shinkansen-engine/components/gears'
 
@@ -41,10 +41,9 @@ const MOCK_DEFINITIONS = [
   }
 ]
 
-// jest.mock('#app/components/stages/alpha/alpha')
-jest.mock('#app/components/stages/alpha/gears', () => (props) => <MockGears {...props} />)
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears', () => (props) => <MockGears {...props} />)
 
-describe('#app/components/stages/alpha/stage', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/stage', () => {
   describe('Always', () => {
     it('renders', () => {
       const component = (

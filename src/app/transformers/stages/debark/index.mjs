@@ -9,11 +9,11 @@ import toCheckAnswers from 'shinkansen-engine/transformers/pinion/check-answers'
 
 import {
   REJECTED
-} from '#app/common'
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
 import {
   transformRejected
-} from '#app/transformers'
+} from '@modernpoacher/zashiki-react-redux/app/transformers'
 
 const log = debug('zashiki-react-redux/app/transformers/stages/debark')
 

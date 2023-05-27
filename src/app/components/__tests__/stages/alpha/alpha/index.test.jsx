@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Alpha from '#app/components/stages/alpha/alpha'
+import Alpha from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/alpha'
 
 const MOCK_DEFINITION = {
   meta: {
@@ -35,7 +35,7 @@ const MOCK_DEFINITIONS = [
   }
 ]
 
-describe('#app/components/stages/alpha/alpha', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/alpha', () => {
   describe('Always', () => {
     it('renders', () => {
       const component = (

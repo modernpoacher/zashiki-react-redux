@@ -5,7 +5,7 @@ import debug from 'debug'
 import Pinion from 'shinkansen-engine/components/pinion'
 import ErrorSummary from 'shinkansen-engine/components/pinion/error-summary'
 
-import getEmbarkRoute from '#app/common/get-embark-route'
+import getEmbarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-embark-route'
 
 const log = debug('zashiki-react-redux/app/components/stages/embark/stage')
 

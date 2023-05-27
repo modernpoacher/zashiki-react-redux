@@ -2,13 +2,13 @@ import {
   toZashiki
 } from 'shinkansen-engine/transformers/transmission'
 
-import transform from '#app/transformers/stages/embark'
+import transform from '@modernpoacher/zashiki-react-redux/app/transformers/stages/embark'
 
 import {
   transformRejected
-} from '#app/transformers'
+} from '@modernpoacher/zashiki-react-redux/app/transformers'
 
-jest.mock('#app/common', () => ({
+jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
   REJECTED: 'MOCK REJECTED'
 }))
 
@@ -16,7 +16,7 @@ jest.mock('shinkansen-engine/transformers/transmission', () => ({
   toZashiki: jest.fn().mockReturnValue('MOCK ZASHIKI')
 }))
 
-jest.mock('#app/transformers', () => ({ transformRejected: jest.fn() }))
+jest.mock('@modernpoacher/zashiki-react-redux/app/transformers', () => ({ transformRejected: jest.fn() }))
 
 const DEFAULT = {
   status: 'MOCK STATUS',
@@ -25,7 +25,7 @@ const DEFAULT = {
   errors: []
 }
 
-describe('#app/transformers/stages/embark', () => {
+describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/embark', () => {
   describe('`transform`', () => {
     it('is defined', () => {
       expect(transform).toBeDefined()

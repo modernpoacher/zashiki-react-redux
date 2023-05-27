@@ -10,7 +10,7 @@ import {
 
 chai.use(sinonChai)
 
-describe('#app/sagas/stages/confirm', () => {
+describe('@modernpoacher/zashiki-react-redux/app/sagas/stages/confirm', () => {
   describe('`watchConfirmFetch`', () => {
     it('is a function', () => {
       expect(watchConfirmFetch)

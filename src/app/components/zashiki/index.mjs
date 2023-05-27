@@ -4,13 +4,13 @@ import {
   connect
 } from 'react-redux'
 
-import withRouter from '#app/router/with-router'
+import withRouter from '@modernpoacher/zashiki-react-redux/app/router/with-router'
 
 import {
   mount,
   submit,
   change
-} from '#app/actions/zashiki'
+} from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
 
 import Component from './component.cjs'
 

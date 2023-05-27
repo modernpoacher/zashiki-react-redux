@@ -17,7 +17,7 @@ import reducer, {
 
 chai.use(sinonChai)
 
-describe('#app/reducers/stages/debark', () => {
+describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/debark', () => {
   describe('`reducer`', () => {
     it('is a function', () => {
       expect(reducer)

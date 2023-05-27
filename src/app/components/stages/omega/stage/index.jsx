@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import debug from 'debug'
 
-import Omega from '#app/components/stages/omega/omega'
-import Gears from '#app/components/stages/omega/gears'
+import Omega from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/omega'
+import Gears from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/gears'
 
 const log = debug('zashiki-react-redux/app/components/stages/omega/stage')
 

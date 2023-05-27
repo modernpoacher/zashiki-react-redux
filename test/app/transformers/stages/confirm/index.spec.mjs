@@ -7,7 +7,7 @@ import transformer, {
 
 chai.use(sinonChai)
 
-describe('#app/transformers/stages/confirm', () => {
+describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/confirm', () => {
   describe('`transformer`', () => {
     it('is a function', () => {
       expect(transformer)

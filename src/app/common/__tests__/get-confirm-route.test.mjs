@@ -1,6 +1,6 @@
 import Rails from 'shinkansen-engine/components/rails'
 
-import getConfirmRoute from '#app/common/get-confirm-route'
+import getConfirmRoute from '@modernpoacher/zashiki-react-redux/app/common/get-confirm-route'
 
 jest.mock('shinkansen-engine/components/rails', () => ({
   to: jest.fn().mockReturnValue('MOCK CONFIRM ROUTE')
@@ -12,7 +12,7 @@ jest.mock('shinkansen-engine/components/signals', () => ({
   CONFIRM_PATTERN: 'MOCK CONFIRM PATTERN'
 }))
 
-describe('#app/common/get-confirm-route', () => {
+describe('@modernpoacher/zashiki-react-redux/app/common/get-confirm-route', () => {
   describe('`getConfirmRoute`', () => {
     it('is defined', () => {
       expect(getConfirmRoute).toBeDefined()

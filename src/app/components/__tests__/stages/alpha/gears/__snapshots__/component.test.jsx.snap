@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`#app/components/stages/alpha/gears/component Always renders 1`] = `null`;
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/component Always renders 1`] = `null`;
 
-exports[`#app/components/stages/alpha/gears/component renders \`forward\` 1`] = `
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/component renders \`forward\` 1`] = `
 <ul
   className="shinkansen-gears"
 >
@@ -23,7 +23,7 @@ exports[`#app/components/stages/alpha/gears/component renders \`forward\` 1`] = 
 </ul>
 `;
 
-exports[`#app/components/stages/alpha/gears/component renders \`reverse\` 1`] = `
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/component renders \`reverse\` 1`] = `
 <ul
   className="shinkansen-gears"
 >
@@ -44,7 +44,7 @@ exports[`#app/components/stages/alpha/gears/component renders \`reverse\` 1`] = 
 </ul>
 `;
 
-exports[`#app/components/stages/alpha/gears/component renders \`reverse\` and \`forward\` 1`] = `
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/component renders \`reverse\` and \`forward\` 1`] = `
 <ul
   className="shinkansen-gears"
 >

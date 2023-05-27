@@ -6,7 +6,7 @@ import {
   RESOLVED,
   REJECTED,
   PENDING
-} from '#app/common'
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
 import Resolved from './status/resolved/index.jsx'
 import Rejected from './status/rejected/index.jsx'

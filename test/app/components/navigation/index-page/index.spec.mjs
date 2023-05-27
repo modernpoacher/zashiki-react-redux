@@ -5,7 +5,7 @@ import IndexPage from '@modernpoacher/zashiki-react-redux/app/components/navigat
 
 chai.use(sinonChai)
 
-describe('#app/components/navigation/index-page', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/navigation/index-page', () => {
   describe('`IndexPage`', () => {
     it('is a function', () => {
       expect(IndexPage)

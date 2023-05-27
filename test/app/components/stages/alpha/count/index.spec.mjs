@@ -5,7 +5,7 @@ import Count from '@modernpoacher/zashiki-react-redux/app/components/stages/alph
 
 chai.use(sinonChai)
 
-describe('#app/components/stages/alpha/count', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/count', () => {
   describe('`Count`', () => {
     it('is a function', () => {
       expect(Count)

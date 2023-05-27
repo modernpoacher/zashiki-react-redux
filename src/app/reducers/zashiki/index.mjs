@@ -4,7 +4,7 @@ import {
   PENDING,
   RESOLVED,
   REJECTED
-} from '#app/common'
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
 import {
   CHANGE,
@@ -24,15 +24,15 @@ import {
   FETCH_REJECTED,
   STORE_REJECTED,
   QUERY_REJECTED
-} from '#app/actions/zashiki'
+} from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
 
 import {
   MOUNT as ALPHA_MOUNT
-} from '#app/actions/stages/alpha'
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
 
 import {
   MOUNT as OMEGA_MOUNT
-} from '#app/actions/stages/omega'
+} from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
 
 const STATE = {
   status: PENDING

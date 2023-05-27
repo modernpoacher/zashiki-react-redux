@@ -9,7 +9,7 @@ import {
 
 chai.use(sinonChai)
 
-describe('#app/components/stages/alpha/title/status', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/title/status', () => {
   describe('`Rejected`', () => {
     it('is a function', () => {
       expect(Rejected)

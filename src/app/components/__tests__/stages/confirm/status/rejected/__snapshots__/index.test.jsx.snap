@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`#app/components/stages/confirm/status/rejected \`code\` is an integer renders 1`] = `
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/confirm/status/rejected \`code\` is an integer renders 1`] = `
 <div
   className="confirm rejected"
 >
@@ -12,7 +12,7 @@ exports[`#app/components/stages/confirm/status/rejected \`code\` is an integer r
 </div>
 `;
 
-exports[`#app/components/stages/confirm/status/rejected \`message\` is a string renders 1`] = `
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/confirm/status/rejected \`message\` is a string renders 1`] = `
 <div
   className="confirm rejected"
 >
@@ -25,7 +25,7 @@ exports[`#app/components/stages/confirm/status/rejected \`message\` is a string 
 </div>
 `;
 
-exports[`#app/components/stages/confirm/status/rejected Always renders 1`] = `
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/confirm/status/rejected Always renders 1`] = `
 <div
   className="confirm rejected"
 >

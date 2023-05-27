@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import renderer from 'react-test-renderer'
 
-import Gears from '#app/components/stages/omega/gears/component'
+import Gears from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/gears/component'
 
 jest.mock('shinkansen-engine/components/signals', () => ({
   OMEGA_PATTERN: 'MOCK OMEGA PATTERN'
@@ -36,7 +36,7 @@ jest.mock('react-router-dom', () => {
   }
 })
 
-describe('#app/components/stages/omega/gears/component', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/gears/component', () => {
   describe('Always', () => {
     it('renders', () => {
       const component = (

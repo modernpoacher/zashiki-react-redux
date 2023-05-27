@@ -1,7 +1,7 @@
 /*
  *  Zashiki/Alpha API
  */
-import api from '#api'
+import api from '@modernpoacher/zashiki-react-redux/api'
 
 export const mountRoute = (route) => api().patch('zashiki/stages/change', route)
 

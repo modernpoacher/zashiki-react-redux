@@ -5,7 +5,7 @@ import Zashiki from '@modernpoacher/zashiki-react-redux/app/components/zashiki/c
 
 chai.use(sinonChai)
 
-describe('#app/components/zashiki/component', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', () => {
   describe('`Zashiki`', () => {
     it('is a function', () => {
       expect(Zashiki)

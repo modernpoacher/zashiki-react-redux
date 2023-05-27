@@ -17,15 +17,15 @@ import omegaReducer, {
   queryRejected,
   changeRejected,
   submitRejected
-} from '#app/reducers/stages/omega'
+} from '@modernpoacher/zashiki-react-redux/app/reducers/stages/omega'
 
-jest.mock('#app/common', () => ({
+jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
   RESOLVED: 'MOCK RESOLVED',
   REJECTED: 'MOCK REJECTED',
   PENDING: 'MOCK PENDING'
 }))
 
-jest.mock('#app/actions/stages/omega', () => ({
+jest.mock('@modernpoacher/zashiki-react-redux/app/actions/stages/omega', () => ({
   ROUTE: 'MOCK ROUTE',
   FETCH: 'MOCK FETCH',
   STORE: 'MOCK STORE',
@@ -46,15 +46,15 @@ jest.mock('#app/actions/stages/omega', () => ({
   SUBMIT_REJECTED: 'MOCK SUBMIT REJECTED'
 }))
 
-jest.mock('#app/actions/stages/embark', () => ({ ROUTE: 'MOCK EMBARK ROUTE' }))
+jest.mock('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => ({ ROUTE: 'MOCK EMBARK ROUTE' }))
 
-jest.mock('#app/actions/stages/debark', () => ({ ROUTE: 'MOCK DEBARK ROUTE' }))
+jest.mock('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => ({ ROUTE: 'MOCK DEBARK ROUTE' }))
 
 const DEFAULT = {
   status: 'MOCK PENDING'
 }
 
-describe('#app/reducers/stages/omega', () => {
+describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/omega', () => {
   describe('`omegaReducer`', () => {
     it('is defined', () => {
       expect(omegaReducer)

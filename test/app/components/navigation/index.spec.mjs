@@ -5,7 +5,7 @@ import Navigation from '@modernpoacher/zashiki-react-redux/app/components/naviga
 
 chai.use(sinonChai)
 
-describe('#app/components/navigation', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/navigation', () => {
   describe('`Navigation`', () => {
     it('is a function', () => {
       expect(Navigation)

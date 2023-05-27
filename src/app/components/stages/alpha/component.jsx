@@ -6,20 +6,20 @@ import {
   RESOLVED,
   REJECTED,
   PENDING
-} from '#app/common'
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
-import Zashiki from '#app/components/zashiki/component'
+import Zashiki from '@modernpoacher/zashiki-react-redux/app/components/zashiki/component'
 
 import Resolved from './status/resolved/index.jsx'
 import Rejected from './status/rejected/index.jsx'
 import Pending from './status/pending/index.jsx'
 
+import getStageProps from './get-stage-props.mjs'
+import getErrorProps from './get-error-props.mjs'
+
 const log = debug('zashiki-react-redux/app/components/stages/alpha/component')
 
 log('`zashiki` is awake')
-
-export const getStageProps = ({ state, resource, definitions, gears, onChange, onSubmit }) => ({ state, resource, definitions, gears, onChange, onSubmit })
-export const getErrorProps = ({ exception }) => exception
 
 export default class Stage extends Zashiki {
   render () {

@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 
 import MockGears from 'zashiki-react-redux/mocks/shinkansen-engine/components/gears'
 
-import Resolved from '#app/components/stages/omega/status/resolved'
+import Resolved from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/status/resolved'
 
 const MOCK_DESCRIPTION = 'MOCK DESCRIPTION'
 
@@ -30,9 +30,9 @@ const MOCK_RESPONSE = {
 
 const MOCK_ERRORS = []
 
-jest.mock('#app/components/stages/omega/gears', () => (props) => <MockGears {...props} />)
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/omega/gears', () => (props) => <MockGears {...props} />)
 
-describe('#app/components/stages/omega/status/resolved', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/status/resolved', () => {
   describe('Always', () => {
     it('renders', () => {
       const component = (

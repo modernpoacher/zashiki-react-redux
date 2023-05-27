@@ -9,7 +9,7 @@ import transformer, {
 
 chai.use(sinonChai)
 
-describe('#app/transformers/stages/debark', () => {
+describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/debark', () => {
   describe('`transformer`', () => {
     it('is a function', () => {
       expect(transformer)

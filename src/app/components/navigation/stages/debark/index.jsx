@@ -4,7 +4,7 @@ import {
   Link
 } from 'react-router-dom'
 
-import getDebarkRoute from '#app/common/get-debark-route'
+import getDebarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-debark-route'
 
 const DebarkStageLink = ({ href, text }) => (
   <Link to={href}>

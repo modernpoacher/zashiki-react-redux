@@ -17,7 +17,7 @@ import reducer, {
 
 chai.use(sinonChai)
 
-describe('#app/reducers/stages/confirm', () => {
+describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/confirm', () => {
   describe('`reducer`', () => {
     it('is a function', () => {
       expect(reducer)

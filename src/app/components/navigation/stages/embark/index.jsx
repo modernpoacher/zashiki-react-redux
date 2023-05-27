@@ -4,7 +4,7 @@ import {
   Link
 } from 'react-router-dom'
 
-import getEmbarkRoute from '#app/common/get-embark-route'
+import getEmbarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-embark-route'
 
 const EmbarkStageLink = ({ href, text }) => (
   <Link to={href}>

@@ -16,15 +16,15 @@ import zashikiReducer, {
   queryRejected,
   changeRejected,
   submitRejected
-} from '#app/reducers/zashiki'
+} from '@modernpoacher/zashiki-react-redux/app/reducers/zashiki'
 
-jest.mock('#app/common', () => ({
+jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
   RESOLVED: 'MOCK RESOLVED',
   REJECTED: 'MOCK REJECTED',
   PENDING: 'MOCK PENDING'
 }))
 
-jest.mock('#app/actions/zashiki', () => ({
+jest.mock('@modernpoacher/zashiki-react-redux/app/actions/zashiki', () => ({
   FETCH: 'MOCK FETCH',
   STORE: 'MOCK STORE',
   QUERY: 'MOCK QUERY',
@@ -48,7 +48,7 @@ const DEFAULT = {
   status: 'MOCK PENDING'
 }
 
-describe('#app/reducers/zashiki', () => {
+describe('@modernpoacher/zashiki-react-redux/app/reducers/zashiki', () => {
   describe('`zashikiReducer`', () => {
     it('is defined', () => {
       expect(zashikiReducer)

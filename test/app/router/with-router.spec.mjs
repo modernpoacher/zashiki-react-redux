@@ -5,7 +5,7 @@ import withRouter from '@modernpoacher/zashiki-react-redux/app/router/with-route
 
 chai.use(sinonChai)
 
-describe('#app/router/with-router', () => {
+describe('@modernpoacher/zashiki-react-redux/app/router/with-router', () => {
   describe('`withRouter`', () => {
     it('is a function', () => {
       expect(withRouter)

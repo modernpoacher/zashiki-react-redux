@@ -2,16 +2,16 @@ import {
   renderToString
 } from '@modernpoacher/isomorphic/react-router/redux'
 
-import configureStore from '#app/store'
+import configureStore from '@modernpoacher/zashiki-react-redux/app/store'
 
-import render from '#isomorphic'
+import render from '@modernpoacher/zashiki-react-redux/isomorphic'
 
 jest.mock('@modernpoacher/isomorphic/react-router/redux', () => ({ renderToString: jest.fn().mockReturnValue('MOCK RENDER TO STRING') }))
 
-jest.mock('#app/store', () => jest.fn().mockReturnValue('MOCK STORE'))
-jest.mock('#app/routes', () => 'MOCK ROUTES')
+jest.mock('@modernpoacher/zashiki-react-redux/app/store', () => jest.fn().mockReturnValue('MOCK STORE'))
+jest.mock('@modernpoacher/zashiki-react-redux/app/routes', () => 'MOCK ROUTES')
 
-describe('#isomorphic', () => {
+describe('@modernpoacher/zashiki-react-redux/isomorphic', () => {
   describe('`render`', () => {
     it('is defined', () => {
       expect(render)

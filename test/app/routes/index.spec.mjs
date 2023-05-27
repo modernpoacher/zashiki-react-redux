@@ -5,7 +5,7 @@ import Routes from '@modernpoacher/zashiki-react-redux/app/routes'
 
 chai.use(sinonChai)
 
-describe('#app/routes', () => {
+describe('@modernpoacher/zashiki-react-redux/app/routes', () => {
   describe('`Routes`', () => {
     it('is an object', () => {
       expect(Routes)

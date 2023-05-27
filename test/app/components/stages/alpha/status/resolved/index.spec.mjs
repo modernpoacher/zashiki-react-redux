@@ -5,7 +5,7 @@ import Resolved from '@modernpoacher/zashiki-react-redux/app/components/stages/a
 
 chai.use(sinonChai)
 
-describe('#app/components/stages/alpha/status/resolved', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/status/resolved', () => {
   describe('`Resolved`', () => {
     it('is a function', () => {
       expect(Resolved)

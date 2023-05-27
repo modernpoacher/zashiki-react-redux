@@ -1,6 +1,6 @@
 import Rails from 'shinkansen-engine/components/rails'
 
-import getPathname from '#app/common/get-pathname'
+import getPathname from '@modernpoacher/zashiki-react-redux/app/common/get-pathname'
 
 jest.mock('shinkansen-engine/components/rails', () => ({
   go: jest.fn(),
@@ -18,7 +18,7 @@ jest.mock('shinkansen-engine/components/signals', () => ({
   DEBARK_PATTERN: 'MOCK DEBARK PATTERN'
 }))
 
-describe('#app/common/get-pathname', () => {
+describe('@modernpoacher/zashiki-react-redux/app/common/get-pathname', () => {
   describe('`getPathname`', () => {
     it('is defined', () => {
       expect(getPathname).toBeDefined()

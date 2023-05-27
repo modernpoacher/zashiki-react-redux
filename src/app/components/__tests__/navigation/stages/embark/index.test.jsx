@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import renderer from 'react-test-renderer'
 
-import Embark from '#app/components/navigation/stages/embark'
+import Embark from '@modernpoacher/zashiki-react-redux/app/components/navigation/stages/embark'
 
-jest.mock('#app/common/get-embark-route')
+jest.mock('@modernpoacher/zashiki-react-redux/app/common/get-embark-route')
 
 function MockLink ({ to, children }) {
   return (
@@ -34,7 +34,7 @@ jest.mock('react-router-dom', () => {
   }
 })
 
-describe('#app/components/navigation/stages/embark', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/navigation/stages/embark', () => {
   describe('Always', () => {
     it('renders', () => {
       expect(renderer.create(<Embark />).toJSON())

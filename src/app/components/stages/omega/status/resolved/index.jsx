@@ -1,6 +1,6 @@
 import classnames from 'classnames'
 
-import Stage from '#app/components/stages/omega/stage'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/stage'
 
 export default class Resolved extends Stage {
   getClassName () {

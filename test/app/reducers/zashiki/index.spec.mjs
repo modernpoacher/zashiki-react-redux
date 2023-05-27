@@ -21,7 +21,7 @@ import reducer, {
 
 chai.use(sinonChai)
 
-describe('#app/reducers/zashiki', () => {
+describe('@modernpoacher/zashiki-react-redux/app/reducers/zashiki', () => {
   describe('`reducer`', () => {
     it('is a function', () => {
       expect(reducer)

@@ -4,9 +4,9 @@ import debug from 'debug'
 
 import CheckAnswers from 'shinkansen-engine/components/pinion/check-answers'
 
-import Token from '#app/components/stages/debark/token'
+import Token from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/token'
 
-import getDebarkRoute from '#app/common/get-debark-route'
+import getDebarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-debark-route'
 
 const log = debug('zashiki-react-redux/app/components/stages/debark/stage')
 

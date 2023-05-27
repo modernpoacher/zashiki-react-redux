@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import renderer from 'react-test-renderer'
 
-import Confirm from '#app/components/navigation/stages/confirm'
+import Confirm from '@modernpoacher/zashiki-react-redux/app/components/navigation/stages/confirm'
 
-jest.mock('#app/common/get-confirm-route')
+jest.mock('@modernpoacher/zashiki-react-redux/app/common/get-confirm-route')
 
 function MockLink ({ to, children }) {
   return (
@@ -34,7 +34,7 @@ jest.mock('react-router-dom', () => {
   }
 })
 
-describe('#app/components/navigation/stages/confirm', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/navigation/stages/confirm', () => {
   describe('Always', () => {
     it('renders', () => {
       expect(renderer.create(<Confirm />).toJSON())

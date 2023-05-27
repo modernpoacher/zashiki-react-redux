@@ -2,7 +2,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Stage from '#app/components/stages/confirm/stage'
+import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/confirm/stage'
 
 const MOCK_DEFINITION = {
   meta: {
@@ -20,7 +20,7 @@ const MOCK_RESPONSE = {
   '#/': 'MOCK VALUE'
 }
 
-describe('#app/components/stages/confirm/stage', () => {
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/confirm/stage', () => {
   describe('Always', () => {
     it('renders', () => {
       const component = (

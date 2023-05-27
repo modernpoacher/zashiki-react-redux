@@ -22,7 +22,7 @@ import reducer, {
 
 chai.use(sinonChai)
 
-describe('#app/reducers/stages/omega', () => {
+describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/omega', () => {
   describe('`reducer`', () => {
     it('is a function', () => {
       expect(reducer)

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`#app/components/stages/omega/stage Always renders 1`] = `
+exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/stage Always renders 1`] = `
 <div
   className="omega"
 >

@@ -5,36 +5,32 @@ import {
   RESOLVED,
   REJECTED,
   PENDING
-} from '#app/common'
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
-import Debark, { getDebarkProps, getErrorProps } from '#app/components/stages/debark/component'
+import Debark from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/component'
 
-jest.mock('#app/common', () => ({
+jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
   RESOLVED: 'MOCK RESOLVED',
   REJECTED: 'MOCK REJECTED',
   PENDING: 'MOCK PENDING'
 }))
 
-jest.mock('#app/components/stages/debark/status/resolved', () => () => 'MOCK RESOLVED')
-jest.mock('#app/components/stages/debark/status/rejected', () => () => 'MOCK REJECTED')
-jest.mock('#app/components/stages/debark/status/pending', () => () => 'MOCK PENDING')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/resolved', () => () => 'MOCK RESOLVED')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/rejected', () => () => 'MOCK REJECTED')
+jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/pending', () => () => 'MOCK PENDING')
 
-describe('#app/components/stages/debark/component', () => {
-  const MOCK_DEFINITIONS = []
+jest.mock('@modernpoacher/zashiki-react-redux/app/router/with-router', () => (Component) => Component)
+
+describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/component', () => {
+  const MOCK_DEFINITIONS = [
+    {
+      description: 'MOCK DESCRIPTION',
+      definition: []
+    }
+  ]
   const MOCK_TOKEN = {}
-  const MOCK_RESOURCE = {}
   const MOCK_ONSUBMIT = jest.fn()
   const MOCK_ONDEBARK = jest.fn()
-
-  const mockProps = {
-    definitions: [],
-    token: {},
-    onSubmit: jest.fn(),
-    exception: {
-      name: 'MOCK NAME',
-      message: 'MOCK MESSAGE'
-    }
-  }
 
   describe('Always', () => {
     const component = (
@@ -42,7 +38,6 @@ describe('#app/components/stages/debark/component', () => {
         status={RESOLVED}
         definitions={MOCK_DEFINITIONS}
         token={MOCK_TOKEN}
-        resource={MOCK_RESOURCE}
         onSubmit={MOCK_ONSUBMIT}
         onDebark={MOCK_ONDEBARK}
       />
@@ -56,11 +51,9 @@ describe('#app/components/stages/debark/component', () => {
       rendered = renderer.create(component)
     })
 
-    describe('Always', () => {
-      it('renders', () => {
-        expect(rendered.toJSON())
-          .toMatchSnapshot()
-      })
+    it('renders', () => {
+      expect(rendered.toJSON())
+        .toMatchSnapshot()
     })
 
     it('invokes `componentDidMount`', () => {
@@ -71,20 +64,6 @@ describe('#app/components/stages/debark/component', () => {
     it('invokes `onDebark`', () => {
       expect(MOCK_ONDEBARK)
         .toHaveBeenCalled()
-    })
-  })
-
-  describe('`getDebarkProps`', () => {
-    it('is defined', () => {
-      expect(getDebarkProps)
-        .toBeDefined()
-    })
-  })
-
-  describe('`getErrorProps`', () => {
-    it('is defined', () => {
-      expect(getErrorProps)
-        .toBeDefined()
     })
   })
 
@@ -139,27 +118,6 @@ describe('#app/components/stages/debark/component', () => {
 
       expect(renderer.create(component).toJSON())
         .toMatchSnapshot()
-    })
-  })
-
-  describe('`getErrorProps()`', () => {
-    it('returns an object', () => {
-      expect(getErrorProps(mockProps))
-        .toEqual({
-          name: 'MOCK NAME',
-          message: 'MOCK MESSAGE'
-        })
-    })
-  })
-
-  describe('`getDebarkProps()`', () => {
-    it('returns an object', () => {
-      expect(getDebarkProps(mockProps))
-        .toEqual({
-          definitions: [],
-          token: {},
-          onSubmit: expect.any(Function)
-        })
     })
   })
 })

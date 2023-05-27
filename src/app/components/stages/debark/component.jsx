@@ -6,18 +6,18 @@ import {
   RESOLVED,
   REJECTED,
   PENDING
-} from '#app/common'
+} from '@modernpoacher/zashiki-react-redux/app/common'
 
 import Resolved from './status/resolved/index.jsx'
 import Rejected from './status/rejected/index.jsx'
 import Pending from './status/pending/index.jsx'
 
+import getDebarkProps from './get-debark-props.mjs'
+import getErrorProps from './get-error-props.mjs'
+
 const log = debug('zashiki-react-redux/app/components/stages/debark/component')
 
 log('`zashiki` is awake')
-
-export const getDebarkProps = ({ definitions, token, onSubmit }) => ({ definitions, token, onSubmit })
-export const getErrorProps = ({ exception }) => exception
 
 export default class Stage extends Component {
   state = {}
