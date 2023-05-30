@@ -41,7 +41,7 @@ export const SUBMIT_REJECTED = SUBMIT.concat('_REJECTED')
 /*
  *  Action Creators
  */
-export function embarkRoute (redirect, history) {
+export function embarkRoute (redirect, router) {
   /*
    *  log('embarkRoute')
    */
@@ -49,18 +49,18 @@ export function embarkRoute (redirect, history) {
   return {
     type: ROUTE,
     redirect,
-    history
+    router
   }
 }
 
-export function fetchRoute (history) {
+export function fetchRoute (router) {
   /*
    *  log('fetchRoute')
    */
 
   return {
     type: FETCH,
-    history
+    router
   }
 }
 
@@ -86,7 +86,7 @@ export function fetchRouteRejected (error) {
   }
 }
 
-export function storeRoute (route, history) {
+export function storeRoute (route, router) {
   /*
    *  log('storeRoute')
    */
@@ -94,7 +94,7 @@ export function storeRoute (route, history) {
   return {
     type: STORE,
     route,
-    history
+    router
   }
 }
 
@@ -120,7 +120,7 @@ export function storeRouteRejected (error) {
   }
 }
 
-export function changeState (embark, history) {
+export function changeState (embark, router) {
   /*
    *  log('changeState')
    */
@@ -128,7 +128,7 @@ export function changeState (embark, history) {
   return {
     type: CHANGE,
     embark,
-    history
+    router
   }
 }
 
@@ -154,7 +154,7 @@ export function changeStateRejected (error) {
   }
 }
 
-export function submitState (embark, history) {
+export function submitState (embark, router) {
   /*
    *  log('submitState')
    */
@@ -162,7 +162,7 @@ export function submitState (embark, history) {
   return {
     type: SUBMIT,
     embark,
-    history
+    router
   }
 }
 
@@ -188,10 +188,10 @@ export function submitStateRejected (error) {
   }
 }
 
-export const fetch = (history) => fetchRoute(history)
+export const fetch = (router) => fetchRoute(router)
 
-export const store = (response, history) => storeRoute({ response }, history)
+export const store = (response, router) => storeRoute({ response }, router)
 
-export const change = (embark, history) => changeState(embark, history)
+export const change = (embark, router) => changeState(embark, router)
 
-export const submit = (embark, history) => submitState(embark, history)
+export const submit = (embark, router) => submitState(embark, router)

@@ -37,7 +37,7 @@ export const SUBMIT_REJECTED = SUBMIT.concat('_REJECTED')
  *  Action Creators
  */
 
-export function mountRoute (route, history) {
+export function mountRoute (route, router) {
   /*
    *  log('mountRoute')
    */
@@ -45,7 +45,7 @@ export function mountRoute (route, history) {
   return {
     type: MOUNT,
     route,
-    history
+    router
   }
 }
 
@@ -103,7 +103,7 @@ export function fetchRouteRejected (error) {
   }
 }
 
-export function storeRoute (route, history) {
+export function storeRoute (route, router) {
   /*
    *  log('storeRoute')
    */
@@ -111,7 +111,7 @@ export function storeRoute (route, history) {
   return {
     type: STORE,
     route,
-    history
+    router
   }
 }
 
@@ -169,7 +169,7 @@ export function queryRouteRejected (error) {
   }
 }
 
-export function changeRoute (route, history) {
+export function changeRoute (route, router) {
   /*
    *  log('changeRoute')
    */
@@ -177,7 +177,7 @@ export function changeRoute (route, history) {
   return {
     type: CHANGE,
     route,
-    history
+    router
   }
 }
 
@@ -203,7 +203,7 @@ export function changeRouteRejected (error) {
   }
 }
 
-export function submitRoute (route, history) {
+export function submitRoute (route, router) {
   /*
    *  log('submitRoute')
    */
@@ -211,7 +211,7 @@ export function submitRoute (route, history) {
   return {
     type: SUBMIT,
     route,
-    history
+    router
   }
 }
 
@@ -237,12 +237,12 @@ export function submitRouteRejected (error) {
   }
 }
 
-export const mount = (resource, history) => mountRoute({ resource }, history)
+export const mount = (resource, router) => mountRoute({ resource }, router)
 
 export const fetch = () => fetchRoute()
 
-export const store = (resource, response, history) => storeRoute({ resource, response }, history)
+export const store = (resource, response, router) => storeRoute({ resource, response }, router)
 
-export const change = (resource, history) => changeRoute({ resource }, history)
+export const change = (resource, router) => changeRoute({ resource }, router)
 
-export const submit = (resource, response, history) => submitRoute({ resource, response }, history)
+export const submit = (resource, response, router) => submitRoute({ resource, response }, router)

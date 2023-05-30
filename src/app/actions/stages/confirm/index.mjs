@@ -37,7 +37,7 @@ export const SUBMIT_REJECTED = SUBMIT.concat('_REJECTED')
 /*
  *  Action Creators
  */
-export function confirmRoute (redirect, history) {
+export function confirmRoute (redirect, router) {
   /*
    *  log('confirmRoute')
    */
@@ -45,18 +45,18 @@ export function confirmRoute (redirect, history) {
   return {
     type: ROUTE,
     redirect,
-    history
+    router
   }
 }
 
-export function fetchRoute (history) {
+export function fetchRoute (router) {
   /*
    *  log('fetchRoute')
    */
 
   return {
     type: FETCH,
-    history
+    router
   }
 }
 
@@ -82,7 +82,7 @@ export function fetchRouteRejected (error) {
   }
 }
 
-export function storeRoute (route, history) {
+export function storeRoute (route, router) {
   /*
    *  log('storeRoute')
    */
@@ -90,7 +90,7 @@ export function storeRoute (route, history) {
   return {
     type: STORE,
     route,
-    history
+    router
   }
 }
 
@@ -116,7 +116,7 @@ export function storeRouteRejected (error) {
   }
 }
 
-export function submitState (confirm, history) {
+export function submitState (confirm, router) {
   /*
    *  log('submitState')
    */
@@ -124,7 +124,7 @@ export function submitState (confirm, history) {
   return {
     type: SUBMIT,
     confirm,
-    history
+    router
   }
 }
 
@@ -150,8 +150,8 @@ export function submitStateRejected (error) {
   }
 }
 
-export const fetch = (history) => fetchRoute(history)
+export const fetch = (router) => fetchRoute(router)
 
-export const store = (response, history) => storeRoute({ response }, history)
+export const store = (response, router) => storeRoute({ response }, router)
 
-export const submit = (confirm, history) => submitState(confirm, history)
+export const submit = (confirm, router) => submitState(confirm, router)

@@ -48,6 +48,10 @@ const {
 const getDefinition = ({ [EMBARK]: { definition } = {} }) => definition
 
 function transformData (data) {
+  /*
+   *  log('transformData')
+   */
+
   if (Reflect.has(data, 'response')) {
     const {
       response,
@@ -62,7 +66,7 @@ function transformData (data) {
   return data
 }
 
-function * embarkRouteSaga ({ redirect, history }) {
+function * embarkRouteSaga ({ redirect, router }) {
   /*
    *  log('embarkRouteSaga')
    */
@@ -74,9 +78,15 @@ function * embarkRouteSaga ({ redirect, history }) {
       location: {
         pathname: currentPathname
       } = {}
-    } = history
+    } = router
 
-    if (pathname !== currentPathname) history.push(pathname)
+    if (pathname !== currentPathname) {
+      const {
+        navigate
+      } = router
+
+      navigate(pathname)
+    }
   }
 }
 
@@ -106,7 +116,7 @@ function * storeRouteSaga (route) {
   }
 }
 
-function * submitStateSaga ({ embark, history }) {
+function * submitStateSaga ({ embark, router }) {
   /*
    *  log('submitStateSaga')
    */
@@ -121,7 +131,7 @@ function * submitStateSaga ({ embark, history }) {
     const { data = {} } = yield call(api.submitState, { response: { embark: Rails.rail(collection) } })
     yield put(submitStateFulfilled(transformData(data)))
     const { redirect } = data
-    yield put(embarkRoute(redirect, history))
+    yield put(embarkRoute(redirect, router))
   } catch (e) {
     yield put(submitStateRejected(transformError(e)))
   }

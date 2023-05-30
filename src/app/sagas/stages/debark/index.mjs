@@ -64,7 +64,7 @@ function transformData (data) {
   return data
 }
 
-function * debarkRouteSaga ({ redirect, history }) {
+function * debarkRouteSaga ({ redirect, router }) {
   /*
    *  log('debarkRouteSaga')
    */
@@ -76,9 +76,15 @@ function * debarkRouteSaga ({ redirect, history }) {
       location: {
         pathname: currentPathname
       } = {}
-    } = history
+    } = router
 
-    if (pathname !== currentPathname) history.push(pathname)
+    if (pathname !== currentPathname) {
+      const {
+        navigate
+      } = router
+
+      navigate(pathname)
+    }
   }
 }
 
@@ -108,7 +114,7 @@ function * storeRouteSaga (route) {
   }
 }
 
-function * submitStateSaga ({ debark, history }) {
+function * submitStateSaga ({ debark, router }) {
   /*
    *  log('submitStateSaga')
    */
@@ -118,7 +124,7 @@ function * submitStateSaga ({ debark, history }) {
     const { data = {} } = yield call(api.submitState, { response: debark })
     yield put(submitStateFulfilled(transformData(data)))
     const { redirect } = data
-    yield put(debarkRoute(redirect, history))
+    yield put(debarkRoute(redirect, router))
   } catch (e) {
     yield put(submitStateRejected(transformError(e)))
   }

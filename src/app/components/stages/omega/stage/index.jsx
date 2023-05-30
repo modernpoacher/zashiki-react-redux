@@ -32,7 +32,9 @@ export default class Stage extends Component {
           response={response}
           errors={errors}
           onChange={onChange}
-          onSubmit={onSubmit} />
+          onSubmit={onSubmit}
+        />
+
         <Gears />
       </div>
     )

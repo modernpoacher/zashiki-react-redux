@@ -43,7 +43,7 @@ jest.mock('shinkansen-engine/components/pantograph', () => ({
 describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
   const MOCK_REDIRECT = {}
   const MOCK_ROUTE = {}
-  const MOCK_HISTORY = {}
+  const MOCK_ROUTER = {}
   const MOCK_RESPONSE = {}
   const MOCK_ERROR = {}
 
@@ -210,11 +210,11 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
 
   describe('`debarkRoute()`', () => {
     it('returns the action', () => {
-      expect(debarkRoute(MOCK_REDIRECT, MOCK_HISTORY))
+      expect(debarkRoute(MOCK_REDIRECT, MOCK_ROUTER))
         .toEqual({
           type: 'MOCK ROUTE',
           redirect: MOCK_REDIRECT,
-          history: MOCK_HISTORY
+          router: MOCK_ROUTER
         })
     })
   })
@@ -230,22 +230,22 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
 
   describe('`storeRoute()`', () => {
     it('returns the action', () => {
-      expect(storeRoute(MOCK_ROUTE, MOCK_HISTORY))
+      expect(storeRoute(MOCK_ROUTE, MOCK_ROUTER))
         .toEqual({
           type: 'MOCK STORE',
           route: MOCK_ROUTE,
-          history: MOCK_HISTORY
+          router: MOCK_ROUTER
         })
     })
   })
 
   describe('`submitState()`', () => {
     it('returns the action', () => {
-      expect(submitState(MOCK_ROUTE, MOCK_HISTORY))
+      expect(submitState(MOCK_ROUTE, MOCK_ROUTER))
         .toEqual({
           type: 'MOCK SUBMIT',
           debark: MOCK_ROUTE,
-          history: MOCK_HISTORY
+          router: MOCK_ROUTER
         })
     })
   })
@@ -321,24 +321,24 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
 
   describe('`store()`', () => {
     it('returns the `storeRoute` action', () => {
-      expect(store(MOCK_RESPONSE, MOCK_HISTORY))
+      expect(store(MOCK_RESPONSE, MOCK_ROUTER))
         .toEqual({
           type: 'MOCK STORE',
           route: {
             response: MOCK_RESPONSE
           },
-          history: MOCK_HISTORY
+          router: MOCK_ROUTER
         })
     })
   })
 
   describe('`submit()`', () => {
     it('returns the `submitState` action', () => {
-      expect(submit(MOCK_ROUTE, MOCK_HISTORY))
+      expect(submit(MOCK_ROUTE, MOCK_ROUTER))
         .toEqual({
           type: 'MOCK SUBMIT',
           debark: MOCK_ROUTE,
-          history: MOCK_HISTORY
+          router: MOCK_ROUTER
         })
     })
   })

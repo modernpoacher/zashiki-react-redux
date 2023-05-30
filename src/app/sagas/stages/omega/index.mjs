@@ -84,7 +84,7 @@ function transformData (data) {
   return data
 }
 
-function * omegaRouteSaga ({ redirect, history }) {
+function * omegaRouteSaga ({ redirect, router }) {
   /*
    *  log('omegaRouteSaga')
    */
@@ -96,9 +96,15 @@ function * omegaRouteSaga ({ redirect, history }) {
       location: {
         pathname: currentPathname
       } = {}
-    } = history
+    } = router
 
-    if (pathname !== currentPathname) history.push(pathname)
+    if (pathname !== currentPathname) {
+      const {
+        navigate
+      } = router
+
+      navigate(pathname)
+    }
   }
 }
 
@@ -154,7 +160,7 @@ function * queryRouteSaga () {
   }
 }
 
-function * submitStateSaga ({ route: { resource, response }, history }) {
+function * submitStateSaga ({ route: { resource, response }, router }) {
   /*
    *  log('submitStateSaga')
    */
@@ -172,7 +178,7 @@ function * submitStateSaga ({ route: { resource, response }, history }) {
   yield put(storeRoute({
     resource,
     response: fromHashToDocument(response, definition)
-  }, history))
+  }, router))
 
   yield race([
     take(STORE_FULFILLED),
@@ -180,9 +186,9 @@ function * submitStateSaga ({ route: { resource, response }, history }) {
   ])
 
   const hasError = yield select(hasStoreError)
-
   if (!hasError) {
     const state = yield select(getState)
+
     yield put(submitStateFulfilled(state))
 
     yield put(queryRoute())
@@ -193,11 +199,12 @@ function * submitStateSaga ({ route: { resource, response }, history }) {
     ])
 
     const hasError = yield select(hasQueryError)
-
     if (!hasError) {
       const state = yield select(getState)
-      const { redirect, history } = state
-      yield put(omegaRoute(redirect, history))
+
+      const { redirect, router } = state
+
+      yield put(omegaRoute(redirect, router))
     }
   } else {
     yield put(submitStateRejected())

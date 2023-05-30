@@ -100,7 +100,7 @@ function transformData (data) {
   return data
 }
 
-function * alphaRouteSaga ({ redirect, history }) {
+function * alphaRouteSaga ({ redirect, router }) {
   /*
    *  log('alphaRouteSaga')
    */
@@ -112,9 +112,15 @@ function * alphaRouteSaga ({ redirect, history }) {
       location: {
         pathname: currentPathname
       } = {}
-    } = history
+    } = router
 
-    if (pathname !== currentPathname) history.push(pathname)
+    if (pathname !== currentPathname) {
+      const {
+        navigate
+      } = router
+
+      navigate(pathname)
+    }
   }
 }
 
@@ -170,7 +176,7 @@ function * queryRouteSaga () {
   }
 }
 
-function * submitStateSaga ({ route: { resource, response }, history }) {
+function * submitStateSaga ({ route: { resource, response }, router }) {
   /*
    *  log('submitStateSaga')
    */
@@ -188,7 +194,7 @@ function * submitStateSaga ({ route: { resource, response }, history }) {
   yield put(storeRoute({
     resource,
     response: fromHashToDocument(response, definition)
-  }, history))
+  }, router))
 
   yield race([
     take(STORE_FULFILLED),
@@ -212,8 +218,8 @@ function * submitStateSaga ({ route: { resource, response }, history }) {
 
     if (!hasError) {
       const state = yield select(getState)
-      const { redirect, history } = state
-      yield put(alphaRoute(redirect, history))
+      const { redirect, router } = state
+      yield put(alphaRoute(redirect, router))
     }
   } else {
     yield put(submitStateRejected())

@@ -15,7 +15,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', 
     const component = (
       <Zashiki
         onMount={MOCK_ONMOUNT}
-        match={MOCK_MATCH}
+        router={MOCK_MATCH}
         children={MOCK_CHILDREN} // eslint-disable-line react/no-children-prop
       />
     )
@@ -53,7 +53,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', 
 
   describe('`Zashiki.getDerivedStateFromProps()`', () => {
     describe('props have changed', () => {
-      const mockProps = { match: MOCK_MATCH, onMount: MOCK_ONMOUNT }
+      const mockProps = { router: MOCK_MATCH, onMount: MOCK_ONMOUNT }
       const mockState = { now: { alpha: 'MOCK ALPHA' } }
 
       let state
@@ -83,7 +83,7 @@ describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', 
     })
 
     describe('props have not changed', () => {
-      const mockProps = { match: MOCK_MATCH, onMount: MOCK_ONMOUNT }
+      const mockProps = { router: MOCK_MATCH, onMount: MOCK_ONMOUNT }
       const mockState = { now: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' } }
 
       let state

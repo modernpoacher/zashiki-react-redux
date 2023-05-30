@@ -17,7 +17,7 @@ export default class Zashiki extends Component {
     super(props)
 
     const {
-      match: {
+      router: {
         params: {
           alpha,
           omega
@@ -45,10 +45,9 @@ export default class Zashiki extends Component {
     /*
      *  log('componentDidMount')
      */
-
     const {
       onMount = () => {},
-      match: {
+      router: {
         params: {
           alpha,
           omega
@@ -74,9 +73,8 @@ export default class Zashiki extends Component {
     /*
      *  log('getDerivedStateFromProps')
      */
-
     const {
-      match: {
+      router: {
         params: {
           alpha,
           omega
@@ -128,7 +126,7 @@ export default class Zashiki extends Component {
 
 Zashiki.propTypes = {
   onMount: PropTypes.func.isRequired,
-  match: PropTypes.shape().isRequired,
+  router: PropTypes.shape().isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element

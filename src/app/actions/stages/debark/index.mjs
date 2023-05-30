@@ -37,7 +37,7 @@ export const SUBMIT_REJECTED = SUBMIT.concat('_REJECTED')
 /*
  *  Action Creators
  */
-export function debarkRoute (redirect, history) {
+export function debarkRoute (redirect, router) {
   /*
    *  log('debarkRoute')
    */
@@ -45,18 +45,18 @@ export function debarkRoute (redirect, history) {
   return {
     type: ROUTE,
     redirect,
-    history
+    router
   }
 }
 
-export function fetchRoute (history) {
+export function fetchRoute (router) {
   /*
    *  log('fetchRoute')
    */
 
   return {
     type: FETCH,
-    history
+    router
   }
 }
 
@@ -82,7 +82,7 @@ export function fetchRouteRejected (error) {
   }
 }
 
-export function storeRoute (route, history) {
+export function storeRoute (route, router) {
   /*
    *  log('storeRoute')
    */
@@ -90,7 +90,7 @@ export function storeRoute (route, history) {
   return {
     type: STORE,
     route,
-    history
+    router
   }
 }
 
@@ -116,7 +116,7 @@ export function storeRouteRejected (error) {
   }
 }
 
-export function submitState (debark, history) {
+export function submitState (debark, router) {
   /*
    *  log('submitState')
    */
@@ -124,7 +124,7 @@ export function submitState (debark, history) {
   return {
     type: SUBMIT,
     debark,
-    history
+    router
   }
 }
 
@@ -150,8 +150,8 @@ export function submitStateRejected (error) {
   }
 }
 
-export const fetch = (history) => fetchRoute(history)
+export const fetch = (router) => fetchRoute(router)
 
-export const store = (response, history) => storeRoute({ response }, history)
+export const store = (response, router) => storeRoute({ response }, router)
 
-export const submit = (debark, history) => submitState(debark, history)
+export const submit = (debark, router) => submitState(debark, router)

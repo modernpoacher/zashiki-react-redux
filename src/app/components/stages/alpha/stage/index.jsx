@@ -26,7 +26,9 @@ export default class Stage extends Component {
         <Alpha
           definitions={definitions}
           onChange={onChange}
-          onSubmit={onSubmit} />
+          onSubmit={onSubmit}
+        />
+
         <Gears />
       </div>
     )

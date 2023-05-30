@@ -48,6 +48,10 @@ const {
 const getDefinition = ({ [CONFIRM]: { definition } = {} }) => definition
 
 function transformData (data) {
+  /*
+   *  log('transformData')
+   */
+
   if (Reflect.has(data, 'response')) {
     const {
       response,
@@ -62,7 +66,7 @@ function transformData (data) {
   return data
 }
 
-function * confirmRouteSaga ({ redirect, history }) {
+function * confirmRouteSaga ({ redirect, router }) {
   /*
    *  log('confirmRouteSaga')
    */
@@ -74,9 +78,15 @@ function * confirmRouteSaga ({ redirect, history }) {
       location: {
         pathname: currentPathname
       } = {}
-    } = history
+    } = router
 
-    if (pathname !== currentPathname) history.push(pathname)
+    if (pathname !== currentPathname) {
+      const {
+        navigate
+      } = router
+
+      navigate(pathname)
+    }
   }
 }
 
@@ -106,7 +116,7 @@ function * storeRouteSaga (route) {
   }
 }
 
-function * submitStateSaga ({ confirm, history }) {
+function * submitStateSaga ({ confirm, router }) {
   /*
    *  log('submitStateSaga')
    */
@@ -121,7 +131,7 @@ function * submitStateSaga ({ confirm, history }) {
     const { data = {} } = yield call(api.submitState, { response: { confirm: Rails.rail(collection) } })
     yield put(submitStateFulfilled(transformData(data)))
     const { redirect } = data
-    yield put(confirmRoute(redirect, history))
+    yield put(confirmRoute(redirect, router))
   } catch (e) {
     yield put(submitStateRejected(transformError(e)))
   }

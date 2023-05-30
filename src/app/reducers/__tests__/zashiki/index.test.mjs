@@ -172,8 +172,8 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/zashiki', () => {
 
       describe('The action `type` is `STORE`', () => {
         it('returns the state', () => {
-          expect(zashikiReducer({ ...DEFAULT }, { type: 'MOCK STORE', history: 'MOCK HISTORY', route: { mockField: 'MOCK VALUE' } }))
-            .toEqual({ status: 'MOCK PENDING', history: 'MOCK HISTORY', mockField: 'MOCK VALUE' })
+          expect(zashikiReducer({ ...DEFAULT }, { type: 'MOCK STORE', router: 'MOCK ROUTER', route: { mockField: 'MOCK VALUE' } }))
+            .toEqual({ status: 'MOCK PENDING', router: 'MOCK ROUTER', mockField: 'MOCK VALUE' })
         })
       })
 
@@ -186,15 +186,15 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/zashiki', () => {
 
       describe('The action `type` is `CHANGE`', () => {
         it('returns the state', () => {
-          expect(zashikiReducer({ ...DEFAULT }, { type: 'MOCK CHANGE', history: 'MOCK HISTORY', route: { mockField: 'MOCK VALUE' } }))
-            .toEqual({ status: 'MOCK PENDING', history: 'MOCK HISTORY', mockField: 'MOCK VALUE' })
+          expect(zashikiReducer({ ...DEFAULT }, { type: 'MOCK CHANGE', router: 'MOCK ROUTER', route: { mockField: 'MOCK VALUE' } }))
+            .toEqual({ status: 'MOCK PENDING', router: 'MOCK ROUTER', mockField: 'MOCK VALUE' })
         })
       })
 
       describe('The action `type` is `SUBMIT`', () => {
         it('returns the state', () => {
-          expect(zashikiReducer({ ...DEFAULT }, { type: 'MOCK SUBMIT', history: 'MOCK HISTORY', route: { mockField: 'MOCK VALUE' } }))
-            .toEqual({ status: 'MOCK PENDING', history: 'MOCK HISTORY', mockField: 'MOCK VALUE' })
+          expect(zashikiReducer({ ...DEFAULT }, { type: 'MOCK SUBMIT', router: 'MOCK ROUTER', route: { mockField: 'MOCK VALUE' } }))
+            .toEqual({ status: 'MOCK PENDING', router: 'MOCK ROUTER', mockField: 'MOCK VALUE' })
         })
       })
 
@@ -290,11 +290,11 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/zashiki', () => {
 
   describe('`store()`', () => {
     it('returns the state', () => {
-      expect(store({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { history: 'MOCK HISTORY', route: { mockActionField: 'MOCK ACTION VALUE' } }))
+      expect(store({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { router: 'MOCK ROUTER', route: { mockActionField: 'MOCK ACTION VALUE' } }))
         .toEqual({
           status: 'MOCK PENDING',
           mockStateField: 'MOCK STATE VALUE',
-          history: 'MOCK HISTORY',
+          router: 'MOCK ROUTER',
           mockActionField: 'MOCK ACTION VALUE'
         })
     })
@@ -313,11 +313,11 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/zashiki', () => {
 
   describe('`change()`', () => {
     it('returns the state', () => {
-      expect(change({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { history: 'MOCK HISTORY', route: { mockActionField: 'MOCK ACTION VALUE' } }))
+      expect(change({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { router: 'MOCK ROUTER', route: { mockActionField: 'MOCK ACTION VALUE' } }))
         .toEqual({
           status: 'MOCK PENDING',
           mockStateField: 'MOCK STATE VALUE',
-          history: 'MOCK HISTORY',
+          router: 'MOCK ROUTER',
           mockActionField: 'MOCK ACTION VALUE'
         })
     })
@@ -325,11 +325,11 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/zashiki', () => {
 
   describe('`submit()`', () => {
     it('returns the state', () => {
-      expect(submit({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { history: 'MOCK HISTORY', route: { mockActionField: 'MOCK ACTION VALUE' } }))
+      expect(submit({ ...DEFAULT, mockStateField: 'MOCK STATE VALUE' }, { router: 'MOCK ROUTER', route: { mockActionField: 'MOCK ACTION VALUE' } }))
         .toEqual({
           status: 'MOCK PENDING',
           mockStateField: 'MOCK STATE VALUE',
-          history: 'MOCK HISTORY',
+          router: 'MOCK ROUTER',
           mockActionField: 'MOCK ACTION VALUE'
         })
     })
@@ -437,12 +437,12 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/zashiki', () => {
   })
 
   describe('`fetchRejected()`', () => {
-    describe('`state` has `history`', () => {
+    describe('`state` has `router`', () => {
       it('returns the state', () => {
-        expect(fetchRejected({ ...DEFAULT, history: 'MOCK HISTORY' }, { error: { mockActionField: 'MOCK ACTION VALUE' } }))
+        expect(fetchRejected({ ...DEFAULT, router: 'MOCK ROUTER' }, { error: { mockActionField: 'MOCK ACTION VALUE' } }))
           .toEqual({
             status: 'MOCK REJECTED',
-            history: 'MOCK HISTORY',
+            router: 'MOCK ROUTER',
             exception: {
               mockActionField: 'MOCK ACTION VALUE'
             }
@@ -450,7 +450,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/zashiki', () => {
       })
     })
 
-    describe('`state` does not have `history`', () => {
+    describe('`state` does not have `router`', () => {
       it('returns the state', () => {
         expect(fetchRejected({ ...DEFAULT }, { error: { mockActionField: 'MOCK ACTION VALUE' } }))
           .toEqual({
@@ -464,12 +464,12 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/zashiki', () => {
   })
 
   describe('`storeRejected()`', () => {
-    describe('`state` has `history`', () => {
+    describe('`state` has `router`', () => {
       it('returns the state', () => {
-        expect(storeRejected({ ...DEFAULT, history: 'MOCK HISTORY' }, { error: { mockActionField: 'MOCK ACTION VALUE' } }))
+        expect(storeRejected({ ...DEFAULT, router: 'MOCK ROUTER' }, { error: { mockActionField: 'MOCK ACTION VALUE' } }))
           .toEqual({
             status: 'MOCK REJECTED',
-            history: 'MOCK HISTORY',
+            router: 'MOCK ROUTER',
             exception: {
               mockActionField: 'MOCK ACTION VALUE'
             }
@@ -477,7 +477,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/zashiki', () => {
       })
     })
 
-    describe('`state` does not have `history`', () => {
+    describe('`state` does not have `router`', () => {
       it('returns the state', () => {
         expect(storeRejected({ ...DEFAULT }, { error: { mockActionField: 'MOCK ACTION VALUE' } }))
           .toEqual({
@@ -491,12 +491,12 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/zashiki', () => {
   })
 
   describe('`queryRejected()`', () => {
-    describe('`state` has `history`', () => {
+    describe('`state` has `router`', () => {
       it('returns the state', () => {
-        expect(queryRejected({ ...DEFAULT, history: 'MOCK HISTORY' }, { error: { mockActionField: 'MOCK ACTION VALUE' } }))
+        expect(queryRejected({ ...DEFAULT, router: 'MOCK ROUTER' }, { error: { mockActionField: 'MOCK ACTION VALUE' } }))
           .toEqual({
             status: 'MOCK REJECTED',
-            history: 'MOCK HISTORY',
+            router: 'MOCK ROUTER',
             exception: {
               mockActionField: 'MOCK ACTION VALUE'
             }
@@ -504,7 +504,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/zashiki', () => {
       })
     })
 
-    describe('`state` does not have `history`', () => {
+    describe('`state` does not have `router`', () => {
       it('returns the state', () => {
         expect(queryRejected({ ...DEFAULT }, { error: { mockActionField: 'MOCK ACTION VALUE' } }))
           .toEqual({
@@ -518,12 +518,12 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/zashiki', () => {
   })
 
   describe('`changeRejected()`', () => {
-    describe('`state` has `history`', () => {
+    describe('`state` has `router`', () => {
       it('returns the state', () => {
-        expect(changeRejected({ ...DEFAULT, history: 'MOCK HISTORY' }, { error: { mockActionField: 'MOCK ACTION VALUE' } }))
+        expect(changeRejected({ ...DEFAULT, router: 'MOCK ROUTER' }, { error: { mockActionField: 'MOCK ACTION VALUE' } }))
           .toEqual({
             status: 'MOCK REJECTED',
-            history: 'MOCK HISTORY',
+            router: 'MOCK ROUTER',
             exception: {
               mockActionField: 'MOCK ACTION VALUE'
             }
@@ -531,7 +531,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/zashiki', () => {
       })
     })
 
-    describe('`state` does not have `history`', () => {
+    describe('`state` does not have `router`', () => {
       it('returns the state', () => {
         expect(changeRejected({ ...DEFAULT }, { error: { mockActionField: 'MOCK ACTION VALUE' } }))
           .toEqual({
@@ -545,12 +545,12 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/zashiki', () => {
   })
 
   describe('`submitRejected()`', () => {
-    describe('`state` has `history`', () => {
+    describe('`state` has `router`', () => {
       it('returns the state', () => {
-        expect(submitRejected({ ...DEFAULT, history: 'MOCK HISTORY' }, { error: { mockActionField: 'MOCK ACTION VALUE' } }))
+        expect(submitRejected({ ...DEFAULT, router: 'MOCK ROUTER' }, { error: { mockActionField: 'MOCK ACTION VALUE' } }))
           .toEqual({
             status: 'MOCK REJECTED',
-            history: 'MOCK HISTORY',
+            router: 'MOCK ROUTER',
             exception: {
               mockActionField: 'MOCK ACTION VALUE'
             }
@@ -558,7 +558,7 @@ describe('@modernpoacher/zashiki-react-redux/app/reducers/zashiki', () => {
       })
     })
 
-    describe('`state` does not have `history`', () => {
+    describe('`state` does not have `router`', () => {
       it('returns the state', () => {
         expect(submitRejected({ ...DEFAULT }, { error: { mockActionField: 'MOCK ACTION VALUE' } }))
           .toEqual({

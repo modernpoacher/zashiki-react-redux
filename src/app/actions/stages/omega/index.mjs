@@ -49,7 +49,7 @@ export const SUBMIT_REJECTED = SUBMIT.concat('_REJECTED')
 /*
  *  Action Creators
  */
-export function omegaRoute (redirect, history) {
+export function omegaRoute (redirect, router) {
   /*
    *  log('omegaRoute')
    */
@@ -57,11 +57,11 @@ export function omegaRoute (redirect, history) {
   return {
     type: ROUTE,
     redirect,
-    history
+    router
   }
 }
 
-export function mountRoute (route, history) {
+export function mountRoute (route, router) {
   /*
    *  log('mountRoute')
    */
@@ -69,7 +69,7 @@ export function mountRoute (route, history) {
   return {
     type: MOUNT,
     route,
-    history
+    router
   }
 }
 
@@ -127,7 +127,7 @@ export function fetchRouteRejected (error) {
   }
 }
 
-export function storeRoute (route, history) {
+export function storeRoute (route, router) {
   /*
    *  log('storeRoute')
    */
@@ -135,7 +135,7 @@ export function storeRoute (route, history) {
   return {
     type: STORE,
     route,
-    history
+    router
   }
 }
 
@@ -193,7 +193,7 @@ export function queryRouteRejected (error) {
   }
 }
 
-export function changeState (route, history) {
+export function changeState (route, router) {
   /*
    *  log('changeState')
    */
@@ -201,7 +201,7 @@ export function changeState (route, history) {
   return {
     type: CHANGE,
     route,
-    history
+    router
   }
 }
 
@@ -227,7 +227,7 @@ export function changeStateRejected (error) {
   }
 }
 
-export function submitState (route, history) {
+export function submitState (route, router) {
   /*
    *  log('submitState')
    */
@@ -235,7 +235,7 @@ export function submitState (route, history) {
   return {
     type: SUBMIT,
     route,
-    history
+    router
   }
 }
 
@@ -261,12 +261,12 @@ export function submitStateRejected (error) {
   }
 }
 
-export const mount = (resource, history) => mountRoute({ resource }, history)
+export const mount = (resource, router) => mountRoute({ resource }, router)
 
 export const fetch = () => fetchRoute()
 
-export const store = (resource, response, history) => storeRoute({ resource, response }, history)
+export const store = (resource, response, router) => storeRoute({ resource, response }, router)
 
-export const change = (resource, response, history) => changeState({ resource, response }, history)
+export const change = (resource, response, router) => changeState({ resource, response }, router)
 
-export const submit = (resource, response, history) => submitState({ resource, response }, history)
+export const submit = (resource, response, router) => submitState({ resource, response }, router)

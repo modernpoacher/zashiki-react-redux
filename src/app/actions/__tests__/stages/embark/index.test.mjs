@@ -51,7 +51,7 @@ jest.mock('shinkansen-engine/components/pantograph', () => ({
 describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
   const MOCK_REDIRECT = {}
   const MOCK_ROUTE = {}
-  const MOCK_HISTORY = {}
+  const MOCK_ROUTER = {}
   const MOCK_RESPONSE = {}
   const MOCK_ERROR = {}
 
@@ -267,11 +267,11 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
 
   describe('`embarkRoute()`', () => {
     it('returns the action', () => {
-      expect(embarkRoute(MOCK_REDIRECT, MOCK_HISTORY))
+      expect(embarkRoute(MOCK_REDIRECT, MOCK_ROUTER))
         .toEqual({
           type: 'MOCK ROUTE',
           redirect: MOCK_REDIRECT,
-          history: MOCK_HISTORY
+          router: MOCK_ROUTER
         })
     })
   })
@@ -287,33 +287,33 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
 
   describe('`storeRoute()`', () => {
     it('returns the action', () => {
-      expect(storeRoute(MOCK_ROUTE, MOCK_HISTORY))
+      expect(storeRoute(MOCK_ROUTE, MOCK_ROUTER))
         .toEqual({
           type: 'MOCK STORE',
           route: MOCK_ROUTE,
-          history: MOCK_HISTORY
+          router: MOCK_ROUTER
         })
     })
   })
 
   describe('`changeState()`', () => {
     it('returns the action', () => {
-      expect(changeState(MOCK_ROUTE, MOCK_HISTORY))
+      expect(changeState(MOCK_ROUTE, MOCK_ROUTER))
         .toEqual({
           type: 'MOCK CHANGE',
           embark: MOCK_ROUTE,
-          history: MOCK_HISTORY
+          router: MOCK_ROUTER
         })
     })
   })
 
   describe('`submitState()`', () => {
     it('returns the action', () => {
-      expect(submitState(MOCK_ROUTE, MOCK_HISTORY))
+      expect(submitState(MOCK_ROUTE, MOCK_ROUTER))
         .toEqual({
           type: 'MOCK SUBMIT',
           embark: MOCK_ROUTE,
-          history: MOCK_HISTORY
+          router: MOCK_ROUTER
         })
     })
   })
@@ -409,35 +409,35 @@ describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
 
   describe('`store()`', () => {
     it('returns the `storeRoute` action', () => {
-      expect(store(MOCK_RESPONSE, MOCK_HISTORY))
+      expect(store(MOCK_RESPONSE, MOCK_ROUTER))
         .toEqual({
           type: 'MOCK STORE',
           route: {
             response: MOCK_RESPONSE
           },
-          history: MOCK_HISTORY
+          router: MOCK_ROUTER
         })
     })
   })
 
   describe('`change()`', () => {
     it('returns the `changeState` action', () => {
-      expect(change(MOCK_ROUTE, MOCK_HISTORY))
+      expect(change(MOCK_ROUTE, MOCK_ROUTER))
         .toEqual({
           type: 'MOCK CHANGE',
           embark: MOCK_ROUTE,
-          history: MOCK_HISTORY
+          router: MOCK_ROUTER
         })
     })
   })
 
   describe('`submit()`', () => {
     it('returns the `submitState` action', () => {
-      expect(submit(MOCK_ROUTE, MOCK_HISTORY))
+      expect(submit(MOCK_ROUTE, MOCK_ROUTER))
         .toEqual({
           type: 'MOCK SUBMIT',
           embark: MOCK_ROUTE,
-          history: MOCK_HISTORY
+          router: MOCK_ROUTER
         })
     })
   })

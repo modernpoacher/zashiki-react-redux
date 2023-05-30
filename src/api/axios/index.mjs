@@ -55,15 +55,6 @@ function configure (request) {
       delete common.Authorization
     }
 
-    defaults.headers.Cookie = `zid=${zid}`
-
-    /*
-    if (utils.isStandardBrowserEnv()) {
-      delete defaults.headers.Cookie
-    } else {
-      defaults.headers.Cookie = `zid=${zid}`
-    } */
-
     defaults.withCredentials = true
     defaults.baseURL = `${protocol}://${host}:${port}/${path}/${version}`
 

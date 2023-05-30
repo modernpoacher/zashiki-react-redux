@@ -42,31 +42,31 @@ const ACTION = {}
 
 /*
  *  Get all from state
- *  Set `history` `route` from action
+ *  Set `router` `route` from action
  */
-export function change ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) {
+export function change ({ status = PENDING, ...state } = {}, { router, route = {} } = {}) {
   /*
    *  log('change')
    */
 
-  return Object.assign(state, { status, history }, route)
+  return Object.assign(state, { status, router }, route)
 }
 
 /*
  *  Get all from state
- *  Set `history` `route` from action
+ *  Set `router` `route` from action
  */
-export function submit ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) {
+export function submit ({ status = PENDING, ...state } = {}, { router, route = {} } = {}) {
   /*
    *  log('submit')
    */
 
-  return Object.assign(state, { status, history }, route)
+  return Object.assign(state, { status, router }, route)
 }
 
 /*
  *  Get all from state
- *  Set `history` `route` from action
+ *  Set `router` `route` from action
  */
 export function fetch ({ status = PENDING, ...state } = {}, action = {}) {
   /*
@@ -78,14 +78,14 @@ export function fetch ({ status = PENDING, ...state } = {}, action = {}) {
 
 /*
  *  Get all from state
- *  Set `history` `route` from action
+ *  Set `router` `route` from action
  */
-export function store ({ status = PENDING, ...state } = {}, { history, route = {} } = {}) {
+export function store ({ status = PENDING, ...state } = {}, { router, route = {} } = {}) {
   /*
    *  log('store')
    */
 
-  return Object.assign(state, { status, history }, route)
+  return Object.assign(state, { status, router }, route)
 }
 
 /*
@@ -140,44 +140,44 @@ export function queryFulfilled (state = {}, { response = {} } = {}) {
   return Object.assign(state, response, { status: RESOLVED })
 }
 
-export function changeRejected ({ history } = {}, { error = {} } = {}) {
+export function changeRejected ({ router } = {}, { error = {} } = {}) {
   /*
    *  log('changeRejected')
    */
 
-  return Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
+  return Object.assign((router ? { router } : {}), { exception: error, status: REJECTED })
 }
 
-export function submitRejected ({ history } = {}, { error = {} } = {}) {
+export function submitRejected ({ router } = {}, { error = {} } = {}) {
   /*
    *  log('submitRejected')
    */
 
-  return Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
+  return Object.assign((router ? { router } : {}), { exception: error, status: REJECTED })
 }
 
-export function fetchRejected ({ history } = {}, { error = {} } = {}) {
+export function fetchRejected ({ router } = {}, { error = {} } = {}) {
   /*
    *  log('fetchRejected')
    */
 
-  return Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
+  return Object.assign((router ? { router } : {}), { exception: error, status: REJECTED })
 }
 
-export function storeRejected ({ history } = {}, { error = {} } = {}) {
+export function storeRejected ({ router } = {}, { error = {} } = {}) {
   /*
    *  log('storeRejected')
    */
 
-  return Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
+  return Object.assign((router ? { router } : {}), { exception: error, status: REJECTED })
 }
 
-export function queryRejected ({ history } = {}, { error = {} } = {}) {
+export function queryRejected ({ router } = {}, { error = {} } = {}) {
   /*
    *  log('queryRejected')
    */
 
-  return Object.assign((history ? { history } : {}), { exception: error, status: REJECTED })
+  return Object.assign((router ? { router } : {}), { exception: error, status: REJECTED })
 }
 
 const log = debug('zashiki-react-redux/app/reducers/zashiki')

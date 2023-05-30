@@ -42,8 +42,8 @@ function * mountRouteSaga ({ route }) {
    */
 
   try {
-    const { data: response = {} } = yield call(api.changeRoute, route)
-    yield put(mountRouteFulfilled(response))
+    const { data = {} } = yield call(api.changeRoute, route)
+    yield put(mountRouteFulfilled(data))
   } catch (e) {
     yield put(mountRouteRejected(transformError(e)))
   }
@@ -55,8 +55,8 @@ function * fetchRouteSaga () {
    */
 
   try {
-    const { data: response = {} } = yield call(api.fetchRoute)
-    yield put(fetchRouteFulfilled(response))
+    const { data = {} } = yield call(api.fetchRoute)
+    yield put(fetchRouteFulfilled(data))
   } catch (e) {
     yield put(fetchRouteRejected(transformError(e)))
   }
@@ -68,8 +68,8 @@ function * storeRouteSaga ({ route }) {
    */
 
   try {
-    const { data: response = {} } = yield call(api.storeRoute, route)
-    yield put(storeRouteFulfilled(response))
+    const { data = {} } = yield call(api.storeRoute, route)
+    yield put(storeRouteFulfilled(data))
   } catch (e) {
     yield put(storeRouteRejected(transformError(e)))
   }
@@ -81,8 +81,8 @@ function * queryRouteSaga () {
    */
 
   try {
-    const { data: response = {} } = yield call(api.queryRoute)
-    yield put(queryRouteFulfilled(response))
+    const { data = {} } = yield call(api.queryRoute)
+    yield put(queryRouteFulfilled(data))
   } catch (e) {
     yield put(queryRouteRejected(transformError(e)))
   }
@@ -94,8 +94,8 @@ function * submitRouteSaga ({ route }) {
    */
 
   try {
-    const { data: response = {} } = yield call(api.submitRoute, route)
-    yield put(submitRouteFulfilled(response))
+    const { data = {} } = yield call(api.submitRoute, route)
+    yield put(submitRouteFulfilled(data))
   } catch (e) {
     yield put(submitRouteRejected(transformError(e)))
   }

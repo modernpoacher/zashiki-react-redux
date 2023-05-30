@@ -34,7 +34,7 @@ function mapDispatchToProps (dispatch) {
   return { dispatch }
 }
 
-function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
+function mergeProps (stateProps, { dispatch }, { router, ...ownProps }) {
   /*
    *  log('mergeProps')
    */
@@ -42,15 +42,27 @@ function mergeProps (stateProps, { dispatch }, { history, ...ownProps }) {
   return {
     ...stateProps,
     onMount: (resource) => {
-      dispatch(mount(resource, history))
-    },
-    onSubmit: (resource, response) => {
-      dispatch(submit(resource, response, history))
+      /**
+       *  log('onMount')
+       */
+
+      dispatch(mount(resource, router))
     },
     onChange: (resource) => {
-      dispatch(change(resource, history))
+      /**
+       *  log('onChange')
+       */
+
+      dispatch(change(resource, router))
     },
-    history,
+    onSubmit: (resource, response) => {
+      /**
+       *  log('onSubmit')
+       */
+
+      dispatch(submit(resource, response, router))
+    },
+    router,
     ...ownProps
   }
 }
