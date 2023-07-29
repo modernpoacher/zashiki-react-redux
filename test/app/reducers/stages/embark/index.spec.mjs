@@ -1,4 +1,4 @@
-import chai, { expect } from 'chai'
+import { use, expect } from 'chai'
 import sinonChai from 'sinon-chai'
 
 import reducer, {
@@ -18,7 +18,7 @@ import reducer, {
   submitRejected
 } from '@modernpoacher/zashiki-react-redux/app/reducers/stages/embark'
 
-chai.use(sinonChai)
+use(sinonChai)
 
 describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/embark', () => {
   describe('`reducer`', () => {

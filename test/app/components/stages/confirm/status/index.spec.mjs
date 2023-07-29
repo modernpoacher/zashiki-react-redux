@@ -1,4 +1,4 @@
-import chai, { expect } from 'chai'
+import { use, expect } from 'chai'
 import sinonChai from 'sinon-chai'
 
 import {
@@ -7,7 +7,7 @@ import {
   Pending
 } from '@modernpoacher/zashiki-react-redux/app/components/stages/confirm/status'
 
-chai.use(sinonChai)
+use(sinonChai)
 
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/confirm/status', () => {
   describe('`Resolved`', () => {

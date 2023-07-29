@@ -1,7 +1,10 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import {
-  Provider, ReactReduxContext
+  createRoot
+} from 'react-dom/client'
+import {
+  Provider,
+  ReactReduxContext
 } from 'react-redux'
 import debug from 'debug'
 
@@ -24,7 +27,5 @@ const App = (
 
 const app = document.getElementById('app')
 
-ReactDOM.hydrate(
-  App,
-  app
-)
+createRoot(app)
+  .render(<App />)

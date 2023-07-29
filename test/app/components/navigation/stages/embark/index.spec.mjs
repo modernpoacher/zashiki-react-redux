@@ -1,9 +1,9 @@
-import chai, { expect } from 'chai'
+import { use, expect } from 'chai'
 import sinonChai from 'sinon-chai'
 
 import Embark from '@modernpoacher/zashiki-react-redux/app/components/navigation/stages/embark'
 
-chai.use(sinonChai)
+use(sinonChai)
 
 describe('@modernpoacher/zashiki-react-redux/app/components/navigation/stages/embark', () => {
   describe('`Embark`', () => {

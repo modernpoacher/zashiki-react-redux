@@ -1,4 +1,4 @@
-import chai, { expect } from 'chai'
+import { use, expect } from 'chai'
 import sinonChai from 'sinon-chai'
 
 import {
@@ -8,7 +8,7 @@ import {
   watchConfirmSubmit
 } from '@modernpoacher/zashiki-react-redux/app/sagas/stages/confirm'
 
-chai.use(sinonChai)
+use(sinonChai)
 
 describe('@modernpoacher/zashiki-react-redux/app/sagas/stages/confirm', () => {
   describe('`watchConfirmFetch`', () => {

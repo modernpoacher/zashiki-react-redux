@@ -1,4 +1,4 @@
-import chai, { expect } from 'chai'
+import { use, expect } from 'chai'
 import sinonChai from 'sinon-chai'
 
 import {
@@ -8,7 +8,7 @@ import {
   watchDebarkSubmit
 } from '@modernpoacher/zashiki-react-redux/app/sagas/stages/debark'
 
-chai.use(sinonChai)
+use(sinonChai)
 
 describe('@modernpoacher/zashiki-react-redux/app/sagas/stages/debark', () => {
   describe('`watchDebarkFetch`', () => {
