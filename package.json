@@ -12,7 +12,11 @@
   ],
   "main": "./src/index.mjs",
   "type": "module",
-  "author": "Jonathan Perry for Modern Poacher Limited <modernpoacher@modernpoacher.com>",
+  "author": {
+    "name": "Jonathan Perry for Modern Poacher Limited",
+    "email": "modernpoacher@modernpoacher.com",
+    "url": "http://modernpoacher.com"
+  },
   "license": "UNLICENSED",
   "engines": {
     "node": ">=18.5.0"
@@ -30,7 +34,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "1.2.46",
+    "@modernpoacher/isomorphic": "1.2.47",
     "axios": "^1.4.0",
     "classnames": "^2.3.2",
     "cross-env": "^7.0.3",
@@ -47,12 +51,12 @@
     "shinkansen-engine": "1.2.81"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.9",
-    "@babel/eslint-parser": "^7.22.9",
-    "@babel/preset-env": "^7.22.9",
+    "@babel/core": "^7.22.10",
+    "@babel/eslint-parser": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
     "@babel/preset-react": "^7.22.5",
     "@babel/register": "^7.22.5",
-    "@modernpoacher/hooks": "^1.0.427",
+    "@modernpoacher/hooks": "^1.0.428",
     "babel-plugin-module-resolver": "^5.0.0",
     "chai": "4.3.7",
     "core-js": "^3.32.0",
