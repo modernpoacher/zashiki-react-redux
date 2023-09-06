@@ -34,7 +34,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "1.2.56",
+    "@modernpoacher/isomorphic": "1.2.59",
     "axios": "^1.5.0",
     "classnames": "^2.3.2",
     "cross-env": "^7.0.3",
@@ -51,12 +51,12 @@
     "shinkansen-engine": "1.2.95"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.11",
-    "@babel/eslint-parser": "^7.22.11",
-    "@babel/preset-env": "^7.22.14",
-    "@babel/preset-react": "^7.22.5",
-    "@babel/register": "^7.22.5",
-    "@modernpoacher/hooks": "^1.0.432",
+    "@babel/core": "^7.22.15",
+    "@babel/eslint-parser": "^7.22.15",
+    "@babel/preset-env": "^7.22.15",
+    "@babel/preset-react": "^7.22.15",
+    "@babel/register": "^7.22.15",
+    "@modernpoacher/hooks": "^1.0.433",
     "babel-plugin-module-resolver": "^5.0.0",
     "chai": "4.3.7",
     "core-js": "^3.32.1",
