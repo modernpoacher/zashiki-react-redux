@@ -34,7 +34,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "1.2.89",
+    "@modernpoacher/isomorphic": "1.2.90",
     "axios": "^1.6.0",
     "classnames": "^2.3.2",
     "cross-env": "^7.0.3",
