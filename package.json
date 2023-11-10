@@ -34,7 +34,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "1.2.93",
+    "@modernpoacher/isomorphic": "1.2.95",
     "axios": "^1.6.1",
     "classnames": "^2.3.2",
     "cross-env": "^7.0.3",
@@ -48,15 +48,15 @@
     "react-router-dom": "^6.18.0",
     "redux": "^4.2.1",
     "redux-saga": "^1.2.3",
-    "shinkansen-engine": "1.2.165"
+    "shinkansen-engine": "1.2.166"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.2",
-    "@babel/eslint-parser": "^7.22.15",
-    "@babel/preset-env": "^7.23.2",
-    "@babel/preset-react": "^7.22.15",
+    "@babel/core": "^7.23.3",
+    "@babel/eslint-parser": "^7.23.3",
+    "@babel/preset-env": "^7.23.3",
+    "@babel/preset-react": "^7.23.3",
     "@babel/register": "^7.22.15",
-    "@modernpoacher/hooks": "^1.0.444",
+    "@modernpoacher/hooks": "^1.0.445",
     "babel-plugin-module-resolver": "^5.0.0",
     "chai": "^4.3.10",
     "core-js": "^3.33.2",
