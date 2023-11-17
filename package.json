@@ -34,7 +34,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "1.2.95",
+    "@modernpoacher/isomorphic": "1.2.96",
     "axios": "^1.6.2",
     "classnames": "^2.3.2",
     "cross-env": "^7.0.3",
@@ -44,8 +44,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.3",
-    "react-router": "^6.18.0",
-    "react-router-dom": "^6.18.0",
+    "react-router": "^6.19.0",
+    "react-router-dom": "^6.19.0",
     "redux": "^4.2.1",
     "redux-saga": "^1.2.3",
     "shinkansen-engine": "1.2.172"
