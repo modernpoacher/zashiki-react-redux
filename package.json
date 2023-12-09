@@ -48,7 +48,7 @@
     "react-router-dom": "^6.20.1",
     "redux": "^5.0.0",
     "redux-saga": "^1.2.3",
-    "shinkansen-engine": "1.2.193"
+    "shinkansen-engine": "1.2.194"
   },
   "devDependencies": {
     "@babel/core": "^7.23.5",
