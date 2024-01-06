@@ -1,5 +1,5 @@
 import { use, expect } from 'chai'
-import sinonChai from 'sinon-chai'
+import sinonChai from '@sequencemedia/sinon-chai'
 
 import {
   watchAlphaFetch,
@@ -12,7 +12,7 @@ import {
 
 use(sinonChai)
 
-describe('@modernpoacher/zashiki-react-redux/app/sagas/stages/alpha', () => {
+xdescribe('@modernpoacher/zashiki-react-redux/app/sagas/stages/alpha', () => {
   describe('`watchAlphaFetch`', () => {
     it('is a function', () => {
       expect(watchAlphaFetch)

@@ -1,5 +1,5 @@
 import { use, expect } from 'chai'
-import sinonChai from 'sinon-chai'
+import sinonChai from '@sequencemedia/sinon-chai'
 
 import Title from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/title/stage'
 
