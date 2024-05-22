@@ -34,8 +34,8 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "1.2.172",
-    "axios": "^1.6.8",
+    "@modernpoacher/isomorphic": "1.2.173",
+    "axios": "^1.7.2",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
     "debug": "^4.3.4",
@@ -69,7 +69,7 @@
     "jest": "^29.7.0",
     "mocha": "^10.4.0",
     "react-test-renderer": "^18.3.1",
-    "sinon": "^17.0.1"
+    "sinon": "^18.0.0"
   },
   "exports": {
     ".": "./src/index.cjs",
