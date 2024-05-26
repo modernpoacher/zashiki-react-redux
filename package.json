@@ -34,7 +34,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "1.2.175",
+    "@modernpoacher/isomorphic": "1.2.176",
     "axios": "^1.7.2",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
