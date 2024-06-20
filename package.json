@@ -34,7 +34,7 @@
     "test:mocha": "cross-env NODE_ENV=test mocha test --recursive"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "1.2.183",
+    "@modernpoacher/isomorphic": "1.2.184",
     "axios": "^1.7.2",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
@@ -48,7 +48,7 @@
     "react-router-dom": "^6.23.1",
     "redux": "^5.0.1",
     "redux-saga": "^1.3.0",
-    "shinkansen-engine": "1.2.346"
+    "shinkansen-engine": "1.2.347"
   },
   "devDependencies": {
     "@babel/core": "^7.24.7",
