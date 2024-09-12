@@ -34,7 +34,7 @@
     "test:mocha": "cross-env NODE_ENV=test mocha test --recursive"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "1.2.242",
+    "@modernpoacher/isomorphic": "1.2.243",
     "axios": "^1.7.7",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
@@ -48,7 +48,7 @@
     "react-router-dom": "^6.26.2",
     "redux": "^5.0.1",
     "redux-saga": "^1.3.0",
-    "shinkansen-engine": "1.2.398"
+    "shinkansen-engine": "1.2.399"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -56,8 +56,8 @@
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-react": "^7.24.7",
     "@babel/register": "^7.24.6",
-    "@modernpoacher/hooks": "^1.0.494",
-    "@sequencemedia/sinon-chai": "^0.0.55",
+    "@modernpoacher/hooks": "^1.0.495",
+    "@sequencemedia/sinon-chai": "^0.0.56",
     "babel-plugin-module-resolver": "^5.0.2",
     "chai": "^5.1.1",
     "core-js": "^3.38.1",
@@ -65,7 +65,7 @@
     "eslint-config-standard": "^17.1.0",
     "eslint-import-resolver-babel-module": "^5.3.2",
     "eslint-plugin-react": "^7.35.2",
-    "husky": "^9.1.5",
+    "husky": "^9.1.6",
     "jest": "^29.7.0",
     "mocha": "^10.7.3",
     "react-test-renderer": "^18.3.1",
