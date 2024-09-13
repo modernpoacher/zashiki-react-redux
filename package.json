@@ -34,7 +34,7 @@
     "test:mocha": "cross-env NODE_ENV=test mocha test --recursive"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "1.2.243",
+    "@modernpoacher/isomorphic": "1.2.244",
     "axios": "^1.7.7",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
@@ -57,19 +57,19 @@
     "@babel/preset-react": "^7.24.7",
     "@babel/register": "^7.24.6",
     "@modernpoacher/hooks": "^1.0.495",
-    "@sequencemedia/sinon-chai": "^0.0.56",
+    "@sequencemedia/sinon-chai": "^0.0.57",
     "babel-plugin-module-resolver": "^5.0.2",
     "chai": "^5.1.1",
     "core-js": "^3.38.1",
     "eslint": "8.57.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-import-resolver-babel-module": "^5.3.2",
-    "eslint-plugin-react": "^7.35.2",
+    "eslint-plugin-react": "^7.36.1",
     "husky": "^9.1.6",
     "jest": "^29.7.0",
     "mocha": "^10.7.3",
     "react-test-renderer": "^18.3.1",
-    "sinon": "^18.0.1"
+    "sinon": "^19.0.0"
   },
   "exports": {
     ".": "./src/index.cjs",
