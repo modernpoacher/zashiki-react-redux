@@ -34,7 +34,7 @@
     "test:mocha": "cross-env NODE_ENV=test mocha test --recursive"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "1.2.274",
+    "@modernpoacher/isomorphic": "1.2.275",
     "axios": "^1.7.7",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
@@ -48,7 +48,7 @@
     "react-router-dom": "^6.28.0",
     "redux": "^5.0.1",
     "redux-saga": "^1.3.0",
-    "shinkansen-engine": "1.2.462"
+    "shinkansen-engine": "1.2.463"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
@@ -56,7 +56,7 @@
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.25.9",
     "@babel/register": "^7.25.9",
-    "@sequencemedia/sinon-chai": "^0.0.83",
+    "@sequencemedia/sinon-chai": "^0.0.84",
     "babel-plugin-module-resolver": "^5.0.2",
     "chai": "^5.1.2",
     "core-js": "^3.39.0",
