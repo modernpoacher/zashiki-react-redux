@@ -56,7 +56,7 @@
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.25.9",
     "@babel/register": "^7.25.9",
-    "@sequencemedia/sinon-chai": "^0.0.85",
+    "@sequencemedia/sinon-chai": "^0.0.86",
     "babel-plugin-module-resolver": "^5.0.2",
     "chai": "^5.1.2",
     "core-js": "^3.39.0",
