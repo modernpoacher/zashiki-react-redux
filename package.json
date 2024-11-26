@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@modernpoacher/isomorphic": "1.2.276",
-    "axios": "^1.7.7",
+    "axios": "^1.7.8",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
     "debug": "^4.3.7",
@@ -48,7 +48,7 @@
     "react-router-dom": "^7.0.1",
     "redux": "^5.0.1",
     "redux-saga": "^1.3.0",
-    "shinkansen-engine": "1.2.469"
+    "shinkansen-engine": "1.2.472"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
