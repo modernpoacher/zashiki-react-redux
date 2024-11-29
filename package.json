@@ -34,7 +34,7 @@
     "test:mocha": "cross-env NODE_ENV=test mocha test --recursive"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "1.2.276",
+    "@modernpoacher/isomorphic": "1.2.278",
     "axios": "^1.7.8",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
