@@ -7,11 +7,3 @@ export default class Rejected extends Title {
     return classnames(super.getClassName(), 'rejected')
   }
 }
-
-Rejected.propTypes = {
-  ...Title.propTypes
-}
-
-Rejected.defaultProps = {
-  ...Title.defaultProps
-}

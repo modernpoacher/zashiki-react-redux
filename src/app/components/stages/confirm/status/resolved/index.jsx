@@ -7,11 +7,3 @@ export default class Resolved extends Stage {
     return classnames(super.getClassName(), 'resolved')
   }
 }
-
-Resolved.propTypes = {
-  ...Stage.propTypes
-}
-
-Resolved.defaultProps = {
-  ...Stage.defaultProps
-}

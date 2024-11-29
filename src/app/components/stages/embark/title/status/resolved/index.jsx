@@ -7,11 +7,3 @@ export default class Resolved extends Title {
     return classnames(super.getClassName(), 'resolved')
   }
 }
-
-Resolved.propTypes = {
-  ...Title.propTypes
-}
-
-Resolved.defaultProps = {
-  ...Title.defaultProps
-}
