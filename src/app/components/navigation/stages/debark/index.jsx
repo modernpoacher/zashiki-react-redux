@@ -6,7 +6,10 @@ import {
 
 import getDebarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-debark-route'
 
-const DebarkStageLink = ({ href, text }) => (
+const DEFAULT_HREF = getDebarkRoute()
+const DEFAULT_TEXT = 'Debark Stage'
+
+const DebarkStageLink = ({ href = DEFAULT_HREF, text = DEFAULT_TEXT }) => (
   <Link to={href}>
     {text}
   </Link>
@@ -15,11 +18,6 @@ const DebarkStageLink = ({ href, text }) => (
 DebarkStageLink.propTypes = {
   href: PropTypes.string,
   text: PropTypes.string
-}
-
-DebarkStageLink.defaultProps = {
-  href: getDebarkRoute(),
-  text: 'Debark Stage'
 }
 
 export default DebarkStageLink

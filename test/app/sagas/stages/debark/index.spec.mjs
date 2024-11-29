@@ -10,7 +10,7 @@ import {
 
 use(sinonChai)
 
-xdescribe('@modernpoacher/zashiki-react-redux/app/sagas/stages/debark', () => {
+describe('@modernpoacher/zashiki-react-redux/app/sagas/stages/debark', () => {
   describe('`watchDebarkFetch`', () => {
     it('is a function', () => {
       expect(watchDebarkFetch)

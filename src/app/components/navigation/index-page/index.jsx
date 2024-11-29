@@ -4,7 +4,10 @@ import {
   Link
 } from 'react-router-dom'
 
-const IndexLink = ({ href, text }) => (
+const DEFAULT_HREF = '/'
+const DEFAULT_TEXT = 'Index Page'
+
+const IndexLink = ({ href = DEFAULT_HREF, text = DEFAULT_TEXT }) => (
   <Link to={href}>
     {text}
   </Link>
@@ -13,11 +16,6 @@ const IndexLink = ({ href, text }) => (
 IndexLink.propTypes = {
   href: PropTypes.string,
   text: PropTypes.string
-}
-
-IndexLink.defaultProps = {
-  href: '/',
-  text: 'Index Page'
 }
 
 export default IndexLink

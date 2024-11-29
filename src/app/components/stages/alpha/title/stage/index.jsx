@@ -6,6 +6,8 @@ const log = debug('zashiki-react-redux/app/components/stages/alpha/title/stage')
 
 log('`zashiki` is awake')
 
+const DEFAULT_TITLE = 'Alpha'
+
 export default class Title extends Component {
   getClassName () {
     return 'alpha'
@@ -13,7 +15,7 @@ export default class Title extends Component {
 
   render () {
     const {
-      title
+      title = DEFAULT_TITLE
     } = this.props
 
     return (
@@ -27,9 +29,5 @@ export default class Title extends Component {
 }
 
 Title.propTypes = {
-  title: PropTypes.string.isRequired
-}
-
-Title.defaultProps = {
-  title: 'Alpha'
+  title: PropTypes.string // .isRequired
 }

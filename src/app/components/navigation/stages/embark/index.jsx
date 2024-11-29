@@ -6,7 +6,10 @@ import {
 
 import getEmbarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-embark-route'
 
-const EmbarkStageLink = ({ href, text }) => (
+const DEFAULT_HREF = getEmbarkRoute()
+const DEFAULT_TEXT = 'Embark Stage'
+
+const EmbarkStageLink = ({ href = DEFAULT_HREF, text = DEFAULT_TEXT }) => (
   <Link to={href}>
     {text}
   </Link>
@@ -15,11 +18,6 @@ const EmbarkStageLink = ({ href, text }) => (
 EmbarkStageLink.propTypes = {
   href: PropTypes.string,
   text: PropTypes.string
-}
-
-EmbarkStageLink.defaultProps = {
-  href: getEmbarkRoute(),
-  text: 'Embark Stage'
 }
 
 export default EmbarkStageLink

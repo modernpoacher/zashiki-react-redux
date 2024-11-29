@@ -11,7 +11,7 @@ import {
 
 use(sinonChai)
 
-xdescribe('@modernpoacher/zashiki-react-redux/app/sagas/zashiki', () => {
+describe('@modernpoacher/zashiki-react-redux/app/sagas/zashiki', () => {
   describe('`watchZashikiFetch`', () => {
     it('is a function', () => {
       expect(watchZashikiFetch)

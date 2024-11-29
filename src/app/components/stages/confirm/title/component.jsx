@@ -16,7 +16,10 @@ const log = debug('zashiki-react-redux/app/components/stages/confirm/title/compo
 
 log('`zashiki` is awake')
 
-export default function Title ({ status, description }) {
+const DEFAULT_STATUS = PENDING
+const DEFAULT_DESCRIPTION = 'Confirm'
+
+export default function Title ({ status = DEFAULT_STATUS, description = DEFAULT_DESCRIPTION }) {
   switch (status) {
     case RESOLVED:
       return (
@@ -42,9 +45,4 @@ export default function Title ({ status, description }) {
 Title.propTypes = {
   status: PropTypes.number,
   description: PropTypes.string
-}
-
-Title.defaultProps = {
-  status: PENDING,
-  description: 'Confirm'
 }
