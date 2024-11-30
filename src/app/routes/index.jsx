@@ -3,7 +3,7 @@ import React from 'react'
 import {
   Routes,
   Route
-} from 'react-router-dom'
+} from 'react-router'
 
 import Signals from 'shinkansen-engine/components/signals'
 

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {
   Link
-} from 'react-router-dom'
+} from 'react-router'
 
 const DEFAULT_HREF = '/'
 const DEFAULT_TEXT = 'Index Page'

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {
   Link
-} from 'react-router-dom'
+} from 'react-router'
 
 import getDebarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-debark-route'
 

@@ -27,7 +27,7 @@ MockLink.propTypes = {
   ])
 }
 
-jest.mock('react-router-dom', () => {
+jest.mock('react-router', () => {
   return {
     __esModule: true,
     Link: MockLink
