@@ -1,9 +1,6 @@
-import { use, expect } from 'chai'
-import sinonChai from '@sequencemedia/sinon-chai'
+import { expect } from 'chai'
 
 import withRouter from '@modernpoacher/zashiki-react-redux/app/router/with-router'
-
-use(sinonChai)
 
 describe('@modernpoacher/zashiki-react-redux/app/router/with-router', () => {
   describe('`withRouter`', () => {

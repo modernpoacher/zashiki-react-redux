@@ -1,9 +1,6 @@
-import { use, expect } from 'chai'
-import sinonChai from '@sequencemedia/sinon-chai'
+import { expect } from 'chai'
 
 import Routes from '@modernpoacher/zashiki-react-redux/app/routes'
-
-use(sinonChai)
 
 describe('@modernpoacher/zashiki-react-redux/app/routes', () => {
   describe('`Routes`', () => {

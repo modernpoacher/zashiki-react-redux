@@ -1,5 +1,4 @@
-import { use, expect } from 'chai'
-import sinonChai from '@sequencemedia/sinon-chai'
+import { expect } from 'chai'
 
 import {
   Zashiki,
@@ -10,8 +9,6 @@ import {
   Confirm,
   Navigation
 } from '@modernpoacher/zashiki-react-redux/app/components'
-
-use(sinonChai)
 
 describe('@modernpoacher/zashiki-react-redux/app/components', () => {
   describe('`Zashiki`', () => {

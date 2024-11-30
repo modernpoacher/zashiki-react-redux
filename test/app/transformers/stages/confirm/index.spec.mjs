@@ -1,11 +1,8 @@
-import { use, expect } from 'chai'
-import sinonChai from '@sequencemedia/sinon-chai'
+import { expect } from 'chai'
 
 import transformer, {
   transformConfirm
 } from '@modernpoacher/zashiki-react-redux/app/transformers/stages/confirm'
-
-use(sinonChai)
 
 describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/confirm', () => {
   describe('`transformer`', () => {
