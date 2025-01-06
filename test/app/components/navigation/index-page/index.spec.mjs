@@ -1,4 +1,6 @@
-import { expect } from 'chai'
+import {
+  expect
+} from 'chai'
 
 import IndexPage from '@modernpoacher/zashiki-react-redux/app/components/navigation/index-page'
 
