@@ -1,4 +1,6 @@
-import { expect } from 'chai'
+import {
+  expect
+} from 'chai'
 
 import Confirm from '@modernpoacher/zashiki-react-redux/app/components/navigation/stages/confirm'
 

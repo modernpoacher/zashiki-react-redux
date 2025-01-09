@@ -1,4 +1,6 @@
-import { expect } from 'chai'
+import {
+  expect
+} from 'chai'
 
 import Store from '@modernpoacher/zashiki-react-redux/app/store'
 

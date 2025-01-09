@@ -1,4 +1,6 @@
-import { expect } from 'chai'
+import {
+  expect
+} from 'chai'
 
 import withRouter from '@modernpoacher/zashiki-react-redux/app/router/with-router'
 

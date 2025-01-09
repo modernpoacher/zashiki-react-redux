@@ -1,4 +1,6 @@
-import { expect } from 'chai'
+import {
+  expect
+} from 'chai'
 
 import Pending from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/status/pending'
 
