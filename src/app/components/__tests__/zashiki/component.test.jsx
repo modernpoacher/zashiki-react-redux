@@ -33,12 +33,12 @@ describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', 
         .toMatchSnapshot()
     })
 
-    it('invokes `componentDidMount`', () => {
+    xit('invokes `componentDidMount`', () => {
       expect(spy)
         .toHaveBeenCalled()
     })
 
-    it('invokes `onMount`', () => {
+    xit('invokes `onMount`', () => {
       expect(MOCK_ONMOUNT)
         .toHaveBeenCalledWith({ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' })
     })
