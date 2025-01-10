@@ -14,7 +14,7 @@ module.exports = {
     '^.+\\.jsx$': 'babel-jest',
     '^.+\\.mjs$': 'babel-jest'
   },
-  moduleFileExtensions: ['js', 'jsx', 'mjs', 'cjs'],
+  moduleFileExtensions: ['js', 'jsx', 'mjs'],
   transformIgnorePatterns: [
     '/node_modules\\/(?!shinkansen-cogs)\\/',
     '/node_modules\\/(?!shinkansen-sprockets)\\/',
