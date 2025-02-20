@@ -56,6 +56,7 @@ const plugins = [
   ]
 ]
 
+// @ts-ignore
 module.exports = (api) => {
   if (api) api.cache.using(env)
 
