@@ -4,11 +4,27 @@ import renderer from 'react-test-renderer'
 
 import Embark from '@modernpoacher/zashiki-react-redux/app/components/navigation/stages/embark'
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/common/get-embark-route')
+jest.mock('@modernpoacher/zashiki-react-redux/app/common/get-embark-route', () => jest.fn().mockReturnValue('MOCK EMBARK ROUTE'))
 
+/**
+ * @param {{ to: string | { pathname: string }, children: React.ReactNode | React.ReactNode[] }} param0
+ * @returns {React.JSX.Element}
+ */
 function MockLink ({ to, children }) {
+  if (typeof to === 'string') {
+    return (
+      <a href={to} className='mock-link'>
+        {children}
+      </a>
+    )
+  }
+
+  const {
+    pathname
+  } = to
+
   return (
-    <a href={to} className='mock-link'>
+    <a href={pathname} className='mock-link'>
       {children}
     </a>
   )

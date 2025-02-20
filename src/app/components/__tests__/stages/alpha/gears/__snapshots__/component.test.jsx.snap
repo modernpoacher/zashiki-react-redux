@@ -11,11 +11,7 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/co
   >
     <a
       className="mock-link"
-      href={
-        {
-          "pathname": "/MOCK ALPHA/MOCK OMEGA",
-        }
-      }
+      href="/MOCK ALPHA/MOCK OMEGA"
     >
       Forward
     </a>
@@ -32,11 +28,7 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/co
   >
     <a
       className="mock-link"
-      href={
-        {
-          "pathname": "/MOCK ALPHA/MOCK OMEGA",
-        }
-      }
+      href="/MOCK ALPHA/MOCK OMEGA"
     >
       Reverse
     </a>
@@ -53,11 +45,7 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/co
   >
     <a
       className="mock-link"
-      href={
-        {
-          "pathname": "/MOCK ALPHA/MOCK OMEGA",
-        }
-      }
+      href="/MOCK ALPHA/MOCK OMEGA"
     >
       Reverse
     </a>
@@ -67,11 +55,7 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/alpha/gears/co
   >
     <a
       className="mock-link"
-      href={
-        {
-          "pathname": "/MOCK ALPHA/MOCK OMEGA",
-        }
-      }
+      href="/MOCK ALPHA/MOCK OMEGA"
     >
       Forward
     </a>

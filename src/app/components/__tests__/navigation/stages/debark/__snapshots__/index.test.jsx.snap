@@ -3,6 +3,7 @@
 exports[`@modernpoacher/zashiki-react-redux/app/components/navigation/stages/debark Always renders 1`] = `
 <a
   className="mock-link"
+  href="MOCK DEBARK ROUTE"
 >
   Debark Stage
 </a>

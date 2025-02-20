@@ -7,11 +7,13 @@ import {
 const DEFAULT_HREF = '/'
 const DEFAULT_TEXT = 'Index Page'
 
-const IndexLink = ({ href = DEFAULT_HREF, text = DEFAULT_TEXT }) => (
-  <Link to={href}>
-    {text}
-  </Link>
-)
+function IndexLink ({ href = DEFAULT_HREF, text = DEFAULT_TEXT }) {
+  return (
+    <Link to={href}>
+      {text}
+    </Link>
+  )
+}
 
 IndexLink.propTypes = {
   href: PropTypes.string,

@@ -3,6 +3,7 @@
 exports[`@modernpoacher/zashiki-react-redux/app/components/navigation/stages/embark Always renders 1`] = `
 <a
   className="mock-link"
+  href="MOCK EMBARK ROUTE"
 >
   Embark Stage
 </a>

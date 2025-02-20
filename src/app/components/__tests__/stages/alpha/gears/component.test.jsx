@@ -8,9 +8,25 @@ jest.mock('shinkansen-engine/components/signals', () => ({
   OMEGA_PATTERN: 'MOCK OMEGA PATTERN'
 }))
 
+/**
+ * @param {{ to: string | { pathname: string }, children: React.ReactNode | React.ReactNode[] }} param0
+ * @returns {React.JSX.Element}
+ */
 function MockLink ({ to, children }) {
+  if (typeof to === 'string') {
+    return (
+      <a href={to} className='mock-link'>
+        {children}
+      </a>
+    )
+  }
+
+  const {
+    pathname
+  } = to
+
   return (
-    <a href={to} className='mock-link'>
+    <a href={pathname} className='mock-link'>
       {children}
     </a>
   )

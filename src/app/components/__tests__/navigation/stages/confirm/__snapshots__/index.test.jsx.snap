@@ -3,6 +3,7 @@
 exports[`@modernpoacher/zashiki-react-redux/app/components/navigation/stages/confirm Always renders 1`] = `
 <a
   className="mock-link"
+  href="MOCK CONFIRM ROUTE"
 >
   Confirm Stage
 </a>

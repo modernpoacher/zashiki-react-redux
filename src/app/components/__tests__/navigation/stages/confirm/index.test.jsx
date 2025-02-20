@@ -4,11 +4,27 @@ import renderer from 'react-test-renderer'
 
 import Confirm from '@modernpoacher/zashiki-react-redux/app/components/navigation/stages/confirm'
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/common/get-confirm-route')
+jest.mock('@modernpoacher/zashiki-react-redux/app/common/get-confirm-route', () => jest.fn().mockReturnValue('MOCK CONFIRM ROUTE'))
 
+/**
+ * @param {{ to: string | { pathname: string }, children: React.ReactNode | React.ReactNode[] }} param0
+ * @returns {React.JSX.Element}
+ */
 function MockLink ({ to, children }) {
+  if (typeof to === 'string') {
+    return (
+      <a href={to} className='mock-link'>
+        {children}
+      </a>
+    )
+  }
+
+  const {
+    pathname
+  } = to
+
   return (
-    <a href={to} className='mock-link'>
+    <a href={pathname} className='mock-link'>
       {children}
     </a>
   )
