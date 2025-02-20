@@ -8,7 +8,7 @@ module.exports = {
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: './coverage',
-  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(mjs?|jsx?)$',
+  testRegex: '(/__tests__/.*|(\\.|/))(test|spec)\\.(mjs?|jsx?)$',
   testPathIgnorePatterns: ['.*\\.mock\\.jsx$'],
   transform: {
     '^.+\\.jsx$': 'babel-jest',
