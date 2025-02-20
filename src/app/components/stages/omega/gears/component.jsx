@@ -22,8 +22,8 @@ const Component = ({ reverse, forward }) => (
 )
 
 Component.propTypes = {
-  reverse: PropTypes.shape(),
-  forward: PropTypes.shape()
+  reverse: PropTypes.shape({}),
+  forward: PropTypes.shape({})
 }
 
 export default Component

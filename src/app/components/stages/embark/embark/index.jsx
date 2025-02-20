@@ -36,9 +36,9 @@ const Stage = ({ onSubmit, response, errors, definition, onChange }) => (
 
 Stage.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  response: PropTypes.shape().isRequired,
-  definition: PropTypes.shape().isRequired,
-  errors: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  response: PropTypes.shape({}).isRequired,
+  definition: PropTypes.shape({}).isRequired,
+  errors: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   onChange: PropTypes.func.isRequired
 }
 

@@ -37,10 +37,10 @@ export default function Omega ({ resource, onSubmit, response, errors, definitio
 }
 
 Omega.propTypes = {
-  resource: PropTypes.shape().isRequired,
+  resource: PropTypes.shape({}).isRequired,
   onSubmit: PropTypes.func.isRequired,
-  response: PropTypes.shape().isRequired,
-  errors: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  definition: PropTypes.shape().isRequired,
+  response: PropTypes.shape({}).isRequired,
+  errors: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  definition: PropTypes.shape({}).isRequired,
   onChange: PropTypes.func.isRequired
 }

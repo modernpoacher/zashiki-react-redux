@@ -54,20 +54,20 @@ Stage.propTypes = PropTypes.oneOfType([
   PropTypes.shape({
     ...Zashiki.propTypes,
     status: PropTypes.number.isRequired,
-    resource: PropTypes.shape().isRequired,
-    definition: PropTypes.shape().isRequired,
-    response: PropTypes.shape().isRequired,
-    errors: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+    resource: PropTypes.shape({}).isRequired,
+    definition: PropTypes.shape({}).isRequired,
+    response: PropTypes.shape({}).isRequired,
+    errors: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired
   }),
   PropTypes.shape({
     ...Zashiki.propTypes,
     status: PropTypes.number.isRequired,
-    resource: PropTypes.shape().isRequired,
-    exception: PropTypes.shape().isRequired,
-    response: PropTypes.shape().isRequired,
-    errors: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+    resource: PropTypes.shape({}).isRequired,
+    exception: PropTypes.shape({}).isRequired,
+    response: PropTypes.shape({}).isRequired,
+    errors: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired
   })

@@ -100,7 +100,7 @@ function MockLink ({ to, children }) {
 MockLink.propTypes = {
   to: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.shape()
+    PropTypes.shape({})
   ]),
   children: PropTypes.oneOfType([
     PropTypes.node,

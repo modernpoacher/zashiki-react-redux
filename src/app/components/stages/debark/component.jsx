@@ -72,15 +72,15 @@ export default class Stage extends Component {
 Stage.propTypes = PropTypes.oneOfType([
   PropTypes.shape({
     status: PropTypes.number.isRequired,
-    definitions: PropTypes.shape().isRequired,
-    token: PropTypes.shape().isRequired,
+    definitions: PropTypes.shape({}).isRequired,
+    token: PropTypes.shape({}).isRequired,
     onSubmit: PropTypes.func.isRequired,
     onDebark: PropTypes.func.isRequired
   }),
   PropTypes.shape({
     status: PropTypes.number.isRequired,
-    exception: PropTypes.shape().isRequired,
-    token: PropTypes.shape().isRequired,
+    exception: PropTypes.shape({}).isRequired,
+    token: PropTypes.shape({}).isRequired,
     onSubmit: PropTypes.func.isRequired,
     onDebark: PropTypes.func.isRequired
   })

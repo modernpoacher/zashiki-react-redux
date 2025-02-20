@@ -38,8 +38,8 @@ const Debark = ({ definitions, token, onSubmit }) => (
 )
 
 Debark.propTypes = {
-  definitions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  token: PropTypes.shape().isRequired,
+  definitions: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  token: PropTypes.shape({}).isRequired,
   onSubmit: PropTypes.func.isRequired
 }
 

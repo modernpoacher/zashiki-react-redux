@@ -45,7 +45,7 @@ export default function Alpha ({ definitions, onSubmit, onChange }) {
 }
 
 Alpha.propTypes = {
-  definitions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  definitions: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
 }
