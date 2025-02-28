@@ -1,5 +1,7 @@
 import React from 'react'
 
-export default () => (
-  <div className='embark pending' />
-)
+export default function Pending () {
+  return (
+    <div className='embark pending' />
+  )
+}

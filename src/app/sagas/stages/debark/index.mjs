@@ -25,13 +25,15 @@ import {
   SUBMIT,
   submitStateFulfilled,
   submitStateRejected
-} from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
+} from '#zashiki-react-redux/app/actions/stages/debark'
 
-import * as api from '@modernpoacher/zashiki-react-redux/api/stages/debark'
+import * as api from '#zashiki-react-redux/api/stages/debark'
 
-import { transformError } from '@modernpoacher/zashiki-react-redux/app/transformers'
+import {
+  transformError
+} from '#zashiki-react-redux/app/transformers'
 
-import getPathname from '@modernpoacher/zashiki-react-redux/app/common/get-pathname'
+import getPathname from '#zashiki-react-redux/app/common/get-pathname'
 
 const log = debug('zashiki-react-redux/app/sagas/stages/embark')
 

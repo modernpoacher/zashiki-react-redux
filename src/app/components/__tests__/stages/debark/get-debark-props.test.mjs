@@ -1,6 +1,6 @@
-import getDebarkProps from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/get-debark-props'
+import getDebarkProps from '#zashiki-react-redux/app/components/stages/debark/get-debark-props'
 
-describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/get-debark-props', () => {
+describe('#zashiki-react-redux/app/components/stages/debark/get-debark-props', () => {
   const mockProps = {
     definitions: [],
     token: {},

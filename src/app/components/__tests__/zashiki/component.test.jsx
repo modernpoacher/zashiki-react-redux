@@ -1,12 +1,12 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Zashiki from '@modernpoacher/zashiki-react-redux/app/components/zashiki/component'
+import Zashiki from '#zashiki-react-redux/app/components/zashiki/component'
 import equal from 'fast-deep-equal'
 
 jest.mock('fast-deep-equal', () => jest.fn())
 
-describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', () => {
+describe('#zashiki-react-redux/app/components/zashiki/component', () => {
   const MOCK_ONMOUNT = jest.fn()
   const MOCK_MATCH = { params: { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' } }
   const MOCK_CHILDREN = []

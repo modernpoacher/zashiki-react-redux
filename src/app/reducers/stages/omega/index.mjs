@@ -4,7 +4,7 @@ import {
   PENDING,
   RESOLVED,
   REJECTED
-} from '@modernpoacher/zashiki-react-redux/app/common'
+} from '#zashiki-react-redux/app/common'
 
 import {
   ROUTE,
@@ -28,25 +28,25 @@ import {
   QUERY_REJECTED,
   CHANGE_REJECTED,
   SUBMIT_REJECTED
-} from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
+} from '#zashiki-react-redux/app/actions/stages/omega'
 
 import {
   ROUTE as EMBARK_ROUTE,
   FETCH as EMBARK_FETCH
-} from '@modernpoacher/zashiki-react-redux/app/actions/stages/embark'
+} from '#zashiki-react-redux/app/actions/stages/embark'
 
 import {
   ROUTE as DEBARK_ROUTE,
   FETCH as DEBARK_FETCH
-} from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
+} from '#zashiki-react-redux/app/actions/stages/debark'
 
 import {
   MOUNT as ALPHA_MOUNT
-} from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
+} from '#zashiki-react-redux/app/actions/stages/alpha'
 
 import {
   MOUNT as ZASHIKI_MOUNT
-} from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
+} from '#zashiki-react-redux/app/actions/zashiki'
 
 const log = debug('zashiki-react-redux/app/reducers/stages/omega')
 

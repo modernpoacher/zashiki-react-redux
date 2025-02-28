@@ -11,15 +11,15 @@ import confirmReducer, {
   fetchRejected,
   storeRejected,
   submitRejected
-} from '@modernpoacher/zashiki-react-redux/app/reducers/stages/confirm'
+} from '#zashiki-react-redux/app/reducers/stages/confirm'
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
+jest.mock('#zashiki-react-redux/app/common', () => ({
   RESOLVED: 'MOCK RESOLVED',
   REJECTED: 'MOCK REJECTED',
   PENDING: 'MOCK PENDING'
 }))
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/actions/stages/confirm', () => ({
+jest.mock('#zashiki-react-redux/app/actions/stages/confirm', () => ({
   ROUTE: 'MOCK ROUTE',
   FETCH: 'MOCK FETCH',
   STORE: 'MOCK STORE',
@@ -38,7 +38,7 @@ const DEFAULT = {
   status: 'MOCK PENDING'
 }
 
-describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/confirm', () => {
+describe('#zashiki-react-redux/app/reducers/stages/confirm', () => {
   describe('`confirmReducer`', () => {
     it('is defined', () => {
       expect(confirmReducer)

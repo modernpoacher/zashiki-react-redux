@@ -4,7 +4,7 @@ import {
   Link
 } from 'react-router'
 
-import getConfirmRoute from '@modernpoacher/zashiki-react-redux/app/common/get-confirm-route'
+import getConfirmRoute from '#zashiki-react-redux/app/common/get-confirm-route'
 
 const DEFAULT_HREF = getConfirmRoute()
 const DEFAULT_TEXT = 'Confirm Stage'

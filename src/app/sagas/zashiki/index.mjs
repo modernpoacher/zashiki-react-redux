@@ -26,11 +26,13 @@ import {
   SUBMIT,
   submitRouteFulfilled,
   submitRouteRejected
-} from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
+} from '#zashiki-react-redux/app/actions/zashiki'
 
-import * as api from '@modernpoacher/zashiki-react-redux/api/zashiki'
+import * as api from '#zashiki-react-redux/api/zashiki'
 
-import { transformError } from '@modernpoacher/zashiki-react-redux/app/transformers'
+import {
+  transformError
+} from '#zashiki-react-redux/app/transformers'
 
 const log = debug('zashiki-react-redux/app/sagas/zashiki')
 

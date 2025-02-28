@@ -1,6 +1,6 @@
-import getStageProps from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/get-stage-props'
+import getStageProps from '#zashiki-react-redux/app/components/stages/alpha/get-stage-props'
 
-describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/get-stage-props', () => {
+describe('#zashiki-react-redux/app/components/stages/alpha/get-stage-props', () => {
   const mockProps = {
     definitions: [],
     onChange: jest.fn(),

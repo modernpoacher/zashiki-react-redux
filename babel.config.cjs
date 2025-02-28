@@ -50,7 +50,7 @@ const plugins = [
         /**
          *  Jest
          */
-        'zashiki-react-redux/mocks/shinkansen-engine/components/gears': './src/app/components/__mocks__/shinkansen-engine/components/gears.mock.jsx'
+        '#mocks/shinkansen-engine/components/gears': './src/app/components/__mocks__/shinkansen-engine/components/gears.mock.jsx'
       }
     }
   ]

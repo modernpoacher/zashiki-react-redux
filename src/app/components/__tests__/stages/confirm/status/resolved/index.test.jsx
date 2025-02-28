@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Resolved from '@modernpoacher/zashiki-react-redux/app/components/stages/confirm/status/resolved'
+import Resolved from '#zashiki-react-redux/app/components/stages/confirm/status/resolved'
 
 const MOCK_DEFINITION = {
   meta: {
@@ -19,7 +19,7 @@ const MOCK_RESPONSE = {
   '#/': 'MOCK VALUE'
 }
 
-describe('@modernpoacher/zashiki-react-redux/app/components/stages/confirm/status/resolved', () => {
+describe('#zashiki-react-redux/app/components/stages/confirm/status/resolved', () => {
   describe('Always', () => {
     it('renders', () => {
       const component = (

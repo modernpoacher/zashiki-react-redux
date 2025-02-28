@@ -1,40 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/confirm/component \`PENDING\` renders 1`] = `
-<div
-  className="confirm pending"
-/>
-`;
+exports[`#zashiki-react-redux/app/components/stages/confirm/component \`PENDING\` renders 1`] = `"MOCK PENDING"`;
 
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/confirm/component \`REJECTED\` renders 1`] = `
-<div
-  className="confirm rejected"
->
-  <h2>
-    MOCK NAME
-  </h2>
-  <p>
-    MOCK MESSAGE
-  </p>
-</div>
-`;
+exports[`#zashiki-react-redux/app/components/stages/confirm/component \`REJECTED\` renders 1`] = `"MOCK REJECTED"`;
 
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/confirm/component \`RESOLVED\` renders 1`] = `
-<div
-  className="confirm resolved"
->
-  <h2>
-    Confirmation
-  </h2>
-</div>
-`;
+exports[`#zashiki-react-redux/app/components/stages/confirm/component \`RESOLVED\` renders 1`] = `"MOCK RESOLVED"`;
 
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/confirm/component Always renders 1`] = `
-<div
-  className="confirm resolved"
->
-  <h2>
-    Confirmation
-  </h2>
-</div>
-`;
+exports[`#zashiki-react-redux/app/components/stages/confirm/component Always renders 1`] = `"MOCK RESOLVED"`;

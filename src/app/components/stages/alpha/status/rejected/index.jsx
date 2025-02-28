@@ -15,7 +15,10 @@ export default function Rejected ({ code, name, message }) {
 }
 
 Rejected.propTypes = {
-  code: PropTypes.number,
+  code: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ]),
   name: PropTypes.string.isRequired,
   message: PropTypes.string
 }

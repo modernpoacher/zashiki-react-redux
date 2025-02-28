@@ -1,6 +1,6 @@
 import {
   REJECTED
-} from '@modernpoacher/zashiki-react-redux/app/common'
+} from '#zashiki-react-redux/app/common'
 
 export function transformError ({
   code,

@@ -1,6 +1,6 @@
-import getEmbarkProps from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/get-embark-props'
+import getEmbarkProps from '#zashiki-react-redux/app/components/stages/embark/get-embark-props'
 
-describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/get-embark-props', () => {
+describe('#zashiki-react-redux/app/components/stages/embark/get-embark-props', () => {
   const mockProps = {
     definition: {},
     onChange: jest.fn(),

@@ -1,9 +1,9 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Stage from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/stage'
+import Stage from '#zashiki-react-redux/app/components/stages/omega/stage'
 
-import MockGears from 'zashiki-react-redux/mocks/shinkansen-engine/components/gears'
+import MockGears from '#mocks/shinkansen-engine/components/gears'
 
 jest.mock('shinkansen-engine/components/signals', () => ({
   OMEGA_PATTERN: 'MOCK OMEGA PATTERN'
@@ -34,9 +34,9 @@ const MOCK_RESPONSE = {
 
 const MOCK_ERRORS = []
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/omega/gears', () => (props) => <MockGears {...props} />)
+jest.mock('#zashiki-react-redux/app/components/stages/omega/gears', () => (props) => <MockGears {...props} />)
 
-describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/stage', () => {
+describe('#zashiki-react-redux/app/components/stages/omega/stage', () => {
   describe('Always', () => {
     it('renders', () => {
       const component = (

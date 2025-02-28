@@ -1,6 +1,6 @@
-import getStageProps from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/get-stage-props'
+import getStageProps from '#zashiki-react-redux/app/components/stages/omega/get-stage-props'
 
-describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/get-stage-props', () => {
+describe('#zashiki-react-redux/app/components/stages/omega/get-stage-props', () => {
   const mockProps = {
     definition: {},
     resource: {},

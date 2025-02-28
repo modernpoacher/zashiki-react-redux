@@ -1,56 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/component \`PENDING\` renders 1`] = `
-<div
-  className="debark pending"
-/>
-`;
+exports[`#zashiki-react-redux/app/components/stages/debark/component \`PENDING\` renders 1`] = `"MOCK PENDING"`;
 
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/component \`REJECTED\` renders 1`] = `
-<div
-  className="debark rejected"
->
-  <h2>
-    MOCK NAME
-  </h2>
-  <p>
-    MOCK MESSAGE
-  </p>
-</div>
-`;
+exports[`#zashiki-react-redux/app/components/stages/debark/component \`REJECTED\` renders 1`] = `"MOCK REJECTED"`;
 
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/component \`RESOLVED\` renders 1`] = `
-<div
-  className="debark resolved"
->
-  <form
-    action="/debark-stage"
-    method="POST"
-    onSubmit={[Function]}
-  >
-    <button
-      type="submit"
-    >
-      Continue
-    </button>
-  </form>
-</div>
-`;
+exports[`#zashiki-react-redux/app/components/stages/debark/component \`RESOLVED\` renders 1`] = `"MOCK RESOLVED"`;
 
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/component Always renders 1`] = `
-<div
-  className="debark resolved"
->
-  <form
-    action="/debark-stage"
-    method="POST"
-    onSubmit={[Function]}
-  >
-    <button
-      type="submit"
-    >
-      Continue
-    </button>
-  </form>
-</div>
-`;
+exports[`#zashiki-react-redux/app/components/stages/debark/component Always renders 1`] = `"MOCK RESOLVED"`;

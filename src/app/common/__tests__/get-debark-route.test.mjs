@@ -1,6 +1,6 @@
 import Rails from 'shinkansen-engine/components/rails'
 
-import getDebarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-debark-route'
+import getDebarkRoute from '#zashiki-react-redux/app/common/get-debark-route'
 
 jest.mock('shinkansen-engine/components/rails', () => ({
   to: jest.fn().mockReturnValue('MOCK DEBARK ROUTE')
@@ -12,7 +12,7 @@ jest.mock('shinkansen-engine/components/signals', () => ({
   DEBARK_PATTERN: 'MOCK DEBARK PATTERN'
 }))
 
-describe('@modernpoacher/zashiki-react-redux/app/common/get-debark-route', () => {
+describe('#zashiki-react-redux/app/common/get-debark-route', () => {
   describe('`getDebarkRoute`', () => {
     it('is defined', () => {
       expect(getDebarkRoute).toBeDefined()

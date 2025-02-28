@@ -36,7 +36,7 @@ import {
   store,
   change,
   submit
-} from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
+} from '#zashiki-react-redux/app/actions/stages/alpha'
 
 jest.mock('shinkansen-engine/components/pantograph', () => ({
   ALPHA: {
@@ -48,7 +48,7 @@ jest.mock('shinkansen-engine/components/pantograph', () => ({
   }
 }))
 
-describe('@modernpoacher/zashiki-react-redux/app/actions/stages/alpha', () => {
+describe('#zashiki-react-redux/app/actions/stages/alpha', () => {
   const MOCK_REDIRECT = {}
   const MOCK_ROUTE = {}
   const MOCK_ROUTER = {}

@@ -29,7 +29,7 @@ import {
   fetch,
   store,
   submit
-} from '@modernpoacher/zashiki-react-redux/app/actions/stages/debark'
+} from '#zashiki-react-redux/app/actions/stages/debark'
 
 jest.mock('shinkansen-engine/components/pantograph', () => ({
   DEBARK: {
@@ -40,7 +40,7 @@ jest.mock('shinkansen-engine/components/pantograph', () => ({
   }
 }))
 
-describe('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => {
+describe('#zashiki-react-redux/app/actions/stages/debark', () => {
   const MOCK_REDIRECT = {}
   const MOCK_ROUTE = {}
   const MOCK_ROUTER = {}

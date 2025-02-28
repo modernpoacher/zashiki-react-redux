@@ -2,7 +2,7 @@ import debug from 'debug'
 
 import {
   REJECTED
-} from '@modernpoacher/zashiki-react-redux/app/common'
+} from '#zashiki-react-redux/app/common'
 
 import {
   toZashiki,
@@ -11,22 +11,24 @@ import {
 
 import {
   transformRejected
-} from '@modernpoacher/zashiki-react-redux/app/transformers'
+} from '#zashiki-react-redux/app/transformers'
 
 const log = debug('zashiki-react-redux/app/transformers/stages/omega')
 
 log('`zashiki` is awake')
 
-export function transformOmega (status, {
-  description,
-  definition,
-  resource,
-  response = {}, // hash
-  errors = []
-}) {
+export function transformOmega (status, stage) {
   /*
    *  log('transformOmega')
    */
+
+  const {
+    description,
+    definition,
+    resource,
+    response = {}, // hash
+    errors = []
+  } = stage
 
   return {
     status,

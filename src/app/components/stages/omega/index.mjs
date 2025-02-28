@@ -6,17 +6,17 @@ import {
 
 import Signals from 'shinkansen-engine/components/signals'
 
-import withRouter from '@modernpoacher/zashiki-react-redux/app/router/with-router'
+import withRouter from '#zashiki-react-redux/app/router/with-router'
 
-import transform from '@modernpoacher/zashiki-react-redux/app/transformers/stages/omega'
+import transform from '#zashiki-react-redux/app/transformers/stages/omega'
 
 import {
   mount,
   change,
   submit
-} from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
+} from '#zashiki-react-redux/app/actions/stages/omega'
 
-import Component from './component.cjs'
+import Component from '#zashiki-react-redux/app/components/stages/omega/component'
 
 const log = debug('zashiki-react-redux/app/components/stages/omega')
 

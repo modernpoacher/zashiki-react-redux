@@ -4,13 +4,13 @@ import {
 
 import toCheckAnswers from 'shinkansen-pinion/transformers/check-answers'
 
-import transform from '@modernpoacher/zashiki-react-redux/app/transformers/stages/debark'
+import transform from '#zashiki-react-redux/app/transformers/stages/debark'
 
 import {
   transformRejected
-} from '@modernpoacher/zashiki-react-redux/app/transformers'
+} from '#zashiki-react-redux/app/transformers'
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
+jest.mock('#zashiki-react-redux/app/common', () => ({
   REJECTED: 'MOCK REJECTED'
 }))
 
@@ -20,9 +20,9 @@ jest.mock('shinkansen-engine/transformers/transmission', () => ({
 
 jest.mock('shinkansen-pinion/transformers/check-answers', () => jest.fn().mockReturnValue('MOCK CHECK ANSWERS'))
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/transformers', () => ({ transformRejected: jest.fn() }))
+jest.mock('#zashiki-react-redux/app/transformers', () => ({ transformRejected: jest.fn() }))
 
-describe('@modernpoacher/zashiki-react-redux/app/transformers/stages/debark', () => {
+describe('#zashiki-react-redux/app/transformers/stages/debark', () => {
   describe('`transform`', () => {
     it('is defined', () => {
       expect(transform).toBeDefined()

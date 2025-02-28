@@ -4,7 +4,7 @@ import {
   Link
 } from 'react-router'
 
-import getDebarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-debark-route'
+import getDebarkRoute from '#zashiki-react-redux/app/common/get-debark-route'
 
 const DEFAULT_HREF = getDebarkRoute()
 const DEFAULT_TEXT = 'Debark Stage'

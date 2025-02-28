@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import renderer from 'react-test-renderer'
 
-import Resolved from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/resolved'
+import Resolved from '#zashiki-react-redux/app/components/stages/debark/status/resolved'
 
 const MOCK_STRING_DEFINITION = {
   type: 'STRING',
@@ -133,7 +133,7 @@ jest.mock('react-router', () => {
   }
 })
 
-describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/resolved', () => {
+describe('#zashiki-react-redux/app/components/stages/debark/status/resolved', () => {
   describe('Always', () => {
     it('renders', () => {
       const component = (

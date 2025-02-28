@@ -5,23 +5,23 @@ import {
   RESOLVED,
   REJECTED,
   PENDING
-} from '@modernpoacher/zashiki-react-redux/app/common'
+} from '#zashiki-react-redux/app/common'
 
-import Confirm from '@modernpoacher/zashiki-react-redux/app/components/stages/confirm/component'
+import Confirm from '#zashiki-react-redux/app/components/stages/confirm/component'
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
+jest.mock('#zashiki-react-redux/app/common', () => ({
   RESOLVED: 'MOCK RESOLVED',
   REJECTED: 'MOCK REJECTED',
   PENDING: 'MOCK PENDING'
 }))
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/confirm/status/resolved', () => () => 'MOCK RESOLVED')
-jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/confirm/status/rejected', () => () => 'MOCK REJECTED')
-jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/confirm/status/pending', () => () => 'MOCK PENDING')
+jest.mock('#zashiki-react-redux/app/components/stages/confirm/status/resolved', () => () => 'MOCK RESOLVED')
+jest.mock('#zashiki-react-redux/app/components/stages/confirm/status/rejected', () => () => 'MOCK REJECTED')
+jest.mock('#zashiki-react-redux/app/components/stages/confirm/status/pending', () => () => 'MOCK PENDING')
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/router/with-router', () => (Component) => Component)
+jest.mock('#zashiki-react-redux/app/router/with-router', () => (Component) => Component)
 
-describe('@modernpoacher/zashiki-react-redux/app/components/stages/confirm/component', () => {
+describe('#zashiki-react-redux/app/components/stages/confirm/component', () => {
   const MOCK_DEFINITION = {
     meta: {},
     elements: {}

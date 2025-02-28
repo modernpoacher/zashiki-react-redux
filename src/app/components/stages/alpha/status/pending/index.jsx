@@ -1,5 +1,7 @@
 import React from 'react'
 
-export default () => (
-  <div className='alpha pending' />
-)
+export default function Pending () {
+  return (
+    <div className='alpha pending' />
+  )
+}

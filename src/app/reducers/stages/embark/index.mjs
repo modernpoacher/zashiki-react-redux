@@ -4,7 +4,7 @@ import {
   PENDING,
   RESOLVED,
   REJECTED
-} from '@modernpoacher/zashiki-react-redux/app/common'
+} from '#zashiki-react-redux/app/common'
 
 import {
   ROUTE,
@@ -22,19 +22,19 @@ import {
   STORE_REJECTED,
   CHANGE_REJECTED,
   SUBMIT_REJECTED
-} from '@modernpoacher/zashiki-react-redux/app/actions/stages/embark'
+} from '#zashiki-react-redux/app/actions/stages/embark'
 
 import {
   MOUNT as ALPHA_MOUNT
-} from '@modernpoacher/zashiki-react-redux/app/actions/stages/alpha'
+} from '#zashiki-react-redux/app/actions/stages/alpha'
 
 import {
   MOUNT as OMEGA_MOUNT
-} from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
+} from '#zashiki-react-redux/app/actions/stages/omega'
 
 import {
   MOUNT as ZASHIKI_MOUNT
-} from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
+} from '#zashiki-react-redux/app/actions/zashiki'
 
 const log = debug('zashiki-react-redux/app/reducers/stages/embark')
 

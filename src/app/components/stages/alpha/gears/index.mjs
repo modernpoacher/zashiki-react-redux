@@ -6,9 +6,9 @@ import {
 
 import Signals from 'shinkansen-engine/components/signals'
 
-import withRouter from '@modernpoacher/zashiki-react-redux/app/router/with-router'
+import withRouter from '#zashiki-react-redux/app/router/with-router'
 
-import Component from './component.cjs'
+import Component from '#zashiki-react-redux/app/components/stages/alpha/gears/component'
 
 const log = debug('zashiki-react-redux/app/components/stages/alpha/gears')
 

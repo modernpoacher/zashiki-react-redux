@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router
 } from 'react-router'
 
-import Routes from '@modernpoacher/zashiki-react-redux/app/routes'
+import Routes from '#zashiki-react-redux/app/routes'
 
 export default (
   <Router>

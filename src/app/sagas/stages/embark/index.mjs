@@ -8,7 +8,9 @@ import {
 } from 'redux-saga/effects'
 
 import Signals from 'shinkansen-engine/components/signals'
+
 import Rails from 'shinkansen-engine/components/rails'
+
 import {
   fromDocumentToHash,
   fromHashToDocument
@@ -29,13 +31,15 @@ import {
   SUBMIT,
   submitStateFulfilled,
   submitStateRejected
-} from '@modernpoacher/zashiki-react-redux/app/actions/stages/embark'
+} from '#zashiki-react-redux/app/actions/stages/embark'
 
-import * as api from '@modernpoacher/zashiki-react-redux/api/stages/embark'
+import * as api from '#zashiki-react-redux/api/stages/embark'
 
-import { transformError } from '@modernpoacher/zashiki-react-redux/app/transformers'
+import {
+  transformError
+} from '#zashiki-react-redux/app/transformers'
 
-import getPathname from '@modernpoacher/zashiki-react-redux/app/common/get-pathname'
+import getPathname from '#zashiki-react-redux/app/common/get-pathname'
 
 const log = debug('zashiki-react-redux/app/sagas/stages/embark')
 

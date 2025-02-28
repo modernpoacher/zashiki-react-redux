@@ -5,7 +5,7 @@ require('@babel/register')({
 })
 
 const {
-  default: component
+  default: router
 } = require('./index.jsx')
 
-module.exports = component
+module.exports = router

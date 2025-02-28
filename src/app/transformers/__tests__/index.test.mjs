@@ -1,9 +1,9 @@
 import {
   transformError,
   transformRejected
-} from '@modernpoacher/zashiki-react-redux/app/transformers'
+} from '#zashiki-react-redux/app/transformers'
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
+jest.mock('#zashiki-react-redux/app/common', () => ({
   REJECTED: 'MOCK REJECTED'
 }))
 
@@ -16,7 +16,7 @@ const DEFAULT_REJECTED = {
   exception: DEFAULT_ERROR
 }
 
-describe('@modernpoacher/zashiki-react-redux/app/transformers', () => {
+describe('#zashiki-react-redux/app/transformers', () => {
   describe('`transformError`', () => {
     it('is defined', () => {
       expect(transformError).toBeDefined()

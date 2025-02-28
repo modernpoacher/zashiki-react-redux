@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/omega/status/pending Always renders 1`] = `
+exports[`#zashiki-react-redux/app/components/stages/omega/status/pending Always renders 1`] = `
 <div
   className="omega pending"
 />

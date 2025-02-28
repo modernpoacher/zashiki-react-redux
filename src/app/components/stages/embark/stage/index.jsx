@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import debug from 'debug'
 
-import Embark from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/embark'
+import Embark from '#zashiki-react-redux/app/components/stages/embark/embark'
 
 const log = debug('zashiki-react-redux/app/components/stages/embark/stage')
 

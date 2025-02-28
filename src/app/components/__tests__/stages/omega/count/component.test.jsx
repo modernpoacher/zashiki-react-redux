@@ -1,9 +1,9 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Count from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/count/component'
+import Count from '#zashiki-react-redux/app/components/stages/omega/count/component'
 
-describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/count/component', () => {
+describe('#zashiki-react-redux/app/components/stages/omega/count/component', () => {
   describe('Always', () => {
     it('renders', () => {
       const component = (

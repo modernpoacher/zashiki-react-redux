@@ -6,9 +6,9 @@ import {
 
 import createSagaMiddleware from 'redux-saga'
 
-import reducers from '@modernpoacher/zashiki-react-redux/app/reducers'
-import axios from '@modernpoacher/zashiki-react-redux/api/axios'
-import sagas from '@modernpoacher/zashiki-react-redux/app/sagas'
+import reducers from '#zashiki-react-redux/app/reducers'
+import axios from '#zashiki-react-redux/api/axios'
+import sagas from '#zashiki-react-redux/app/sagas'
 
 /*
  *  "Before running a Saga, you must mount the Saga middleware on the Store using applyMiddleware"

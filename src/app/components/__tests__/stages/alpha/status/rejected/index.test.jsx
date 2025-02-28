@@ -1,9 +1,9 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Rejected from '@modernpoacher/zashiki-react-redux/app/components/stages/alpha/status/rejected'
+import Rejected from '#zashiki-react-redux/app/components/stages/alpha/status/rejected'
 
-describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/status/rejected', () => {
+describe('#zashiki-react-redux/app/components/stages/alpha/status/rejected', () => {
   describe('Always', () => {
     it('renders', () => {
       const component = (

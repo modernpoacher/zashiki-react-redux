@@ -6,13 +6,13 @@ import {
   RESOLVED,
   REJECTED,
   PENDING
-} from '@modernpoacher/zashiki-react-redux/app/common'
+} from '#zashiki-react-redux/app/common'
 
-import Zashiki from '@modernpoacher/zashiki-react-redux/app/components/zashiki/component'
+import Zashiki from '#zashiki-react-redux/app/components/zashiki/component'
 
-import Resolved from './status/resolved/index.jsx'
-import Rejected from './status/rejected/index.jsx'
-import Pending from './status/pending/index.jsx'
+import Resolved from '#zashiki-react-redux/app/components/stages/alpha/status/resolved'
+import Rejected from '#zashiki-react-redux/app/components/stages/alpha/status/rejected'
+import Pending from '#zashiki-react-redux/app/components/stages/alpha/status/pending'
 
 import getStageProps from './get-stage-props.mjs'
 import getErrorProps from './get-error-props.mjs'

@@ -1,7 +1,7 @@
 /*
  *  Zashiki/Embark API
  */
-import api from '@modernpoacher/zashiki-react-redux/api'
+import api from '#zashiki-react-redux/api'
 
 export const fetchRoute = () => api().get('zashiki/confirm/fetch')
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import Title from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/title/stage'
+import Title from '#zashiki-react-redux/app/components/stages/embark/title/stage'
 
 export default class Pending extends Title {
   getClassName () {

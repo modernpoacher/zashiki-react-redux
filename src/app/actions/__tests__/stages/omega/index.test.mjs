@@ -36,7 +36,7 @@ import {
   store,
   change,
   submit
-} from '@modernpoacher/zashiki-react-redux/app/actions/stages/omega'
+} from '#zashiki-react-redux/app/actions/stages/omega'
 
 jest.mock('shinkansen-engine/components/pantograph', () => ({
   OMEGA: {
@@ -48,7 +48,7 @@ jest.mock('shinkansen-engine/components/pantograph', () => ({
   }
 }))
 
-describe('@modernpoacher/zashiki-react-redux/app/actions/stages/omega', () => {
+describe('#zashiki-react-redux/app/actions/stages/omega', () => {
   const MOCK_REDIRECT = {}
   const MOCK_ROUTE = {}
   const MOCK_ROUTER = {}

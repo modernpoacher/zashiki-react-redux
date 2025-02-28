@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import renderer from 'react-test-renderer'
 
-import IndexPage from '@modernpoacher/zashiki-react-redux/app/components/navigation/index-page'
+import IndexPage from '#zashiki-react-redux/app/components/navigation/index-page'
 
 /**
  * @param {{ to: string | { pathname: string }, children: React.ReactNode | React.ReactNode[] }} param0
@@ -48,7 +48,7 @@ jest.mock('react-router', () => {
   }
 })
 
-describe('@modernpoacher/zashiki-react-redux/app/components/navigation/index-page', () => {
+describe('#zashiki-react-redux/app/components/navigation/index-page', () => {
   describe('Always', () => {
     it('renders', () => {
       expect(renderer.create(<IndexPage />).toJSON())

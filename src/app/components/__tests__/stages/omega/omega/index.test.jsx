@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import Omega from '@modernpoacher/zashiki-react-redux/app/components/stages/omega/omega'
+import Omega from '#zashiki-react-redux/app/components/stages/omega/omega'
 
 const MOCK_DESCRIPTION = 'MOCK DESCRIPTION'
 
@@ -28,7 +28,7 @@ const MOCK_RESPONSE = {
 
 const MOCK_ERRORS = []
 
-describe('@modernpoacher/zashiki-react-redux/app/components/stages/omega/omega', () => {
+describe('#zashiki-react-redux/app/components/stages/omega/omega', () => {
   describe('Always', () => {
     it('renders', () => {
       const component = (

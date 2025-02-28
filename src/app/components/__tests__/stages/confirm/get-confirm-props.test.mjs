@@ -1,6 +1,6 @@
-import getConfirmProps from '@modernpoacher/zashiki-react-redux/app/components/stages/confirm/get-confirm-props'
+import getConfirmProps from '#zashiki-react-redux/app/components/stages/confirm/get-confirm-props'
 
-describe('@modernpoacher/zashiki-react-redux/app/components/stages/confirm/get-confirm-props', () => {
+describe('#zashiki-react-redux/app/components/stages/confirm/get-confirm-props', () => {
   const mockProps = {
     definition: {},
     response: {},

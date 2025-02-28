@@ -4,15 +4,15 @@ import {
   connect
 } from 'react-redux'
 
-import withRouter from '@modernpoacher/zashiki-react-redux/app/router/with-router'
+import withRouter from '#zashiki-react-redux/app/router/with-router'
 
 import {
   mount,
   submit,
   change
-} from '@modernpoacher/zashiki-react-redux/app/actions/zashiki'
+} from '#zashiki-react-redux/app/actions/zashiki'
 
-import Component from './component.cjs'
+import Component from '#zashiki-react-redux/app/components/zashiki/component'
 
 const log = debug('zashiki-react-redux/app/components/zashiki')
 

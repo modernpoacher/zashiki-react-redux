@@ -11,15 +11,15 @@ import debarkReducer, {
   fetchRejected,
   storeRejected,
   submitRejected
-} from '@modernpoacher/zashiki-react-redux/app/reducers/stages/debark'
+} from '#zashiki-react-redux/app/reducers/stages/debark'
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
+jest.mock('#zashiki-react-redux/app/common', () => ({
   RESOLVED: 'MOCK RESOLVED',
   REJECTED: 'MOCK REJECTED',
   PENDING: 'MOCK PENDING'
 }))
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => ({
+jest.mock('#zashiki-react-redux/app/actions/stages/debark', () => ({
   ROUTE: 'MOCK ROUTE',
   FETCH: 'MOCK FETCH',
   STORE: 'MOCK STORE',
@@ -38,7 +38,7 @@ const DEFAULT = {
   status: 'MOCK PENDING'
 }
 
-describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/debark', () => {
+describe('#zashiki-react-redux/app/reducers/stages/debark', () => {
   describe('`debarkReducer`', () => {
     it('is defined', () => {
       expect(debarkReducer)

@@ -6,11 +6,11 @@ import {
   RESOLVED,
   REJECTED,
   PENDING
-} from '@modernpoacher/zashiki-react-redux/app/common'
+} from '#zashiki-react-redux/app/common'
 
-import Resolved from './status/resolved/index.jsx'
-import Rejected from './status/rejected/index.jsx'
-import Pending from './status/pending/index.jsx'
+import Resolved from '#zashiki-react-redux/app/components/stages/embark/title/status/resolved'
+import Rejected from '#zashiki-react-redux/app/components/stages/embark/title/status/rejected'
+import Pending from '#zashiki-react-redux/app/components/stages/embark/title/status/pending'
 
 const log = debug('zashiki-react-redux/app/components/stages/embark/title/component')
 

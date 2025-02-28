@@ -17,15 +17,15 @@ import alphaReducer, {
   queryRejected,
   changeRejected,
   submitRejected
-} from '@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha'
+} from '#zashiki-react-redux/app/reducers/stages/alpha'
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
+jest.mock('#zashiki-react-redux/app/common', () => ({
   RESOLVED: 'MOCK RESOLVED',
   REJECTED: 'MOCK REJECTED',
   PENDING: 'MOCK PENDING'
 }))
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/actions/stages/alpha', () => ({
+jest.mock('#zashiki-react-redux/app/actions/stages/alpha', () => ({
   ROUTE: 'MOCK ROUTE',
   FETCH: 'MOCK FETCH',
   STORE: 'MOCK STORE',
@@ -46,15 +46,15 @@ jest.mock('@modernpoacher/zashiki-react-redux/app/actions/stages/alpha', () => (
   SUBMIT_REJECTED: 'MOCK SUBMIT REJECTED'
 }))
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => ({ ROUTE: 'MOCK EMBARK ROUTE' }))
+jest.mock('#zashiki-react-redux/app/actions/stages/embark', () => ({ ROUTE: 'MOCK EMBARK ROUTE' }))
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/actions/stages/debark', () => ({ ROUTE: 'MOCK DEBARK ROUTE' }))
+jest.mock('#zashiki-react-redux/app/actions/stages/debark', () => ({ ROUTE: 'MOCK DEBARK ROUTE' }))
 
 const DEFAULT = {
   status: 'MOCK PENDING'
 }
 
-describe('@modernpoacher/zashiki-react-redux/app/reducers/stages/alpha', () => {
+describe('#zashiki-react-redux/app/reducers/stages/alpha', () => {
   describe('`alphaReducer`', () => {
     it('is defined', () => {
       expect(alphaReducer)

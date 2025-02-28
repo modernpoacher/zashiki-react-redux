@@ -1,6 +1,6 @@
-import resource from '@modernpoacher/zashiki-react-redux/app/components/zashiki/resource'
+import resource from '#zashiki-react-redux/app/components/zashiki/resource'
 
-describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/resource', () => {
+describe('#zashiki-react-redux/app/components/zashiki/resource', () => {
   describe('`resource`', () => {
     it('is defined', () => {
       expect(resource)

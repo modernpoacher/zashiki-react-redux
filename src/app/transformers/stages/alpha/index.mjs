@@ -1,21 +1,43 @@
 import debug from 'debug'
 
 import {
+  REJECTED
+} from '#zashiki-react-redux/app/common'
+
+import {
   toZashiki,
   fromDocumentToHash
 } from 'shinkansen-engine/transformers/transmission'
 
 import {
-  REJECTED
-} from '@modernpoacher/zashiki-react-redux/app/common'
-
-import {
   transformRejected
-} from '@modernpoacher/zashiki-react-redux/app/transformers'
+} from '#zashiki-react-redux/app/transformers'
 
 const log = debug('zashiki-react-redux/app/transformers/stages/alpha')
 
 log('`zashiki` is awake')
+
+function transformDefinition (stage) {
+  /*
+   *  log('transformDefinition')
+   */
+
+  const {
+    description,
+    definition,
+    resource,
+    response = {}, // hash
+    errors = []
+  } = stage
+
+  return {
+    ...(description ? { description } : {}),
+    ...(definition ? { definition: toZashiki(definition, response) } : { definition: {} }),
+    ...(resource ? { resource } : {}),
+    response,
+    errors
+  }
+}
 
 export function transformAlpha (status, {
   omega = [],
@@ -27,25 +49,7 @@ export function transformAlpha (status, {
 
   return {
     status,
-    definitions: omega.map(({
-      description,
-      definition,
-      resource,
-      response = {}, // hash
-      errors = []
-    }) => {
-      /*
-   *  log('transformOmega')
-   */
-
-      return {
-        ...(description ? { description } : {}),
-        ...(definition ? { definition: toZashiki(definition, response) } : { definition: {} }),
-        ...(resource ? { resource } : {}),
-        response,
-        errors
-      }
-    }),
+    definitions: omega.map(transformDefinition),
     ...(resource ? { resource } : {})
   }
 }

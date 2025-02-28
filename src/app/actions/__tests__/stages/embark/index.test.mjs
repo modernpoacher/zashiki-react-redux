@@ -36,7 +36,7 @@ import {
   store,
   change,
   submit
-} from '@modernpoacher/zashiki-react-redux/app/actions/stages/embark'
+} from '#zashiki-react-redux/app/actions/stages/embark'
 
 jest.mock('shinkansen-engine/components/pantograph', () => ({
   EMBARK: {
@@ -48,7 +48,7 @@ jest.mock('shinkansen-engine/components/pantograph', () => ({
   }
 }))
 
-describe('@modernpoacher/zashiki-react-redux/app/actions/stages/embark', () => {
+describe('#zashiki-react-redux/app/actions/stages/embark', () => {
   const MOCK_REDIRECT = {}
   const MOCK_ROUTE = {}
   const MOCK_ROUTER = {}

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/rejected \`code\` is an integer renders 1`] = `
+exports[`#zashiki-react-redux/app/components/stages/debark/status/rejected \`code\` is an integer renders 1`] = `
 <div
   className="debark rejected"
 >
@@ -12,7 +12,7 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/
 </div>
 `;
 
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/rejected \`message\` is a string renders 1`] = `
+exports[`#zashiki-react-redux/app/components/stages/debark/status/rejected \`message\` is a string renders 1`] = `
 <div
   className="debark rejected"
 >
@@ -25,7 +25,7 @@ exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/
 </div>
 `;
 
-exports[`@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/rejected Always renders 1`] = `
+exports[`#zashiki-react-redux/app/components/stages/debark/status/rejected Always renders 1`] = `
 <div
   className="debark rejected"
 >

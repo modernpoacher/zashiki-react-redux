@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`@modernpoacher/zashiki-react-redux/app/components/navigation/stages/debark Always renders 1`] = `
+exports[`#zashiki-react-redux/app/components/navigation/stages/debark Always renders 1`] = `
 <a
   className="mock-link"
   href="MOCK DEBARK ROUTE"

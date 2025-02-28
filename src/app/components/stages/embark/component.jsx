@@ -6,11 +6,11 @@ import {
   RESOLVED,
   REJECTED,
   PENDING
-} from '@modernpoacher/zashiki-react-redux/app/common'
+} from '#zashiki-react-redux/app/common'
 
-import Resolved from './status/resolved/index.jsx'
-import Rejected from './status/rejected/index.jsx'
-import Pending from './status/pending/index.jsx'
+import Resolved from '#zashiki-react-redux/app/components/stages/embark/status/resolved'
+import Rejected from '#zashiki-react-redux/app/components/stages/embark/status/rejected'
+import Pending from '#zashiki-react-redux/app/components/stages/embark/status/pending'
 
 import getEmbarkProps from './get-embark-props.mjs'
 import getErrorProps from './get-error-props.mjs'

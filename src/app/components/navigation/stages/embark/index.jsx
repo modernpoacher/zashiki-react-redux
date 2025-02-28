@@ -4,7 +4,7 @@ import {
   Link
 } from 'react-router'
 
-import getEmbarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-embark-route'
+import getEmbarkRoute from '#zashiki-react-redux/app/common/get-embark-route'
 
 const DEFAULT_HREF = getEmbarkRoute()
 const DEFAULT_TEXT = 'Embark Stage'

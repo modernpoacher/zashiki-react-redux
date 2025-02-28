@@ -1,6 +1,6 @@
 import Rails from 'shinkansen-engine/components/rails'
 
-import getEmbarkRoute from '@modernpoacher/zashiki-react-redux/app/common/get-embark-route'
+import getEmbarkRoute from '#zashiki-react-redux/app/common/get-embark-route'
 
 jest.mock('shinkansen-engine/components/rails', () => ({
   to: jest.fn().mockReturnValue('MOCK EMBARK ROUTE')
@@ -12,7 +12,7 @@ jest.mock('shinkansen-engine/components/signals', () => ({
   EMBARK_PATTERN: 'MOCK EMBARK PATTERN'
 }))
 
-describe('@modernpoacher/zashiki-react-redux/app/common/get-embark-route', () => {
+describe('#zashiki-react-redux/app/common/get-embark-route', () => {
   describe('`getEmbarkRoute`', () => {
     it('is defined', () => {
       expect(getEmbarkRoute).toBeDefined()

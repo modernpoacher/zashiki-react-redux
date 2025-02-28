@@ -1,7 +1,8 @@
 import debug from 'debug'
 
-import Rails from 'shinkansen-engine/components/rails'
 import Signals from 'shinkansen-engine/components/signals'
+
+import Rails from 'shinkansen-engine/components/rails'
 
 const log = debug('zashiki-react-redux/app/common/get-resource-route')
 

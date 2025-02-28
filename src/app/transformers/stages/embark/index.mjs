@@ -1,25 +1,31 @@
 import debug from 'debug'
 
 import {
+  REJECTED
+} from '#zashiki-react-redux/app/common'
+
+import {
   toZashiki
 } from 'shinkansen-engine/transformers/transmission'
 
 import {
-  REJECTED
-} from '@modernpoacher/zashiki-react-redux/app/common'
-
-import {
   transformRejected
-} from '@modernpoacher/zashiki-react-redux/app/transformers'
+} from '#zashiki-react-redux/app/transformers'
 
 const log = debug('zashiki-react-redux/app/transformers/stages/alpha')
 
 log('`zashiki` is awake')
 
-export function transformEmbark (status, { definition, response = {}, errors = [] }) {
+export function transformEmbark (status, stage) {
   /*
    *  log('transformEmbark')
    */
+
+  const {
+    definition,
+    response = {},
+    errors = []
+  } = stage
 
   return {
     ...(definition ? { definition: toZashiki(definition, response) } : { definition: {} }),

@@ -5,23 +5,23 @@ import {
   RESOLVED,
   REJECTED,
   PENDING
-} from '@modernpoacher/zashiki-react-redux/app/common'
+} from '#zashiki-react-redux/app/common'
 
-import Debark from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/component'
+import Debark from '#zashiki-react-redux/app/components/stages/debark/component'
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/common', () => ({
+jest.mock('#zashiki-react-redux/app/common', () => ({
   RESOLVED: 'MOCK RESOLVED',
   REJECTED: 'MOCK REJECTED',
   PENDING: 'MOCK PENDING'
 }))
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/resolved', () => () => 'MOCK RESOLVED')
-jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/rejected', () => () => 'MOCK REJECTED')
-jest.mock('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/pending', () => () => 'MOCK PENDING')
+jest.mock('#zashiki-react-redux/app/components/stages/debark/status/resolved', () => () => 'MOCK RESOLVED')
+jest.mock('#zashiki-react-redux/app/components/stages/debark/status/rejected', () => () => 'MOCK REJECTED')
+jest.mock('#zashiki-react-redux/app/components/stages/debark/status/pending', () => () => 'MOCK PENDING')
 
-jest.mock('@modernpoacher/zashiki-react-redux/app/router/with-router', () => (Component) => Component)
+jest.mock('#zashiki-react-redux/app/router/with-router', () => (Component) => Component)
 
-describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/component', () => {
+describe('#zashiki-react-redux/app/components/stages/debark/component', () => {
   const MOCK_DEFINITIONS = [
     {
       description: 'MOCK DESCRIPTION',

@@ -1,6 +1,6 @@
 import Rails from 'shinkansen-engine/components/rails'
 
-import getResourceRoute from '@modernpoacher/zashiki-react-redux/app/common/get-resource-route'
+import getResourceRoute from '#zashiki-react-redux/app/common/get-resource-route'
 
 jest.mock('shinkansen-engine/components/rails', () => ({
   go: jest.fn(),
@@ -18,7 +18,7 @@ jest.mock('shinkansen-engine/components/signals', () => ({
   DEBARK_PATTERN: 'MOCK DEBARK PATTERN'
 }))
 
-describe('@modernpoacher/zashiki-react-redux/app/common/get-resource-route', () => {
+describe('#zashiki-react-redux/app/common/get-resource-route', () => {
   describe('`getResourceRoute`', () => {
     it('is defined', () => {
       expect(getResourceRoute).toBeDefined()

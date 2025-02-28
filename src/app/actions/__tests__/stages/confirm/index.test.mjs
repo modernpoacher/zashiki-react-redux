@@ -29,7 +29,7 @@ import {
   fetch,
   store,
   submit
-} from '@modernpoacher/zashiki-react-redux/app/actions/stages/confirm'
+} from '#zashiki-react-redux/app/actions/stages/confirm'
 
 jest.mock('shinkansen-engine/components/pantograph', () => ({
   CONFIRM: {
@@ -40,7 +40,7 @@ jest.mock('shinkansen-engine/components/pantograph', () => ({
   }
 }))
 
-describe('@modernpoacher/zashiki-react-redux/app/actions/stages/confirm', () => {
+describe('#zashiki-react-redux/app/actions/stages/confirm', () => {
   const MOCK_REDIRECT = {}
   const MOCK_ROUTE = {}
   const MOCK_ROUTER = {}

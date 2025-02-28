@@ -1,6 +1,6 @@
-import getErrorProps from '@modernpoacher/zashiki-react-redux/app/components/stages/confirm/get-error-props'
+import getErrorProps from '#zashiki-react-redux/app/components/stages/confirm/get-error-props'
 
-describe('@modernpoacher/zashiki-react-redux/app/components/stages/alpha/get-error-props', () => {
+describe('#zashiki-react-redux/app/components/stages/alpha/get-error-props', () => {
   const mockProps = {
     exception: {
       name: 'MOCK NAME',

@@ -1,6 +1,10 @@
 import debug from 'debug'
 
 import {
+  REJECTED
+} from '#zashiki-react-redux/app/common'
+
+import {
   toZashiki,
   fromDocumentToHash
 } from 'shinkansen-engine/transformers/transmission'
@@ -8,16 +12,32 @@ import {
 import toCheckAnswers from 'shinkansen-engine/transformers/pinion/check-answers'
 
 import {
-  REJECTED
-} from '@modernpoacher/zashiki-react-redux/app/common'
-
-import {
   transformRejected
-} from '@modernpoacher/zashiki-react-redux/app/transformers'
+} from '#zashiki-react-redux/app/transformers'
 
 const log = debug('zashiki-react-redux/app/transformers/stages/debark')
 
 log('`zashiki` is awake')
+
+function transformDefinition ({
+  description,
+  definition,
+  resource,
+  response = {}, // hash
+  errors = []
+}) {
+  /*
+   *  log('transformDefinition')
+   */
+
+  return {
+    ...(description ? { description } : {}),
+    ...(definition ? { definition: toCheckAnswers(toZashiki(definition, response), resource) } : { definition: {} }),
+    ...(resource ? { resource } : {}),
+    response,
+    errors
+  }
+}
 
 export function transformDebark (status, {
   alpha: definition = {},
@@ -31,21 +51,7 @@ export function transformDebark (status, {
 
   return {
     definition,
-    definitions: definitions.map(({
-      description,
-      definition,
-      resource,
-      response = {}, // hash
-      errors = []
-    }) => {
-      return {
-        ...(description ? { description } : {}),
-        ...(definition ? { definition: toCheckAnswers(toZashiki(definition, response), resource) } : { definition: {} }),
-        ...(resource ? { resource } : {}),
-        response,
-        errors
-      }
-    }),
+    definitions: definitions.map(transformDefinition),
     ...(resource ? { resource } : {}),
     token,
     status
