@@ -9,11 +9,13 @@ import {
 
 import Omega from '#zashiki-react-redux/app/components/stages/omega/component'
 
-jest.mock('#zashiki-react-redux/app/common', () => ({
-  RESOLVED: 'MOCK RESOLVED',
-  REJECTED: 'MOCK REJECTED',
-  PENDING: 'MOCK PENDING'
-}))
+jest.mock('#zashiki-react-redux/app/common', () => {
+  return {
+    RESOLVED: 'MOCK RESOLVED',
+    REJECTED: 'MOCK REJECTED',
+    PENDING: 'MOCK PENDING'
+  }
+})
 
 jest.mock('#zashiki-react-redux/app/common/get-resource-route', () => () => 'MOCK RESOURCE ROUTE')
 

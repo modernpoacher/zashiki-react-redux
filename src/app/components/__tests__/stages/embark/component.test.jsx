@@ -9,11 +9,13 @@ import {
 
 import Embark from '#zashiki-react-redux/app/components/stages/embark/component'
 
-jest.mock('#zashiki-react-redux/app/common', () => ({
-  RESOLVED: 'MOCK RESOLVED',
-  REJECTED: 'MOCK REJECTED',
-  PENDING: 'MOCK PENDING'
-}))
+jest.mock('#zashiki-react-redux/app/common', () => {
+  return {
+    RESOLVED: 'MOCK RESOLVED',
+    REJECTED: 'MOCK REJECTED',
+    PENDING: 'MOCK PENDING'
+  }
+})
 
 jest.mock('#zashiki-react-redux/app/components/stages/embark/status/resolved', () => () => 'MOCK RESOLVED')
 jest.mock('#zashiki-react-redux/app/components/stages/embark/status/rejected', () => () => 'MOCK REJECTED')

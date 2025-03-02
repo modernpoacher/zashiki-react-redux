@@ -2,7 +2,9 @@ import {
   toZashiki
 } from 'shinkansen-engine/transformers/transmission'
 
-import toCheckAnswers from 'shinkansen-pinion/transformers/check-answers'
+import {
+  transformAnswer
+} from 'shinkansen-engine/transformers/pinion/check-answers'
 
 import transform from '#zashiki-react-redux/app/transformers/stages/debark'
 
@@ -10,17 +12,29 @@ import {
   transformRejected
 } from '#zashiki-react-redux/app/transformers'
 
-jest.mock('#zashiki-react-redux/app/common', () => ({
-  REJECTED: 'MOCK REJECTED'
-}))
+jest.mock('#zashiki-react-redux/app/common', () => {
+  return {
+    REJECTED: 'MOCK REJECTED'
+  }
+})
 
-jest.mock('shinkansen-engine/transformers/transmission', () => ({
-  toZashiki: jest.fn().mockReturnValue('MOCK ZASHIKI')
-}))
+jest.mock('shinkansen-engine/transformers/transmission', () => {
+  return {
+    toZashiki: jest.fn().mockReturnValue('MOCK ZASHIKI')
+  }
+})
 
-jest.mock('shinkansen-pinion/transformers/check-answers', () => jest.fn().mockReturnValue('MOCK CHECK ANSWERS'))
+jest.mock('shinkansen-engine/transformers/pinion/check-answers', () => {
+  return {
+    transformAnswer: jest.fn().mockReturnValue('MOCK CHECK ANSWERS')
+  }
+})
 
-jest.mock('#zashiki-react-redux/app/transformers', () => ({ transformRejected: jest.fn() }))
+jest.mock('#zashiki-react-redux/app/transformers', () => {
+  return {
+    transformRejected: jest.fn()
+  }
+})
 
 describe('#zashiki-react-redux/app/transformers/stages/debark', () => {
   describe('`transform`', () => {
@@ -87,8 +101,8 @@ describe('#zashiki-react-redux/app/transformers/stages/debark', () => {
               .toBeCalledWith('MOCK DEFINITION', 'MOCK RESPONSE')
           })
 
-          it('invokes `toCheckAnswers`', () => {
-            expect(toCheckAnswers)
+          it('invokes `transformAnswer`', () => {
+            expect(transformAnswer)
               .toBeCalledWith('MOCK ZASHIKI', 'MOCK RESOURCE')
           })
 

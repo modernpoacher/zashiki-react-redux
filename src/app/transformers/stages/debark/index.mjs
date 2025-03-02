@@ -9,7 +9,9 @@ import {
   fromDocumentToHash
 } from 'shinkansen-engine/transformers/transmission'
 
-import toCheckAnswers from 'shinkansen-engine/transformers/pinion/check-answers'
+import {
+  transformAnswer
+} from 'shinkansen-engine/transformers/pinion/check-answers'
 
 import {
   transformRejected
@@ -32,7 +34,7 @@ function transformDefinition ({
 
   return {
     ...(description ? { description } : {}),
-    ...(definition ? { definition: toCheckAnswers(toZashiki(definition, response), resource) } : { definition: {} }),
+    ...(definition ? { definition: transformAnswer(toZashiki(definition, response), resource) } : { definition: {} }),
     ...(resource ? { resource } : {}),
     response,
     errors

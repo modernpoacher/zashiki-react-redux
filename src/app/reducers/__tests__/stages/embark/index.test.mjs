@@ -16,29 +16,33 @@ import embarkReducer, {
   submitRejected
 } from '#zashiki-react-redux/app/reducers/stages/embark'
 
-jest.mock('#zashiki-react-redux/app/common', () => ({
-  RESOLVED: 'MOCK RESOLVED',
-  REJECTED: 'MOCK REJECTED',
-  PENDING: 'MOCK PENDING'
-}))
+jest.mock('#zashiki-react-redux/app/common', () => {
+  return {
+    RESOLVED: 'MOCK RESOLVED',
+    REJECTED: 'MOCK REJECTED',
+    PENDING: 'MOCK PENDING'
+  }
+})
 
-jest.mock('#zashiki-react-redux/app/actions/stages/embark', () => ({
-  ROUTE: 'MOCK ROUTE',
-  FETCH: 'MOCK FETCH',
-  STORE: 'MOCK STORE',
-  CHANGE: 'MOCK CHANGE',
-  SUBMIT: 'MOCK SUBMIT',
+jest.mock('#zashiki-react-redux/app/actions/stages/embark', () => {
+  return {
+    ROUTE: 'MOCK ROUTE',
+    FETCH: 'MOCK FETCH',
+    STORE: 'MOCK STORE',
+    CHANGE: 'MOCK CHANGE',
+    SUBMIT: 'MOCK SUBMIT',
 
-  FETCH_FULFILLED: 'MOCK FETCH FULFILLED',
-  STORE_FULFILLED: 'MOCK STORE FULFILLED',
-  CHANGE_FULFILLED: 'MOCK CHANGE FULFILLED',
-  SUBMIT_FULFILLED: 'MOCK SUBMIT FULFILLED',
+    FETCH_FULFILLED: 'MOCK FETCH FULFILLED',
+    STORE_FULFILLED: 'MOCK STORE FULFILLED',
+    CHANGE_FULFILLED: 'MOCK CHANGE FULFILLED',
+    SUBMIT_FULFILLED: 'MOCK SUBMIT FULFILLED',
 
-  FETCH_REJECTED: 'MOCK FETCH REJECTED',
-  STORE_REJECTED: 'MOCK STORE REJECTED',
-  CHANGE_REJECTED: 'MOCK CHANGE REJECTED',
-  SUBMIT_REJECTED: 'MOCK SUBMIT REJECTED'
-}))
+    FETCH_REJECTED: 'MOCK FETCH REJECTED',
+    STORE_REJECTED: 'MOCK STORE REJECTED',
+    CHANGE_REJECTED: 'MOCK CHANGE REJECTED',
+    SUBMIT_REJECTED: 'MOCK SUBMIT REJECTED'
+  }
+})
 
 const DEFAULT = {
   status: 'MOCK PENDING'

@@ -3,9 +3,11 @@ import {
   transformRejected
 } from '#zashiki-react-redux/app/transformers'
 
-jest.mock('#zashiki-react-redux/app/common', () => ({
-  REJECTED: 'MOCK REJECTED'
-}))
+jest.mock('#zashiki-react-redux/app/common', () => {
+  return {
+    REJECTED: 'MOCK REJECTED'
+  }
+})
 
 const DEFAULT_ERROR = {
   name: 'Application Error'

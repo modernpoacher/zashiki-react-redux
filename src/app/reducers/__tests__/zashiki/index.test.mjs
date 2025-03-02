@@ -18,11 +18,13 @@ import zashikiReducer, {
   submitRejected
 } from '#zashiki-react-redux/app/reducers/zashiki'
 
-jest.mock('#zashiki-react-redux/app/common', () => ({
-  RESOLVED: 'MOCK RESOLVED',
-  REJECTED: 'MOCK REJECTED',
-  PENDING: 'MOCK PENDING'
-}))
+jest.mock('#zashiki-react-redux/app/common', () => {
+  return {
+    RESOLVED: 'MOCK RESOLVED',
+    REJECTED: 'MOCK REJECTED',
+    PENDING: 'MOCK PENDING'
+  }
+})
 
 jest.mock('#zashiki-react-redux/app/actions/zashiki', () => ({
   FETCH: 'MOCK FETCH',

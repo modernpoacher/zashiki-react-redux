@@ -19,36 +19,48 @@ import alphaReducer, {
   submitRejected
 } from '#zashiki-react-redux/app/reducers/stages/alpha'
 
-jest.mock('#zashiki-react-redux/app/common', () => ({
-  RESOLVED: 'MOCK RESOLVED',
-  REJECTED: 'MOCK REJECTED',
-  PENDING: 'MOCK PENDING'
-}))
+jest.mock('#zashiki-react-redux/app/common', () => {
+  return {
+    RESOLVED: 'MOCK RESOLVED',
+    REJECTED: 'MOCK REJECTED',
+    PENDING: 'MOCK PENDING'
+  }
+})
 
-jest.mock('#zashiki-react-redux/app/actions/stages/alpha', () => ({
-  ROUTE: 'MOCK ROUTE',
-  FETCH: 'MOCK FETCH',
-  STORE: 'MOCK STORE',
-  QUERY: 'MOCK QUERY',
-  CHANGE: 'MOCK CHANGE',
-  SUBMIT: 'MOCK SUBMIT',
+jest.mock('#zashiki-react-redux/app/actions/stages/alpha', () => {
+  return {
+    ROUTE: 'MOCK ROUTE',
+    FETCH: 'MOCK FETCH',
+    STORE: 'MOCK STORE',
+    QUERY: 'MOCK QUERY',
+    CHANGE: 'MOCK CHANGE',
+    SUBMIT: 'MOCK SUBMIT',
 
-  FETCH_FULFILLED: 'MOCK FETCH FULFILLED',
-  STORE_FULFILLED: 'MOCK STORE FULFILLED',
-  QUERY_FULFILLED: 'MOCK QUERY FULFILLED',
-  CHANGE_FULFILLED: 'MOCK CHANGE FULFILLED',
-  SUBMIT_FULFILLED: 'MOCK SUBMIT FULFILLED',
+    FETCH_FULFILLED: 'MOCK FETCH FULFILLED',
+    STORE_FULFILLED: 'MOCK STORE FULFILLED',
+    QUERY_FULFILLED: 'MOCK QUERY FULFILLED',
+    CHANGE_FULFILLED: 'MOCK CHANGE FULFILLED',
+    SUBMIT_FULFILLED: 'MOCK SUBMIT FULFILLED',
 
-  FETCH_REJECTED: 'MOCK FETCH REJECTED',
-  STORE_REJECTED: 'MOCK STORE REJECTED',
-  QUERY_REJECTED: 'MOCK QUERY REJECTED',
-  CHANGE_REJECTED: 'MOCK CHANGE REJECTED',
-  SUBMIT_REJECTED: 'MOCK SUBMIT REJECTED'
-}))
+    FETCH_REJECTED: 'MOCK FETCH REJECTED',
+    STORE_REJECTED: 'MOCK STORE REJECTED',
+    QUERY_REJECTED: 'MOCK QUERY REJECTED',
+    CHANGE_REJECTED: 'MOCK CHANGE REJECTED',
+    SUBMIT_REJECTED: 'MOCK SUBMIT REJECTED'
+  }
+})
 
-jest.mock('#zashiki-react-redux/app/actions/stages/embark', () => ({ ROUTE: 'MOCK EMBARK ROUTE' }))
+jest.mock('#zashiki-react-redux/app/actions/stages/embark', () => {
+  return {
+    ROUTE: 'MOCK EMBARK ROUTE'
+  }
+})
 
-jest.mock('#zashiki-react-redux/app/actions/stages/debark', () => ({ ROUTE: 'MOCK DEBARK ROUTE' }))
+jest.mock('#zashiki-react-redux/app/actions/stages/debark', () => {
+  return {
+    ROUTE: 'MOCK DEBARK ROUTE'
+  }
+})
 
 const DEFAULT = {
   status: 'MOCK PENDING'

@@ -9,11 +9,13 @@ import {
 
 import Alpha from '#zashiki-react-redux/app/components/stages/alpha/component'
 
-jest.mock('#zashiki-react-redux/app/common', () => ({
-  RESOLVED: 'MOCK RESOLVED',
-  REJECTED: 'MOCK REJECTED',
-  PENDING: 'MOCK PENDING'
-}))
+jest.mock('#zashiki-react-redux/app/common', () => {
+  return {
+    RESOLVED: 'MOCK RESOLVED',
+    REJECTED: 'MOCK REJECTED',
+    PENDING: 'MOCK PENDING'
+  }
+})
 
 jest.mock('#zashiki-react-redux/app/components/zashiki/component', () => {
   class MockZashiki extends mockComponent {

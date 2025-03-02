@@ -8,15 +8,23 @@ import {
   transformRejected
 } from '#zashiki-react-redux/app/transformers'
 
-jest.mock('#zashiki-react-redux/app/common', () => ({
-  REJECTED: 'MOCK REJECTED'
-}))
+jest.mock('#zashiki-react-redux/app/common', () => {
+  return {
+    REJECTED: 'MOCK REJECTED'
+  }
+})
 
-jest.mock('shinkansen-engine/transformers/transmission', () => ({
-  toZashiki: jest.fn().mockReturnValue('MOCK ZASHIKI')
-}))
+jest.mock('shinkansen-engine/transformers/transmission', () => {
+  return {
+    toZashiki: jest.fn().mockReturnValue('MOCK ZASHIKI')
+  }
+})
 
-jest.mock('#zashiki-react-redux/app/transformers', () => ({ transformRejected: jest.fn() }))
+jest.mock('#zashiki-react-redux/app/transformers', () => {
+  return {
+    transformRejected: jest.fn()
+  }
+})
 
 const DEFAULT = {
   status: 'MOCK STATUS',

@@ -9,11 +9,13 @@ import {
 
 import Confirm from '#zashiki-react-redux/app/components/stages/confirm/component'
 
-jest.mock('#zashiki-react-redux/app/common', () => ({
-  RESOLVED: 'MOCK RESOLVED',
-  REJECTED: 'MOCK REJECTED',
-  PENDING: 'MOCK PENDING'
-}))
+jest.mock('#zashiki-react-redux/app/common', () => {
+  return {
+    RESOLVED: 'MOCK RESOLVED',
+    REJECTED: 'MOCK REJECTED',
+    PENDING: 'MOCK PENDING'
+  }
+})
 
 jest.mock('#zashiki-react-redux/app/components/stages/confirm/status/resolved', () => () => 'MOCK RESOLVED')
 jest.mock('#zashiki-react-redux/app/components/stages/confirm/status/rejected', () => () => 'MOCK REJECTED')

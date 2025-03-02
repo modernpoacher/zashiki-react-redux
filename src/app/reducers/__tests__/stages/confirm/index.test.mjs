@@ -13,26 +13,30 @@ import confirmReducer, {
   submitRejected
 } from '#zashiki-react-redux/app/reducers/stages/confirm'
 
-jest.mock('#zashiki-react-redux/app/common', () => ({
-  RESOLVED: 'MOCK RESOLVED',
-  REJECTED: 'MOCK REJECTED',
-  PENDING: 'MOCK PENDING'
-}))
+jest.mock('#zashiki-react-redux/app/common', () => {
+  return {
+    RESOLVED: 'MOCK RESOLVED',
+    REJECTED: 'MOCK REJECTED',
+    PENDING: 'MOCK PENDING'
+  }
+})
 
-jest.mock('#zashiki-react-redux/app/actions/stages/confirm', () => ({
-  ROUTE: 'MOCK ROUTE',
-  FETCH: 'MOCK FETCH',
-  STORE: 'MOCK STORE',
-  SUBMIT: 'MOCK SUBMIT',
+jest.mock('#zashiki-react-redux/app/actions/stages/confirm', () => {
+  return {
+    ROUTE: 'MOCK ROUTE',
+    FETCH: 'MOCK FETCH',
+    STORE: 'MOCK STORE',
+    SUBMIT: 'MOCK SUBMIT',
 
-  FETCH_FULFILLED: 'MOCK FETCH FULFILLED',
-  STORE_FULFILLED: 'MOCK STORE FULFILLED',
-  SUBMIT_FULFILLED: 'MOCK SUBMIT FULFILLED',
+    FETCH_FULFILLED: 'MOCK FETCH FULFILLED',
+    STORE_FULFILLED: 'MOCK STORE FULFILLED',
+    SUBMIT_FULFILLED: 'MOCK SUBMIT FULFILLED',
 
-  FETCH_REJECTED: 'MOCK FETCH REJECTED',
-  STORE_REJECTED: 'MOCK STORE REJECTED',
-  SUBMIT_REJECTED: 'MOCK SUBMIT REJECTED'
-}))
+    FETCH_REJECTED: 'MOCK FETCH REJECTED',
+    STORE_REJECTED: 'MOCK STORE REJECTED',
+    SUBMIT_REJECTED: 'MOCK SUBMIT REJECTED'
+  }
+})
 
 const DEFAULT = {
   status: 'MOCK PENDING'
