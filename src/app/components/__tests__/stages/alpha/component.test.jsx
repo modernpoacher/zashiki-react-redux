@@ -49,6 +49,7 @@ describe('#zashiki-react-redux/app/components/stages/alpha/component', () => {
     },
     elements: {
       title: 'MOCK TITLE',
+      description: 'MOCK DESCRIPTION',
       field: {
         id: 'MOCK ID'
       }

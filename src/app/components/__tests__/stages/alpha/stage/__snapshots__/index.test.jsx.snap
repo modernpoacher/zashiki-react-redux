@@ -11,7 +11,6 @@ exports[`#zashiki-react-redux/app/components/stages/alpha/stage Always renders 1
         method="POST"
         onSubmit={[Function]}
       >
-        <h2 />
         <div
           className="cog text"
         >
@@ -25,6 +24,15 @@ exports[`#zashiki-react-redux/app/components/stages/alpha/stage Always renders 1
               MOCK TITLE
             </span>
           </label>
+          <span
+            className="description text"
+          >
+            <span
+              className="text-content"
+            >
+              MOCK DESCRIPTION
+            </span>
+          </span>
           <input
             className="input text"
             disabled={false}

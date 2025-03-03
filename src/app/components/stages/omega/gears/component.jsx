@@ -14,13 +14,15 @@ const {
   OMEGA_PATTERN
 } = Signals
 
-const Component = ({ reverse, forward }) => (
-  <Gears
-    reverse={reverse}
-    forward={forward}
-    pattern={OMEGA_PATTERN}
-  />
-)
+function Component ({ reverse, forward }) {
+  return (
+    <Gears
+      reverse={reverse}
+      forward={forward}
+      pattern={OMEGA_PATTERN}
+    />
+  )
+}
 
 Component.propTypes = {
   reverse: PropTypes.shape({}),

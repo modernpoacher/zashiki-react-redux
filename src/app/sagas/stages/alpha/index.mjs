@@ -73,8 +73,8 @@ const getDefinition = ({ [ALPHA]: { omega = [] } = {} }, RESOURCE) => {
 
   return definition
 }
-const hasStoreError = ({ [ALPHA]: alpha = {} }) => ('error' in alpha)
-const hasQueryError = ({ [ALPHA]: alpha = {} }) => ('error' in alpha)
+const hasStoreError = ({ [ALPHA]: alpha = {} }) => 'error' in alpha
+const hasQueryError = ({ [ALPHA]: alpha = {} }) => 'error' in alpha
 
 function transformData (data) {
   /*

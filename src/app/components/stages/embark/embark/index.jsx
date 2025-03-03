@@ -11,28 +11,30 @@ const log = debug('zashiki-react-redux/app/components/stages/embark/stage')
 
 log('`zashiki` is awake')
 
-const Stage = ({ onSubmit, response, errors, definition, onChange }) => (
-  <form method='POST' action={getEmbarkRoute()} onSubmit={(event) => {
-    event.preventDefault()
+function Stage ({ onSubmit, response, errors, definition, onChange }) {
+  return (
+    <form method='POST' action={getEmbarkRoute()} onSubmit={(event) => {
+      event.preventDefault()
 
-    onSubmit(response)
+      onSubmit(response)
 
-    document.activeElement.blur()
-  }}>
-    <ErrorSummary
-      title='There is a problem'
-      errorSummary={errors}
-    />
-    <Pinion
-      pinion={definition}
-      params={{ errors }}
-      onChange={(key, value) => onChange({ [key]: value })}
-    />
-    <button type='submit'>
-      Continue
-    </button>
-  </form>
-)
+      document.activeElement.blur()
+    }}>
+      <ErrorSummary
+        title='There is a problem'
+        errorSummary={errors}
+      />
+      <Pinion
+        pinion={definition}
+        params={{ errors }}
+        onChange={(key, value) => onChange({ [key]: value })}
+      />
+      <button type='submit'>
+        Continue
+      </button>
+    </form>
+  )
+}
 
 Stage.propTypes = {
   onSubmit: PropTypes.func.isRequired,

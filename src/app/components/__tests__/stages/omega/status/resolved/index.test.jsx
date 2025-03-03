@@ -13,6 +13,7 @@ const MOCK_DEFINITION = {
   },
   elements: {
     title: 'MOCK TITLE',
+    description: 'MOCK DESCRIPTION',
     field: {
       id: 'MOCK ID'
     }

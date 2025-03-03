@@ -11,35 +11,68 @@ const log = debug('zashiki-react-redux/app/components/stages/alpha/alpha')
 
 log('`zashiki` is awake')
 
+function Omega ({ resource, onSubmit, response, errors, description, definition, onChange }) {
+  return (
+    <form method='POST' action={getResourceRoute(resource)} onSubmit={(event) => {
+      event.preventDefault()
+
+      onSubmit(resource, response)
+
+      document.activeElement.blur()
+    }}>
+      <ErrorSummary
+        title='There is a problem'
+        errorSummary={errors}
+      />
+
+      {description ? <h2>{description}</h2> : null}
+
+      <Pinion
+        pinion={definition}
+        params={{ errors }}
+        onChange={(key, value) => onChange(resource, { [key]: value })}
+      />
+
+      <button type='submit'>
+        Continue
+      </button>
+    </form>
+  )
+}
+
+Omega.propTypes = {
+  resource: PropTypes.shape({}).isRequired,
+  response: PropTypes.shape({}).isRequired,
+  errors: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  description: PropTypes.string,
+  definition: PropTypes.shape({}).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired
+}
+
+function getRenderOmega (onSubmit, onChange) {
+  return function renderOmega ({ resource, response, errors, description, definition }, key) {
+    return (
+      <li key={key}>
+        <Omega
+          resource={resource}
+          response={response}
+          errors={errors}
+          description={description}
+          definition={definition}
+          onSubmit={onSubmit}
+          onChange={onChange}
+        />
+      </li>
+    )
+  }
+}
+
 export default function Alpha ({ definitions, onSubmit, onChange }) {
   return (
     <ol>
       {definitions
-        .map(({ resource, response, errors, description, definition }, key) => (
-          <li key={key}>
-            <form method='POST' action={getResourceRoute(resource)} onSubmit={(event) => {
-              event.preventDefault()
-
-              onSubmit(resource, response)
-
-              document.activeElement.blur()
-            }}>
-              <ErrorSummary
-                title='There is a problem'
-                errorSummary={errors}
-              />
-              <h2>{description}</h2>
-              <Pinion
-                pinion={definition}
-                params={{ errors }}
-                onChange={(key, value) => onChange(resource, { [key]: value })}
-              />
-              <button type='submit'>
-                Continue
-              </button>
-            </form>
-          </li>
-        ))}
+        .map(getRenderOmega(onSubmit, onChange))}
     </ol>
   )
 }

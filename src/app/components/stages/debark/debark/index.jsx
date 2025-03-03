@@ -12,30 +12,36 @@ const log = debug('zashiki-react-redux/app/components/stages/debark/stage')
 
 log('`zashiki` is awake')
 
-const Debark = ({ definitions, token, onSubmit }) => (
-  <form method='POST' action={getDebarkRoute()} onSubmit={(event) => {
-    event.preventDefault()
-
-    onSubmit(token)
-
-    document.activeElement.blur()
-  }}>
-    {definitions
-      .map(({ description, definition }, key) => (
-          <CheckAnswers
-            key={key}
-            title={description}
-            checkAnswers={definition}
-          />
-      ))}
-    <Token
-      token={token}
+function renderCheckAnswers ({ description, definition }, key) {
+  return (
+    <CheckAnswers
+      key={key}
+      title={description}
+      checkAnswers={definition}
     />
-    <button type='submit'>
-      Continue
-    </button>
-  </form>
-)
+  )
+}
+
+function Debark ({ definitions, token, onSubmit }) {
+  return (
+    <form method='POST' action={getDebarkRoute()} onSubmit={(event) => {
+      event.preventDefault()
+
+      onSubmit(token)
+
+      document.activeElement.blur()
+    }}>
+      {definitions
+        .map(renderCheckAnswers)}
+      <Token
+        token={token}
+      />
+      <button type='submit'>
+        Continue
+      </button>
+    </form>
+  )
+}
 
 Debark.propTypes = {
   definitions: PropTypes.arrayOf(PropTypes.shape({})).isRequired,

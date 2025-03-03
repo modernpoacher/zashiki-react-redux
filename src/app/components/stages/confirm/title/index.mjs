@@ -18,7 +18,7 @@ const {
   CONFIRM
 } = Signals
 
-const mapStateToProps = ({ [CONFIRM]: { status, description } = {} }) => {
+function mapStateToProps ({ [CONFIRM]: { status, description } = {} }) {
   /*
    *  log('mapStateToProps')
    */
