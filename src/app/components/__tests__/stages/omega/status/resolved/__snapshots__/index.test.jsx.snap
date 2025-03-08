@@ -40,7 +40,6 @@ exports[`#zashiki-react-redux/app/components/stages/omega/status/resolved Always
         readOnly={false}
         required={false}
         type="text"
-        value=""
       />
     </div>
     <button

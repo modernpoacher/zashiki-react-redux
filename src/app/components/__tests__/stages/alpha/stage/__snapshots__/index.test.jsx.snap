@@ -42,7 +42,6 @@ exports[`#zashiki-react-redux/app/components/stages/alpha/stage Always renders 1
             readOnly={false}
             required={false}
             type="text"
-            value=""
           />
         </div>
         <button
