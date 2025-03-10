@@ -81,7 +81,7 @@ function transformData (data) {
    *  log('transformData')
    */
 
-  if (Reflect.has(data, 'omega')) {
+  if ('omega' in data) {
     const {
       omega = []
     } = data

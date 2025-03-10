@@ -56,7 +56,7 @@ function transformData (data) {
    *  log('transformData')
    */
 
-  if (Reflect.has(data, 'response')) {
+  if ('response' in data) {
     const {
       response,
       definition

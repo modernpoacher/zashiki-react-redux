@@ -31,22 +31,22 @@ describe('#zashiki-react-redux/app/common/get-resource-route', () => {
         switch (pattern) {
           case 'MOCK ALPHA PATTERN':
             return (
-              Reflect.has(route, 'MOCK ALPHA') && !(Reflect.has(route, 'MOCK OMEGA') || Reflect.has(route, 'MOCK EMBARK') || Reflect.has(route, 'MOCK DEBARK'))
+              'MOCK ALPHA' in route && !('MOCK OMEGA' in route || 'MOCK EMBARK' in route || 'MOCK DEBARK' in route)
             )
 
           case 'MOCK OMEGA PATTERN':
             return (
-              Reflect.has(route, 'MOCK ALPHA') && Reflect.has(route, 'MOCK OMEGA') && !(Reflect.has(route, 'MOCK EMBARK') || Reflect.has(route, 'MOCK DEBARK'))
+              'MOCK ALPHA' in route && 'MOCK OMEGA' in route && !('MOCK EMBARK' in route || 'MOCK DEBARK' in route)
             )
 
           case 'MOCK EMBARK PATTERN':
             return (
-              Reflect.has(route, 'MOCK EMBARK') && !(Reflect.has(route, 'MOCK ALPHA') || Reflect.has(route, 'MOCK OMEGA') || Reflect.has(route, 'MOCK DEBARK'))
+              'MOCK EMBARK' in route && !('MOCK ALPHA' in route || 'MOCK OMEGA' in route || 'MOCK DEBARK' in route)
             )
 
           case 'MOCK DEBARK PATTERN':
             return (
-              Reflect.has(route, 'MOCK DEBARK') && !(Reflect.has(route, 'MOCK ALPHA') || Reflect.has(route, 'MOCK OMEGA') || Reflect.has(route, 'MOCK EMBARK'))
+              'MOCK DEBARK' in route && !('MOCK ALPHA' in route || 'MOCK OMEGA' in route || 'MOCK EMBARK' in route)
             )
         }
       })
