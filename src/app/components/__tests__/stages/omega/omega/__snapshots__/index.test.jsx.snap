@@ -37,6 +37,7 @@ exports[`#zashiki-react-redux/app/components/stages/omega/omega Always renders 1
       readOnly={false}
       required={false}
       type="text"
+      value=""
     />
   </div>
   <button

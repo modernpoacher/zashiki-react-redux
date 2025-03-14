@@ -21,6 +21,7 @@ exports[`#zashiki-react-redux/app/components/stages/embark/stage Always renders 
         readOnly={false}
         required={false}
         type="text"
+        value=""
       />
     </div>
     <button
