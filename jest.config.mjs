@@ -8,13 +8,12 @@ export default {
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: './coverage',
+  coverageProvider: 'v8',
   testRegex: '(/__tests__/.*|(\\.|/))(test|spec)\\.(mjs?|jsx?)$',
-  testPathIgnorePatterns: ['.*\\.mock\\.jsx$'],
   transform: {
     '^.+\\.jsx$': 'babel-jest',
     '^.+\\.mjs$': 'babel-jest'
   },
-  moduleFileExtensions: ['js', 'jsx', 'mjs'],
   transformIgnorePatterns: [
     '/node_modules\\/(?!shinkansen-cogs)\\/',
     '/node_modules\\/(?!shinkansen-sprockets)\\/',
@@ -25,7 +24,13 @@ export default {
     '/node_modules\\/(?!shinkansen-pantograph)\\/',
     '/node_modules\\/(?!shinkansen-transmission)\\/',
     '/node_modules\\/(?!shinkansen-engine)\\/',
+    '/node_modules\\/(?!react-component-instance)\\/',
     '/node_modules\\/(?!react-component-snapshot)\\/'
   ],
-  testEnvironment: 'jsdom'
+  moduleFileExtensions: ['js', 'jsx', 'mjs'],
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: [
+    '<rootDir>/jest.before-each.mjs',
+    '<rootDir>/jest.after-each.mjs'
+  ]
 }
