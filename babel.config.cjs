@@ -43,17 +43,7 @@ const presets = [
 ]
 
 const plugins = [
-  '@babel/syntax-jsx',
-  [
-    'module-resolver', {
-      alias: {
-        /**
-         *  Jest
-         */
-        '#mocks/shinkansen-engine/components/gears': './src/app/components/__mocks__/shinkansen-engine/components/gears.mock.jsx'
-      }
-    }
-  ]
+  '@babel/syntax-jsx'
 ]
 
 // @ts-ignore
@@ -64,7 +54,7 @@ module.exports = (api) => {
     presets,
     plugins,
     ignore: [
-      /node_modules\/(?!shinkansen|@sequencemedia\/react-render|@sequencemedia\/react-redux-render|@sequencemedia\/react-router-render|@sequencemedia\/react-router-redux-render|@modernpoacher\/isomorphic)/
+      /node_modules\/(?!shinkansen|@sequencemedia\/react-render|@sequencemedia\/react-redux-render|@sequencemedia\/react-router-render|@sequencemedia\/react-router-redux-render|@modernpoacher\/isomorphic|react-component-snapshot)/
     ]
   }
 }

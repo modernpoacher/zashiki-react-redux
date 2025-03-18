@@ -4,50 +4,70 @@ exports[`#zashiki-react-redux/app/components/stages/embark/status/resolved Alway
 <div
   className="embark resolved"
 >
-  <form
-    action="/embark-stage"
-    method="POST"
-    onSubmit={[Function]}
-  >
-    <div
-      className="cog text"
+  <Stage>
+    <form
+      action="/embark-stage"
+      method="POST"
+      onSubmit={[Function]}
     >
-      <label
-        className="title text"
-        htmlFor="MOCK ID"
+      <ErrorSummarySprocket />
+      <Pinion>
+        <Field>
+          <TextCog>
+            <div
+              className="cog text"
+            >
+              <TextTitle>
+                <label
+                  className="title text"
+                  htmlFor="MOCK ID"
+                >
+                  <TextContent>
+                    <span
+                      className="text-content"
+                    >
+                      MOCK TITLE
+                    </span>
+                  </TextContent>
+                </label>
+              </TextTitle>
+              <TextDescription>
+                <span
+                  className="description text"
+                >
+                  <TextContent>
+                    <span
+                      className="text-content"
+                    >
+                      MOCK DESCRIPTION
+                    </span>
+                  </TextContent>
+                </span>
+              </TextDescription>
+              <TextErrorMessage />
+              <TextField>
+                <input
+                  className="input text"
+                  disabled={false}
+                  id="MOCK ID"
+                  name="MOCK ID"
+                  onChange={[Function]}
+                  readOnly={false}
+                  required={false}
+                  type="text"
+                  value=""
+                />
+              </TextField>
+            </div>
+          </TextCog>
+        </Field>
+      </Pinion>
+      <button
+        type="submit"
       >
-        <span
-          className="text-content"
-        >
-          MOCK TITLE
-        </span>
-      </label>
-      <span
-        className="description text"
-      >
-        <span
-          className="text-content"
-        >
-          MOCK DESCRIPTION
-        </span>
-      </span>
-      <input
-        className="input text"
-        disabled={false}
-        id="MOCK ID"
-        name="MOCK ID"
-        onChange={[Function]}
-        readOnly={false}
-        required={false}
-        type="text"
-        value=""
-      />
-    </div>
-    <button
-      type="submit"
-    >
-      Continue
-    </button>
-  </form>
+        Continue
+      </button>
+    </form>
+  </Stage>
 </div>
 `;

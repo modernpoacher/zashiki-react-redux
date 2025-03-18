@@ -1,12 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import renderer from 'react-test-renderer'
+import snapshotOf, {
+  getComponentElement
+} from 'react-component-snapshot'
+
+import '@testing-library/jest-dom'
+
+import {
+  render
+} from '@testing-library/react'
 
 import IndexPage from '#zashiki-react-redux/app/components/navigation/index-page'
 
 /**
- * @param {{ to: string | { pathname: string }, children: React.ReactNode | React.ReactNode[] }} param0
- * @returns {React.JSX.Element}
+ *  @param {{ to: string | { pathname: string }, children: React.ReactNode | React.ReactNode[] }} props
+ *  @returns {React.JSX.Element}
  */
 function MockLink ({ to, children }) {
   if (typeof to === 'string') {
@@ -51,7 +59,9 @@ jest.mock('react-router', () => {
 describe('#zashiki-react-redux/app/components/navigation/index-page', () => {
   describe('Always', () => {
     it('renders', () => {
-      expect(renderer.create(<IndexPage />).toJSON())
+      expect(snapshotOf(getComponentElement(render(
+        <IndexPage />
+      ))))
         .toMatchSnapshot()
     })
   })

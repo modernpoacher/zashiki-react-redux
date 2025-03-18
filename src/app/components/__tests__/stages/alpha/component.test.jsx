@@ -1,5 +1,14 @@
 import React, { Component as mockComponent } from 'react'
-import renderer from 'react-test-renderer'
+import PropTypes from 'prop-types'
+import snapshotOf, {
+  getComponentElement
+} from 'react-component-snapshot'
+
+import '@testing-library/jest-dom'
+
+import {
+  render
+} from '@testing-library/react'
 
 import {
   RESOLVED,
@@ -16,6 +25,8 @@ jest.mock('#zashiki-react-redux/app/common', () => {
     PENDING: 'MOCK PENDING'
   }
 })
+
+jest.mock('#zashiki-react-redux/app/common/get-resource-route', () => () => 'MOCK RESOURCE ROUTE')
 
 jest.mock('#zashiki-react-redux/app/components/zashiki/component', () => {
   class MockZashiki extends mockComponent {
@@ -34,13 +45,59 @@ jest.mock('#zashiki-react-redux/app/components/zashiki/component', () => {
   }
 })
 
-jest.mock('#zashiki-react-redux/app/components/stages/alpha/status/resolved', () => () => 'MOCK RESOLVED')
-jest.mock('#zashiki-react-redux/app/components/stages/alpha/status/rejected', () => () => 'MOCK REJECTED')
-jest.mock('#zashiki-react-redux/app/components/stages/alpha/status/pending', () => () => 'MOCK PENDING')
-
-jest.mock('react-redux', () => ({ connect () { return (Component) => Component } }))
+jest.mock('react-redux', () => {
+  return {
+    connect () {
+      return (Component) => Component
+    }
+  }
+})
 
 jest.mock('#zashiki-react-redux/app/router/with-router', () => (Component) => Component)
+
+/**
+ *  @param {{ to: string | { pathname: string }, children: React.ReactNode | React.ReactNode[] }} props
+ *  @returns {React.JSX.Element}
+ */
+function MockLink ({ to, children }) {
+  if (typeof to === 'string') {
+    return (
+      <a href={to} className='mock-link'>
+        {children}
+      </a>
+    )
+  }
+
+  const {
+    pathname
+  } = to
+
+  return (
+    <a href={pathname} className='mock-link'>
+      {children}
+    </a>
+  )
+}
+
+MockLink.propTypes = {
+  to: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({})
+  ]),
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.arrayOf(
+      PropTypes.node
+    )
+  ])
+}
+
+jest.mock('react-router', () => {
+  return {
+    __esModule: true,
+    Link: MockLink
+  }
+})
 
 describe('#zashiki-react-redux/app/components/stages/alpha/component', () => {
   const MOCK_DEFINITION = {
@@ -80,39 +137,35 @@ describe('#zashiki-react-redux/app/components/stages/alpha/component', () => {
 
   describe('Always', () => {
     it('renders', () => {
-      const component = (
+      expect(snapshotOf(getComponentElement(render(
         <Alpha
           status={RESOLVED}
           definitions={MOCK_DEFINITIONS}
           onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
-      )
-
-      expect(renderer.create(component).toJSON())
+      ))))
         .toMatchSnapshot()
     })
   })
 
   describe('`RESOLVED`', () => {
     it('renders', () => {
-      const component = (
+      expect(snapshotOf(getComponentElement(render(
         <Alpha
           status={RESOLVED}
           definitions={MOCK_DEFINITIONS}
           onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
-      )
-
-      expect(renderer.create(component).toJSON())
+      ))))
         .toMatchSnapshot()
     })
   })
 
   describe('`REJECTED`', () => {
     it('renders', () => {
-      const component = (
+      expect(snapshotOf(getComponentElement(render(
         <Alpha
           status={REJECTED}
           exception={{
@@ -122,25 +175,21 @@ describe('#zashiki-react-redux/app/components/stages/alpha/component', () => {
           onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
-      )
-
-      expect(renderer.create(component).toJSON())
+      ))))
         .toMatchSnapshot()
     })
   })
 
   describe('`PENDING`', () => {
     it('renders', () => {
-      const component = (
+      expect(snapshotOf(getComponentElement(render(
         <Alpha
           status={PENDING}
           definitions={MOCK_DEFINITIONS}
           onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
-      )
-
-      expect(renderer.create(component).toJSON())
+      ))))
         .toMatchSnapshot()
     })
   })

@@ -1,6 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import renderer from 'react-test-renderer'
+import snapshotOf, {
+  getComponentElement
+} from 'react-component-snapshot'
+
+import '@testing-library/jest-dom'
+
+import {
+  render
+} from '@testing-library/react'
 
 import Gears from '#zashiki-react-redux/app/components/stages/omega/gears/component'
 
@@ -9,8 +17,8 @@ jest.mock('shinkansen-engine/components/signals', () => ({
 }))
 
 /**
- * @param {{ to: string | { pathname: string }, children: React.ReactNode | React.ReactNode[] }} param0
- * @returns {React.JSX.Element}
+ *  @param {{ to: string | { pathname: string }, children: React.ReactNode | React.ReactNode[] }} props
+ *  @returns {React.JSX.Element}
  */
 function MockLink ({ to, children }) {
   if (typeof to === 'string') {
@@ -55,42 +63,38 @@ jest.mock('react-router', () => {
 describe('#zashiki-react-redux/app/components/stages/omega/gears/component', () => {
   describe('Always', () => {
     it('renders', () => {
-      const component = (
+      expect(snapshotOf(getComponentElement(render(
         <Gears />
-      )
-
-      expect(renderer.create(component).toJSON())
+      ))))
         .toMatchSnapshot()
     })
   })
 
   it('renders `reverse`', () => {
-    const component = (
-      <Gears reverse={{ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }} />
-    )
-
-    expect(renderer.create(component).toJSON())
+    expect(snapshotOf(getComponentElement(render(
+      <Gears
+        reverse={{ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }}
+      />
+    ))))
       .toMatchSnapshot()
   })
 
   it('renders `forward`', () => {
-    const component = (
-      <Gears forward={{ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }} />
-    )
-
-    expect(renderer.create(component).toJSON())
+    expect(snapshotOf(getComponentElement(render(
+      <Gears
+        forward={{ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }}
+      />
+    ))))
       .toMatchSnapshot()
   })
 
   it('renders `reverse` and `forward`', () => {
-    const component = (
+    expect(snapshotOf(getComponentElement(render(
       <Gears
         reverse={{ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }}
         forward={{ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }}
       />
-    )
-
-    expect(renderer.create(component).toJSON())
+    ))))
       .toMatchSnapshot()
   })
 })

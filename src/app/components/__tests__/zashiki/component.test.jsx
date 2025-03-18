@@ -1,5 +1,13 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import snapshotOf, {
+  getComponentElement
+} from 'react-component-snapshot'
+
+import '@testing-library/jest-dom'
+
+import {
+  render
+} from '@testing-library/react'
 
 import Zashiki from '#zashiki-react-redux/app/components/zashiki/component'
 import equal from 'fast-deep-equal'
@@ -12,24 +20,22 @@ describe('#zashiki-react-redux/app/components/zashiki/component', () => {
   const MOCK_CHILDREN = []
 
   describe('Always', () => {
-    const component = (
-      <Zashiki
-        onMount={MOCK_ONMOUNT}
-        router={MOCK_MATCH}
-        children={MOCK_CHILDREN} // eslint-disable-line react/no-children-prop
-      />
-    )
-
-    const spy = jest.spyOn(Zashiki.prototype, 'componentDidMount')
-
-    let rendered
+    let spy
+    let component
 
     beforeEach(() => {
-      rendered = renderer.create(component)
+      spy = jest.spyOn(Zashiki.prototype, 'componentDidMount')
+      component = render(
+        <Zashiki
+          onMount={MOCK_ONMOUNT}
+          router={MOCK_MATCH}
+          children={MOCK_CHILDREN} // eslint-disable-line react/no-children-prop
+        />
+      )
     })
 
     it('renders', () => {
-      expect(rendered.toJSON())
+      expect(snapshotOf(getComponentElement(component)))
         .toMatchSnapshot()
     })
 

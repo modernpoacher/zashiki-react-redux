@@ -1,5 +1,13 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import snapshotOf, {
+  getComponentElement
+} from 'react-component-snapshot'
+
+import '@testing-library/jest-dom'
+
+import {
+  render
+} from '@testing-library/react'
 
 import Rejected from '#zashiki-react-redux/app/components/stages/confirm/status/rejected'
 
@@ -10,47 +18,41 @@ const MOCK_RESPONSE = {
 describe('#zashiki-react-redux/app/components/stages/confirm/status/rejected', () => {
   describe('Always', () => {
     it('renders', () => {
-      const component = (
+      expect(snapshotOf(getComponentElement(render(
         <Rejected
           name='MOCK NAME'
           response={MOCK_RESPONSE}
           onSubmit={jest.fn()}
         />
-      )
-
-      expect(renderer.create(component).toJSON())
+      ))))
         .toMatchSnapshot()
     })
   })
 
   describe('`code` is an integer', () => {
     it('renders', () => {
-      const component = (
+      expect(snapshotOf(getComponentElement(render(
         <Rejected
           code={1}
           name='MOCK NAME'
           response={MOCK_RESPONSE}
           onSubmit={jest.fn()}
         />
-      )
-
-      expect(renderer.create(component).toJSON())
+      ))))
         .toMatchSnapshot()
     })
   })
 
   describe('`message` is a string', () => {
     it('renders', () => {
-      const component = (
+      expect(snapshotOf(getComponentElement(render(
         <Rejected
           name='MOCK NAME'
           message='MOCK MESSAGE'
           response={MOCK_RESPONSE}
           onSubmit={jest.fn()}
         />
-      )
-
-      expect(renderer.create(component).toJSON())
+      ))))
         .toMatchSnapshot()
     })
   })

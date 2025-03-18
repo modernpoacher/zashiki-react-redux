@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   bail: true,
   verbose: true,
   rootDir: '.',
@@ -24,6 +24,8 @@ module.exports = {
     '/node_modules\\/(?!shinkansen-signals)\\/',
     '/node_modules\\/(?!shinkansen-pantograph)\\/',
     '/node_modules\\/(?!shinkansen-transmission)\\/',
-    '/node_modules\\/(?!shinkansen-engine)\\/'
-  ]
+    '/node_modules\\/(?!shinkansen-engine)\\/',
+    '/node_modules\\/(?!react-component-snapshot)\\/'
+  ],
+  testEnvironment: 'jsdom'
 }

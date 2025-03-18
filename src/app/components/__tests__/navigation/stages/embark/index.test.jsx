@@ -1,14 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import renderer from 'react-test-renderer'
+import snapshotOf, {
+  getComponentElement
+} from 'react-component-snapshot'
+
+import '@testing-library/jest-dom'
+
+import {
+  render
+} from '@testing-library/react'
 
 import Embark from '#zashiki-react-redux/app/components/navigation/stages/embark'
 
 jest.mock('#zashiki-react-redux/app/common/get-embark-route', () => jest.fn().mockReturnValue('MOCK EMBARK ROUTE'))
 
 /**
- * @param {{ to: string | { pathname: string }, children: React.ReactNode | React.ReactNode[] }} param0
- * @returns {React.JSX.Element}
+ *  @param {{ to: string | { pathname: string }, children: React.ReactNode | React.ReactNode[] }} props
+ *  @returns {React.JSX.Element}
  */
 function MockLink ({ to, children }) {
   if (typeof to === 'string') {
@@ -53,7 +61,9 @@ jest.mock('react-router', () => {
 describe('#zashiki-react-redux/app/components/navigation/stages/embark', () => {
   describe('Always', () => {
     it('renders', () => {
-      expect(renderer.create(<Embark />).toJSON())
+      expect(snapshotOf(getComponentElement(render(
+        <Embark />
+      ))))
         .toMatchSnapshot()
     })
   })

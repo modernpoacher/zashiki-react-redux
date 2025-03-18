@@ -1,9 +1,164 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`#zashiki-react-redux/app/components/stages/embark/component \`PENDING\` renders 1`] = `"MOCK PENDING"`;
+exports[`#zashiki-react-redux/app/components/stages/embark/component \`PENDING\` renders 1`] = `
+<div
+  className="embark pending"
+/>
+`;
 
-exports[`#zashiki-react-redux/app/components/stages/embark/component \`REJECTED\` renders 1`] = `"MOCK REJECTED"`;
+exports[`#zashiki-react-redux/app/components/stages/embark/component \`REJECTED\` renders 1`] = `
+<div
+  className="embark rejected"
+>
+  <h2>
+    MOCK NAME
+  </h2>
+  <p>
+    MOCK MESSAGE
+  </p>
+</div>
+`;
 
-exports[`#zashiki-react-redux/app/components/stages/embark/component \`RESOLVED\` renders 1`] = `"MOCK RESOLVED"`;
+exports[`#zashiki-react-redux/app/components/stages/embark/component \`RESOLVED\` renders 1`] = `
+<div
+  className="embark resolved"
+>
+  <Stage>
+    <form
+      action="/embark-stage"
+      method="POST"
+      onSubmit={[Function]}
+    >
+      <ErrorSummarySprocket />
+      <Pinion>
+        <Field>
+          <TextCog>
+            <div
+              className="cog text"
+            >
+              <TextTitle>
+                <label
+                  className="title text"
+                  htmlFor="MOCK ID"
+                >
+                  <TextContent>
+                    <span
+                      className="text-content"
+                    >
+                      MOCK TITLE
+                    </span>
+                  </TextContent>
+                </label>
+              </TextTitle>
+              <TextDescription>
+                <span
+                  className="description text"
+                >
+                  <TextContent>
+                    <span
+                      className="text-content"
+                    >
+                      MOCK DESCRIPTION
+                    </span>
+                  </TextContent>
+                </span>
+              </TextDescription>
+              <TextErrorMessage />
+              <TextField>
+                <input
+                  className="input text"
+                  disabled={false}
+                  id="MOCK ID"
+                  name="MOCK ID"
+                  onChange={[Function]}
+                  readOnly={false}
+                  required={false}
+                  type="text"
+                  value=""
+                />
+              </TextField>
+            </div>
+          </TextCog>
+        </Field>
+      </Pinion>
+      <button
+        type="submit"
+      >
+        Continue
+      </button>
+    </form>
+  </Stage>
+</div>
+`;
 
-exports[`#zashiki-react-redux/app/components/stages/embark/component Always Always renders 1`] = `"MOCK RESOLVED"`;
+exports[`#zashiki-react-redux/app/components/stages/embark/component Always Always renders 1`] = `
+<div
+  className="embark resolved"
+>
+  <Stage>
+    <form
+      action="/embark-stage"
+      method="POST"
+      onSubmit={[Function]}
+    >
+      <ErrorSummarySprocket />
+      <Pinion>
+        <Field>
+          <TextCog>
+            <div
+              className="cog text"
+            >
+              <TextTitle>
+                <label
+                  className="title text"
+                  htmlFor="MOCK ID"
+                >
+                  <TextContent>
+                    <span
+                      className="text-content"
+                    >
+                      MOCK TITLE
+                    </span>
+                  </TextContent>
+                </label>
+              </TextTitle>
+              <TextDescription>
+                <span
+                  className="description text"
+                >
+                  <TextContent>
+                    <span
+                      className="text-content"
+                    >
+                      MOCK DESCRIPTION
+                    </span>
+                  </TextContent>
+                </span>
+              </TextDescription>
+              <TextErrorMessage />
+              <TextField>
+                <input
+                  className="input text"
+                  disabled={false}
+                  id="MOCK ID"
+                  name="MOCK ID"
+                  onChange={[Function]}
+                  readOnly={false}
+                  required={false}
+                  type="text"
+                  value=""
+                />
+              </TextField>
+            </div>
+          </TextCog>
+        </Field>
+      </Pinion>
+      <button
+        type="submit"
+      >
+        Continue
+      </button>
+    </form>
+  </Stage>
+</div>
+`;

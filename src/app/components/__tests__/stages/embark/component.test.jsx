@@ -1,5 +1,14 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import PropTypes from 'prop-types'
+import snapshotOf, {
+  getComponentElement
+} from 'react-component-snapshot'
+
+import '@testing-library/jest-dom'
+
+import {
+  render
+} from '@testing-library/react'
 
 import {
   RESOLVED,
@@ -17,11 +26,51 @@ jest.mock('#zashiki-react-redux/app/common', () => {
   }
 })
 
-jest.mock('#zashiki-react-redux/app/components/stages/embark/status/resolved', () => () => 'MOCK RESOLVED')
-jest.mock('#zashiki-react-redux/app/components/stages/embark/status/rejected', () => () => 'MOCK REJECTED')
-jest.mock('#zashiki-react-redux/app/components/stages/embark/status/pending', () => () => 'MOCK PENDING')
-
 jest.mock('#zashiki-react-redux/app/router/with-router', () => (Component) => Component)
+
+/**
+ *  @param {{ to: string | { pathname: string }, children: React.ReactNode | React.ReactNode[] }} props
+ *  @returns {React.JSX.Element}
+ */
+function MockLink ({ to, children }) {
+  if (typeof to === 'string') {
+    return (
+      <a href={to} className='mock-link'>
+        {children}
+      </a>
+    )
+  }
+
+  const {
+    pathname
+  } = to
+
+  return (
+    <a href={pathname} className='mock-link'>
+      {children}
+    </a>
+  )
+}
+
+MockLink.propTypes = {
+  to: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({})
+  ]),
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.arrayOf(
+      PropTypes.node
+    )
+  ])
+}
+
+jest.mock('react-router', () => {
+  return {
+    __esModule: true,
+    Link: MockLink
+  }
+})
 
 describe('#zashiki-react-redux/app/components/stages/embark/component', () => {
   const MOCK_DEFINITION = {
@@ -52,30 +101,28 @@ describe('#zashiki-react-redux/app/components/stages/embark/component', () => {
   const MOCK_ONEMBARK = jest.fn()
 
   describe('Always', () => {
-    const component = (
-      <Embark
-        status={RESOLVED}
-        definition={MOCK_DEFINITION}
-        resource={MOCK_RESOURCE}
-        response={MOCK_RESPONSE}
-        errors={MOCK_ERRORS}
-        onChange={MOCK_ONCHANGE}
-        onSubmit={MOCK_ONSUBMIT}
-        onEmbark={MOCK_ONEMBARK}
-      />
-    )
-
-    const spy = jest.spyOn(Embark.prototype, 'componentDidMount')
-
-    let rendered
+    let spy
+    let component
 
     beforeEach(() => {
-      rendered = renderer.create(component)
+      spy = jest.spyOn(Embark.prototype, 'componentDidMount')
+      component = render(
+        <Embark
+          status={RESOLVED}
+          definition={MOCK_DEFINITION}
+          resource={MOCK_RESOURCE}
+          response={MOCK_RESPONSE}
+          errors={MOCK_ERRORS}
+          onChange={MOCK_ONCHANGE}
+          onSubmit={MOCK_ONSUBMIT}
+          onEmbark={MOCK_ONEMBARK}
+        />
+      )
     })
 
     describe('Always', () => {
       it('renders', () => {
-        expect(rendered.toJSON())
+        expect(snapshotOf(getComponentElement(component)))
           .toMatchSnapshot()
       })
     })
@@ -93,7 +140,7 @@ describe('#zashiki-react-redux/app/components/stages/embark/component', () => {
 
   describe('`RESOLVED`', () => {
     it('renders', () => {
-      const component = (
+      expect(snapshotOf(getComponentElement(render(
         <Embark
           status={RESOLVED}
           definition={MOCK_DEFINITION}
@@ -104,16 +151,14 @@ describe('#zashiki-react-redux/app/components/stages/embark/component', () => {
           onSubmit={MOCK_ONSUBMIT}
           onEmbark={MOCK_ONEMBARK}
         />
-      )
-
-      expect(renderer.create(component).toJSON())
+      ))))
         .toMatchSnapshot()
     })
   })
 
   describe('`REJECTED`', () => {
     it('renders', () => {
-      const component = (
+      expect(snapshotOf(getComponentElement(render(
         <Embark
           status={REJECTED}
           definition={MOCK_DEFINITION}
@@ -128,16 +173,14 @@ describe('#zashiki-react-redux/app/components/stages/embark/component', () => {
           onSubmit={MOCK_ONSUBMIT}
           onEmbark={MOCK_ONEMBARK}
         />
-      )
-
-      expect(renderer.create(component).toJSON())
+      ))))
         .toMatchSnapshot()
     })
   })
 
   describe('`PENDING`', () => {
     it('renders', () => {
-      const component = (
+      expect(snapshotOf(getComponentElement(render(
         <Embark
           status={PENDING}
           definition={MOCK_DEFINITION}
@@ -145,9 +188,7 @@ describe('#zashiki-react-redux/app/components/stages/embark/component', () => {
           onSubmit={MOCK_ONSUBMIT}
           onEmbark={MOCK_ONEMBARK}
         />
-      )
-
-      expect(renderer.create(component).toJSON())
+      ))))
         .toMatchSnapshot()
     })
   })

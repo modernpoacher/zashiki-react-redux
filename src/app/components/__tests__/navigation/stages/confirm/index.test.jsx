@@ -1,14 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import renderer from 'react-test-renderer'
+import snapshotOf, {
+  getComponentElement
+} from 'react-component-snapshot'
+
+import '@testing-library/jest-dom'
+
+import {
+  render
+} from '@testing-library/react'
 
 import Confirm from '#zashiki-react-redux/app/components/navigation/stages/confirm'
 
 jest.mock('#zashiki-react-redux/app/common/get-confirm-route', () => jest.fn().mockReturnValue('MOCK CONFIRM ROUTE'))
 
 /**
- * @param {{ to: string | { pathname: string }, children: React.ReactNode | React.ReactNode[] }} param0
- * @returns {React.JSX.Element}
+ *  @param {{ to: string | { pathname: string }, children: React.ReactNode | React.ReactNode[] }} props
+ *  @returns {React.JSX.Element}
  */
 function MockLink ({ to, children }) {
   if (typeof to === 'string') {
@@ -53,7 +61,9 @@ jest.mock('react-router', () => {
 describe('#zashiki-react-redux/app/components/navigation/stages/confirm', () => {
   describe('Always', () => {
     it('renders', () => {
-      expect(renderer.create(<Confirm />).toJSON())
+      expect(snapshotOf(getComponentElement(render(
+        <Confirm />
+      ))))
         .toMatchSnapshot()
     })
   })

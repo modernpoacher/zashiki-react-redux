@@ -1,57 +1,114 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import PropTypes from 'prop-types'
+import snapshotOf, {
+  getComponentElement
+} from 'react-component-snapshot'
 
-import MockGears from '#mocks/shinkansen-engine/components/gears'
+import '@testing-library/jest-dom'
+
+import {
+  render
+} from '@testing-library/react'
 
 import Resolved from '#zashiki-react-redux/app/components/stages/alpha/status/resolved'
 
-const MOCK_DEFINITION = {
-  meta: {
-    uri: '#/'
-  },
-  elements: {
-    title: 'MOCK TITLE',
-    description: 'MOCK DESCRIPTION',
-    field: {
-      id: 'MOCK ID'
+jest.mock('react-redux', () => {
+  return {
+    connect () {
+      return (Component) => Component
     }
   }
-}
+})
 
-const MOCK_RESOURCE = {
-  alpha: 'MOCK ALPHA',
-  omega: 'MOCK OMEGA'
-}
+jest.mock('#zashiki-react-redux/app/router/with-router', () => (Component) => Component)
 
-const MOCK_RESPONSE = {
-  '#/': 'MOCK VALUE'
-}
-
-const MOCK_ERRORS = []
-
-const MOCK_DEFINITIONS = [
-  {
-    definition: MOCK_DEFINITION,
-    resource: MOCK_RESOURCE,
-    response: MOCK_RESPONSE,
-    errors: MOCK_ERRORS
+/**
+ *  @param {{ to: string | { pathname: string }, children: React.ReactNode | React.ReactNode[] }} props
+ *  @returns {React.JSX.Element}
+ */
+function MockLink ({ to, children }) {
+  if (typeof to === 'string') {
+    return (
+      <a href={to} className='mock-link'>
+        {children}
+      </a>
+    )
   }
-]
 
-jest.mock('#zashiki-react-redux/app/components/stages/alpha/gears', () => (props) => <MockGears {...props} />)
+  const {
+    pathname
+  } = to
+
+  return (
+    <a href={pathname} className='mock-link'>
+      {children}
+    </a>
+  )
+}
+
+MockLink.propTypes = {
+  to: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({})
+  ]),
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.arrayOf(
+      PropTypes.node
+    )
+  ])
+}
+
+jest.mock('react-router', () => {
+  return {
+    __esModule: true,
+    Link: MockLink
+  }
+})
 
 describe('#zashiki-react-redux/app/components/stages/alpha/status/resolved', () => {
+  const MOCK_DEFINITION = {
+    meta: {
+      uri: '#/'
+    },
+    elements: {
+      title: 'MOCK TITLE',
+      description: 'MOCK DESCRIPTION',
+      field: {
+        id: 'MOCK ID'
+      }
+    }
+  }
+
+  const MOCK_RESOURCE = {
+    alpha: 'MOCK ALPHA',
+    omega: 'MOCK OMEGA'
+  }
+
+  const MOCK_RESPONSE = {
+    '#/': 'MOCK VALUE'
+  }
+
+  const MOCK_ERRORS = []
+
+  const MOCK_DEFINITIONS = [
+    {
+      definition: MOCK_DEFINITION,
+      resource: MOCK_RESOURCE,
+      response: MOCK_RESPONSE,
+      errors: MOCK_ERRORS
+    }
+  ]
+
   describe('Always', () => {
     it('renders', () => {
-      const component = (
+      expect(snapshotOf(getComponentElement(render(
         <Resolved
           definitions={MOCK_DEFINITIONS}
           onChange={jest.fn()}
           onSubmit={jest.fn()}
         />
-      )
-
-      expect(renderer.create(component).toJSON())
+      ))))
         .toMatchSnapshot()
     })
   })

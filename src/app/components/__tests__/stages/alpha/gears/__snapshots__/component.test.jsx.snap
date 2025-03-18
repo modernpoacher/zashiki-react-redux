@@ -6,16 +6,20 @@ exports[`#zashiki-react-redux/app/components/stages/alpha/gears/component render
 <ul
   className="shinkansen-gears"
 >
-  <li
-    className="shinkansen-gears-forward"
-  >
-    <a
-      className="mock-link"
-      href="/MOCK ALPHA/MOCK OMEGA"
+  <Forward>
+    <li
+      className="shinkansen-gears-forward"
     >
-      Forward
-    </a>
-  </li>
+      <MockLink>
+        <a
+          className="mock-link"
+          href="/MOCK ALPHA/MOCK OMEGA"
+        >
+          Forward
+        </a>
+      </MockLink>
+    </li>
+  </Forward>
 </ul>
 `;
 
@@ -23,16 +27,20 @@ exports[`#zashiki-react-redux/app/components/stages/alpha/gears/component render
 <ul
   className="shinkansen-gears"
 >
-  <li
-    className="shinkansen-gears-reverse"
-  >
-    <a
-      className="mock-link"
-      href="/MOCK ALPHA/MOCK OMEGA"
+  <Reverse>
+    <li
+      className="shinkansen-gears-reverse"
     >
-      Reverse
-    </a>
-  </li>
+      <MockLink>
+        <a
+          className="mock-link"
+          href="/MOCK ALPHA/MOCK OMEGA"
+        >
+          Reverse
+        </a>
+      </MockLink>
+    </li>
+  </Reverse>
 </ul>
 `;
 
@@ -40,25 +48,33 @@ exports[`#zashiki-react-redux/app/components/stages/alpha/gears/component render
 <ul
   className="shinkansen-gears"
 >
-  <li
-    className="shinkansen-gears-reverse"
-  >
-    <a
-      className="mock-link"
-      href="/MOCK ALPHA/MOCK OMEGA"
+  <Reverse>
+    <li
+      className="shinkansen-gears-reverse"
     >
-      Reverse
-    </a>
-  </li>
-  <li
-    className="shinkansen-gears-forward"
-  >
-    <a
-      className="mock-link"
-      href="/MOCK ALPHA/MOCK OMEGA"
+      <MockLink>
+        <a
+          className="mock-link"
+          href="/MOCK ALPHA/MOCK OMEGA"
+        >
+          Reverse
+        </a>
+      </MockLink>
+    </li>
+  </Reverse>
+  <Forward>
+    <li
+      className="shinkansen-gears-forward"
     >
-      Forward
-    </a>
-  </li>
+      <MockLink>
+        <a
+          className="mock-link"
+          href="/MOCK ALPHA/MOCK OMEGA"
+        >
+          Forward
+        </a>
+      </MockLink>
+    </li>
+  </Forward>
 </ul>
 `;

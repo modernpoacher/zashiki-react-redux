@@ -4,31 +4,45 @@ exports[`#zashiki-react-redux/app/components/stages/embark/stage Always renders 
 <div
   className="embark"
 >
-  <form
-    action="/embark-stage"
-    method="POST"
-    onSubmit={[Function]}
-  >
-    <div
-      className="cog text"
+  <Stage>
+    <form
+      action="/embark-stage"
+      method="POST"
+      onSubmit={[Function]}
     >
-      <input
-        className="input text"
-        disabled={false}
-        id="#/"
-        name="#/"
-        onChange={[Function]}
-        readOnly={false}
-        required={false}
-        type="text"
-        value=""
-      />
-    </div>
-    <button
-      type="submit"
-    >
-      Continue
-    </button>
-  </form>
+      <ErrorSummarySprocket />
+      <Pinion>
+        <Field>
+          <TextCog>
+            <div
+              className="cog text"
+            >
+              <TextTitle />
+              <TextDescription />
+              <TextErrorMessage />
+              <TextField>
+                <input
+                  className="input text"
+                  disabled={false}
+                  id="#/"
+                  name="#/"
+                  onChange={[Function]}
+                  readOnly={false}
+                  required={false}
+                  type="text"
+                  value=""
+                />
+              </TextField>
+            </div>
+          </TextCog>
+        </Field>
+      </Pinion>
+      <button
+        type="submit"
+      >
+        Continue
+      </button>
+    </form>
+  </Stage>
 </div>
 `;

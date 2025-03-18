@@ -1,16 +1,25 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import snapshotOf, {
+  getComponentElement
+} from 'react-component-snapshot'
+
+import '@testing-library/jest-dom'
+
+import {
+  render
+} from '@testing-library/react'
 
 import Count from '#zashiki-react-redux/app/components/stages/alpha/count/component'
 
 describe('#zashiki-react-redux/app/components/stages/alpha/count/component', () => {
   describe('Always', () => {
     it('renders', () => {
-      const component = (
-        <Count index={1} count={2} />
-      )
-
-      expect(renderer.create(component).toJSON())
+      expect(snapshotOf(getComponentElement(render(
+        <Count
+          index={1}
+          count={2}
+        />
+      ))))
         .toMatchSnapshot()
     })
   })

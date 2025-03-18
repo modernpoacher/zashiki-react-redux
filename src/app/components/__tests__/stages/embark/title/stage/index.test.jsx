@@ -1,18 +1,24 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import snapshotOf, {
+  getComponentElement
+} from 'react-component-snapshot'
+
+import '@testing-library/jest-dom'
+
+import {
+  render
+} from '@testing-library/react'
 
 import Stage from '#zashiki-react-redux/app/components/stages/embark/title/stage'
 
 describe('#zashiki-react-redux/app/components/stages/embark/title/stage', () => {
   describe('Always', () => {
     it('renders', () => {
-      const component = (
+      expect(snapshotOf(getComponentElement(render(
         <Stage
           title='MOCK TITLE'
         />
-      )
-
-      expect(renderer.create(component).toJSON())
+      ))))
         .toMatchSnapshot()
     })
   })

@@ -1,5 +1,14 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import PropTypes from 'prop-types'
+import snapshotOf, {
+  getComponentElement
+} from 'react-component-snapshot'
+
+import '@testing-library/jest-dom'
+
+import {
+  render
+} from '@testing-library/react'
 
 import {
   RESOLVED,
@@ -17,11 +26,51 @@ jest.mock('#zashiki-react-redux/app/common', () => {
   }
 })
 
-jest.mock('#zashiki-react-redux/app/components/stages/debark/status/resolved', () => () => 'MOCK RESOLVED')
-jest.mock('#zashiki-react-redux/app/components/stages/debark/status/rejected', () => () => 'MOCK REJECTED')
-jest.mock('#zashiki-react-redux/app/components/stages/debark/status/pending', () => () => 'MOCK PENDING')
-
 jest.mock('#zashiki-react-redux/app/router/with-router', () => (Component) => Component)
+
+/**
+ *  @param {{ to: string | { pathname: string }, children: React.ReactNode | React.ReactNode[] }} props
+ *  @returns {React.JSX.Element}
+ */
+function MockLink ({ to, children }) {
+  if (typeof to === 'string') {
+    return (
+      <a href={to} className='mock-link'>
+        {children}
+      </a>
+    )
+  }
+
+  const {
+    pathname
+  } = to
+
+  return (
+    <a href={pathname} className='mock-link'>
+      {children}
+    </a>
+  )
+}
+
+MockLink.propTypes = {
+  to: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({})
+  ]),
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.arrayOf(
+      PropTypes.node
+    )
+  ])
+}
+
+jest.mock('react-router', () => {
+  return {
+    __esModule: true,
+    Link: MockLink
+  }
+})
 
 describe('#zashiki-react-redux/app/components/stages/debark/component', () => {
   const MOCK_DEFINITIONS = [
@@ -35,26 +84,24 @@ describe('#zashiki-react-redux/app/components/stages/debark/component', () => {
   const MOCK_ONDEBARK = jest.fn()
 
   describe('Always', () => {
-    const component = (
-      <Debark
-        status={RESOLVED}
-        definitions={MOCK_DEFINITIONS}
-        token={MOCK_TOKEN}
-        onSubmit={MOCK_ONSUBMIT}
-        onDebark={MOCK_ONDEBARK}
-      />
-    )
-
-    const spy = jest.spyOn(Debark.prototype, 'componentDidMount')
-
-    let rendered
+    let spy
+    let component
 
     beforeEach(() => {
-      rendered = renderer.create(component)
+      spy = jest.spyOn(Debark.prototype, 'componentDidMount')
+      component = render(
+        <Debark
+          status={RESOLVED}
+          definitions={MOCK_DEFINITIONS}
+          token={MOCK_TOKEN}
+          onSubmit={MOCK_ONSUBMIT}
+          onDebark={MOCK_ONDEBARK}
+        />
+      )
     })
 
     it('renders', () => {
-      expect(rendered.toJSON())
+      expect(snapshotOf(getComponentElement(component)))
         .toMatchSnapshot()
     })
 
@@ -71,7 +118,7 @@ describe('#zashiki-react-redux/app/components/stages/debark/component', () => {
 
   describe('`RESOLVED`', () => {
     it('renders', () => {
-      const component = (
+      expect(snapshotOf(getComponentElement(render(
         <Debark
           status={RESOLVED}
           definitions={MOCK_DEFINITIONS}
@@ -79,16 +126,14 @@ describe('#zashiki-react-redux/app/components/stages/debark/component', () => {
           onSubmit={MOCK_ONSUBMIT}
           onDebark={MOCK_ONDEBARK}
         />
-      )
-
-      expect(renderer.create(component).toJSON())
+      ))))
         .toMatchSnapshot()
     })
   })
 
   describe('`REJECTED`', () => {
     it('renders', () => {
-      const component = (
+      expect(snapshotOf(getComponentElement(render(
         <Debark
           status={REJECTED}
           exception={{
@@ -99,16 +144,14 @@ describe('#zashiki-react-redux/app/components/stages/debark/component', () => {
           onSubmit={MOCK_ONSUBMIT}
           onDebark={MOCK_ONDEBARK}
         />
-      )
-
-      expect(renderer.create(component).toJSON())
+      ))))
         .toMatchSnapshot()
     })
   })
 
   describe('`PENDING`', () => {
     it('renders', () => {
-      const component = (
+      expect(snapshotOf(getComponentElement(render(
         <Debark
           status={PENDING}
           definitions={MOCK_DEFINITIONS}
@@ -116,9 +159,7 @@ describe('#zashiki-react-redux/app/components/stages/debark/component', () => {
           onSubmit={MOCK_ONSUBMIT}
           onDebark={MOCK_ONDEBARK}
         />
-      )
-
-      expect(renderer.create(component).toJSON())
+      ))))
         .toMatchSnapshot()
     })
   })
