@@ -1,6 +1,7 @@
 import React from 'react'
-import snapshotOf, {
-  getComponentElement
+
+import {
+  toSnapshot
 } from 'react-component-snapshot'
 
 import '@testing-library/jest-dom'
@@ -31,14 +32,14 @@ const MOCK_RESPONSE = {
 describe('#zashiki-react-redux/app/components/stages/confirm/status/resolved', () => {
   describe('Always', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Resolved
           definition={MOCK_DEFINITION}
           response={MOCK_RESPONSE}
           onChange={jest.fn()}
           onSubmit={jest.fn()}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })

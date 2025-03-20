@@ -1,6 +1,7 @@
 import React from 'react'
-import snapshotOf, {
-  getComponentElement
+
+import {
+  toSnapshot
 } from 'react-component-snapshot'
 
 import '@testing-library/jest-dom'
@@ -14,9 +15,9 @@ import Pending from '#zashiki-react-redux/app/components/stages/omega/title/stat
 describe('#zashiki-react-redux/app/components/stages/omega/title/status/pending', () => {
   describe('Always', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Pending />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })

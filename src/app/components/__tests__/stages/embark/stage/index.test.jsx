@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import snapshotOf, {
-  getComponentElement
+
+import {
+  toSnapshot
 } from 'react-component-snapshot'
 
 import '@testing-library/jest-dom'
@@ -74,7 +75,7 @@ jest.mock('react-router', () => {
 describe('#zashiki-react-redux/app/components/stages/embark/stage', () => {
   describe('Always', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Stage
           definition={MOCK_DEFINITION}
           response={MOCK_RESPONSE}
@@ -82,7 +83,7 @@ describe('#zashiki-react-redux/app/components/stages/embark/stage', () => {
           onChange={jest.fn()}
           onSubmit={jest.fn()}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })

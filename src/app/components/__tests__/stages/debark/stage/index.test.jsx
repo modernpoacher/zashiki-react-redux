@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import snapshotOf, {
-  getComponentElement
+
+import {
+  toSnapshot
 } from 'react-component-snapshot'
 
 import '@testing-library/jest-dom'
@@ -144,13 +145,13 @@ jest.mock('react-router', () => {
 describe('#zashiki-react-redux/app/components/stages/debark/stage', () => {
   describe('Always', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Stage
           definitions={MOCK_DEFINITIONS}
           token={{}}
           onSubmit={jest.fn()}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })

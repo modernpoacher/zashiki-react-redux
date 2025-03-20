@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import snapshotOf, {
-  getComponentElement
+
+import {
+  toSnapshot
 } from 'react-component-snapshot'
 
 import '@testing-library/jest-dom'
@@ -95,7 +96,7 @@ describe('#zashiki-react-redux/app/components/stages/omega/status/resolved', () 
 
   describe('Always', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Resolved
           description={MOCK_DESCRIPTION}
           definition={MOCK_DEFINITION}
@@ -105,7 +106,7 @@ describe('#zashiki-react-redux/app/components/stages/omega/status/resolved', () 
           onChange={jest.fn()}
           onSubmit={jest.fn()}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })

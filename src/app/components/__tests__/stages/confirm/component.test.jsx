@@ -1,6 +1,7 @@
 import React from 'react'
-import snapshotOf, {
-  getComponentElement
+
+import {
+  toSnapshot
 } from 'react-component-snapshot'
 
 import '@testing-library/jest-dom'
@@ -54,7 +55,7 @@ describe('#zashiki-react-redux/app/components/stages/confirm/component', () => {
     })
 
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(component)))
+      expect(toSnapshot(component))
         .toMatchSnapshot()
     })
 
@@ -71,7 +72,7 @@ describe('#zashiki-react-redux/app/components/stages/confirm/component', () => {
 
   describe('`RESOLVED`', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Confirm
           status={RESOLVED}
           definition={MOCK_DEFINITION}
@@ -79,14 +80,14 @@ describe('#zashiki-react-redux/app/components/stages/confirm/component', () => {
           onSubmit={MOCK_ONSUBMIT}
           onConfirm={MOCK_ONEMBARK}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })
 
   describe('`REJECTED`', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Confirm
           status={REJECTED}
           exception={{
@@ -97,14 +98,14 @@ describe('#zashiki-react-redux/app/components/stages/confirm/component', () => {
           onSubmit={MOCK_ONSUBMIT}
           onConfirm={MOCK_ONEMBARK}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })
 
   describe('`PENDING`', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Confirm
           status={PENDING}
           definition={MOCK_DEFINITION}
@@ -112,7 +113,7 @@ describe('#zashiki-react-redux/app/components/stages/confirm/component', () => {
           onSubmit={MOCK_ONSUBMIT}
           onConfirm={MOCK_ONEMBARK}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })

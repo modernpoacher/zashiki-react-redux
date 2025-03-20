@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import snapshotOf, {
-  getComponentElement
+
+import {
+  toSnapshot
 } from 'react-component-snapshot'
 
 import '@testing-library/jest-dom'
@@ -63,38 +64,38 @@ jest.mock('react-router', () => {
 describe('#zashiki-react-redux/app/components/stages/omega/gears/component', () => {
   describe('Always', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Gears />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })
 
   it('renders `reverse`', () => {
-    expect(snapshotOf(getComponentElement(render(
+    expect(toSnapshot(render(
       <Gears
         reverse={{ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }}
       />
-    ))))
+    )))
       .toMatchSnapshot()
   })
 
   it('renders `forward`', () => {
-    expect(snapshotOf(getComponentElement(render(
+    expect(toSnapshot(render(
       <Gears
         forward={{ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }}
       />
-    ))))
+    )))
       .toMatchSnapshot()
   })
 
   it('renders `reverse` and `forward`', () => {
-    expect(snapshotOf(getComponentElement(render(
+    expect(toSnapshot(render(
       <Gears
         reverse={{ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }}
         forward={{ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }}
       />
-    ))))
+    )))
       .toMatchSnapshot()
   })
 })

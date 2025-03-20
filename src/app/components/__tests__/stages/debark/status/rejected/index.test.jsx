@@ -1,6 +1,7 @@
 import React from 'react'
-import snapshotOf, {
-  getComponentElement
+
+import {
+  toSnapshot
 } from 'react-component-snapshot'
 
 import '@testing-library/jest-dom'
@@ -14,38 +15,38 @@ import Rejected from '#zashiki-react-redux/app/components/stages/debark/status/r
 describe('#zashiki-react-redux/app/components/stages/debark/status/rejected', () => {
   describe('Always', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Rejected
           name='MOCK NAME'
           onSubmit={jest.fn()}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })
 
   describe('`code` is an integer', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Rejected
           code={1}
           name='MOCK NAME'
           onSubmit={jest.fn()}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })
 
   describe('`message` is a string', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Rejected
           name='MOCK NAME'
           message='MOCK MESSAGE'
           onSubmit={jest.fn()}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })

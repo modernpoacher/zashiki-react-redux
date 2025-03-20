@@ -1,6 +1,7 @@
 import React from 'react'
-import snapshotOf, {
-  getComponentElement
+
+import {
+  toSnapshot
 } from 'react-component-snapshot'
 
 import '@testing-library/jest-dom'
@@ -14,12 +15,12 @@ import Count from '#zashiki-react-redux/app/components/stages/alpha/count/compon
 describe('#zashiki-react-redux/app/components/stages/alpha/count/component', () => {
   describe('Always', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Count
           index={1}
           count={2}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })

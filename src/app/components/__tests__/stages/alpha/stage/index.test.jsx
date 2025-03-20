@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import snapshotOf, {
-  getComponentElement
+
+import {
+  toSnapshot
 } from 'react-component-snapshot'
 
 import '@testing-library/jest-dom'
@@ -106,13 +107,13 @@ describe('#zashiki-react-redux/app/components/stages/alpha/stage', () => {
 
   describe('Always', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Stage
           definitions={MOCK_DEFINITIONS}
           onChange={jest.fn()}
           onSubmit={jest.fn()}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })

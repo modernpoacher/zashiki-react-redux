@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import snapshotOf, {
-  getComponentElement
+
+import {
+  toSnapshot
 } from 'react-component-snapshot'
 
 import '@testing-library/jest-dom'
@@ -101,7 +102,7 @@ describe('#zashiki-react-redux/app/components/stages/debark/component', () => {
     })
 
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(component)))
+      expect(toSnapshot(component))
         .toMatchSnapshot()
     })
 
@@ -118,7 +119,7 @@ describe('#zashiki-react-redux/app/components/stages/debark/component', () => {
 
   describe('`RESOLVED`', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Debark
           status={RESOLVED}
           definitions={MOCK_DEFINITIONS}
@@ -126,14 +127,14 @@ describe('#zashiki-react-redux/app/components/stages/debark/component', () => {
           onSubmit={MOCK_ONSUBMIT}
           onDebark={MOCK_ONDEBARK}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })
 
   describe('`REJECTED`', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Debark
           status={REJECTED}
           exception={{
@@ -144,14 +145,14 @@ describe('#zashiki-react-redux/app/components/stages/debark/component', () => {
           onSubmit={MOCK_ONSUBMIT}
           onDebark={MOCK_ONDEBARK}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })
 
   describe('`PENDING`', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Debark
           status={PENDING}
           definitions={MOCK_DEFINITIONS}
@@ -159,7 +160,7 @@ describe('#zashiki-react-redux/app/components/stages/debark/component', () => {
           onSubmit={MOCK_ONSUBMIT}
           onDebark={MOCK_ONDEBARK}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })

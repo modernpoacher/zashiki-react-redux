@@ -1,6 +1,7 @@
 import React from 'react'
-import snapshotOf, {
-  getComponentElement
+
+import {
+  toSnapshot
 } from 'react-component-snapshot'
 
 import '@testing-library/jest-dom'
@@ -35,7 +36,7 @@ describe('#zashiki-react-redux/app/components/zashiki/component', () => {
     })
 
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(component)))
+      expect(toSnapshot(component))
         .toMatchSnapshot()
     })
 

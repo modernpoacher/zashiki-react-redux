@@ -1,7 +1,8 @@
 import React, { Component as mockComponent } from 'react'
 import PropTypes from 'prop-types'
-import snapshotOf, {
-  getComponentElement
+
+import {
+  toSnapshot
 } from 'react-component-snapshot'
 
 import '@testing-library/jest-dom'
@@ -128,7 +129,7 @@ describe('#zashiki-react-redux/app/components/stages/omega/component', () => {
 
   describe('Always', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Omega
           status={RESOLVED}
           definition={MOCK_DEFINITION}
@@ -138,14 +139,14 @@ describe('#zashiki-react-redux/app/components/stages/omega/component', () => {
           onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })
 
   describe('`RESOLVED`', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Omega
           status={RESOLVED}
           definition={MOCK_DEFINITION}
@@ -155,14 +156,14 @@ describe('#zashiki-react-redux/app/components/stages/omega/component', () => {
           onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })
 
   describe('`REJECTED`', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Omega
           status={REJECTED}
           exception={{
@@ -172,14 +173,14 @@ describe('#zashiki-react-redux/app/components/stages/omega/component', () => {
           onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })
 
   describe('`PENDING`', () => {
     it('renders', () => {
-      expect(snapshotOf(getComponentElement(render(
+      expect(toSnapshot(render(
         <Omega
           status={PENDING}
           definition={MOCK_DEFINITION}
@@ -187,7 +188,7 @@ describe('#zashiki-react-redux/app/components/stages/omega/component', () => {
           onChange={MOCK_ONCHANGE}
           onSubmit={MOCK_ONSUBMIT}
         />
-      ))))
+      )))
         .toMatchSnapshot()
     })
   })
