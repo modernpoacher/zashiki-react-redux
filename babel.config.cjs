@@ -54,7 +54,15 @@ module.exports = (api) => {
     presets,
     plugins,
     ignore: [
-      /node_modules\/(?!shinkansen|@sequencemedia\/react-render|@sequencemedia\/react-redux-render|@sequencemedia\/react-router-render|@sequencemedia\/react-router-redux-render|@modernpoacher\/isomorphic|react-component-instance|react-component-snapshot|react-component-name)/
+      /node_modules\/(?!shinkansen-*)\//,
+      /node_modules\/(?!@modernpoacher\/isomorphic)\//,
+      /node_modules\/(?!@sequencemedia\/react-render)\//,
+      /node_modules\/(?!@sequencemedia\/react-redux-render)\//,
+      /node_modules\/(?!@sequencemedia\/react-router-render)\//,
+      /node_modules\/(?!@sequencemedia\/react-router-redux-render)\//,
+      /node_modules\/(?!react-component-instance)\//,
+      /node_modules\/(?!react-component-snapshot)\//,
+      /node_modules\/(?!react-component-name)\//
     ]
   }
 }
