@@ -12,11 +12,6 @@ Implements *React* + *Redux* + *React Router* + *Sagas* for *Zashiki Karakuri*.
 npm i -P @modernpoacher/zashiki-react-redux
 ```
 
-## Usage
-
-- Optionally, build the JS in `src` to `lib` (the published JS is built according to the configuration in `babel.config.js`)
-- Import the built JS from `lib`
-
 ## Structure
 
 The structure should be self-evident under `src/app`:

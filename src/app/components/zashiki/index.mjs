@@ -41,21 +41,21 @@ function mergeProps (stateProps, { dispatch }, { router, ...ownProps }) {
 
   return {
     ...stateProps,
-    onMount: (resource) => {
+    onMount (resource) {
       /**
        *  log('onMount')
        */
 
       dispatch(mount(resource, router))
     },
-    onChange: (resource) => {
+    onChange (resource) {
       /**
        *  log('onChange')
        */
 
       dispatch(change(resource, router))
     },
-    onSubmit: (resource, response) => {
+    onSubmit (resource, response) {
       /**
        *  log('onSubmit')
        */
