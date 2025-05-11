@@ -6,7 +6,7 @@ import {
   Provider,
   ReactReduxContext
 } from 'react-redux'
-import debug from 'debug'
+import debug from '#zashiki-react-redux/debug'
 
 import configureStore from '#zashiki-react-redux/app/store'
 

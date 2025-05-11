@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import debug from 'debug'
+import debug from '#zashiki-react-redux/debug'
 
 import {
   RESOLVED,

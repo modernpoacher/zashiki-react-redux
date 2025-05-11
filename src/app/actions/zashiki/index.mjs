@@ -1,4 +1,4 @@
-import debug from 'debug'
+import debug from '#zashiki-react-redux/debug'
 
 const log = debug('zashiki-react-redux/app/actions/zashiki')
 

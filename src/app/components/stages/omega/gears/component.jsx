@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import debug from 'debug'
+import debug from '#zashiki-react-redux/debug'
 
 import Signals from 'shinkansen-engine/components/signals'
 

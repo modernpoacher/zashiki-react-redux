@@ -2,6 +2,8 @@ import {
   expect
 } from 'chai'
 
+import '#zashiki-react-redux/debug'
+
 import Routes from '@modernpoacher/zashiki-react-redux/app/routes'
 
 describe('@modernpoacher/zashiki-react-redux/app/routes', () => {

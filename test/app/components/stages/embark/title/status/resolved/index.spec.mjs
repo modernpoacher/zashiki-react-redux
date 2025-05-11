@@ -2,6 +2,8 @@ import {
   expect
 } from 'chai'
 
+import '#zashiki-react-redux/debug'
+
 import Resolved from '@modernpoacher/zashiki-react-redux/app/components/stages/embark/title/status/resolved'
 
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/embark/title/status/resolved', () => {

@@ -2,6 +2,8 @@ import {
   expect
 } from 'chai'
 
+import '#zashiki-react-redux/debug'
+
 import Zashiki from '@modernpoacher/zashiki-react-redux/app/components/zashiki/component'
 
 describe('@modernpoacher/zashiki-react-redux/app/components/zashiki/component', () => {

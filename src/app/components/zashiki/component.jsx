@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import PropTypes from 'prop-types'
 import equal from 'fast-deep-equal'
-import debug from 'debug'
+import debug from '#zashiki-react-redux/debug'
 
 import resource from './resource.mjs'
 

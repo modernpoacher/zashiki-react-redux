@@ -2,6 +2,8 @@ import {
   expect
 } from 'chai'
 
+import '#zashiki-react-redux/debug'
+
 import Pending from '@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/pending'
 
 describe('@modernpoacher/zashiki-react-redux/app/components/stages/debark/status/pending', () => {

@@ -1,4 +1,4 @@
-import debug from 'debug'
+import debug from '#zashiki-react-redux/debug'
 
 /*
  *  Zashiki/Omega Actions

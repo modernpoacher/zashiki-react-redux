@@ -2,6 +2,8 @@ import {
   expect
 } from 'chai'
 
+import '#zashiki-react-redux/debug'
+
 import transformer, {
   transformEmbark
 } from '@modernpoacher/zashiki-react-redux/app/transformers/stages/embark'
