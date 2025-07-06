@@ -13,30 +13,30 @@ import {
 
 describe('@modernpoacher/zashiki-react-redux/app/transformers/stages', () => {
   describe('`embark`', () => {
-    it('is a module', () => {
+    it('is an object', () => {
       expect(embark)
-        .to.be.a('module')
+        .to.be.an('object')
     })
   })
 
   describe('`alpha`', () => {
-    it('is a module', () => {
+    it('is an object', () => {
       expect(alpha)
-        .to.be.a('module')
+        .to.be.an('object')
     })
   })
 
   describe('`omega`', () => {
-    it('is a module', () => {
+    it('is an object', () => {
       expect(omega)
-        .to.be.a('module')
+        .to.be.an('object')
     })
   })
 
   describe('`debark`', () => {
-    it('is a module', () => {
+    it('is an object', () => {
       expect(debark)
-        .to.be.a('module')
+        .to.be.an('object')
     })
   })
 })

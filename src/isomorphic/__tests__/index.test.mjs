@@ -28,12 +28,12 @@ describe('#zashiki-react-redux/isomorphic', () => {
 
     it('invokes `configureStore`', () => {
       expect(configureStore)
-        .toBeCalledWith('MOCK STATE')
+        .toHaveBeenCalledWith('MOCK STATE')
     })
 
     it('invokes `renderToString`', () => {
       expect(renderToString)
-        .toBeCalledWith('MOCK STORE', { location: 'MOCK LOCATION' }, 'MOCK ROUTES')
+        .toHaveBeenCalledWith('MOCK STORE', { location: 'MOCK LOCATION' }, 'MOCK ROUTES')
     })
 
     it('returns a string', () => {

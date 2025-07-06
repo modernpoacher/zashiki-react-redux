@@ -15,7 +15,8 @@ jest.mock('shinkansen-engine/components/signals', () => ({
 describe('#zashiki-react-redux/app/common/get-confirm-route', () => {
   describe('`getConfirmRoute`', () => {
     it('is defined', () => {
-      expect(getConfirmRoute).toBeDefined()
+      expect(getConfirmRoute)
+        .toBeDefined()
     })
   })
 
@@ -28,7 +29,7 @@ describe('#zashiki-react-redux/app/common/get-confirm-route', () => {
 
     it('invokes `Rails.to`', () => {
       expect(Rails.to)
-        .toBeCalledWith({ 'MOCK CONFIRM': 'MOCK CONFIRM STAGE' }, 'MOCK CONFIRM PATTERN')
+        .toHaveBeenCalledWith({ 'MOCK CONFIRM': 'MOCK CONFIRM STAGE' }, 'MOCK CONFIRM PATTERN')
     })
 
     it('returns a string', () => {

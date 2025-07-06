@@ -32,7 +32,8 @@ const DEFAULT = {
 describe('#zashiki-react-redux/app/transformers/stages/omega', () => {
   describe('`transform`', () => {
     it('is defined', () => {
-      expect(transform).toBeDefined()
+      expect(transform)
+        .toBeDefined()
     })
   })
 
@@ -43,7 +44,7 @@ describe('#zashiki-react-redux/app/transformers/stages/omega', () => {
           transform({ status: 'MOCK REJECTED' })
 
           expect(transformRejected)
-            .toBeCalledWith('MOCK REJECTED', {})
+            .toHaveBeenCalledWith('MOCK REJECTED', {})
         })
       })
 
@@ -52,7 +53,7 @@ describe('#zashiki-react-redux/app/transformers/stages/omega', () => {
           transform({ status: 'MOCK STATUS' })
 
           expect(transformRejected)
-            .not.toBeCalled()
+            .not.toHaveBeenCalled()
         })
 
         it('returns an object with default values', () => {
@@ -107,7 +108,7 @@ describe('#zashiki-react-redux/app/transformers/stages/omega', () => {
         transform({ status: 'MOCK REJECTED' })
 
         expect(transformRejected)
-          .toBeCalledWith('MOCK REJECTED', {})
+          .toHaveBeenCalledWith('MOCK REJECTED', {})
       })
     })
   })

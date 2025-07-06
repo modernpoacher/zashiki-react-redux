@@ -29,7 +29,8 @@ jest.mock('#zashiki-react-redux/app/transformers', () => {
 describe('#zashiki-react-redux/app/transformers/stages/alpha', () => {
   describe('`transform`', () => {
     it('is defined', () => {
-      expect(transform).toBeDefined()
+      expect(transform)
+        .toBeDefined()
     })
   })
 
@@ -40,7 +41,7 @@ describe('#zashiki-react-redux/app/transformers/stages/alpha', () => {
           transform({ status: 'MOCK REJECTED' })
 
           expect(transformRejected)
-            .toBeCalledWith('MOCK REJECTED', {})
+            .toHaveBeenCalledWith('MOCK REJECTED', {})
         })
       })
 
@@ -49,7 +50,7 @@ describe('#zashiki-react-redux/app/transformers/stages/alpha', () => {
           transform({ status: 'MOCK STATUS' })
 
           expect(transformRejected)
-            .not.toBeCalled()
+            .not.toHaveBeenCalled()
         })
 
         it('returns an object', () => {
@@ -78,7 +79,7 @@ describe('#zashiki-react-redux/app/transformers/stages/alpha', () => {
 
           it('invokes `toZashiki`', () => {
             expect(toZashiki)
-              .toBeCalledWith('MOCK DEFINITION', 'MOCK RESPONSE')
+              .toHaveBeenCalledWith('MOCK DEFINITION', 'MOCK RESPONSE')
           })
 
           it('returns an object', () => {
@@ -104,7 +105,7 @@ describe('#zashiki-react-redux/app/transformers/stages/alpha', () => {
         transform({ status: 'MOCK REJECTED' })
 
         expect(transformRejected)
-          .toBeCalledWith('MOCK REJECTED', {})
+          .toHaveBeenCalledWith('MOCK REJECTED', {})
       })
     })
   })

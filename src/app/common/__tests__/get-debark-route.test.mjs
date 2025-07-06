@@ -15,7 +15,8 @@ jest.mock('shinkansen-engine/components/signals', () => ({
 describe('#zashiki-react-redux/app/common/get-debark-route', () => {
   describe('`getDebarkRoute`', () => {
     it('is defined', () => {
-      expect(getDebarkRoute).toBeDefined()
+      expect(getDebarkRoute)
+        .toBeDefined()
     })
   })
 
@@ -28,7 +29,7 @@ describe('#zashiki-react-redux/app/common/get-debark-route', () => {
 
     it('invokes `Rails.to`', () => {
       expect(Rails.to)
-        .toBeCalledWith({ 'MOCK DEBARK': 'MOCK DEBARK STAGE' }, 'MOCK DEBARK PATTERN')
+        .toHaveBeenCalledWith({ 'MOCK DEBARK': 'MOCK DEBARK STAGE' }, 'MOCK DEBARK PATTERN')
     })
 
     it('returns a string', () => {

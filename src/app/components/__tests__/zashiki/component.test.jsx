@@ -72,7 +72,7 @@ describe('#zashiki-react-redux/app/components/zashiki/component', () => {
 
       it('invokes `equal`', () => {
         expect(equal)
-          .toBeCalledWith({ alpha: 'MOCK ALPHA' }, { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' })
+          .toHaveBeenCalledWith({ alpha: 'MOCK ALPHA' }, { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' })
       })
 
       it('returns the state', () => {
@@ -85,7 +85,7 @@ describe('#zashiki-react-redux/app/components/zashiki/component', () => {
 
       it('invokes `onMount`', () => {
         expect(MOCK_ONMOUNT)
-          .toBeCalledWith({ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' })
+          .toHaveBeenCalledWith({ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' })
       })
     })
 
@@ -102,7 +102,7 @@ describe('#zashiki-react-redux/app/components/zashiki/component', () => {
 
       it('invokes `equal`', () => {
         expect(equal)
-          .toBeCalledWith({ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }, { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' })
+          .toHaveBeenCalledWith({ alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' }, { alpha: 'MOCK ALPHA', omega: 'MOCK OMEGA' })
       })
 
       it('returns the state', () => {
@@ -114,7 +114,7 @@ describe('#zashiki-react-redux/app/components/zashiki/component', () => {
 
       it('does not invoke `onMount`', () => {
         expect(MOCK_ONMOUNT)
-          .not.toBeCalled()
+          .not.toHaveBeenCalled()
       })
     })
   })

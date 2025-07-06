@@ -15,7 +15,8 @@ jest.mock('shinkansen-engine/components/signals', () => ({
 describe('#zashiki-react-redux/app/common/get-embark-route', () => {
   describe('`getEmbarkRoute`', () => {
     it('is defined', () => {
-      expect(getEmbarkRoute).toBeDefined()
+      expect(getEmbarkRoute)
+        .toBeDefined()
     })
   })
 
@@ -28,7 +29,7 @@ describe('#zashiki-react-redux/app/common/get-embark-route', () => {
 
     it('invokes `Rails.to`', () => {
       expect(Rails.to)
-        .toBeCalledWith({ 'MOCK EMBARK': 'MOCK EMBARK STAGE' }, 'MOCK EMBARK PATTERN')
+        .toHaveBeenCalledWith({ 'MOCK EMBARK': 'MOCK EMBARK STAGE' }, 'MOCK EMBARK PATTERN')
     })
 
     it('returns a string', () => {

@@ -21,7 +21,8 @@ jest.mock('shinkansen-engine/components/signals', () => ({
 describe('#zashiki-react-redux/app/common/get-resource-route', () => {
   describe('`getResourceRoute`', () => {
     it('is defined', () => {
-      expect(getResourceRoute).toBeDefined()
+      expect(getResourceRoute)
+        .toBeDefined()
     })
   })
 
@@ -64,12 +65,12 @@ describe('#zashiki-react-redux/app/common/get-resource-route', () => {
 
         it('invokes `Rails.go`', () => {
           expect(Rails.go)
-            .toBeCalledWith({ 'MOCK ALPHA': 'MOCK ALPHA VALUE' }, 'MOCK ALPHA PATTERN')
+            .toHaveBeenCalledWith({ 'MOCK ALPHA': 'MOCK ALPHA VALUE' }, 'MOCK ALPHA PATTERN')
         })
 
         it('invokes `Rails.to`', () => {
           expect(Rails.to)
-            .toBeCalledWith({ 'MOCK ALPHA': 'MOCK ALPHA VALUE' }, 'MOCK ALPHA PATTERN')
+            .toHaveBeenCalledWith({ 'MOCK ALPHA': 'MOCK ALPHA VALUE' }, 'MOCK ALPHA PATTERN')
         })
 
         it('returns a string', () => {
@@ -89,12 +90,12 @@ describe('#zashiki-react-redux/app/common/get-resource-route', () => {
 
         it('invokes `Rails.go`', () => {
           expect(Rails.go)
-            .toBeCalledWith({ 'MOCK ALPHA': 'MOCK ALPHA VALUE', 'MOCK OMEGA': 'MOCK OMEGA VALUE' }, 'MOCK OMEGA PATTERN')
+            .toHaveBeenCalledWith({ 'MOCK ALPHA': 'MOCK ALPHA VALUE', 'MOCK OMEGA': 'MOCK OMEGA VALUE' }, 'MOCK OMEGA PATTERN')
         })
 
         it('invokes `Rails.to`', () => {
           expect(Rails.to)
-            .toBeCalledWith({ 'MOCK ALPHA': 'MOCK ALPHA VALUE', 'MOCK OMEGA': 'MOCK OMEGA VALUE' }, 'MOCK OMEGA PATTERN')
+            .toHaveBeenCalledWith({ 'MOCK ALPHA': 'MOCK ALPHA VALUE', 'MOCK OMEGA': 'MOCK OMEGA VALUE' }, 'MOCK OMEGA PATTERN')
         })
 
         it('returns a string', () => {
@@ -114,12 +115,12 @@ describe('#zashiki-react-redux/app/common/get-resource-route', () => {
 
         it('invokes `Rails.go`', () => {
           expect(Rails.go)
-            .toBeCalledWith({ 'MOCK EMBARK': 'MOCK EMBARK VALUE' }, 'MOCK EMBARK PATTERN')
+            .toHaveBeenCalledWith({ 'MOCK EMBARK': 'MOCK EMBARK VALUE' }, 'MOCK EMBARK PATTERN')
         })
 
         it('invokes `Rails.to`', () => {
           expect(Rails.to)
-            .toBeCalledWith({ 'MOCK EMBARK': 'MOCK EMBARK VALUE' }, 'MOCK EMBARK PATTERN')
+            .toHaveBeenCalledWith({ 'MOCK EMBARK': 'MOCK EMBARK VALUE' }, 'MOCK EMBARK PATTERN')
         })
 
         it('returns a string', () => {
@@ -139,12 +140,12 @@ describe('#zashiki-react-redux/app/common/get-resource-route', () => {
 
         it('invokes `Rails.go`', () => {
           expect(Rails.go)
-            .toBeCalledWith({ 'MOCK DEBARK': 'MOCK DEBARK VALUE' }, 'MOCK DEBARK PATTERN')
+            .toHaveBeenCalledWith({ 'MOCK DEBARK': 'MOCK DEBARK VALUE' }, 'MOCK DEBARK PATTERN')
         })
 
         it('invokes `Rails.to`', () => {
           expect(Rails.to)
-            .toBeCalledWith({ 'MOCK DEBARK': 'MOCK DEBARK VALUE' }, 'MOCK DEBARK PATTERN')
+            .toHaveBeenCalledWith({ 'MOCK DEBARK': 'MOCK DEBARK VALUE' }, 'MOCK DEBARK PATTERN')
         })
 
         it('returns a string', () => {

@@ -21,13 +21,15 @@ const DEFAULT_REJECTED = {
 describe('#zashiki-react-redux/app/transformers', () => {
   describe('`transformError`', () => {
     it('is defined', () => {
-      expect(transformError).toBeDefined()
+      expect(transformError)
+        .toBeDefined()
     })
   })
 
   describe('`transformRejected`', () => {
     it('is defined', () => {
-      expect(transformRejected).toBeDefined()
+      expect(transformRejected)
+        .toBeDefined()
     })
   })
 

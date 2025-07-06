@@ -12,9 +12,9 @@ import {
 
 describe('@modernpoacher/zashiki-react-redux/app/transformers', () => {
   describe('`stages`', () => {
-    it('is a module', () => {
+    it('is an object', () => {
       expect(stages)
-        .to.be.a('module')
+        .to.be.an('object')
     })
   })
 

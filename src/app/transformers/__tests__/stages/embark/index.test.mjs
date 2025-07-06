@@ -36,7 +36,8 @@ const DEFAULT = {
 describe('#zashiki-react-redux/app/transformers/stages/embark', () => {
   describe('`transform`', () => {
     it('is defined', () => {
-      expect(transform).toBeDefined()
+      expect(transform)
+        .toBeDefined()
     })
   })
 
@@ -47,7 +48,7 @@ describe('#zashiki-react-redux/app/transformers/stages/embark', () => {
           transform({ status: 'MOCK REJECTED' })
 
           expect(transformRejected)
-            .toBeCalledWith('MOCK REJECTED', {})
+            .toHaveBeenCalledWith('MOCK REJECTED', {})
         })
       })
 
@@ -56,7 +57,7 @@ describe('#zashiki-react-redux/app/transformers/stages/embark', () => {
           transform({ status: 'MOCK STATUS' })
 
           expect(transformRejected)
-            .not.toBeCalled()
+            .not.toHaveBeenCalled()
         })
 
         it('returns an object with default values', () => {
@@ -79,7 +80,7 @@ describe('#zashiki-react-redux/app/transformers/stages/embark', () => {
         describe('`response` is an object', () => {
           it('invokes `toZashiki`', () => {
             expect(toZashiki)
-              .toBeCalledWith('MOCK DEFINITION', 'MOCK RESPONSE')
+              .toHaveBeenCalledWith('MOCK DEFINITION', 'MOCK RESPONSE')
           })
 
           it('returns an object with `definition` and default values', () => {
@@ -104,7 +105,7 @@ describe('#zashiki-react-redux/app/transformers/stages/embark', () => {
 
           it('invokes `toZashiki`', () => {
             expect(toZashiki)
-              .toBeCalledWith('MOCK DEFINITION', {})
+              .toHaveBeenCalledWith('MOCK DEFINITION', {})
           })
 
           it('returns an object with `definition` and default values', () => {
@@ -123,7 +124,7 @@ describe('#zashiki-react-redux/app/transformers/stages/embark', () => {
         transform({ status: 'MOCK REJECTED' })
 
         expect(transformRejected)
-          .toBeCalledWith('MOCK REJECTED', {})
+          .toHaveBeenCalledWith('MOCK REJECTED', {})
       })
     })
   })

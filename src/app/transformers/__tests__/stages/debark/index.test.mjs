@@ -39,7 +39,8 @@ jest.mock('#zashiki-react-redux/app/transformers', () => {
 describe('#zashiki-react-redux/app/transformers/stages/debark', () => {
   describe('`transform`', () => {
     it('is defined', () => {
-      expect(transform).toBeDefined()
+      expect(transform)
+        .toBeDefined()
     })
   })
 
@@ -50,7 +51,7 @@ describe('#zashiki-react-redux/app/transformers/stages/debark', () => {
           transform({ status: 'MOCK REJECTED' })
 
           expect(transformRejected)
-            .toBeCalledWith('MOCK REJECTED', {})
+            .toHaveBeenCalledWith('MOCK REJECTED', {})
         })
       })
 
@@ -65,7 +66,7 @@ describe('#zashiki-react-redux/app/transformers/stages/debark', () => {
 
         it('does not invoke `transformRejected`', () => {
           expect(transformRejected)
-            .not.toBeCalled()
+            .not.toHaveBeenCalled()
         })
 
         it('returns an object', () => {
@@ -98,12 +99,12 @@ describe('#zashiki-react-redux/app/transformers/stages/debark', () => {
 
           it('invokes `toZashiki`', () => {
             expect(toZashiki)
-              .toBeCalledWith('MOCK DEFINITION', 'MOCK RESPONSE')
+              .toHaveBeenCalledWith('MOCK DEFINITION', 'MOCK RESPONSE')
           })
 
           it('invokes `transformAnswer`', () => {
             expect(transformAnswer)
-              .toBeCalledWith('MOCK ZASHIKI', 'MOCK RESOURCE')
+              .toHaveBeenCalledWith('MOCK ZASHIKI', 'MOCK RESOURCE')
           })
 
           it('returns an object', () => {
@@ -131,7 +132,7 @@ describe('#zashiki-react-redux/app/transformers/stages/debark', () => {
         transform({ status: 'MOCK REJECTED' })
 
         expect(transformRejected)
-          .toBeCalledWith('MOCK REJECTED', {})
+          .toHaveBeenCalledWith('MOCK REJECTED', {})
       })
     })
   })
