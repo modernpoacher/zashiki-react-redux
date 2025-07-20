@@ -34,7 +34,7 @@
     "test:mocha": "cross-env NODE_ENV=test mocha test --recursive"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "1.3.131",
+    "@modernpoacher/isomorphic": "1.3.140",
     "axios": "^1.10.0",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
@@ -44,10 +44,10 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-redux": "^9.2.0",
-    "react-router": "^7.6.3",
+    "react-router": "^7.7.0",
     "redux": "^5.0.1",
     "redux-saga": "^1.3.0",
-    "shinkansen-engine": "2.1.96"
+    "shinkansen-engine": "2.1.98"
   },
   "devDependencies": {
     "@babel/core": "^7.28.0",
@@ -55,20 +55,20 @@
     "@babel/preset-env": "^7.28.0",
     "@babel/preset-react": "^7.27.1",
     "@babel/register": "^7.27.1",
-    "@sequencemedia/eslint-config-standard": "^0.2.69",
-    "@sequencemedia/eslint-config-typescript": "^0.1.116",
+    "@sequencemedia/eslint-config-standard": "^0.2.72",
+    "@sequencemedia/eslint-config-typescript": "^0.1.121",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
-    "chai": "^5.2.0",
-    "core-js": "^3.43.0",
-    "eslint": "^9.30.1",
+    "chai": "^5.2.1",
+    "core-js": "^3.44.0",
+    "eslint": "^9.31.0",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.3.0",
     "husky": "^9.1.7",
     "jest": "^30.0.4",
     "jest-environment-jsdom": "^30.0.4",
     "mocha": "^11.7.1",
-    "react-component-snapshot": "^0.0.94",
+    "react-component-snapshot": "^0.0.95",
     "sinon": "^21.0.0"
   },
   "imports": {
