@@ -34,7 +34,7 @@
     "test:mocha": "cross-env NODE_ENV=test mocha test --recursive"
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "1.3.162",
+    "@modernpoacher/isomorphic": "1.3.163",
     "axios": "^1.11.0",
     "classnames": "^2.5.1",
     "cross-env": "^10.0.0",
@@ -47,7 +47,7 @@
     "react-router": "^7.8.2",
     "redux": "^5.0.1",
     "redux-saga": "^1.3.0",
-    "shinkansen-engine": "2.1.113"
+    "shinkansen-engine": "2.1.114"
   },
   "devDependencies": {
     "@babel/core": "^7.28.3",
@@ -68,7 +68,7 @@
     "jest": "^30.1.1",
     "jest-environment-jsdom": "^30.1.1",
     "mocha": "^11.7.1",
-    "react-component-snapshot": "^0.0.108",
+    "react-component-snapshot": "^0.0.109",
     "sinon": "^21.0.0"
   },
   "imports": {
