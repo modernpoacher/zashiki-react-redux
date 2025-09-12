@@ -14,7 +14,7 @@ describe('@modernpoacher/zashiki-react-redux/app/transformers', () => {
   describe('`stages`', () => {
     it('is an object', () => {
       expect(stages)
-        .to.be.an('object')
+        .to.be.a('module') // an('object')
     })
   })
 
