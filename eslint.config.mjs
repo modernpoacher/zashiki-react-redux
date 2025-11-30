@@ -170,13 +170,15 @@ export default [
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
-        projectService: true,
-        project: 'tsconfig.json'
+        projectService: true
       },
       globals: {
         ...globals.node,
         CogsTypes: 'readonly'
       }
+    },
+    rules: {
+      '@typescript-eslint/no-redundant-type-constituents': 'off'
     }
   }),
   typescript({
@@ -187,12 +189,14 @@ export default [
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
-        projectService: true,
-        project: 'tsconfig.json'
+        projectService: true
       },
       globals: {
         ...globals.browser
       }
+    },
+    rules: {
+      '@typescript-eslint/no-redundant-type-constituents': 'off'
     }
   })
 ]
