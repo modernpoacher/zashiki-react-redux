@@ -44,7 +44,7 @@
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-redux": "^9.2.0",
-    "react-router": "^7.14.2",
+    "react-router": "^7.15.0",
     "redux": "^5.0.1",
     "redux-saga": "^1.4.2",
     "shinkansen-engine": "2.1.178"
@@ -52,7 +52,7 @@
   "devDependencies": {
     "@babel/core": "^7.29.0",
     "@babel/eslint-parser": "^7.28.6",
-    "@babel/preset-env": "^7.29.3",
+    "@babel/preset-env": "^7.29.5",
     "@babel/preset-react": "^7.28.5",
     "@babel/register": "^7.29.3",
     "@sequencemedia/eslint-config-standard": "^0.2.107",
@@ -69,7 +69,7 @@
     "jest-environment-jsdom": "^30.3.0",
     "mocha": "^11.7.5",
     "react-component-snapshot": "^0.0.168",
-    "sinon": "^21.1.2"
+    "sinon": "^22.0.0"
   },
   "imports": {
     "#zashiki-react-redux": "./src/index.cjs",
