@@ -33,6 +33,11 @@
     "test:jest": "cross-env NODE_ENV=test jest",
     "test:mocha": "cross-env NODE_ENV=test mocha test --recursive"
   },
+  "allowScripts": {
+    "@parcel/watcher@2.6.0": true,
+    "core-js@3.50.0": true,
+    "unrs-resolver@1.12.2": true
+  },
   "dependencies": {
     "@modernpoacher/isomorphic": "1.3.252",
     "axios": "^1.20.0",
@@ -47,7 +52,7 @@
     "react-router": "^8.3.1",
     "redux": "^5.0.1",
     "redux-saga": "^1.5.1",
-    "shinkansen-engine": "2.1.181"
+    "shinkansen-engine": "2.1.182"
   },
   "devDependencies": {
     "@babel/core": "7.29.7",
@@ -278,10 +283,5 @@
     "./app/transformers": "./src/app/transformers/index.mjs",
     "./app/transformers/*": "./src/app/transformers/*/index.mjs",
     "./isomorphic": "./src/isomorphic/index.mjs"
-  },
-  "allowScripts": {
-    "core-js@3.50.0": true,
-    "unrs-resolver@1.12.2": true,
-    "@parcel/watcher@2.6.0": true
   }
 }
