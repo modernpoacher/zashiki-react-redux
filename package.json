@@ -52,7 +52,7 @@
     "react-router": "^8.4.0",
     "redux": "^5.0.1",
     "redux-saga": "^1.5.1",
-    "shinkansen-engine": "2.1.190"
+    "shinkansen-engine": "2.1.191"
   },
   "devDependencies": {
     "@babel/core": "7.29.7",
@@ -74,7 +74,7 @@
     "jest": "^30.5.2",
     "jest-environment-jsdom": "^30.5.2",
     "mocha": "^12.0.3",
-    "react-component-snapshot": "^0.0.227",
+    "react-component-snapshot": "^0.0.228",
     "sinon": "^22.1.0"
   },
   "imports": {
