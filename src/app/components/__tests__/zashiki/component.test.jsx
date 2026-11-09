@@ -30,7 +30,7 @@ describe('#zashiki-react-redux/app/components/zashiki/component', () => {
         <Zashiki
           onMount={MOCK_ONMOUNT}
           router={MOCK_MATCH}
-          children={MOCK_CHILDREN} // eslint-disable-line react/no-children-prop
+          children={MOCK_CHILDREN} // eslint-disable-line @eslint-react/jsx-no-children-prop
         />
       )
     })
