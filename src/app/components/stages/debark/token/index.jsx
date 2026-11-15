@@ -9,7 +9,7 @@ log('`zashiki` is awake')
 const Token = ({ token }) => (
   Object.entries(token)
     .map(([name, value], key) => (
-      <input key={key} type='hidden' name={name} value={value} />
+      <input key={'token_' + key} type='hidden' name={name} value={value} />
     ))
 )
 
