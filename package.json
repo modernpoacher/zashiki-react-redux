@@ -39,7 +39,7 @@
     "unrs-resolver@1.12.2": true
   },
   "dependencies": {
-    "@modernpoacher/isomorphic": "1.3.272",
+    "@modernpoacher/isomorphic": "1.3.273",
     "axios": "^1.21.1",
     "classnames": "^2.5.1",
     "cross-env": "^10.1.0",
